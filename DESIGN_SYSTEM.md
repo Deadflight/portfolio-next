@@ -106,20 +106,9 @@ Se definirán distintos niveles de sombra para indicar jerarquía, profundidad o
   - **Propósito:** Para indicar un estado de "elevación mayor" (ej: al pasar el ratón sobre una tarjeta) o para elementos que flotan (ej: modales).
   - **Valor CSS:** `0px 4px 8px rgba(0, 0, 0, 0.12)`
 
-#### **Ejemplo de Uso en CSS**
-
-Se definirán distintos niveles de sombra para indicar jerarquía, profundidad o interactividad, utilizando `rgba()` para transparencia y sutileza.
-
-- **Sombra Sutil (`--shadow-subtle`):**
-  - **Propósito:** Para dar una ligera elevación a elementos como tarjetas o contenedores que se asientan sobre el fondo principal. Muy discreta.
-  - **Valor CSS:** `0px 2px 4px rgba(0, 0, 0, 0.08)`
-- **Sombra de Interacción (`--shadow-interactive`):**
-  - **Propósito:** Para indicar un estado de "elevación mayor" (ej: al pasar el ratón sobre una tarjeta) o para elementos que flotan (ej: modales).
-  - **Valor CSS:** `0px 4px 8px rgba(0, 0, 0, 0.12)`
-
 ### **3.2. Bordes Redondeados (`border-radius`)**
 
-    * **Valor CSS:** `50%` (para elementos perfectamente cuadrados/circulares, con `9999px` como fallback para compatibilidad)
+    - **Valor CSS:** `50%` (para elementos perfectamente cuadrados/circulares, con `9999px` como fallback para compatibilidad)
 
 Se definirán radios estándar para los bordes de los elementos, utilizando `rem` para asegurar que escalen proporcionalmente.
 
