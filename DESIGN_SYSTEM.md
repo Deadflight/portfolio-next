@@ -188,75 +188,123 @@ Este apartado detalla el estilo visual y el comportamiento de los botones princi
 
 ### 6.1. Estilos Generales
 
-* **Tipografía:**
-    * **Fuente:** `Lato`.
-    * **Peso:** `Regular (400)` o `Bold (700)` para énfasis.
-    * **Tamaño:** `1rem` o `1.125rem` (ajustar según la jerarquía visual).
-* **Espaciado:**
-    * Padding interno basado en el sistema de 8 puntos (múltiplos de `0.5rem`).
-* **Bordes Redondeados:**
-    * `--radius-small` (`0.25rem`) o `--radius-medium` (`0.5rem`).
-* **Sombras:**
-    * `--shadow-subtle` para elevación ligera o `--shadow-interactive` para estados `hover`/`focus`.
-* **Alineación:**
-    * Texto centrado vertical y horizontalmente.
+- **Tipografía:**
+  - **Fuente:** `Lato`.
+  - **Peso:** `Regular (400)` o `Bold (700)` para énfasis.
+  - **Tamaño:** `1rem` o `1.125rem` (ajustar según la jerarquía visual).
+- **Espaciado:**
+  - Padding interno basado en el sistema de 8 puntos (múltiplos de `0.5rem`).
+- **Bordes Redondeados:**
+  - `--radius-small` (`0.25rem`) o `--radius-medium` (`0.5rem`).
+- **Sombras:**
+  - `--shadow-subtle` para elevación ligera o `--shadow-interactive` para estados `hover`/`focus`.
+- **Alineación:**
+  - Texto centrado vertical y horizontalmente.
 
 ### 6.2. Estados de Botón
 
-* **Primario:**
-    * **Color de Fondo:** `primary-brand` (`#4A4E69`).
-    * **Color de Texto:** Blanco o un color de alto contraste con `primary-brand`.
-    * **Hover/Focus:** Oscurecer ligeramente el color de fondo. Usar `--shadow-interactive`.
-* **Secundario:**
-    * **Color de Fondo:** `secondary` (`#C9ADA7`) o fondo transparente con borde.
-    * **Color de Texto:** `text-main` (`#22223B`).
-    * **Hover/Focus:** Aclarar ligeramente el color de fondo o cambiar el color del borde. Usar `--shadow-subtle`.
-* **Deshabilitado:**
-    * **Color de Fondo:** Gris claro o versión transparente del color primario/secundario.
-    * **Color de Texto:** Gris más oscuro que el fondo.
-    * **Cursor:** `not-allowed`.
-    * **Opacidad:** 50-60%.
+- **Primario:**
+  - **Color de Fondo:** `primary-brand` (`#4A4E69`).
+  - **Color de Texto:** Blanco o un color de alto contraste con `primary-brand`.
+  - **Hover/Focus:** Oscurecer ligeramente el color de fondo. Usar `--shadow-interactive`.
+- **Secundario:**
+  - **Color de Fondo:** `secondary` (`#C9ADA7`) o fondo transparente con borde.
+  - **Color de Texto:** `text-main` (`#22223B`).
+  - **Hover/Focus:** Aclarar ligeramente el color de fondo o cambiar el color del borde. Usar `--shadow-subtle`.
+- **Deshabilitado:**
+  - **Color de Fondo:** Gris claro o versión transparente del color primario/secundario.
+  - **Color de Texto:** Gris más oscuro que el fondo.
+  - **Cursor:** `not-allowed`.
+  - **Opacidad:** 50-60%.
 
 ### 6.3. Comportamiento (UX)
 
-* **Feedback Visual:**
-    * Proporcionar feedback claro en los estados `:hover`, `:focus` y `:active` (cambio de color, sombra, animación sutil).
-* **Enfoque:**
-    * Asegurar que los botones sean enfocables con el teclado (usando `outline` o `box-shadow` en `:focus`).
-* **Tamaño:**
-    * Botones suficientemente grandes para ser fácilmente clickeables/tappeables.
-* **Texto:**
-    * Texto claro, conciso y orientado a la acción (ej: "Enviar", "Guardar", "Leer más").
-* **Consistencia:**
-    * Mantener la consistencia en el estilo y comportamiento en todo el portfolio.
+- **Feedback Visual:**
+  - Proporcionar feedback claro en los estados `:hover`, `:focus` y `:active` (cambio de color, sombra, animación sutil).
+- **Enfoque:**
+  - Asegurar que los botones sean enfocables con el teclado (usando `outline` o `box-shadow` en `:focus`).
+- **Tamaño:**
+  - Botones suficientemente grandes para ser fácilmente clickeables/tappeables.
+- **Texto:**
+  - Texto claro, conciso y orientado a la acción (ej: "Enviar", "Guardar", "Leer más").
+- **Consistencia:**
+  - Mantener la consistencia en el estilo y comportamiento en todo el portfolio.
 
 ### 6.4. Tamaños y Responsividad
 
-* **Adaptación Proporcional:**
-    * Los tamaños de los botones se adaptan proporcionalmente gracias al uso de la unidad `rem` y el sistema de 8 puntos.
-    * El `padding` se define en `rem` (ej. `py-0.5rem px-1rem`), lo que permite que el tamaño del botón se ajuste automáticamente según el `font-size` base del `html` en las diferentes `media queries`.
-* **Tamaño Mínimo en Móviles:**
-    * Asegurar un tamaño mínimo de área táctil de 48x48 píxeles (o `3rem` si la base es `16px`) para una buena usabilidad en dispositivos táctiles.
-* **Diferentes Tamaños Contextuales:**
-    * Definir diferentes tamaños de botones (pequeño, mediano, grande) según la jerarquía de las acciones:
-        * **Pequeño:** Para acciones secundarias o dentro de componentes compactos.
-            * Ejemplo: `padding: 0.25rem 0.75rem;`
-        * **Mediano (Estándar):** El tamaño por defecto para la mayoría de las acciones.
-            * Ejemplo: `padding: 0.5rem 1rem;`
-        * **Grande:** Para las llamadas a la acción (CTA) más importantes.
-            * Ejemplo: `padding: 0.75rem 1.5rem;`
-    * El `font-size` del texto del botón también se define en `rem` (ej. `1rem`, `1.125rem`, `1.25rem`) para un escalado consistente.
+- **Adaptación Proporcional:**
+  - Los tamaños de los botones se adaptan proporcionalmente gracias al uso de la unidad `rem` y el sistema de 8 puntos.
+  - El `padding` se define en `rem` (ej. `py-0.5rem px-1rem`), lo que permite que el tamaño del botón se ajuste automáticamente según el `font-size` base del `html` en las diferentes `media queries`.
+- **Tamaño Mínimo en Móviles:**
+  - Asegurar un tamaño mínimo de área táctil de 48x48 píxeles (o `3rem` si la base es `16px`) para una buena usabilidad en dispositivos táctiles.
+- **Diferentes Tamaños Contextuales:**
+  - Definir diferentes tamaños de botones (pequeño, mediano, grande) según la jerarquía de las acciones:
+    - **Pequeño:** Para acciones secundarias o dentro de componentes compactos.
+      - Ejemplo: `padding: 0.25rem 0.75rem;`
+    - **Mediano (Estándar):** El tamaño por defecto para la mayoría de las acciones.
+      - Ejemplo: `padding: 0.5rem 1rem;`
+    - **Grande:** Para las llamadas a la acción (CTA) más importantes.
+      - Ejemplo: `padding: 0.75rem 1.5rem;`
+  - El `font-size` del texto del botón también se define en `rem` (ej. `1rem`, `1.125rem`, `1.25rem`) para un escalado consistente.
 
 ### 6.5. Justificación (Razonamiento)
 
-* **Estilos Generales:**
-    * Se basan en los estilos definidos en las secciones de "Tipografía", "Espaciado y Distribución", y "Efectos Visuales y Geometría" para mantener la coherencia visual y la armonía en todo el diseño.
-* **Estados de Botón:**
-    * Los colores primarios y secundarios se basan en la paleta de colores definida en el sistema de diseño, asegurando la identidad de marca y la jerarquía visual.
-    * Los estados `hover`, `focus` y `disabled` proporcionan feedback visual importante para la usabilidad y la accesibilidad.
-* **Comportamiento (UX):**
-    * Sigue las mejores prácticas de UX para asegurar que los botones sean intuitivos, accesibles y fáciles de usar.
-* **Tamaños y Responsividad:**
-    * El uso de `rem` y el sistema de 8 puntos garantizan que los botones se adapten a diferentes tamaños de pantalla de forma fluida.
-    * Se considera el tamaño mínimo táctil para dispositivos móviles.
-    * Se definen diferentes tamaños contextuales para mantener la jerarquía visual y la claridad de las acciones.
+- **Estilos Generales:**
+  - Se basan en los estilos definidos en las secciones de "Tipografía", "Espaciado y Distribución", y "Efectos Visuales y Geometría" para mantener la coherencia visual y la armonía en todo el diseño.
+- **Estados de Botón:**
+  - Los colores primarios y secundarios se basan en la paleta de colores definida en el sistema de diseño, asegurando la identidad de marca y la jerarquía visual.
+  - Los estados `hover`, `focus` y `disabled` proporcionan feedback visual importante para la usabilidad y la accesibilidad.
+- **Comportamiento (UX):**
+  - Sigue las mejores prácticas de UX para asegurar que los botones sean intuitivos, accesibles y fáciles de usar.
+- **Tamaños y Responsividad:**
+  - El uso de `rem` y el sistema de 8 puntos garantizan que los botones se adapten a diferentes tamaños de pantalla de forma fluida.
+  - Se considera el tamaño mínimo táctil para dispositivos móviles.
+  - Se definen diferentes tamaños contextuales para mantener la jerarquía visual y la claridad de las acciones.
+
+---
+
+## 7. Estilos de Enlaces
+
+Este apartado define el estilo visual y el comportamiento de los enlaces (links) dentro del portfolio, asegurando que sean fácilmente identificables, accesibles y consistentes.
+
+### 7.1. Tipos de Enlaces
+
+Se diferenciarán principalmente dos tipos de enlaces según su contexto y función:
+
+1.  **Enlaces de Texto (Inline Links):** Enlaces que aparecen dentro del cuerpo de un párrafo o en listas, y que dirigen a otra página o sección.
+2.  **Enlaces en Componentes (Component Links):** Enlaces que forman parte de elementos interactivos más grandes, como tarjetas, elementos de navegación (navbar), o botones, y cuyo estilo puede estar dictado por el componente padre. Este documento se enfoca principalmente en los **Enlaces de Texto**.
+
+### 7.2. Estilos Visuales de Enlaces de Texto
+
+Los enlaces de texto deben ser claramente distinguibles del texto normal, pero manteniendo la armonía con la paleta de colores.
+
+- **Estado Normal (`a`):**
+  - **Color:** `primary-brand` (`#4A4E69`).
+    - **Justificación:** Utilizar el color de marca primario asegura que los enlaces sean fácilmente reconocibles como elementos interactivos clave, manteniendo la coherencia con los elementos principales del diseño.
+  - **Subrayado:** `text-decoration: underline;`
+    - **Justificación:** El subrayado es el indicador más universal y claro de que un texto es un enlace. Mejora la **descubribilidad** y la **accesibilidad**, especialmente para usuarios con dificultades en la percepción del color.
+  - **Tipografía:** Hereda la fuente del texto circundante (`Lato`) y su `font-size`.
+- **Estado al Pasar el Cursor (`a:hover`):**
+  - **Color:** Oscurecer ligeramente `primary-brand` o usar `text-main` para un contraste fuerte. (Ej. una variante más oscura de `#4A4E69` o directamente `#22223B`).
+    - **Justificación:** Un cambio de color sutil proporciona **feedback visual** inmediato de que el elemento es interactivo y está siendo apuntado por el usuario, sin ser demasiado disruptivo.
+  - **Subrayado:** Mantener el subrayado o hacerlo más prominente (ej. `text-decoration: underline; text-decoration-thickness: 2px;` o cambiar a un subrayado animado si se implementa).
+    - **Justificación:** Refuerza la interactividad y la respuesta al usuario.
+  - **Cursor:** `cursor: pointer;`
+    - **Justificación:** Es la convención estándar del navegador para los enlaces y mejora la **intuitividad**.
+- **Estado de Enfoque (`a:focus`):**
+  - **Comportamiento:** Similar a `hover` (cambio de color, subrayado), pero con un claro indicador de enfoque.
+  - **Indicador de Enfoque:** `outline: 2px solid --accent;` (o un `box-shadow` discreto con `accent` o `primary-brand`).
+    - **Justificación:** **Crucial para la accesibilidad**. Permite a los usuarios que navegan con teclado saber qué enlace está seleccionado y listo para ser activado. El color `accent` o `primary-brand` asegura que sea visible y coherente con la paleta.
+- **Estado Activo (`a:active`):**
+  - **Color:** Un color ligeramente más oscuro o diferente a `hover` para indicar la acción de "presionar". (Ej. una variante aún más oscura de `primary-brand`).
+    - **Justificación:** Proporciona un feedback visual instantáneo cuando el usuario está haciendo clic, confirmando la interacción.
+- **Estado Visitado (`a:visited`):**
+  - **Color:** Se recomienda mantener el mismo color que el estado `normal` (`primary-brand`).
+    - **Justificación:** En un portfolio, la coherencia de la marca y la estética suelen ser prioritarias sobre la indicación de "visitado". Diferenciar visualmente los enlaces visitados a menudo no aporta un valor significativo en este contexto y puede introducir complejidad visual innecesaria. Sin embargo, si la experiencia de usuario se beneficiara de saber qué proyectos/páginas ya ha visto el usuario, se podría considerar un color sutilmente diferente (ej. una variante ligeramente más clara de `primary-brand`).
+
+### 7.3. Principios de UX/UI para Enlaces
+
+- **Visibilidad y Descubribilidad:** Los enlaces deben ser claramente identificables como tales, no solo por el color sino también por el subrayado o un indicador visual claro.
+- **Feedback Visual:** Proveer feedback en `:hover`, `:focus` y `:active` es fundamental para que el usuario sepa que el elemento es interactivo y responde a su acción.
+- **Accesibilidad:** Asegurar que los enlaces sean navegables con teclado (`:focus` visible) y que el contraste de color sea suficiente para la legibilidad (WebAIM Contrast Checker).
+- **Contexto:** Evitar el uso excesivo de enlaces en un párrafo si no son esenciales, ya que puede dificultar la lectura.
