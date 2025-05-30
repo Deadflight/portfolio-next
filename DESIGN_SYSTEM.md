@@ -166,3 +166,16 @@ Establecer principios generales de espaciado y alineación es crucial para la le
   - **Transmite Profesionalismo:** Un uso generoso y consciente del espacio en blanco es un sello distintivo de los diseños limpios, modernos y sofisticados.
 
 ---
+
+## 5. Herramientas de Implementación
+
+Este apartado detalla las herramientas y frameworks principales utilizados para la implementación de los estilos definidos en este sistema de diseño.
+
+### **5.1. Framework CSS**
+
+- **Tailwind CSS:**
+  - **Propósito:** Se ha elegido Tailwind CSS como el framework principal para la implementación de los estilos. Su enfoque "utility-first" permite aplicar las directrices de diseño (colores, tipografía, espaciado, sombras, bordes) de manera directa y eficiente en el marcado HTML, promoviendo un desarrollo rápido y una alta consistencia visual.
+  - **Ventajas Clave:**
+    - **Desarrollo Rápido:** Permite construir interfaces rápidamente con clases predefinidas.
+    - **Consistencia:** Facilita la aplicación uniforme de los tokens de diseño (colores, espaciado, etc.) definidos en este documento.
+    - **Personalización:** Aunque es "utility-first", es altamente configurable, permitiendo extender o ajustar sus utilidades para que coincidan exactamente con la paleta y el sistema de espaciado aquí definidos.
