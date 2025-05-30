@@ -8,18 +8,27 @@ Este documento detalla las decisiones clave de diseño visual y los componentes 
 
 Aquí se define la paleta de colores principal utilizada en el portfolio, junto con el rol y el propósito de cada color.
 
-| Nombre Variable (ej.) | Código HEX | Rol Principal                           | Propósito / Uso                                                                                                                                                                       |
-| :-------------------- | :--------- | :-------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `background-main`     | `#F2E9E4`  | **Fondo Principal**                     | La base del lienzo Fondos de la página, fondos de tarjetas/secciones claras.                                                                                                          |
-| `text-main`           | `#22223B`  | **Texto Principal / Fondo Oscuro**      | Máxima legibilidad. Texto de párrafos y títulos (en fondos claros), fondos de secciones oscuras (ej: footer).                                                                         |
-| `primary-brand`       | `#4A4E69`  | **Color Primario**                      | Color de marca distintivo. Botones principales, enlaces activos, títulos destacados, elementos clave que definen tu identidad.                                                        |
-| `secondary`           | `#C9ADA7`  | **Color Secundario / Fondo Sutil**      | Complemento armónico. Botones secundarios, fondos de bloques de contenido sutiles, bordes suaves.                                                                                     |
-| `accent`              | `#9A8C98`  | **Color de Acento Sutil / Interactivo** | Pequeños detalles interactivos o de diferenciación. Íconos al pasar el ratón, enlaces de texto específicos, elementos gráficos sutiles que necesiten un toque distinto pero elegante. |
+| Nombre Variable (ej.) | Código HEX | Rol Principal                           | Propósito / Uso                                                                                                                                                                                                                                  |
+| :-------------------- | :--------- | :-------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `background-main`     | `#F2E9E4`  | **Fondo Principal**                     | La base del lienzo Fondos de la página, fondos de tarjetas/secciones claras.                                                                                                                                                                     |
+| `text-main`           | `#22223B`  | **Texto Principal / Fondo Oscuro**      | Máxima legibilidad. Texto de párrafos y títulos (en fondos claros), fondos de secciones oscuras (ej: footer).                                                                                                                                    |
+| `primary-brand`       | `#4A4E69`  | **Color Primario**                      | Color de marca distintivo. Botones principales, enlaces activos, títulos destacados, elementos clave que definen tu identidad.                                                                                                                   |
+| `secondary`           | `#C9ADA7`  | **Color Secundario / Fondo Sutil**      | Complemento armónico. **No usar para texto sobre fondo claro por bajo contraste.** Usar solo en fondos, bordes o elementos decorativos. Para botones secundarios, usar fondo blanco y borde `secondary` o `primary-brand` con texto `text-main`. |
+| `accent`              | `#9A8C98`  | **Color de Acento Sutil / Interactivo** | Pequeños detalles interactivos o de diferenciación. **No usar para texto principal sobre fondo claro.** Úsalo solo en iconos, bordes o detalles gráficos.                                                                                        |
+| `error-color`         | `#B91C1C`  | **Color de Error**                      | Indica errores en formularios o estados críticos. Utilizado para bordes, mensajes de error y otros elementos relacionados con errores. Cumple AAA sobre fondo claro.                                                                             |
+| `success-color`       | `#15803D`  | **Color de Éxito**                      | Mensajes de confirmación, validaciones exitosas, indicadores de éxito. Cumple AAA sobre fondo claro.                                                                                                                                             |
+| `warning-color`       | `#B45309`  | **Color de Advertencia**                | Mensajes de advertencia, alertas preventivas. Cumple AAA sobre fondo claro.                                                                                                                                                                      |
+| `info-color`          | `#2563EB`  | **Color Informativo**                   | Mensajes neutrales, información adicional, estados informativos. Cumple AAA sobre fondo claro.                                                                                                                                                   |
 
 **Notas Adicionales de Color:**
 
 - La paleta debe de tener una estética sofisticada, sobria y profesional.
 - Priorizar siempre la legibilidad. Se recomienda usar la herramienta WebAIM Contrast Checker para verificar el contraste entre texto y fondo.
+- **Advertencia de contraste:** El color `secondary` y `accent` no cumplen el contraste mínimo recomendado para texto sobre fondo claro. No deben usarse para texto principal ni en botones con texto sobre fondo claro.
+- Para botones secundarios, se recomienda usar texto `text-main` sobre fondo blanco y borde `secondary` o `primary-brand`, o bien oscurecer el color de fondo si se usa `secondary`.
+- Para bordes de inputs y elementos interactivos, usar un gris más oscuro o `primary-brand` para asegurar visibilidad.
+- El color de error, éxito, advertencia e informativo cumplen AAA sobre fondo claro. Utilízalos para mensajes y estados correspondientes.
+- Ejemplo de uso correcto: texto de error en `error-color`, texto de éxito en `success-color`, etc. Nunca uses `secondary` o `accent` para texto principal.
 
 ---
 
@@ -106,7 +115,7 @@ Se definirán distintos niveles de sombra para indicar jerarquía, profundidad o
   - **Propósito:** Para indicar un estado de "elevación mayor" (ej: al pasar el ratón sobre una tarjeta) o para elementos que flotan (ej: modales).
   - **Valor CSS:** `0px 4px 8px rgba(0, 0, 0, 0.12)`
 
-### **3.2. Bordes Redondeados (`border-radius`)**
+### \*\*3.2. Bordes Redondeados (`border-radius`)`
 
     - **Valor CSS:** `50%` (para elementos perfectamente cuadrados/circulares, con `9999px` como fallback para compatibilidad)
 
@@ -308,3 +317,89 @@ Los enlaces de texto deben ser claramente distinguibles del texto normal, pero m
 - **Feedback Visual:** Proveer feedback en `:hover`, `:focus` y `:active` es fundamental para que el usuario sepa que el elemento es interactivo y responde a su acción.
 - **Accesibilidad:** Asegurar que los enlaces sean navegables con teclado (`:focus` visible) y que el contraste de color sea suficiente para la legibilidad (WebAIM Contrast Checker).
 - **Contexto:** Evitar el uso excesivo de enlaces en un párrafo si no son esenciales, ya que puede dificultar la lectura.
+
+---
+
+## 8. Estilos de Inputs de Formularios
+
+Este apartado define el estilo visual y el comportamiento de los campos de entrada de formularios (inputs como `text`, `email`, `password`, `number`, `textarea`, `select`), garantizando usabilidad, claridad y coherencia en toda la interfaz.
+
+### 8.1. Elementos Base de un Input
+
+- **Etiqueta (Label):**
+  - **Estilo:** Texto normal (`Lato`, `text-main`), `font-size: 0.875rem` (para etiquetas más compactas) o `1rem` (para etiquetas más prominentes).
+  - **Posición:** Siempre visible y asociada al input (usando `for` en la etiqueta y `id` en el input). Preferiblemente encima del campo para evitar que desaparezca o se superponga con el valor del campo.
+  - **Justificación:** Las etiquetas son cruciales para la **accesibilidad** y la **claridad** del formulario. Ayudan a los usuarios a entender qué información se espera en cada campo.
+- **Campo de Entrada (Input Field):** El área interactiva donde el usuario introduce datos.
+
+### 8.2. Estilos Visuales Generales
+
+- **Fondo:** `background-main` o blanco puro (`#FFFFFF`).
+- **Color de Texto:** `text-main` (`#22223B`).
+- **Tipografía:** Hereda la fuente del cuerpo de texto (`Lato`).
+- **Bordes Redondeados:** `--radius-small` (`0.25rem`).
+  - **Justificación:** Mantiene la suavidad y modernidad consistente con botones y tarjetas.
+- **Padding Interno:** Consistente, basado en el sistema de 8 puntos.
+  - **Recomendado:** `padding: 0.5rem 0.75rem;` (8px vertical, 12px horizontal).
+  - **Justificación:** Asegura un área de clic/táctil cómoda y espacio suficiente para la legibilidad del texto.
+- **Ancho:**
+  - **Por defecto:** `width: 100%;` para ocupar todo el espacio disponible en su contenedor.
+  - **Justificación:** Maximiza el espacio para la entrada de datos y facilita la responsividad.
+- **Altura:** `min-height` para asegurar un tamaño mínimo clickeable/táctil (ej. 40px o `2.5rem`).
+
+### 8.3. Estados de los Inputs
+
+Es crucial que los inputs proporcionen feedback visual claro sobre su estado.
+
+- **Estado Normal (`input`):**
+  - **Borde:** `1px solid secondary;` (o un gris neutro claro, ej. `#D1D5DB`).
+    - **Justificación:** Discreto pero visible, indicando el área de entrada.
+  - **Placeholder (texto guía):** Un gris más claro que `text-main` (ej. `rgba(34, 34, 59, 0.5)`).
+    - **Justificación:** Guía al usuario sobre el formato o tipo de información esperada, pero debe desaparecer al escribir.
+- **Estado al Pasar el Cursor (`input:hover`):**
+  - **Borde:** `1px solid primary-brand;` o ligeramente más oscuro que el normal.
+    - **Justificación:** Indica interactividad y que el campo está listo para la entrada.
+- **Estado de Enfoque (`input:focus`):**
+  - **Borde:** `2px solid primary-brand;` (o `accent`).
+    - **Justificación:** **Crítico para la accesibilidad y usabilidad.** Proporciona un feedback visual fuerte de que el campo está activo y listo para recibir la entrada del teclado. Debe ser muy visible.
+  - **Sombra (Opcional):** `box-shadow: 0 0 0 3px var(--primary-brand-ring);` (un ring suave usando `var(--primary-brand)`).
+  * **Ejemplo de Token de Diseño:**
+    ```css
+    --focus-ring: 0 0 0 3px rgba(74, 78, 105, 0.5); /* Usando el color de marca primario con transparencia */
+    ```
+  * **Ejemplo de Uso:**
+    ```css
+    input:focus {
+      border: 2px solid var(--primary-brand);
+      box-shadow: var(--focus-ring);
+    }
+    ```
+  * **Justificación:** Esto asegura un indicador de enfoque claro y accesible, cumpliendo con los requisitos de accesibilidad.
+    - **Justificación:** El `outline` por defecto del navegador puede ser inconsistente o poco estético. Se elimina si se provee una alternativa de enfoque clara.
+- **Estado Deshabilitado (`input:disabled`):**
+  - **Fondo:** Un gris muy claro (ej. `#F8F8F8`) o `background-main`.
+  - **Borde:** `1px solid secondary;` (o un gris más oscuro que el fondo deshabilitado).
+  - **Color de Texto:** Un gris más claro que `text-main` (ej. `#A1A1A1`).
+  - **Cursor:** `cursor: not-allowed;`
+  - **Justificación:** Indica claramente que el campo no es editable o interactivo en ese momento, previniendo intentos fallidos del usuario.
+- **Estado de Error (`input.is-error` o `input[aria-invalid="true"]`):**
+  - **Borde:** `2px solid var(--error-color);` (Usa el color de error definido en la paleta de diseño).
+  - **Color de Texto:** `text-main`.
+  - **Mensaje de Error:** Texto de error debajo del input en el color de error.
+  - **Justificación:** Un indicador visual claro e inmediato de que hay un problema con la entrada. **Es vital para la usabilidad**, guiando al usuario para corregir el error.
+
+### 8.4. Tipos de Input Específicos
+
+- **`textarea`:** Mismas propiedades generales, pero con `resize: vertical;` (o `none;` si no se permite redimensionar).
+
+**Ejemplo de HTML para `textarea` y `select` con estilos recomendados:**
+
+- **`select`:** Mismas propiedades generales, pero asegurando un icono de flecha consistente para indicar que es un desplegable.
+
+### 8.5. Principios de UX/UI para Formularios
+
+- **Claridad:** Cada campo debe ser claro en su propósito (etiquetas explícitas, placeholders útiles).
+- **Feedback Inmediato:** Los estados (hover, focus, error) deben ser muy claros.
+- **Facilidad de Entrada:** Padding suficiente, tamaño adecuado, `type` de input correcto para teclados móviles.
+- **Accesibilidad:** Asegurar la asociación `label-input`, contraste de color, estados de enfoque claros y mensajes de error accesibles (`aria-live` si es necesario).
+- **Consistencia:** Mantener los mismos estilos para todos los inputs en todo el portfolio.
