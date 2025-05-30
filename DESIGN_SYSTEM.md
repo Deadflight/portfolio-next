@@ -99,34 +99,81 @@ Definición de las sombras y los bordes redondeados para mantener una coherencia
 
 Se definirán distintos niveles de sombra para indicar jerarquía, profundidad o interactividad, utilizando `rgba()` para transparencia y sutileza.
 
-* **Sombra Sutil (`--shadow-subtle`):**
-    * **Propósito:** Para dar una ligera elevación a elementos como tarjetas o contenedores que se asientan sobre el fondo principal. Muy discreta.
-    * **Valor CSS:** `0px 2px 4px rgba(0, 0, 0, 0.08)`
-* **Sombra de Interacción (`--shadow-interactive`):**
-    * **Propósito:** Para indicar un estado de "elevación mayor" (ej: al pasar el ratón sobre una tarjeta) o para elementos que flotan (ej: modales).
-    * **Valor CSS:** `0px 4px 8px rgba(0, 0, 0, 0.12)`
+- **Sombra Sutil (`--shadow-subtle`):**
+  - **Propósito:** Para dar una ligera elevación a elementos como tarjetas o contenedores que se asientan sobre el fondo principal. Muy discreta.
+  - **Valor CSS:** `0px 2px 4px rgba(0, 0, 0, 0.08)`
+- **Sombra de Interacción (`--shadow-interactive`):**
+  - **Propósito:** Para indicar un estado de "elevación mayor" (ej: al pasar el ratón sobre una tarjeta) o para elementos que flotan (ej: modales).
+  - **Valor CSS:** `0px 4px 8px rgba(0, 0, 0, 0.12)`
 
 #### **Ejemplo de Uso en CSS**
 
 Se definirán distintos niveles de sombra para indicar jerarquía, profundidad o interactividad, utilizando `rgba()` para transparencia y sutileza.
 
-* **Sombra Sutil (`--shadow-subtle`):**
-    * **Propósito:** Para dar una ligera elevación a elementos como tarjetas o contenedores que se asientan sobre el fondo principal. Muy discreta.
-    * **Valor CSS:** `0px 2px 4px rgba(0, 0, 0, 0.08)`
-* **Sombra de Interacción (`--shadow-interactive`):**
-    * **Propósito:** Para indicar un estado de "elevación mayor" (ej: al pasar el ratón sobre una tarjeta) o para elementos que flotan (ej: modales).
-    * **Valor CSS:** `0px 4px 8px rgba(0, 0, 0, 0.12)`
+- **Sombra Sutil (`--shadow-subtle`):**
+  - **Propósito:** Para dar una ligera elevación a elementos como tarjetas o contenedores que se asientan sobre el fondo principal. Muy discreta.
+  - **Valor CSS:** `0px 2px 4px rgba(0, 0, 0, 0.08)`
+- **Sombra de Interacción (`--shadow-interactive`):**
+  - **Propósito:** Para indicar un estado de "elevación mayor" (ej: al pasar el ratón sobre una tarjeta) o para elementos que flotan (ej: modales).
+  - **Valor CSS:** `0px 4px 8px rgba(0, 0, 0, 0.12)`
 
 ### **3.2. Bordes Redondeados (`border-radius`)**
+
     * **Valor CSS:** `50%` (para elementos perfectamente cuadrados/circulares, con `9999px` como fallback para compatibilidad)
+
 Se definirán radios estándar para los bordes de los elementos, utilizando `rem` para asegurar que escalen proporcionalmente.
 
-* **Radio Pequeño (`--radius-small`):**
-    * **Propósito:** Para elementos interactivos menores como botones o campos de entrada, dando un toque de suavidad sin perder la estructura.
-    * **Valor CSS:** `0.25rem` (equivalente a 4px si la base es 16px)
-* **Radio Medio (`--radius-medium`):**
-    * **Propósito:** Para suavizar las esquinas de bloques de contenido más grandes como tarjetas o secciones.
-    * **Valor CSS:** `0.5rem` (equivalente a 8px si la base es 16px)
-* **Radio Completo/Píldora (`--radius-full`):**
-    * **Propósito:** Para elementos que son intencionalmente "cápsula" o "pastilla", como chips, tags o avatares circulares.
-    * **Valor CSS:** `9999px` (o `50%` para elementos perfectamente cuadrados/circulares)
+- **Radio Pequeño (`--radius-small`):**
+  - **Propósito:** Para elementos interactivos menores como botones o campos de entrada, dando un toque de suavidad sin perder la estructura.
+  - **Valor CSS:** `0.25rem` (equivalente a 4px si la base es 16px)
+- **Radio Medio (`--radius-medium`):**
+  - **Propósito:** Para suavizar las esquinas de bloques de contenido más grandes como tarjetas o secciones.
+  - **Valor CSS:** `0.5rem` (equivalente a 8px si la base es 16px)
+- **Radio Completo/Píldora (`--radius-full`):**
+  - **Propósito:** Para elementos que son intencionalmente "cápsula" o "pastilla", como chips, tags o avatares circulares.
+  - **Valor CSS:** `9999px` (o `50%` para elementos perfectamente cuadrados/circulares)
+
+---
+
+## 4. Espaciado y Distribución
+
+Establecer principios generales de espaciado y alineación es crucial para la legibilidad, la jerarquía visual y la experiencia de usuario.
+
+### **4.1. Sistema de Espaciado (La Cuadrícula de 8 Puntos)**
+
+- Se utilizará una **cuadrícula de 8 puntos (8-point grid system)** como base para todo el espaciado (márgenes, paddings, gaps entre elementos, alturas, etc.).
+- Esto significa que todos los valores de espaciado serán **múltiplos de `0.5rem`** (que equivale a 8px si el `font-size` base es 16px).
+- **Propósito:** Asegurar una armonía visual, facilitar la consistencia en el diseño y simplificar el desarrollo responsivo al escalar todo proporcionalmente.
+- **Ejemplos de valores de espaciado:**
+  - `0.5rem` (8px)
+  - `1rem` (16px)
+  - `1.5rem` (24px)
+  - `2rem` (32px)
+  - `3rem` (48px)
+  - `4rem` (64px)
+- **Uso:** Aplicar estos valores usando propiedades CSS como `margin`, `padding`, `gap` (para Flexbox/Grid), `width`, `height`.
+
+### **4.2. Alineación**
+
+- **Texto Principal y Párrafos:** Siempre **alineado a la izquierda**. Esta es la forma más legible y natural para idiomas de izquierda a derecha.
+- **Títulos:**
+  - Generalmente **alineados a la izquierda**.
+  - Pueden estar **centrados** solo en contextos muy específicos, como en secciones `hero` (portadas), elementos visualmente simétricos, o bloques de contenido muy cortos y con un propósito estético claro.
+  - **Evitar:** El texto justificado. Siempre crea "ríos" de espacio en blanco irregulares que dificultan la lectura en la web.
+- **Elementos en Componentes:** La alineación interna de los elementos dentro de un componente debe ser consistente (ej: todos los elementos de un botón centrados, todos los ítems de una tarjeta alineados a la izquierda).
+
+### **4.3. Ritmo Vertical**
+
+- Se refiere a la consistencia en el espaciado vertical entre bloques de texto y elementos.
+- Se logrará manteniendo una `line-height` consistente para el cuerpo de texto (`1.6`) y asegurando que los márgenes verticales (`margin-top`, `margin-bottom`) de los elementos de bloque (párrafos, títulos, listas) sean múltiplos de la unidad base de espaciado (`rem`), creando un flujo vertical armonioso.
+
+### **4.4. El Poder del Espacio en Blanco (White Space / Espacio Negativo)**
+
+- El espacio en blanco es tan importante como el contenido mismo. No es "espacio muerto", sino un elemento de diseño activo.
+- **Propósito:**
+  - **Mejora la Legibilidad:** Permite que el ojo descanse y facilita la lectura del contenido.
+  - **Reduce la Carga Cognitiva:** Evita abrumar al usuario con demasiada información junta.
+  - **Crea Jerarquía y Enfoque:** Ayuda a agrupar elementos relacionados y a dirigir la atención del usuario a los puntos clave.
+  - **Transmite Profesionalismo:** Un uso generoso y consciente del espacio en blanco es un sello distintivo de los diseños limpios, modernos y sofisticados.
+
+---
