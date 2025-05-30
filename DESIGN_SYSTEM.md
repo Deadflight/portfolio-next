@@ -90,3 +90,43 @@ Para asegurar la legibilidad y la estética en diferentes tamaños de pantalla, 
   - **Unidades `rem`:** Todos los tamaños de fuente (y muchos espaciados) se definirán en `rem`. Esto asegura que escalen automáticamente de manera **predecible y consistente** cuando cambias el `font-size` base en `html` en tus media queries.
   - **`font-size` en `html`:** Cambiando este valor es como controlas la escala general de tu diseño en diferentes puntos de interrupción.
   - **Accesibilidad:** El uso de `rem` respeta las configuraciones de tamaño de texto del navegador del usuario, mejorando la accesibilidad.
+
+## 3. Efectos Visuales y Geometría
+
+Definición de las sombras y los bordes redondeados para mantener una coherencia visual y dar al diseño una sensación moderna y sofisticada.
+
+### **3.1. Sombras (`box-shadow`)**
+
+Se definirán distintos niveles de sombra para indicar jerarquía, profundidad o interactividad, utilizando `rgba()` para transparencia y sutileza.
+
+* **Sombra Sutil (`--shadow-subtle`):**
+    * **Propósito:** Para dar una ligera elevación a elementos como tarjetas o contenedores que se asientan sobre el fondo principal. Muy discreta.
+    * **Valor CSS:** `0px 2px 4px rgba(0, 0, 0, 0.08)`
+* **Sombra de Interacción (`--shadow-interactive`):**
+    * **Propósito:** Para indicar un estado de "elevación mayor" (ej: al pasar el ratón sobre una tarjeta) o para elementos que flotan (ej: modales).
+    * **Valor CSS:** `0px 4px 8px rgba(0, 0, 0, 0.12)`
+
+#### **Ejemplo de Uso en CSS**
+
+Se definirán distintos niveles de sombra para indicar jerarquía, profundidad o interactividad, utilizando `rgba()` para transparencia y sutileza.
+
+* **Sombra Sutil (`--shadow-subtle`):**
+    * **Propósito:** Para dar una ligera elevación a elementos como tarjetas o contenedores que se asientan sobre el fondo principal. Muy discreta.
+    * **Valor CSS:** `0px 2px 4px rgba(0, 0, 0, 0.08)`
+* **Sombra de Interacción (`--shadow-interactive`):**
+    * **Propósito:** Para indicar un estado de "elevación mayor" (ej: al pasar el ratón sobre una tarjeta) o para elementos que flotan (ej: modales).
+    * **Valor CSS:** `0px 4px 8px rgba(0, 0, 0, 0.12)`
+
+### **3.2. Bordes Redondeados (`border-radius`)**
+    * **Valor CSS:** `50%` (para elementos perfectamente cuadrados/circulares, con `9999px` como fallback para compatibilidad)
+Se definirán radios estándar para los bordes de los elementos, utilizando `rem` para asegurar que escalen proporcionalmente.
+
+* **Radio Pequeño (`--radius-small`):**
+    * **Propósito:** Para elementos interactivos menores como botones o campos de entrada, dando un toque de suavidad sin perder la estructura.
+    * **Valor CSS:** `0.25rem` (equivalente a 4px si la base es 16px)
+* **Radio Medio (`--radius-medium`):**
+    * **Propósito:** Para suavizar las esquinas de bloques de contenido más grandes como tarjetas o secciones.
+    * **Valor CSS:** `0.5rem` (equivalente a 8px si la base es 16px)
+* **Radio Completo/Píldora (`--radius-full`):**
+    * **Propósito:** Para elementos que son intencionalmente "cápsula" o "pastilla", como chips, tags o avatares circulares.
+    * **Valor CSS:** `9999px` (o `50%` para elementos perfectamente cuadrados/circulares)
