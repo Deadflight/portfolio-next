@@ -403,3 +403,50 @@ Es crucial que los inputs proporcionen feedback visual claro sobre su estado.
 - **Facilidad de Entrada:** Padding suficiente, tamaño adecuado, `type` de input correcto para teclados móviles.
 - **Accesibilidad:** Asegurar la asociación `label-input`, contraste de color, estados de enfoque claros y mensajes de error accesibles (`aria-live` si es necesario).
 - **Consistencia:** Mantener los mismos estilos para todos los inputs en todo el portfolio.
+
+---
+
+## 9. Estilos de Tarjetas (Cards)
+Las tarjetas son contenedores reutilizables para mostrar proyectos, artículos u otra información en bloques visuales. Proporcionan una forma efectiva de agrupar contenido relacionado y mejorar la experiencia del usuario al navegar por el portfolio.
+### 9.1. Propiedades Clave
+- **Fondo:** `background-main` (`#F2E9E4`).
+- **Texto:** `text-main` (`#22223B`).
+- **Sombra:** `--shadow-subtle` para la base y `--shadow-interactive` al pasar el cursor.
+- **Bordes:** `--radius-medium` (`0.5rem`).
+- **Tipografía:** Títulos con `Poppins`, cuerpo con `Lato`.
+- **Interacción:** Utilizar `transform`, `hover`, y `focus-visible` para mejorar la accesibilidad.
+- **Espaciado:** Basado en el sistema de 8 puntos (padding, gap, margin).
+- **Ejemplo de uso (Tailwind CSS):**
+```html
+<div class="bg-[#F2E9E4] text-[#22223B] rounded-md shadow-sm p-6 max-w-md hover:shadow-md transition-shadow transform hover:scale-105">
+  <h3 class="text-xl font-semibold mb-2 font-poppins">Proyecto Destacado</h3>
+  <p class="text-base font-lato mb-4">Descripción corta del proyecto, con lo más relevante para captar el interés del usuario.</p>
+  <a href="/proyecto" class="inline-block text-[#4A4E69] underline hover:text-[#22223B] font-bold">Ver más</a>
+</div>
+```
+### 9.2. Variaciones Posibles
+- **Con Imagen:** Imagen en la parte superior (usando `rounded-t-md`), contenido en bloque debajo.
+- **Compacta:** Menor padding, tipografía más pequeña, útil para grids con muchas tarjetas.
+- **Clickeable Completa:** Usar `cursor-pointer` y `hover:bg-[#EAD9D0]`, sin botón interno.
+- **Destacada:** Fondo más llamativo (usando `secondary` o `accent`) con suficiente contraste o bordes destacados.
+### 9.3. Responsividad de Tarjetas (Mobile-First)
+Para asegurar una experiencia óptima en todos los dispositivos, las tarjetas están diseñadas siguiendo un enfoque mobile-first y adaptándose mediante media queries y utilidades responsivas de Tailwind.
+- **Adaptación según tamaño de pantalla:**
+  - **Móviles:** Tarjetas apiladas en una sola columna. Usar `w-full` y `max-w-sm`.
+  - **Tabletas:** Distribución en dos columnas (`grid-cols-2`) con un `gap` adecuado.
+  - **Escritorio:** Grid de 3 o más columnas (`grid-cols-3`, `grid-cols-4`) según el ancho disponible.
+### 9.4. Principios UX/UI Aplicados
+- **Consistencia Visual:** Se mantiene el uso de tokens (colores, sombras, bordes, espaciado) sin importar el tamaño de pantalla.
+- **Legibilidad:** Tipografía escalada con `rem`. Ajustes opcionales mediante media queries (ej. `font-size`, `padding`).
+- **Tamaño Táctil Mínimo:** Se respeta un mínimo de 48x48px para áreas clickeables.
+- **Enfoque Visual:** Se prioriza mostrar primero el contenido más importante (título, imagen, acción).
+- **Evitar Sobrecarga Cognitiva:** En pantallas pequeñas, se recomienda simplificar contenido y distribuir el espacio cuidadosamente.
+### 9.5. Clases Tailwind Sugeridas (Semánticamente Documentadas)
+```html
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- Tarjetas aquí -->
+</div>
+```
+### 9.6. Notas Adicionales
+- Las tarjetas deben mantener su estructura y estilo base (fondo, bordes redondeados, sombra, padding) sin importar el tamaño.
+- Se recomienda usar `max-w` y `auto-layout` para que las tarjetas no rompan la cuadrícula ni el diseño en dispositivos pequeños.
