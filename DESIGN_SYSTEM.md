@@ -562,14 +562,279 @@ import { IconName } from "lucide-react";
 <IconName class="w-6 h-6 text-primary-brand" />
 ```
 
-<!-- 10.4. Tamaños y Escala (Ejemplo de cómo detallarlo más)
-Utilizar la unidad rem para respetar la escala responsiva del sistema.
-Tamaños Estándar de Iconos de UI (General):
-0.75rem (12px): Para iconos pequeños en subtexto o detalles discretos. Corresponde a clases Tailwind como h-3 w-3.
-1rem (16px): Tamaño por defecto para iconos inline con el texto. Corresponde a clases Tailwind como h-4 w-4.
-1.25rem (20px): Para iconos en botones o elementos interactivos de tamaño medio. Corresponde a clases Tailwind como h-5 w-5.
-1.5rem (24px): Para iconos destacados en encabezados o componentes más grandes. Corresponde a clases Tailwind como h-6 w-6.
-Tamaños de Iconos de Tecnología (Simple Icons):
-1.5rem (24px): Tamaño estándar para listas de habilidades (h-6 w-6).
-2rem (32px): Para iconos de tecnología en secciones hero o donde se requiere mayor impacto visual (h-8 w-8).
-Regla General: Siempre especificar width y height en el elemento <svg> (o a través de clases Tailwind como h-X w-Y) para reservar el espacio adecuado y prevenir Layout Shifts. -->
+---
+
+## 11. Implementación con Tailwind CSS: Componentes Clave
+
+La elección de Tailwind CSS como framework principal nos permite construir un sistema de diseño flexible y altamente personalizable, aplicando directamente las utilidades en el marcado HTML para asegurar una consistencia visual rigurosa. A continuación, se detallan los componentes clave que se adaptarán y cómo se alinearán con las especificaciones de diseño.
+
+### 11.1. Configuración Base de Tailwind CSS (Ajustes Globales)
+
+Antes de definir componentes específicos, se configurará `tailwind.config.js` para alinear el framework con los tokens de diseño definidos en este sistema.
+
+#### Paleta de Colores (`theme.extend.colors`):
+
+Se extenderá la configuración de colores de Tailwind para incluir la paleta definida en la sección 1. Paleta de Colores. Esto permitirá usar clases como `bg-primary-brand`, `text-text-main`, etc.
+
+```javascript
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        "background-main": "#F2E9E4",
+        "text-main": "#22223B",
+        "primary-brand": "#4A4E69",
+        secondary: "#9A8C98",
+        accent: "#C9ADA7",
+        "error-color": "#FF6B6B", // Ejemplo para estados de error
+        "success-color": "#4CAF50", // Ejemplo para estados de éxito
+        "warning-color": "#FFC107", // Ejemplo para estados de advertencia
+        "info-color": "#2196F3", // Ejemplo para estados de información
+      },
+    },
+  },
+  plugins: [],
+};
+```
+
+#### Tipografía (`theme.extend.fontFamily`):
+
+Se definirán las fuentes Poppins y Lato para su fácil aplicación a través de clases de Tailwind.
+
+```javascript
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        heading: ["Poppins", "sans-serif"],
+        body: ["Lato", "sans-serif"],
+      },
+      // ... otras extensiones para font-size, line-height, etc.
+    },
+  },
+  plugins: [],
+};
+```
+
+#### Espaciado y Geometría (`theme.spacing`, `theme.borderRadius`, `theme.boxShadow`):
+
+Se asegurará que el sistema de espaciado de 8 puntos esté correctamente configurado. Se definirán los `border-radius` y `box-shadow` como utilidades personalizadas.
+
+```javascript
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      spacing: {
+        px: "1px",
+        0: "0",
+        0.5: "0.125rem", // 2px
+        1: "0.25rem", // 4px
+        1.5: "0.375rem", // 6px
+        2: "0.5rem", // 8px (base de la cuadrícula)
+        2.5: "0.625rem", // 10px
+        // ... extender con múltiplos de 0.5rem (8px) hasta los valores necesarios
+        // Ejemplo: '4': '1rem' (16px), '8': '2rem' (32px), etc.
+      },
+      borderRadius: {
+        none: "0",
+        sm: "0.125rem", // 2px
+        md: "0.25rem", // 4px (equivalente a --radius-small)
+        lg: "0.5rem", // 8px (equivalente a --radius-medium)
+        xl: "0.75rem", // 12px
+        "2xl": "1rem", // 16px
+        "3xl": "1.5rem", // 24px
+        full: "9999px", // Equivalente a --radius-full
+      },
+      boxShadow: {
+        subtle: "0px 2px 4px rgba(0, 0, 0, 0.1)", // Para --shadow-subtle
+        interactive: "0px 4px 8px rgba(0, 0, 0, 0.15)", // Para --shadow-interactive
+        // ... puedes definir otras sombras si es necesario
+      },
+    },
+  },
+  plugins: [],
+};
+```
+
+### 11.2. Componentes UI Reutilizables y su Implementación con Tailwind
+
+Estos componentes se construirán utilizando las utilidades de Tailwind CSS, asegurando la consistencia con la identidad visual definida.
+
+#### 11.2.1. Botones (`<button>`)
+
+Descripción: Elementos interactivos clave para la navegación y acciones del usuario. Deben ser responsivos y ofrecer feedback visual claro.
+Variaciones y Estilos (Basado en la sección 6. Botones):
+
+- **Botón Primario:**
+  - **Estilo:** Fondo `primary-brand`, texto `background-main`.
+  - **Estados:**
+    - **Hover:** Ligeramente más oscuro o sutil cambio de sombra (`hover:bg-primary-brand-darker` o `hover:shadow-interactive`).
+    - **Focus:** Anillo de foco claro (`focus:outline-none focus:ring-2 focus:ring-primary-brand focus:ring-opacity-50`).
+    - **Active:** Ligero hundimiento o cambio de color.
+    - **Disabled:** Fondo `secondary`, texto `text-main` (opacidad reducida), `cursor-not-allowed`.
+
+```html
+<button
+  class="bg-primary-brand text-background-main font-body px-6 py-3 rounded-lg shadow-subtle
+               hover:bg-primary-brand-darker focus:outline-none focus:ring-2 focus:ring-primary-brand
+               disabled:bg-secondary disabled:text-text-main disabled:opacity-75 disabled:cursor-not-allowed"
+>
+  Botón Primario
+</button>
+```
+
+- **Botón Secundario:**
+  - **Estilo:** Fondo `secondary`, texto `background-main` o `text-main` (según contraste). Borde `secondary`.
+  - **Estados:** Similares a los primarios, con variaciones de color acordes.
+
+```html
+<button
+  class="bg-secondary text-background-main font-body px-6 py-3 rounded-lg shadow-subtle border border-secondary
+               hover:bg-secondary-darker focus:outline-none focus:ring-2 focus:ring-secondary
+               disabled:opacity-75 disabled:cursor-not-allowed"
+>
+  Botón Secundario
+</button>
+```
+
+- **Tamaños Contextuales:**
+  - **Pequeño:** `px-4 py-2 text-sm`
+  - **Mediano (Defecto):** `px-6 py-3 text-base`
+  - **Grande:** `px-8 py-4 text-lg`
+
+#### 11.2.2. Enlaces (`<a>`)
+
+Descripción: Elementos interactivos para navegar entre páginas o secciones. Deben ser claramente distinguibles del texto normal.
+Estilos y Estados (Basado en la sección 7. Enlaces):
+
+- **Estilo Base:** Color `primary-brand`, `text-decoration-underline` (por defecto o `hover:underline`).
+- **Estados:**
+  - **Hover:** `text-accent` o `text-primary-brand-darker`, `underline` (si no es por defecto).
+  - **Focus:** `outline-none focus:ring-2 focus:ring-primary-brand focus:ring-opacity-50`.
+  - **Active:** `text-primary-brand-darker`.
+  - **Visited:** `text-secondary` (sutil cambio).
+
+```html
+<a
+  href="#"
+  class="text-primary-brand hover:text-accent focus:outline-none focus:ring-2 focus:ring-primary-brand
+                   active:text-primary-brand-darker visited:text-secondary underline hover:no-underline"
+>
+  Enlace de Texto
+</a>
+```
+
+#### 11.2.3. Tarjetas (Cards)
+
+Descripción: Contenedores flexibles para agrupar contenido relacionado (ej., proyectos, artículos de blog, habilidades).
+Estilos y Variaciones (Basado en la sección 9. Tarjetas (Cards)):
+
+- **Estilo Base:**
+  - **Fondo:** `bg-background-main` o `bg-white` (si es un subcomponente).
+  - **Bordes:** `rounded-lg` (usando --radius-medium).
+  - **Sombra:** `shadow-subtle` o `shadow-interactive` para elementos clicables.
+  - **Padding:** `p-4` o `p-6` (usando el sistema de espaciado).
+- **Contenido:**
+  Se usarán las utilidades de tipografía para títulos (`font-heading`, `text-lg`), párrafos (`font-body`, `text-text-main`), y enlaces internos.
+  Flexbox o Grid de Tailwind (`flex`, `grid`, `gap-x`, `gap-y`) para la distribución interna del contenido.
+- **Responsividad:**
+  Se utilizarán las clases de breakpoint de Tailwind (`sm:`, `md:`, `lg:`, `xl:`) para ajustar la disposición y el tamaño de las tarjetas en diferentes dispositivos. Ej: `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8`.
+
+```html
+<div
+  class="bg-background-main rounded-lg shadow-subtle p-6 flex flex-col items-start space-y-4"
+>
+  <h3 class="text-xl font-heading text-primary-brand">Título de la Tarjeta</h3>
+  <p class="text-text-main font-body">
+    Descripción concisa del contenido de la tarjeta. Puede ser un proyecto, una
+    habilidad, etc.
+  </p>
+  <a href="#" class="text-accent hover:underline font-body">Leer más</a>
+</div>
+<div
+  class="bg-background-main rounded-lg shadow-subtle p-6 flex flex-col items-start space-y-4
+            hover:shadow-interactive transition-shadow duration-300"
+>
+  <h3 class="text-xl font-heading text-primary-brand">Tarjeta Interactiva</h3>
+  <p class="text-text-main font-body">
+    Esta tarjeta cambia la sombra al pasar el ratón.
+  </p>
+  <a href="#" class="text-accent hover:underline font-body">Detalles</a>
+</div>
+```
+
+#### 11.2.4. Inputs de Formularios (`<input>`, `<textarea>`, `<select>`)
+
+Descripción: Campos interactivos para la entrada de datos del usuario. Deben ser claros, fáciles de usar y proporcionar feedback visual para los estados.
+Estilos y Estados (Basado en la sección 8. Inputs de Formularios):
+- **Estilo Base:**
+  - **Fondo:** `bg-background-main` o `bg-white`.
+  - **Borde:** `border border-secondary`, `rounded-md` (usando --radius-small).
+  - **Padding:** `px-4 py-2`.
+  - **Tipografía:** `text-text-main`, `font-body`.
+- **Estados:**
+  - **Hover:** `border-primary-brand` o `shadow-subtle`.
+  - **Focus:** `outline-none focus:ring-2 focus:ring-primary-brand focus:border-primary-brand`.
+  - **Disabled:** `opacity-50 cursor-not-allowed`.
+  - **Error:** `border-error-color focus:ring-error-color`.
+
+```html
+<input
+  type="text"
+  placeholder="Tu Nombre"
+  class="w-full bg-background-main border border-secondary rounded-md px-4 py-2 font-body text-text-main
+              hover:border-primary-brand focus:outline-none focus:ring-2 focus:ring-primary-brand focus:border-primary-brand
+              disabled:opacity-50 disabled:cursor-not-allowed"
+/>
+<textarea
+  placeholder="Tu Mensaje"
+  rows="5"
+  class="w-full bg-background-main border border-secondary rounded-md px-4 py-2 font-body text-text-main
+                 hover:border-primary-brand focus:outline-none focus:ring-2 focus:ring-primary-brand focus:border-primary-brand"
+></textarea>
+<input
+  type="email"
+  placeholder="Tu Email"
+  class="w-full bg-background-main border border-error-color rounded-md px-4 py-2 font-body text-text-main
+              focus:outline-none focus:ring-2 focus:ring-error-color focus:border-error-color"
+/>
+```
+#### 11.2.5. Iconos
+Descripción: Elementos gráficos para mejorar la comprensión visual y la usabilidad.
+Directrices y Uso (Basado en la sección 10. Iconos):
+- **Librerías:** Heroicons, Lucide Icons (UI), Simple Icons (Tecnologías).
+- **Implementación:** Los iconos se importarán como componentes SVG o directamente como SVG inlines.
+- **Estilización con Tailwind:**
+  - **Tamaño:** `w-X h-Y` (ej., `w-6 h-6` para 24px).
+  - **Color:** `text-primary-brand`, `text-accent`, etc. (usando `fill="currentColor"` en el SVG).
+  - **Alineación:** Utilidades de flexbox para alinear texto e icono (`flex items-center`).
+
+```html
+<svg
+  class="w-6 h-6 text-primary-brand"
+  fill="none"
+  viewBox="0 0 24 24"
+  stroke="currentColor"
+>
+  <path
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    d="M12 4.5v15m7.5-7.5h-15"
+  />
+</svg>
+<svg
+  class="w-8 h-8 text-secondary"
+  role="img"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+>
+  <path d="M0 0h24v24H0z" fill="none" />
+  <path
+    d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.6c-5.352 0-9.6-4.248-9.6-9.6s4.248-9.6 9.6-9.6 9.6 4.248 9.6 9.6-4.248 9.6-9.6 9.6zm-1.8-13.8V9h3.6v1.2H10.2v3.6h3.6V15h-3.6v1.2h3.6v-1.2h-3.6zM12 6.6c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 10.8c-2.64 0-4.8-2.16-4.8-4.8s2.16-4.8 4.8-4.8 4.8 2.16 4.8 4.8-2.16 4.8-4.8 4.8z"
+  />
+</svg>
+```
