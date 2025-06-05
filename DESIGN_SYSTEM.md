@@ -515,12 +515,18 @@ Los iconos se utilizan para complementar el texto, ahorrar espacio, mejorar la n
 - **Estado:** Los iconos pueden cambiar de color según el estado (ej. `success-color`, `error-color`, etc.) para proporcionar feedback visual.
 - **Contraste:** Siempre se debe asegurar un contraste suficiente entre el icono y el fondo para garantizar la legibilidad (mínimo 3:1 según WCAG 2.1).
 
-### 10.4. Tamaños
+### 10.4. Tamaños y Escala
 
-- Los iconos deben utilizar unidades `rem` para asegurar que escalen de manera responsiva con el resto del diseño.
-- **UI General:** El tamaño base de los iconos debe ser de `1rem` (16px), ajustando según el contexto (ej. `1.5rem` o `2rem` para iconos más prominentes).
-- **Tecnologías:** Los iconos de tecnologías deben tener un tamaño de `1.5rem` o `2rem` para asegurar una buena visibilidad.
-- **Clases de Tailwind CSS:** Utilizar clases como `w-4 h-4` para definir el ancho y alto de los iconos.
+- Utilizar la unidad `rem` para respetar la escala responsiva del sistema.
+- **Tamaños Estándar de Iconos de UI (General):**
+  - `0.75rem` (12px): Para iconos pequeños en subtexto o detalles discretos. Corresponde a clases Tailwind como `h-3 w-3`.
+  - `1rem` (16px): Tamaño por defecto para iconos inline con el texto. Corresponde a clases Tailwind como `h-4 w-4`.
+  - `1.25rem` (20px): Para iconos en botones o elementos interactivos de tamaño medio. Corresponde a clases Tailwind como `h-5 w-5`.
+  - `1.5rem` (24px): Para iconos destacados en encabezados o componentes más grandes. Corresponde a clases Tailwind como `h-6 w-6`.
+- **Tamaños de Iconos de Tecnología (Simple Icons):**
+  - `1.5rem` (24px): Tamaño estándar para listas de habilidades (`h-6 w-6`).
+  - `2rem` (32px): Para iconos de tecnología en secciones hero o donde se requiere mayor impacto visual (`h-8 w-8`).
+- **Regla General:** Siempre especificar `width` y `height` en el elemento `<svg>` (o a través de clases Tailwind como `h-X w-Y`) para reservar el espacio adecuado y prevenir "layout shifts" inesperados al cargar los iconos.
 
 ### 10.5. Alineación y Espaciado
 
@@ -555,3 +561,15 @@ import { IconName } from "lucide-react";
 ```html
 <IconName class="w-6 h-6 text-primary-brand" />
 ```
+
+<!-- 10.4. Tamaños y Escala (Ejemplo de cómo detallarlo más)
+Utilizar la unidad rem para respetar la escala responsiva del sistema.
+Tamaños Estándar de Iconos de UI (General):
+0.75rem (12px): Para iconos pequeños en subtexto o detalles discretos. Corresponde a clases Tailwind como h-3 w-3.
+1rem (16px): Tamaño por defecto para iconos inline con el texto. Corresponde a clases Tailwind como h-4 w-4.
+1.25rem (20px): Para iconos en botones o elementos interactivos de tamaño medio. Corresponde a clases Tailwind como h-5 w-5.
+1.5rem (24px): Para iconos destacados en encabezados o componentes más grandes. Corresponde a clases Tailwind como h-6 w-6.
+Tamaños de Iconos de Tecnología (Simple Icons):
+1.5rem (24px): Tamaño estándar para listas de habilidades (h-6 w-6).
+2rem (32px): Para iconos de tecnología en secciones hero o donde se requiere mayor impacto visual (h-8 w-8).
+Regla General: Siempre especificar width y height en el elemento <svg> (o a través de clases Tailwind como h-X w-Y) para reservar el espacio adecuado y prevenir Layout Shifts. -->
