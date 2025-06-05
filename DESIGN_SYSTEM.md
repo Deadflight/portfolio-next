@@ -407,8 +407,11 @@ Es crucial que los inputs proporcionen feedback visual claro sobre su estado.
 ---
 
 ## 9. Estilos de Tarjetas (Cards)
+
 Las tarjetas son contenedores reutilizables para mostrar proyectos, artículos u otra información en bloques visuales. Proporcionan una forma efectiva de agrupar contenido relacionado y mejorar la experiencia del usuario al navegar por el portfolio.
+
 ### 9.1. Propiedades Clave
+
 - **Fondo:** `background-main` (`#F2E9E4`).
 - **Texto:** `text-main` (`#22223B`).
 - **Sombra:** `--shadow-subtle` para la base y `--shadow-interactive` al pasar el cursor.
@@ -417,36 +420,138 @@ Las tarjetas son contenedores reutilizables para mostrar proyectos, artículos u
 - **Interacción:** Utilizar `transform`, `hover`, y `focus-visible` para mejorar la accesibilidad.
 - **Espaciado:** Basado en el sistema de 8 puntos (padding, gap, margin).
 - **Ejemplo de uso (Tailwind CSS):**
+
 ```html
-<div class="bg-[#F2E9E4] text-[#22223B] rounded-md shadow-sm p-6 max-w-md hover:shadow-md transition-shadow transform hover:scale-105">
+<div
+  class="bg-[#F2E9E4] text-[#22223B] rounded-md shadow-sm p-6 max-w-md hover:shadow-md transition-shadow transform hover:scale-105"
+</a>
   <h3 class="text-xl font-semibold mb-2 font-poppins">Proyecto Destacado</h3>
-  <p class="text-base font-lato mb-4">Descripción corta del proyecto, con lo más relevante para captar el interés del usuario.</p>
-  <a href="/proyecto" class="inline-block text-[#4A4E69] underline hover:text-[#22223B] font-bold">Ver más</a>
+  <p class="text-base font-lato mb-4">
+    Descripción corta del proyecto, con lo más relevante para captar el interés
+    del usuario.
+  </p>
+  <a
+    href="/proyecto"
+    class="inline-block text-[#4A4E69] underline hover:text-[#22223B] font-bold"
+    >Ver más</a
+  >
 </div>
 ```
+
 ### 9.2. Variaciones Posibles
+
 - **Con Imagen:** Imagen en la parte superior (usando `rounded-t-md`), contenido en bloque debajo.
 - **Compacta:** Menor padding, tipografía más pequeña, útil para grids con muchas tarjetas.
 - **Clickeable Completa:** Usar `cursor-pointer` y `hover:bg-[#EAD9D0]`, sin botón interno.
 - **Destacada:** Fondo más llamativo (usando `secondary` o `accent`) con suficiente contraste o bordes destacados.
+
 ### 9.3. Responsividad de Tarjetas (Mobile-First)
+
 Para asegurar una experiencia óptima en todos los dispositivos, las tarjetas están diseñadas siguiendo un enfoque mobile-first y adaptándose mediante media queries y utilidades responsivas de Tailwind.
+
 - **Adaptación según tamaño de pantalla:**
   - **Móviles:** Tarjetas apiladas en una sola columna. Usar `w-full` y `max-w-sm`.
   - **Tabletas:** Distribución en dos columnas (`grid-cols-2`) con un `gap` adecuado.
   - **Escritorio:** Grid de 3 o más columnas (`grid-cols-3`, `grid-cols-4`) según el ancho disponible.
+
 ### 9.4. Principios UX/UI Aplicados
+
 - **Consistencia Visual:** Se mantiene el uso de tokens (colores, sombras, bordes, espaciado) sin importar el tamaño de pantalla.
 - **Legibilidad:** Tipografía escalada con `rem`. Ajustes opcionales mediante media queries (ej. `font-size`, `padding`).
 - **Tamaño Táctil Mínimo:** Se respeta un mínimo de 48x48px para áreas clickeables.
 - **Enfoque Visual:** Se prioriza mostrar primero el contenido más importante (título, imagen, acción).
 - **Evitar Sobrecarga Cognitiva:** En pantallas pequeñas, se recomienda simplificar contenido y distribuir el espacio cuidadosamente.
+
 ### 9.5. Clases Tailwind Sugeridas (Semánticamente Documentadas)
+
 ```html
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
   <!-- Tarjetas aquí -->
 </div>
 ```
+
 ### 9.6. Notas Adicionales
+
 - Las tarjetas deben mantener su estructura y estilo base (fondo, bordes redondeados, sombra, padding) sin importar el tamaño.
 - Se recomienda usar `max-w` y `auto-layout` para que las tarjetas no rompan la cuadrícula ni el diseño en dispositivos pequeños.
+
+---
+
+## 10. Directrices para el Uso de Iconos
+
+### 10.1. Propósito
+
+Los iconos se utilizan para complementar el texto, ahorrar espacio, mejorar la navegación y la estética del portfolio. Es importante evitar el uso de iconos sin un texto claro que los acompañe, ya que esto puede generar confusión en los usuarios.
+
+### 10.2. Estilo
+
+- **UI General:** Los iconos deben tener un estilo de línea (outline) para mantener la coherencia visual con el resto del diseño.
+- **Tecnologías:** Los logotipos de tecnologías deben ser los originales, utilizando la librería Simple Icons para asegurar que se representen fielmente.
+- **Peso de Línea:** Todos los iconos deben tener un peso de línea consistente para mantener una apariencia uniforme.
+- **Relleno:** Los iconos no deben tener relleno, excepto en botones donde se requiera un efecto visual específico.
+- **Ejemplo de uso:**
+
+```html
+<svg
+  class="w-6 h-6 text-primary-brand"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    d="M12 4v16m8-8H4"
+  ></path>
+</svg>
+```
+
+### 10.3. Colores
+
+- **UI General:** Los iconos deben utilizar el color `text-main` (`#22223B`) o `primary-brand` (`#4A4E69`) para mantener la coherencia con el esquema de colores del portfolio.
+- **Tecnologías:** Los iconos de tecnologías deben utilizar el color original de la marca (de Simple Icons) o `text-main`/`primary-brand` si no contrasta adecuadamente.
+- **Estado:** Los iconos pueden cambiar de color según el estado (ej. `success-color`, `error-color`, etc.) para proporcionar feedback visual.
+- **Contraste:** Siempre se debe asegurar un contraste suficiente entre el icono y el fondo para garantizar la legibilidad (mínimo 3:1 según WCAG 2.1).
+
+### 10.4. Tamaños
+
+- Los iconos deben utilizar unidades `rem` para asegurar que escalen de manera responsiva con el resto del diseño.
+- **UI General:** El tamaño base de los iconos debe ser de `1rem` (16px), ajustando según el contexto (ej. `1.5rem` o `2rem` para iconos más prominentes).
+- **Tecnologías:** Los iconos de tecnologías deben tener un tamaño de `1.5rem` o `2rem` para asegurar una buena visibilidad.
+- **Clases de Tailwind CSS:** Utilizar clases como `w-4 h-4` para definir el ancho y alto de los iconos.
+
+### 10.5. Alineación y Espaciado
+
+- Los iconos deben alinearse verticalmente con el texto circundante para mantener una apariencia coherente y facilitar la lectura.
+- Utilizar el sistema de espaciado de 8 puntos para definir márgenes alrededor de los iconos, asegurando un espaciado adecuado entre ellos y otros elementos.
+
+### 10.6. Accesibilidad
+
+- Los iconos deben tener un `<title>` y/o `aria-label` descriptivo para proporcionar contexto a los usuarios de lectores de pantalla.
+- Para iconos decorativos que no aportan información adicional, se debe utilizar `aria-hidden="true"` para que los lectores de pantalla los ignoren.
+- Asegurar que el contraste de color entre los iconos y el fondo sea de al menos 3:1 para cumplir con las pautas de accesibilidad WCAG 2.1.
+
+### 10.7. Librerías
+
+- **UI General:** Utilizar Heroicons o Lucide Icons para iconos de estilo de línea.
+- **Tecnologías:** Utilizar Simple Icons para los logotipos de tecnologías
+- Los iconos deben implementarse como SVGs para asegurar escalabilidad y calidad visual.
+- Asegurar que el bundler utilizado (ej. Webpack, Vite) esté configurado para realizar "tree-shaking" de los iconos, eliminando los no utilizados y optimizando el tamaño del bundle.
+- **Ejemplo de importación de un icono SVG:**
+
+```javascript
+import { IconName } from "lucide-react";
+```
+
+### 10.8. Implementación
+
+- Los iconos deben importarse como componentes SVG o directamente como archivos SVG según la librería utilizada.
+- Especificar `width` y `height` para los iconos para evitar cambios de diseño inesperados (layout shifts) al cargarlos.
+- Utilizar `fill="currentColor"` para que los iconos hereden el color del texto circundante, facilitando la personalización con Tailwind CSS.
+- **Ejemplo de uso en un componente:**
+
+```html
+<IconName class="w-6 h-6 text-primary-brand" />
+```
