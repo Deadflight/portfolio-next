@@ -770,7 +770,6 @@ Estilos y Variaciones (Basado en la sección 9. Tarjetas (Cards)):
 
 Descripción: Campos interactivos para la entrada de datos del usuario. Deben ser claros, fáciles de usar y proporcionar feedback visual para los estados.
 Estilos y Estados (Basado en la sección 8. Inputs de Formularios):
-
 - **Estilo Base:**
   - **Fondo:** `bg-background-main` o `bg-white`.
   - **Borde:** `border border-secondary`, `rounded-md` (usando --radius-small).
