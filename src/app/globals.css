@@ -1,26 +1,328 @@
 @import "tailwindcss";
+@import "tailwindcss/preflight";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+@theme {
+  /* Colores principales */
+  --color-background-main: #f2e9e4;
+  --color-text-main: #22223b;
+  --color-primary-brand: #4a4e69;
+  --color-secondary: #c9ada7;
+  --color-accent: #9a8c98;
+  --color-error: #b91c1c;
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-info: #2563eb;
+  /* Sombras */
+  --shadow-subtle: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-interactive: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  --shadow-modal: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Bordes redondeados */
+  --radius-small: 0.25rem;
+  --radius-medium: 0.5rem;
+  --radius-full: 9999px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;   
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  html {
+    font-size: 100%; /* 16px base */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    background-color: #f2e9e4;
+    color: #22223b;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  /* Responsive typography */
+  @media (min-width: 768px) {
+    html {
+      font-size: 106.25%; /* ~17px */
+    }
+
+    h1 {
+      font-size: 2.8rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: 112.5%; /* ~18px */
+    }
+
+    h1 {
+      font-size: 3.5rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
+
+  /* Focus styles for accessibility */
+  *:focus {
+    outline: 2px solid #22223b;
+    outline-offset: 2px;
+  }
+
+  /* Skip link for screen readers */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #22223b;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 1000;
+  }
+
+  .skip-link:focus {
+    top: 6px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .btn-primary {
+    background-color: #22223b;
+    color: #f2e9e4;
+    padding: 0.875rem 1.75rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px; /* Minimum touch target */
+  }
+
+  .btn-primary:hover {
+    background-color: #1a1a2e;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:focus {
+    outline: 3px solid rgba(34, 34, 59, 0.3);
+    outline-offset: 2px;
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .btn-secondary {
+    background-color: white;
+    color: #22223b;
+    border: 2px solid #22223b;
+    padding: 0.875rem 1.75rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px; /* Minimum touch target */
+  }
+
+  .btn-secondary:hover {
+    background-color: #22223b;
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary:focus {
+    outline: 3px solid rgba(34, 34, 59, 0.3);
+    outline-offset: 2px;
+  }
+
+  .btn-secondary:active {
+    transform: translateY(0);
+  }
+
+  .btn-secondary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .card {
+    background-color: #f2e9e4;
+    border-radius: 0.5rem;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    transition: box-shadow 0.3s ease;
+    border: 1px solid rgba(34, 34, 59, 0.1);
+  }
+
+  .card:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  .input-field {
+    width: 100%;
+    background-color: white;
+    border: 2px solid #9a8c98;
+    border-radius: 0.25rem;
+    padding: 0.875rem 1rem;
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    color: #22223b;
+    transition: border-color 0.2s ease;
+    font-size: 1rem;
+    line-height: 1.5;
+    min-height: 48px; /* Minimum touch target */
+  }
+
+  .input-field::placeholder {
+    color: #6b7280;
+  }
+
+  .input-field:hover {
+    border-color: #22223b;
+  }
+
+  .input-field:focus {
+    outline: none;
+    border-color: #22223b;
+    box-shadow: 0 0 0 3px rgba(34, 34, 59, 0.2);
+  }
+
+  .input-field:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #f9fafb;
+  }
+
+  .link-text {
+    color: #22223b;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+    font-weight: 600;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+  }
+
+  .link-text:hover {
+    color: #4a4e69;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .link-text:focus {
+    outline: 3px solid rgba(34, 34, 59, 0.3);
+    outline-offset: 2px;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .btn-primary {
+      border: 2px solid #000;
+    }
+
+    .btn-secondary {
+      border: 3px solid #000;
+    }
+
+    .card {
+      border: 2px solid #000;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
