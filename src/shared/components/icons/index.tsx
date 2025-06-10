@@ -1,4 +1,6 @@
-const SvgIcons = {
+import { IIconProps } from "@/shared/types/icons.types";
+
+export const SvgIcons = {
   // Navigation Icons
   Home: () => (
     <svg
@@ -989,14 +991,10 @@ const SvgIcons = {
 };
 
 // Helper component for consistent icon sizing and error handling
-export const Icon = ({
+export const Icon: React.FC<IIconProps> = ({
   name,
   size = 24,
   className = "",
-}: {
-  name: keyof typeof SvgIcons;
-  size?: number;
-  className?: string;
 }) => {
   const IconComponent = SvgIcons[name];
 
@@ -1007,6 +1005,7 @@ export const Icon = ({
       <span
         className={`inline-flex items-center justify-center ${className}`}
         style={{ width: size, height: size }}
+        aria-hidden="true"
       >
         <FallbackIcon />
       </span>
