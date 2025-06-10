@@ -21,7 +21,6 @@ export const ProfessionalActions = () => {
         href="#proyectos"
         className="btn-primary"
         aria-label="View my projects"
-        role="link"
       >
         Ver Proyectos
       </a>
@@ -30,7 +29,6 @@ export const ProfessionalActions = () => {
         download
         className="btn-secondary flex items-center"
         aria-label="Download my complete professional resume"
-        role="link"
       >
         <Icon name="Download" size={16} className="mr-2" />
         Descargar CV

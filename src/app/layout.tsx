@@ -2,6 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Poppins, Lato } from "next/font/google";
 import "./globals.css";
+import AxeReporter from "@/lib/ReactAxe/ReactAxe";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -68,6 +69,7 @@ export default function RootLayout({
       className={`${poppins.variable} ${lato.variable} antialiased`}
     >
       <body className="min-h-screen bg-background-main text-text-main font-body">
+        {process.env.NODE_ENV !== "production" && <AxeReporter />}
         <a href="#main-content" className="skip-link">
           Saltar al contenido principal
         </a>
