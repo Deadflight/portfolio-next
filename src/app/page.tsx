@@ -1,4 +1,4 @@
-import ProfessionalIdentityHero from "./components/hero/ProfessionalIdentityHero/ProfessionalIdentityHero";
+import { ProfessionalIdentityHero } from "./components/hero/ProfessionalIdentityHero/ProfessionalIdentityHero";
 
 export default function Home() {
   return (
