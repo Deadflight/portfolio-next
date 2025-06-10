@@ -4,6 +4,7 @@
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-blue?logo=tailwindcss)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
 ![Accessibility](https://img.shields.io/badge/Accessible-AA/AAA-important?logo=w3c)
+![ESLint Flat + jsx-a11y](https://img.shields.io/badge/ESLint-flat%20config%20+%20jsx--a11y-purple?logo=eslint)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 Portfolio personal construido con Next.js, Tailwind CSS, TypeScript y un sistema de diseño propio enfocado en accesibilidad, buenas prácticas y escalabilidad.
@@ -14,13 +15,15 @@ Portfolio personal construido con Next.js, Tailwind CSS, TypeScript y un sistema
 
 - **Next.js 15+** con App Router
 - **TypeScript** para tipado estricto
-- **Tailwind CSS 4** y tokens de diseño personalizados
-- **Guía de estilos y sistema de diseño** documentado (`DESIGN_SYSTEM.md`)
-- **Accesibilidad**: contraste AAA, navegación por teclado, área mínima interactiva, soporte `prefers-reduced-motion`
-- **Testing** con Jest y React Testing Library
-- **Estructura modular y escalable**
+- **Tailwind CSS 4** y tokens de diseño personalizados (paleta, sombras, tooltips, modales, overlays, menús)
+- **Guía de estilos y sistema de diseño** documentado (`DESIGN_SYSTEM.md`), con advertencias de uso y ejemplos
+- **Accesibilidad**: contraste AAA, navegación por teclado, área mínima interactiva, soporte `prefers-reduced-motion`, semántica y roles correctos
+- **Testing robusto y accesible** con Jest y React Testing Library (tests de navegación mejorados para evitar duplicidad de enlaces)
+- **Linting avanzado** con ESLint flat config y `eslint-plugin-jsx-a11y` para accesibilidad en JSX
+- **Estructura modular y escalable** (componentes compartidos en `src/shared/components`)
 - **Internacionalización lista para ampliar**
 - **Optimización para SEO y rendimiento**
+- **Preparado para CI/CD**: integración recomendada de lint y tests en pipelines
 
 ---
 
@@ -31,13 +34,14 @@ portfolio-next/
 ├── DESIGN_SYSTEM.md         # Guía de estilos y sistema de diseño
 ├── src/
 │   ├── app/                # App Router, layout, páginas y estilos globales
-│   │   ├── globals.css     # Estilos globales y tokens de diseño
+│   │   ├── globals.css     # Estilos globales y tokens de diseño (migrados a Tailwind)
 │   │   └── components/     # Componentes principales (hero, tarjetas, etc.)
-│   └── shared/             # Componentes y tipos compartidos
+│   └── shared/             # Componentes y tipos compartidos (Navigation, Icons, etc.)
 ├── public/                 # Recursos estáticos (imágenes, íconos, CV)
 ├── jest.config.ts          # Configuración de testing
+├── eslint.config.mjs       # Configuración ESLint flat + jsx-a11y
 ├── tsconfig.json           # Configuración de TypeScript
-├── tailwind.config.js      # Configuración de Tailwind CSS
+├── tailwind.config.js      # Configuración de Tailwind CSS y tokens
 ├── package.json            # Dependencias y scripts
 └── README.md               # Este archivo
 ```
@@ -77,14 +81,16 @@ portfolio-next/
   ```bash
   npm run test:coverage
   ```
+- Los tests de navegación usan selectores específicos y `within` para evitar errores por enlaces duplicados (desktop/mobile).
 
 ---
 
 ## 🖌️ Sistema de Diseño y Accesibilidad
 
-- Consulta `DESIGN_SYSTEM.md` para conocer la paleta de colores, tokens, reglas de accesibilidad, ejemplos y buenas prácticas.
+- Consulta `DESIGN_SYSTEM.md` para conocer la paleta de colores, tokens (incluyendo sombras, tooltips, modales, overlays, menús), reglas de accesibilidad, advertencias de uso, ejemplos y buenas prácticas.
 - El sistema de diseño sigue recomendaciones de WebAIM, WCAG y NN/g.
-- Todos los componentes cumplen contraste AA/AAA y área mínima interactiva.
+- Todos los componentes cumplen contraste AA/AAA, área mínima interactiva y semántica adecuada.
+- Los estilos globales y tokens están migrados a utilidades de Tailwind siempre que es posible.
 
 ---
 
@@ -93,7 +99,7 @@ portfolio-next/
 - `npm run dev` — Desarrollo
 - `npm run build` — Build de producción
 - `npm run start` — Servidor de producción
-- `npm run lint` — Linting con ESLint
+- `npm run lint` — Linting con ESLint (flat config + jsx-a11y)
 - `npm run test` — Testing unitario
 
 ---
@@ -118,8 +124,8 @@ MIT © 2025 Carlos Correa
 
 ## 📬 Contacto
 
-- [LinkedIn](https://www.linkedin.com/in/tuusuario)
-- [Email](mailto:tuemail@dominio.com)
+- [LinkedIn](https://www.linkedin.com/in/carloscorreamillan)
+- [Email](mailto:correamillancarlos@gmail.com)
 
 ---
 
