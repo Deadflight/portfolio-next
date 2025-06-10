@@ -1,5 +1,25 @@
 import { IIconProps } from "@/shared/types/icons.types";
 
+/**
+ * A collection of reusable SVG icon components for use throughout the application.
+ *
+ * Each property of `SvgIcons` is a React functional component that renders a specific SVG icon.
+ * Icons are grouped by their intended use, such as navigation, actions, social, business, tech, and miscellaneous.
+ *
+ * All icons inherit the current text color via `currentColor` and have a default size of 24x24 pixels.
+ *
+ * @example
+ * ```tsx
+ * import { SvgIcons } from './Icons';
+ *
+ * <SvgIcons.Home />
+ * <SvgIcons.Github />
+ * ```
+ *
+ * @remarks
+ * - Use the `AlertCircle` icon as a fallback for missing or undefined icons.
+ * - The `Location` icon is an alias for `MapPin`.
+ */
 export const SvgIcons = {
   // Navigation Icons
   Home: () => (
@@ -990,7 +1010,16 @@ export const SvgIcons = {
   ),
 };
 
-// Helper component for consistent icon sizing and error handling
+/**
+ * Renders an SVG icon from the `SvgIcons` collection based on the provided `name` prop.
+ * If the specified icon is not found, a fallback "AlertCircle" icon is displayed and a warning is logged.
+ *
+ * @param props - The props for the Icon component.
+ * @param props.name - The name of the icon to render. Must match a key in the `SvgIcons` object.
+ * @param [props.size=24] - The width and height of the icon in pixels.
+ * @param [props.className=""] - Additional CSS classes to apply to the icon container.
+ * @returns A span element containing the requested SVG icon or a fallback icon if not found.
+ */
 export const Icon: React.FC<IIconProps> = ({
   name,
   size = 24,

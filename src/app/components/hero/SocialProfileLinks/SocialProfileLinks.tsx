@@ -1,4 +1,5 @@
 import { Icon } from "@/shared/components/Icons/Icons";
+import { JSX } from "react";
 
 const socialProfiles = [
   {
@@ -21,7 +22,16 @@ const socialProfiles = [
   },
 ];
 
-export const SocialProfileLinks = () => {
+/**
+ * Renders a navigation bar containing links to professional social profiles.
+ *
+ * Each link displays an icon representing the social platform and opens in a new tab,
+ * except for email links which open in the same tab. The navigation is accessible and
+ * styled for visual feedback on hover.
+ *
+ * @returns {JSX.Element} A navigation element with social profile links.
+ */
+export const SocialProfileLinks = (): JSX.Element => {
   return (
     <nav
       className="flex justify-center space-x-6 mb-12"

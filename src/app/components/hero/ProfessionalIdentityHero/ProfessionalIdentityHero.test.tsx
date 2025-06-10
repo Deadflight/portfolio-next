@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import ProfessionalIdentityHero from "./ProfessionalIdentityHero";
 import "@testing-library/jest-dom";
 import { IIconProps } from "@/shared/types/icons.types";
+import { ProfessionalIdentityHero } from "./ProfessionalIdentityHero";
 
 // Mock child components
 jest.mock("../ProfessionalActions/ProfessionalActions", () => ({

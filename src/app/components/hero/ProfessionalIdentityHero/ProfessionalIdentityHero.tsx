@@ -1,6 +1,7 @@
 import { Icon } from "@/shared/components/Icons/Icons";
 import { ProfessionalActions } from "../ProfessionalActions/ProfessionalActions";
 import { SocialProfileLinks } from "../SocialProfileLinks/SocialProfileLinks";
+import { JSX } from "react";
 
 const professionalProfile = {
   personalInfo: {
@@ -14,7 +15,17 @@ const professionalProfile = {
   },
 };
 
-export default function ProfessionalIdentityHero() {
+/**
+ * Renders the main hero section introducing the professional identity of the user.
+ *
+ * Displays the user's full name, professional title, and value proposition,
+ * along with action buttons and social profile links. Includes a visual cue
+ * to scroll down. Uses data from the `professionalProfile` object.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered hero section for the professional identity.
+ */
+export const ProfessionalIdentityHero = (): JSX.Element => {
   const { personalInfo, brandingElements } = professionalProfile;
 
   return (
@@ -45,4 +56,4 @@ export default function ProfessionalIdentityHero() {
       </div>
     </section>
   );
-}
+};
