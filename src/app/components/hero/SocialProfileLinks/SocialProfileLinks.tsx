@@ -1,4 +1,4 @@
-import { Icon } from "@/shared/components/icons";
+import { Icon } from "@/shared/components/Icons/Icons";
 
 const socialProfiles = [
   {

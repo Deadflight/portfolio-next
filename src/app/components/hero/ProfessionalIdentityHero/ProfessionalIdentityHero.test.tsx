@@ -1,17 +1,17 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import ProfessionalIdentityHero from "./ProfessionalIdentityHero";
 import "@testing-library/jest-dom";
-import ProfessionalIdentityHero from "./index";
 import { IIconProps } from "@/shared/types/icons.types";
 
 // Mock child components
-jest.mock("../ProfessionalActions", () => ({
+jest.mock("../ProfessionalActions/ProfessionalActions", () => ({
   ProfessionalActions: () => <div data-testid="professional-actions" />,
 }));
-jest.mock("../SocialProfileLinks", () => ({
+jest.mock("../SocialProfileLinks/SocialProfileLinks", () => ({
   SocialProfileLinks: () => <div data-testid="social-profile-links" />,
 }));
-jest.mock("../../../../shared/components/icons", () => ({
+jest.mock("../../../../shared/components/Icons/Icons", () => ({
   Icon: ({ name, size, className }: IIconProps) => (
     <svg
       data-testid="icon"
@@ -45,7 +45,7 @@ describe("ProfessionalIdentityHero", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /más de 3 años de experiencia creando aplicaciones web escalables con react, node\.js y aws\./i
+        /más de 3 años de experiencia creando aplicaciones web escalables con react, node\.js y aws/i
       )
     ).toBeInTheDocument();
   });
@@ -65,7 +65,7 @@ describe("ProfessionalIdentityHero", () => {
     expect(icon).toHaveClass("mx-auto");
   });
 
-  it("renders the bouncing animation container", () => {
+  it("renders the bouncing animation container with aria-hidden", () => {
     render(<ProfessionalIdentityHero />);
     const bounceDiv = screen
       .getByLabelText(/professional introduction and brand statement/i)

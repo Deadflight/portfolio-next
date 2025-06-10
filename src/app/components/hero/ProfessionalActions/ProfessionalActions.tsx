@@ -1,4 +1,4 @@
-import { Icon } from "@/shared/components/icons";
+import { Icon } from "@/shared/components/Icons/Icons";
 
 export const ProfessionalActions = () => {
   return (
@@ -6,7 +6,8 @@ export const ProfessionalActions = () => {
       <a
         href="#proyectos"
         className="btn-primary"
-        aria-label="View my completed projects and case studies"
+        aria-label="View my projects"
+        role="link"
       >
         Ver Proyectos
       </a>
@@ -15,6 +16,7 @@ export const ProfessionalActions = () => {
         download
         className="btn-secondary flex items-center"
         aria-label="Download my complete professional resume"
+        role="link"
       >
         <Icon name="Download" size={16} className="mr-2" />
         Descargar CV

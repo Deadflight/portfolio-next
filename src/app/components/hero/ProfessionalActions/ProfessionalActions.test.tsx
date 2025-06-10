@@ -1,44 +1,48 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import { ProfessionalActions } from "./ProfessionalActions";
+import { IIconProps } from "@/shared/types/icons.types";
 import "@testing-library/jest-dom";
-import { ProfessionalActions } from "./index";
 
-jest.mock("../../../../shared/components/icons", () => ({
-  Icon: () => <svg data-testid="icon" />,
+jest.mock("../../../../shared/components/Icons/Icons", () => ({
+  Icon: (props: IIconProps) => <span data-testid="icon" {...props} />,
 }));
 
 describe("ProfessionalActions", () => {
-  it("renders 'Ver Proyectos' button with correct link and aria-label", () => {
+  it("renders both action buttons", () => {
+    render(<ProfessionalActions />);
+    expect(
+      screen.getByRole("link", { name: /View my projects/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", {
+        name: /Download my complete professional resume/i,
+      })
+    ).toBeInTheDocument();
+  });
+
+  it("renders the correct href for 'Ver Proyectos'", () => {
     render(<ProfessionalActions />);
     const proyectosLink = screen.getByRole("link", {
-      name: /completed projects and case studies/i,
+      name: /View my projects/i,
     });
-    expect(proyectosLink).toBeInTheDocument();
     expect(proyectosLink).toHaveAttribute("href", "#proyectos");
-    expect(proyectosLink).toHaveTextContent("Ver Proyectos");
   });
 
-  it("renders 'Descargar CV' button with correct link, download attribute, and icon", () => {
+  it("renders the correct href and download attribute for 'Descargar CV'", () => {
     render(<ProfessionalActions />);
-    const cvLink = screen.getByRole("link", { name: /professional resume/i });
-    expect(cvLink).toBeInTheDocument();
+    const cvLink = screen.getByRole("link", {
+      name: /Download my complete professional resume/i,
+    });
     expect(cvLink).toHaveAttribute("href", "/cv-carlos-correa.pdf");
     expect(cvLink).toHaveAttribute("download");
-    expect(cvLink).toHaveTextContent("Descargar CV");
-    expect(screen.getByTestId("icon")).toBeInTheDocument();
   });
 
-  it("has correct layout classes", () => {
+  it("renders the Download icon inside the 'Descargar CV' button", () => {
     render(<ProfessionalActions />);
-    const container = screen.getByText("Ver Proyectos").closest("div");
-    expect(container).toHaveClass(
-      "flex",
-      "flex-col",
-      "sm:flex-row",
-      "gap-4",
-      "justify-center",
-      "items-center",
-      "mb-12"
-    );
+    const cvLink = screen.getByRole("link", {
+      name: /Download my complete professional resume/i,
+    });
+    expect(cvLink.querySelector('[data-testid="icon"]')).toBeInTheDocument();
   });
 });

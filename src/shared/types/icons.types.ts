@@ -1,4 +1,4 @@
-import { SvgIcons } from "../components/icons";
+import { SvgIcons } from "../components/Icons/Icons";
 
 export interface IIconProps {
   name: keyof typeof SvgIcons;

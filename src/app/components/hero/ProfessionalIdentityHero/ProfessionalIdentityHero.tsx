@@ -1,6 +1,6 @@
-import { Icon } from "@/shared/components/icons";
-import { ProfessionalActions } from "../ProfessionalActions";
-import { SocialProfileLinks } from "../SocialProfileLinks";
+import { Icon } from "@/shared/components/Icons/Icons";
+import { ProfessionalActions } from "../ProfessionalActions/ProfessionalActions";
+import { SocialProfileLinks } from "../SocialProfileLinks/SocialProfileLinks";
 
 const professionalProfile = {
   personalInfo: {
