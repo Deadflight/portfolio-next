@@ -1035,6 +1035,7 @@ export const Icon: React.FC<IIconProps> = ({
         className={`inline-flex items-center justify-center ${className}`}
         style={{ width: size, height: size }}
         aria-hidden="true"
+        role="img"
       >
         <FallbackIcon />
       </span>
@@ -1045,6 +1046,8 @@ export const Icon: React.FC<IIconProps> = ({
     <span
       className={`inline-flex items-center justify-center ${className}`}
       style={{ width: size, height: size }}
+      aria-hidden="true"
+      role="img"
     >
       <IconComponent />
     </span>

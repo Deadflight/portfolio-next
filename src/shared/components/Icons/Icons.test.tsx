@@ -1,7 +1,7 @@
 import React from "react";
-import { render } from "@testing-library/react";
-import { SvgIcons } from "./Icons";
 import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
+import { SvgIcons, Icon } from "./Icons";
 
 describe("SvgIcons", () => {
   const iconNames = [
@@ -29,8 +29,8 @@ describe("SvgIcons", () => {
 
   iconNames.forEach((iconName) => {
     it(`renders ${iconName} icon without crashing`, () => {
-      const Icon = SvgIcons[iconName as keyof typeof SvgIcons];
-      const { container } = render(<Icon />);
+      const IconComponent = SvgIcons[iconName as keyof typeof SvgIcons];
+      const { container } = render(<IconComponent />);
       expect(container.querySelector("svg")).toBeInTheDocument();
     });
   });
@@ -48,5 +48,35 @@ describe("SvgIcons", () => {
     const { container } = render(<AlertCircle />);
     expect(container.querySelector("svg")).toBeInTheDocument();
     expect(container.querySelector("circle")).toBeInTheDocument();
+  });
+
+  // Tests for Icon component
+  describe("Icon component", () => {
+    it("renders the correct icon by name", () => {
+      render(<Icon name="Calendar" />);
+      expect(screen.getByRole("img", { hidden: true })).toBeInTheDocument();
+    });
+
+    it("applies the correct size and className", () => {
+      const { container } = render(
+        <Icon name="Calendar" size={32} className="custom-class" />
+      );
+      const span = container.querySelector("span");
+      expect(span).toHaveStyle({ width: "32px", height: "32px" });
+      expect(span).toHaveClass("custom-class");
+    });
+
+    it("renders fallback icon and logs warning for unknown icon", () => {
+      const warnSpy = jest.spyOn(console, "warn").mockImplementation(() => {});
+      render(<Icon name={"NonExistentIcon" as keyof typeof SvgIcons} />);
+      expect(warnSpy).toHaveBeenCalledWith(
+        'Icon "NonExistentIcon" not found. Using fallback icon.'
+      );
+      // Fallback icon contains a <circle> element
+      expect(
+        screen.getByRole("img", { hidden: true }).querySelector("circle")
+      ).toBeInTheDocument();
+      warnSpy.mockRestore();
+    });
   });
 });
