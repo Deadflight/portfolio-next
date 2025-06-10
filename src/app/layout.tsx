@@ -8,6 +8,8 @@ const poppins = Poppins({
   weight: ["400", "600", "700"],
   variable: "--font-poppins",
   display: "swap",
+  fallback: ["sans-serif"],
+  preload: true,
 });
 
 const lato = Lato({
@@ -15,6 +17,8 @@ const lato = Lato({
   weight: ["400", "700"],
   variable: "--font-lato",
   display: "swap",
+  fallback: ["sans-serif"],
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -59,7 +63,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={`${poppins.variable} ${lato.variable}`}>
+    <html
+      lang="es"
+      className={`${poppins.variable} ${lato.variable} antialiased`}
+    >
       <body className="min-h-screen bg-background-main text-text-main font-body">
         <a href="#main-content" className="skip-link">
           Saltar al contenido principal
