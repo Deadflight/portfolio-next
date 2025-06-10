@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
+    "test:unit": "jest --config=jest.unit.config.ts --runInBand",
     "test:watch": "jest --watch",
     "typecheck": "tsc --noEmit"
   },
