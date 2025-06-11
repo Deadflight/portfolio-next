@@ -1,77 +1,95 @@
+import { IProject } from "@/shared/types/project.types";
 import { ProjectsList } from "./ProjectsList/ProjectsList";
 
-const projects = [
+const projects: IProject[] = [
   {
     id: 1,
-    title: "Sistema POS para Farmaloop",
-    description:
-      "Sistema de punto de venta completo que redujo el tiempo promedio de venta a menos de 5 minutos, optimizando las operaciones de farmacia.",
-    challenge: "Crear un sistema eficiente para ventas directas en farmacia",
-    solution: "Interfaz intuitiva con React y backend robusto con Node.js",
-    results: "Tiempo de venta reducido a <5 min, 100 pedidos/hora procesados",
-    technologies: ["React", "Node.js", "TypeScript", "MongoDB", "Express"],
-    image: "/dummy_image.png",
-    liveUrl: null, // Proyecto privado
-    githubUrl: null, // Proyecto privado
-    featured: true,
-    company: "Farmaloop",
-    period: "2023-2024",
-    role: "Desarrollador Full Stack",
-    teamSize: "3 desarrolladores",
-  },
-  {
-    id: 2,
-    title: "Plataforma Administrativa Interna",
-    description:
-      "Plataforma web para gestión de datos y operaciones de clientes, utilizada por más de 10 empleados diariamente en Farmaloop.",
-    challenge: "Centralizar la gestión de datos de clientes y operaciones",
-    solution: "Dashboard administrativo con módulos especializados",
-    results: "Eficiencia operativa aumentada en 30%, +10 usuarios activos",
-    technologies: ["React", "Redux", "Node.js", "MongoDB", "AWS"],
-    image: "/dummy_image.png",
-    liveUrl: null,
-    githubUrl: null,
-    featured: true,
-    company: "Farmaloop",
-    period: "2023-2024",
-    role: "Desarrollador Full Stack",
-    teamSize: "5 personas",
-  },
-  {
-    id: 3,
-    title: "Optimización de E-commerce B2B",
-    description:
-      "Desarrollo de módulos e integraciones para e-commerce utilizando Shopify API, mejorando tiempos de carga en 20%.",
-    challenge: "Mejorar rendimiento y funcionalidad de tienda online",
-    solution: "Optimización con Next.js y integraciones API avanzadas",
-    results: "20% mejora en tiempos de carga, 15% reducción código base",
-    technologies: ["Next.js", "Shopify API", "Apollo Server", "GraphQL"],
-    image: "/dummy_image.png",
-    liveUrl: "https://ejemplo.com",
-    githubUrl: null, // Proyecto de cliente
-    featured: true,
-    company: "CheshTech Digital Agency",
-    period: "2022-2023",
-    role: "Desarrollador Frontend",
-    teamSize: "4 desarrolladores",
-  },
-  {
-    id: 4,
-    title: "Sistema de Gestión de Citas SaaS",
-    description:
-      "Solución de errores críticos y desarrollo de módulos para gestión de clientes, sedes y citas en aplicación SaaS.",
+    title: "Kumbio",
+    description: "Aplicación para agendar y gestionar citas.",
     challenge: "Reducir tasa de abandono en aplicación de citas",
     solution: "Refactorización UX y nuevos módulos de gestión",
     results: "Reducción significativa en tasa de abandono de usuarios",
-    technologies: ["React", "JavaScript", "CSS", "REST APIs"],
-    image: "/dummy_image.png",
-    liveUrl: null,
-    githubUrl: null,
-    featured: false,
     company: "Contactemos Contact Center",
+    image: "/kumbio.png",
+    liveUrl: "https://app.kumbio.com/login",
+    githubUrl: "https://github.com/Utalkto/kumbio-app-front-application-base",
+    featured: true,
+    technologies: ["React", "Next.js", "TypeScript", "Material UI"],
     period: "2023",
     role: "Desarrollador Frontend",
-    teamSize: "6 personas",
+    teamSize: "3 personas",
+  },
+  {
+    id: 2,
+    title: "Teslo Shop",
+    description:
+      "Plataforma E-commerce React con Next.js, optimizada para SEO y rendimiento, con integración de pagos y gestión de productos.",
+    challenge:
+      "Crear una tienda online escalable y rápida usando Next.js y optimización SEO",
+    solution:
+      "Desarrollo de tienda con Next.js, integración de pagos y optimización SEO",
+    results: "Website con carga rápida, SEO optimizado, integración de pagos",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Material UI",
+      "Paypal API",
+    ],
+    image: "/teslo-shop.png",
+    liveUrl: "https://nextjs-teslo-shop-nine.vercel.app/",
+    githubUrl: "https://github.com/Deadflight/nextjs-teslo-shop",
+    featured: true,
+    company: "Personal Project",
+    period: "2023",
+    role: "Desarrollador Full Stack",
+    teamSize: "1 persona",
+  },
+  {
+    id: 3,
+    title: "Cryptoverse",
+    description:
+      "Aplicación web de criptomonedas con React, integraciones API avanzadas y optimización de rendimiento.",
+    challenge:
+      "Mostrar datos de criptomonedas, como precios, gráficos y noticias",
+    solution:
+      "Desarrollo de aplicación React con integración de APIs, optimización de rendimiento y PWA",
+    results: "Aplicación web rápida y responsiva, con datos actualizados",
+    technologies: ["React", "TypeScript", "CSS", "REST APIs", "PWA"],
+    image: "/cryptoverse.png",
+    liveUrl: "https://cryptoversedeadflight.netlify.app/",
+    githubUrl: "https://github.com/Deadflight/cryptoverse-react-app",
+    featured: false,
+    company: "Personal Project",
+    period: "2022",
+    role: "Desarrollador Frontend",
+    teamSize: "1 desarrollador",
+  },
+  {
+    id: 4,
+    title: "Country App Angular",
+    description:
+      "Aplicación Angular para consultar información de países, con módulos de gestión y optimización UX.",
+    challenge: "Desarrollar una aplicación Angular para consultar países",
+    solution: "Aplicación Angular con integración de APIs y optimización UX",
+    results:
+      "Aplicación web responsiva y rápida, con datos actualizados de países",
+    technologies: [
+      "Angular",
+      "TypeScript",
+      "Tailwind CSS",
+      "DaisyUI",
+      "RxJS",
+      "REST APIs",
+    ],
+    image: "/country-app-angular.png",
+    liveUrl: "https://angular-country-basic.netlify.app/",
+    githubUrl: "https://github.com/Deadflight/country-app-angular",
+    featured: false,
+    company: "Personal Project",
+    period: "2025",
+    role: "Desarrollador Frontend",
+    teamSize: "1 persona",
   },
 ];
 
