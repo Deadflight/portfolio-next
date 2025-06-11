@@ -16,7 +16,7 @@ Aquí se define la paleta de colores principal utilizada en el portfolio, junto 
 | `secondary`           | `#C9ADA7`  | **Color Secundario / Fondo Sutil**      | Complemento armónico. **No usar para texto sobre fondo claro por bajo contraste.** Usar solo en fondos, bordes o elementos decorativos. Para botones secundarios, usar fondo blanco y borde `secondary` o `primary-brand` con texto `text-main`. |
 | `accent`              | `#9A8C98`  | **Color de Acento Sutil / Interactivo** | Pequeños detalles interactivos o de diferenciación. **No usar para texto principal sobre fondo claro.** Úsalo solo en iconos, bordes o detalles gráficos.                                                                                        |
 | `error-color`         | `#B91C1C`  | **Color de Error**                      | Indica errores en formularios o estados críticos. Utilizado para bordes, mensajes de error y otros elementos relacionados con errores. Cumple AAA sobre fondo claro.                                                                             |
-| `success-color`       | `#15803D`  | **Color de Éxito**                      | Mensajes de confirmación, validaciones exitosas, indicadores de éxito. Cumple AAA sobre fondo claro.                                                                                                                                             |
+| `success-color`       | `#11602d`  | **Color de Éxito**                      | Mensajes de confirmación, validaciones exitosas, indicadores de éxito. Cumple AAA sobre fondo claro.                                                                                                                                             |
 | `warning-color`       | `#B45309`  | **Color de Advertencia**                | Mensajes de advertencia, alertas preventivas. Cumple AAA sobre fondo claro.                                                                                                                                                                      |
 | `info-color`          | `#2563EB`  | **Color Informativo**                   | Mensajes neutrales, información adicional, estados informativos. Cumple AAA sobre fondo claro.                                                                                                                                                   |
 
@@ -770,6 +770,7 @@ Estilos y Variaciones (Basado en la sección 9. Tarjetas (Cards)):
 
 Descripción: Campos interactivos para la entrada de datos del usuario. Deben ser claros, fáciles de usar y proporcionar feedback visual para los estados.
 Estilos y Estados (Basado en la sección 8. Inputs de Formularios):
+
 - **Estilo Base:**
   - **Fondo:** `bg-background-main` o `bg-white`.
   - **Borde:** `border border-secondary`, `rounded-md` (usando --radius-small).
@@ -802,9 +803,12 @@ Estilos y Estados (Basado en la sección 8. Inputs de Formularios):
               focus:outline-none focus:ring-2 focus:ring-error-color focus:border-error-color"
 />
 ```
+
 #### 11.2.5. Iconos
+
 Descripción: Elementos gráficos para mejorar la comprensión visual y la usabilidad.
 Directrices y Uso (Basado en la sección 10. Iconos):
+
 - **Librerías:** Heroicons, Lucide Icons (UI), Simple Icons (Tecnologías).
 - **Implementación:** Los iconos se importarán como componentes SVG o directamente como SVG inlines.
 - **Estilización con Tailwind:**
