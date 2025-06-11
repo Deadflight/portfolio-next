@@ -1,5 +1,6 @@
 import { IProject } from "@/shared/types/project.types";
 import { ProjectsList } from "./ProjectsList/ProjectsList";
+import { JSX } from "react";
 
 const projects: IProject[] = [
   {
@@ -93,7 +94,21 @@ const projects: IProject[] = [
   },
 ];
 
-export const ProjectsShowCase = () => {
+/**
+ * Renders a showcase section highlighting featured projects.
+ *
+ * Displays a title, description, a list of projects via the `ProjectsList` component,
+ * and a call-to-action card inviting collaboration.
+ *
+ * @component
+ * @example
+ * ```tsx
+ * <ProjectsShowCase />
+ * ```
+ *
+ * @returns {JSX.Element} The rendered projects showcase section.
+ */
+export const ProjectsShowCase = (): JSX.Element => {
   return (
     <section id="proyectos" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-6xl mx-auto">

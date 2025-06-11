@@ -10,7 +10,6 @@ interface IProjectCardProps {
 export const ProjectCard: FC<IProjectCardProps> = ({ project }) => {
   return (
     <div
-      key={project.id}
       className={`card ${
         project.featured ? "border-2 border-text-main/20" : ""
       }`}
