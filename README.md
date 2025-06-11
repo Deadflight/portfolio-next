@@ -8,7 +8,7 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 Portfolio personal construido con Next.js, Tailwind CSS, TypeScript y un sistema de diseño propio enfocado en accesibilidad, buenas prácticas y escalabilidad.
-
+PWPCC-110
 ---
 
 ## ✨ Características
@@ -16,9 +16,9 @@ Portfolio personal construido con Next.js, Tailwind CSS, TypeScript y un sistema
 - **Next.js 15+** con App Router
 - **TypeScript** para tipado estricto
 - **Tailwind CSS 4** y tokens de diseño personalizados (paleta, sombras, tooltips, modales, overlays, menús)
-- **Guía de estilos y sistema de diseño** documentado (`DESIGN_SYSTEM.md`), con advertencias de uso y ejemplos
+- **Guía de estilos y sistema de diseño** documentado en [`DESIGN_SYSTEM.md`], actualizado y alineado con la implementación
 - **Accesibilidad**: contraste AAA, navegación por teclado, área mínima interactiva, soporte `prefers-reduced-motion`, semántica y roles correctos
-- **Testing robusto y accesible** con Jest y React Testing Library (tests de navegación mejorados para evitar duplicidad de enlaces)
+- **Testing robusto y accesible** con Jest y React Testing Library (tests de navegación y componentes cubriendo casos condicionales y de accesibilidad)
 - **Linting avanzado** con ESLint flat config y `eslint-plugin-jsx-a11y` para accesibilidad en JSX
 - **Estructura modular y escalable** (componentes compartidos en `src/shared/components`)
 - **Internacionalización lista para ampliar**
@@ -31,12 +31,12 @@ Portfolio personal construido con Next.js, Tailwind CSS, TypeScript y un sistema
 
 ```
 portfolio-next/
-├── DESIGN_SYSTEM.md         # Guía de estilos y sistema de diseño
+├── DESIGN_SYSTEM.md         # Guía de estilos y sistema de diseño (actualizada)
 ├── src/
 │   ├── app/                # App Router, layout, páginas y estilos globales
 │   │   ├── globals.css     # Estilos globales y tokens de diseño (migrados a Tailwind)
-│   │   └── components/     # Componentes principales (hero, tarjetas, etc.)
-│   └── shared/             # Componentes y tipos compartidos (Navigation, Icons, etc.)
+│   │   └── components/     # Componentes principales (hero, tarjetas, experiencia, proyectos, etc.)
+│   └── shared/             # Componentes y tipos compartidos (Navigation, Icons, mocks, types, etc.)
 ├── public/                 # Recursos estáticos (imágenes, íconos, CV)
 ├── jest.config.ts          # Configuración de testing
 ├── eslint.config.mjs       # Configuración ESLint flat + jsx-a11y
@@ -81,13 +81,13 @@ portfolio-next/
   ```bash
   npm run test:coverage
   ```
-- Los tests de navegación usan selectores específicos y `within` para evitar errores por enlaces duplicados (desktop/mobile).
+- Los tests cubren casos condicionales, ramas de renderizado y accesibilidad (incluyendo casos de enlaces, iconos, y componentes con mocks).
 
 ---
 
 ## 🖌️ Sistema de Diseño y Accesibilidad
 
-- Consulta `DESIGN_SYSTEM.md` para conocer la paleta de colores, tokens (incluyendo sombras, tooltips, modales, overlays, menús), reglas de accesibilidad, advertencias de uso, ejemplos y buenas prácticas.
+- Consulta `DESIGN_SYSTEM.md` para conocer la paleta de colores (actualizada, con verde de éxito accesible `#11602d`), tokens (incluyendo sombras, tooltips, modales, overlays, menús), reglas de accesibilidad, advertencias de uso, ejemplos y buenas prácticas.
 - El sistema de diseño sigue recomendaciones de WebAIM, WCAG y NN/g.
 - Todos los componentes cumplen contraste AA/AAA, área mínima interactiva y semántica adecuada.
 - Los estilos globales y tokens están migrados a utilidades de Tailwind siempre que es posible.
