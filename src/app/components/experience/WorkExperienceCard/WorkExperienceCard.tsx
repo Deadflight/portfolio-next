@@ -8,6 +8,18 @@ interface IWorkExperienceCardProps {
   isLast?: boolean;
 }
 
+/**
+ * WorkExperienceCard component displays detailed information about a single work experience entry,
+ * including position, company details, business period, location, professional reference,
+ * business impact, and technology stack.
+ *
+ * @component
+ * @param {IWorkExperienceCardProps} props - The props for the WorkExperienceCard component.
+ * @param {IWorkExperience} props.workExperience - The work experience data to display.
+ * @param {boolean} [props.isLast] - Indicates if this is the last card in the timeline (renders the timeline line accordingly).
+ *
+ * @returns {JSX.Element} The rendered WorkExperienceCard component.
+ */
 export const WorkExperienceCard: FC<IWorkExperienceCardProps> = ({
   workExperience,
   isLast = false,
