@@ -1,6 +1,15 @@
 import { Icon } from "@/shared/components/Icons/Icons";
 import React from "react";
 
+/**
+ * Renders an article card describing the current professional focus.
+ *
+ * The `CurrentFocus` component displays a summary of the developer's main areas of expertise,
+ * including user-centered development, scalable solutions, international collaboration, and measurable impact.
+ * It highlights key technologies such as React, Next.js, Node.js, TypeScript, Express, AWS, and MongoDB.
+ *
+ * @returns {JSX.Element} The rendered article card with current focus details.
+ */
 export const CurrentFocus = () => {
   return (
     <article className="card">
