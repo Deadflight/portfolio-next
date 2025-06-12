@@ -1,7 +1,17 @@
 import { Icon } from "@/shared/components/Icons/Icons";
-import React from "react";
+import React, { JSX } from "react";
 
-export const BeyondTheCode = () => {
+/**
+ * Renders the "Más Allá del Código" (Beyond the Code) card component.
+ *
+ * This component displays a section highlighting personal and professional growth
+ * beyond software development. It includes a title with an icon, a descriptive paragraph,
+ * and a list of interests and goals such as learning new technologies, improving English,
+ * exploring new challenges, and enjoying hobbies like cooking and role-playing games.
+ *
+ * @returns {JSX.Element} The rendered BeyondTheCode card component.
+ */
+export const BeyondTheCode = (): JSX.Element => {
   return (
     <article className="card">
       <div className="flex items-center mb-4">
