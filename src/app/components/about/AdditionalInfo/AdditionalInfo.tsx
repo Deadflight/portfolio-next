@@ -1,7 +1,16 @@
 import { Icon } from "@/shared/components/Icons/Icons";
-import React from "react";
+import React, { JSX } from "react";
 
-export const AdditionalInfo = () => {
+/**
+ * Renders an article card displaying additional personal information such as location, experience, languages, and philosophy.
+ *
+ * @component
+ * @example
+ * <AdditionalInfo />
+ *
+ * @returns {JSX.Element} A styled card with a grid of labeled information items, each with an icon and description.
+ */
+export const AdditionalInfo = (): JSX.Element => {
   return (
     <article className="card bg-white border-2 border-text-main/10">
       <dl className="grid sm:grid-cols-2 gap-4 text-center">
