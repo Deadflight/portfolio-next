@@ -3,8 +3,21 @@ import { RolesAndEvolution } from "../RolesAndEvolution/RolesAndEvolution";
 import { AdditionalInfo } from "../AdditionalInfo/AdditionalInfo";
 import { CurrentFocus } from "../CurrentFocus/CurrentFocus";
 import { BeyondTheCode } from "../BeyondTheCode/BeyondTheCode";
+import { JSX } from "react";
 
-export const AboutMeShowcase = () => {
+/**
+ * Renders the "Sobre Mí" (About Me) showcase section, presenting personal and professional information.
+ *
+ * This component displays a two-column layout:
+ * - The left column includes the user's journey, roles and evolution, and additional personal information.
+ * - The right column highlights current focus and philosophy beyond coding.
+ *
+ * At the bottom, it features a call-to-action card inviting users to collaborate or view projects.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered AboutMeShowcase section.
+ */
+export const AboutMeShowcase = (): JSX.Element => {
   return (
     <section id="sobre-mi" className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">

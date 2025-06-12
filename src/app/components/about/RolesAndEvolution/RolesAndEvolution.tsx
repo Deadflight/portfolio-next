@@ -1,7 +1,16 @@
 import { Icon } from "@/shared/components/Icons/Icons";
-import React from "react";
+import React, { JSX } from "react";
 
-export const RolesAndEvolution = () => {
+/**
+ * Renders an article card describing the user's professional roles and evolution.
+ *
+ * This component displays a section with a title and two paragraphs detailing
+ * the transition from frontend specialization to full stack development, highlighting
+ * key experiences at Contactemos Contact Center and Farmaloop.
+ *
+ * @returns {JSX.Element} The rendered RolesAndEvolution article card.
+ */
+export const RolesAndEvolution = (): JSX.Element => {
   return (
     <article className="card">
       <div className="flex items-center mb-4">

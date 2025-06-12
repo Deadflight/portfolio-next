@@ -1,5 +1,5 @@
 import { Icon } from "@/shared/components/Icons/Icons";
-import React from "react";
+import React, { JSX } from "react";
 
 /**
  * Renders an article card describing the current professional focus.
@@ -10,7 +10,7 @@ import React from "react";
  *
  * @returns {JSX.Element} The rendered article card with current focus details.
  */
-export const CurrentFocus = () => {
+export const CurrentFocus = (): JSX.Element => {
   return (
     <article className="card">
       <div className="flex items-center mb-4">
