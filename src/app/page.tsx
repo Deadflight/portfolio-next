@@ -3,6 +3,7 @@ import { ProfessionalIdentityHero } from "./components/hero/ProfessionalIdentity
 import { WorkExperienceShowcase } from "./components/experience/WorkExperience";
 import { ProjectsShowCase } from "./components/projects/ProjectsShowCase";
 import { AboutMeShowcase } from "./components/about/AboutMeShowCase/AboutMeShowCase";
+import { SkillsExperienceShowCase } from "./components/skills/SkillsExperienceShowCase";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <WorkExperienceShowcase />
       <ProjectsShowCase />
       <AboutMeShowcase />
+      <SkillsExperienceShowCase />
     </main>
   );
 }
