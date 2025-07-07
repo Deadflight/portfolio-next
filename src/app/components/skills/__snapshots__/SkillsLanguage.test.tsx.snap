@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`SkillsLanguage matches snapshot 1`] = `
+<DocumentFragment>
+  <section
+    aria-labelledby="languages-title"
+    class="mt-12"
+  >
+    <div
+      class="card max-w-2xl mx-auto bg-background-main border-2 border-primary-brand/10 shadow-subtle"
+    >
+      <header
+        class="flex items-center mb-6"
+      >
+        <span
+          aria-hidden="true"
+          class="mr-3 text-text-main"
+          data-testid="icon-Globe"
+          size="20"
+        />
+        <h2
+          class="text-xl font-heading font-semibold text-text-main"
+          id="languages-title"
+        >
+          Idiomas
+        </h2>
+      </header>
+      <div
+        class="grid sm:grid-cols-2 gap-6"
+      >
+        <div
+          aria-label="Español"
+          class="text-center p-4 bg-background-main rounded-medium"
+          role="region"
+        >
+          <div
+            aria-hidden="true"
+            class="flex justify-center mb-2"
+          >
+            <span
+              aria-hidden="true"
+              class="text-success-color mr-1"
+              data-testid="icon-Star"
+              size="14"
+            />
+            <span
+              aria-hidden="true"
+              class="text-success-color mr-1"
+              data-testid="icon-Star"
+              size="14"
+            />
+            <span
+              aria-hidden="true"
+              class="text-success-color mr-1"
+              data-testid="icon-Star"
+              size="14"
+            />
+            <span
+              aria-hidden="true"
+              class="text-success-color mr-1"
+              data-testid="icon-Star"
+              size="14"
+            />
+            <span
+              aria-hidden="true"
+              class="text-success-color mr-1"
+              data-testid="icon-Star"
+              size="14"
+            />
+          </div>
+          <h3
+            class="font-body font-bold text-text-main mb-1"
+          >
+            Español
+          </h3>
+          <p
+            class="font-body text-primary-brand text-sm"
+          >
+            Nativo
+          </p>
+          <p
+            class="font-body text-primary-brand text-xs mt-1"
+          >
+            Comunicación profesional y técnica fluida
+          </p>
+        </div>
+        <div
+          aria-label="Inglés"
+          class="text-center p-4 bg-background-main rounded-medium"
+          role="region"
+        >
+          <div
+            aria-hidden="true"
+            class="flex justify-center mb-2"
+          >
+            <span
+              aria-hidden="true"
+              class="mr-1 text-primary-brand"
+              data-testid="icon-Star"
+              size="14"
+            />
+            <span
+              aria-hidden="true"
+              class="mr-1 text-primary-brand"
+              data-testid="icon-Star"
+              size="14"
+            />
+            <span
+              aria-hidden="true"
+              class="mr-1 text-primary-brand"
+              data-testid="icon-Star"
+              size="14"
+            />
+            <span
+              aria-hidden="true"
+              class="mr-1 text-secondary"
+              data-testid="icon-Star"
+              size="14"
+            />
+            <span
+              aria-hidden="true"
+              class="mr-1 text-secondary"
+              data-testid="icon-Star"
+              size="14"
+            />
+          </div>
+          <h3
+            class="font-body font-bold text-text-main mb-1"
+          >
+            Inglés
+          </h3>
+          <p
+            class="font-body text-primary-brand text-sm"
+          >
+            B1 - Intermedio
+          </p>
+          <p
+            class="font-body text-primary-brand text-xs mt-1"
+          >
+            Comunicación técnica escrita, reuniones de trabajo
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
+`;
