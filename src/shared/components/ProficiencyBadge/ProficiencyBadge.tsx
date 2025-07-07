@@ -4,16 +4,14 @@ export const ProficiencyBadge = ({ level }: { level: ISkillProficiency }) => {
   // Asumimos que los nombres de clase siguen el patrón bg-* y text-*
   // Puedes ajustar la lógica según tus colores reales
   // bg-accent (#9A8C98) no tiene suficiente contraste con blanco, así que forzamos texto oscuro para ese caso
-  let textColor = "text-white";
-  if (level.bgColor === "bg-accent") {
-    textColor = "text-text-main";
-  } else if (
-    ["bg-success", "bg-text-main", "bg-primary-brand"].includes(level.bgColor)
-  ) {
-    textColor = "text-white";
-  } else {
-    textColor = "text-text-main";
-  }
+  // Mapping of bgColor to text color for better contrast
+  const bgToTextColor: Record<string, string> = {
+    "bg-accent": "text-text-main",
+    "bg-success": "text-white",
+    "bg-text-main": "text-white",
+    "bg-primary-brand": "text-white",
+  };
+  const textColor = bgToTextColor[level.bgColor] || "text-text-main";
   return (
     <span
       className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${textColor} ${level.bgColor}`}

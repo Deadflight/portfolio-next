@@ -42,7 +42,7 @@ export const SkillsLanguage = () => {
                   key={index}
                   name="Star"
                   size={14}
-                  className="text-success-color mr-1"
+                  className="text-success mr-1"
                   aria-hidden="true"
                 />
               ))}

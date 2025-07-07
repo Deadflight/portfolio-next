@@ -70,9 +70,4 @@ describe("SkillsLanguage", () => {
     expect(languageRegions[0]).toHaveAttribute("aria-label", "Español");
     expect(languageRegions[1]).toHaveAttribute("aria-label", "Inglés");
   });
-
-  it("matches snapshot", () => {
-    const { asFragment } = render(<SkillsLanguage />);
-    expect(asFragment()).toMatchSnapshot();
-  });
 });

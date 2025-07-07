@@ -1,6 +1,8 @@
 import { Icon } from "../Icons/Icons";
 import { ISkillProficiency } from "../../types/skills.types";
 
+const STAR_COUNT = 5;
+
 export const StarRating = ({
   level,
   skillName,
@@ -14,7 +16,7 @@ export const StarRating = ({
       role="img"
       aria-label={`${skillName}: ${level.label}`}
     >
-      {[...Array(5)].map((_, index) => (
+      {[...Array(STAR_COUNT)].map((_, index) => (
         <Icon
           key={index}
           name="Star"
