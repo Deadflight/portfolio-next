@@ -1,0 +1,35 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  lint:
+    uses: ./.github/workflows/lint.yml
+    permissions:
+      contents: read
+      pull-requests: write
+
+  typecheck:
+    needs: lint
+    uses: ./.github/workflows/typecheck.yml
+    permissions:
+      contents: read
+      pull-requests: write
+
+  test:
+    needs: typecheck
+    uses: ./.github/workflows/test.yml
+    permissions:
+      contents: read
+      pull-requests: write
+
+  build:
+    needs: test
+    uses: ./.github/workflows/build.yml
+    permissions:
+      contents: read
+      pull-requests: write
