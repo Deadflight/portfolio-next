@@ -31,9 +31,9 @@ export const SkillsLearning = (): JSX.Element => {
         </header>
         <p className="font-body text-primary-brand leading-relaxed mb-6 font-medium">
           La tecnología evoluciona constantemente, y yo también. Actualmente
-          estoy profundizando en arquitecturas de microservicios, explorando
-          tecnologías emergentes como Web3, y mejorando mis habilidades en
-          DevOps y testing automatizado.
+          estoy profundizando en microservicios, perfeccionando mis
+          conocimientos en testing avanzado, explorando Angular y preparándome
+          para la certificación MCP.
         </p>
         <ul
           className="flex flex-wrap justify-center gap-2"
