@@ -30,7 +30,16 @@ export const AdditionalInfo = (): JSX.Element => {
           </dt>
           <dd className="font-body text-primary-brand text-xs">3+ Años</dd>
         </div>
-        <div className="flex flex-col items-center justify-center w-full col-span-2">
+        <div className="flex flex-col items-center justify-center">
+          <dt className="flex items-center font-body font-bold text-text-main text-sm">
+            <Icon name="Language" size={20} className="text-text-main mr-2" />
+            Idiomas
+          </dt>
+          <dd className="font-body text-primary-brand text-xs">
+            Español (Nativo), Inglés (B1)
+          </dd>
+        </div>
+        <div className="flex flex-col items-center justify-center">
           <dt className="flex items-center font-body font-bold text-text-main text-sm">
             <Icon name="Star" size={20} className="text-text-main mr-2" />
             Filosofía
