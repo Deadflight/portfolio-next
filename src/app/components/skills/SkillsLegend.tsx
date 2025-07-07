@@ -1,4 +1,5 @@
 import { Icon } from "@/shared/components/Icons/Icons";
+import { StarRating } from "@/shared/components/StarRating/StarRating";
 import { ISkillProficiencyLevels } from "@/shared/types/skills.types";
 import React, { FC, JSX } from "react";
 
@@ -19,8 +20,6 @@ export interface SkillsLegendProps {
  *
  * @returns {JSX.Element} The rendered SkillsLegend section.
  */
-const STAR_COUNT = 5;
-
 export const SkillsLegend: FC<SkillsLegendProps> = ({
   proficiencyLevels,
 }: SkillsLegendProps): JSX.Element => {
@@ -34,7 +33,7 @@ export const SkillsLegend: FC<SkillsLegendProps> = ({
           <Icon
             name="BookOpen"
             size={20}
-            className="mr-2 text-primary-brand"
+            className="mr-2 text-text-main"
             aria-hidden="true"
           />
           Niveles de Competencia
@@ -42,25 +41,10 @@ export const SkillsLegend: FC<SkillsLegendProps> = ({
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" role="list">
           {Object.entries(proficiencyLevels).map(([key, level]) => {
             const cardClassName =
-              "text-center p-3 bg-background-main rounded-medium";
+              "text-center p-3 bg-background-main rounded-medium flex justify-center items-center flex-col";
             return (
               <div key={key} className={cardClassName} role="listitem">
-                <div
-                  className="flex justify-center mb-2"
-                  aria-label={`${level.label}, ${level.stars} de ${STAR_COUNT} estrellas`}
-                >
-                  {[...Array(STAR_COUNT)].map((_, index) => (
-                    <Icon
-                      key={index}
-                      name="Star"
-                      size={14}
-                      className={`mr-1 ${
-                        index < level.stars ? level.color : "text-secondary"
-                      }`}
-                      aria-hidden="true"
-                    />
-                  ))}
-                </div>
+                <StarRating level={level} skillName={level.label} />
                 <p className="font-body font-bold text-text-main text-sm mb-1">
                   {level.label}
                 </p>
