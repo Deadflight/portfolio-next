@@ -50,7 +50,7 @@ describe("SkillsLanguage", () => {
     expect(stars).toHaveLength(5);
     // Check className for colored stars
     const coloredStars = stars.filter((star) =>
-      (star as HTMLElement).className?.includes("text-primary-brand")
+      (star as HTMLElement).className?.includes("text-text-main")
     );
     expect(coloredStars).toHaveLength(3);
   });

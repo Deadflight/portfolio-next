@@ -1,6 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { SkillsLegend, SkillsLegendProps } from "./SkillsLegend";
+// Import the unfilled star color token from the StarRating module or theme
+import { UNFILLED_STAR_COLOR } from "../../../shared/components/StarRating/StarRating";
 
 const mockProficiencyLevels: SkillsLegendProps["proficiencyLevels"] = {
   beginner: {
@@ -74,7 +76,7 @@ describe("SkillsLegend", () => {
         if (index < level.stars) {
           expect(className).toContain(level.color);
         } else {
-          expect(className).toContain("text-gray-300"); // Assuming unfilled stars use this color
+          expect(className).toContain(UNFILLED_STAR_COLOR); // Use the imported unfilled star color token
         }
       });
     });
