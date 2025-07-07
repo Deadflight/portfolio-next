@@ -26,6 +26,11 @@ describe("AdditionalInfo", () => {
     expect(screen.getByText("Experiencia")).toBeInTheDocument();
     expect(screen.getByText("3+ Años")).toBeInTheDocument();
 
+    expect(screen.getByText("Idiomas")).toBeInTheDocument();
+    expect(
+      screen.getByText("Español (Nativo), Inglés (B1)")
+    ).toBeInTheDocument();
+
     expect(screen.getByText("Filosofía")).toBeInTheDocument();
     expect(
       screen.getByText(
@@ -37,6 +42,7 @@ describe("AdditionalInfo", () => {
   it("renders all icons", () => {
     expect(screen.getByTestId("icon-Location")).toBeInTheDocument();
     expect(screen.getByTestId("icon-Calendar")).toBeInTheDocument();
+    expect(screen.getByTestId("icon-Language")).toBeInTheDocument();
     expect(screen.getByTestId("icon-Star")).toBeInTheDocument();
   });
 });
