@@ -74,7 +74,7 @@ describe("SkillsLegend", () => {
         if (index < level.stars) {
           expect(className).toContain(level.color);
         } else {
-          expect(className).toContain("text-secondary");
+          expect(className).toContain("text-gray-300"); // Assuming unfilled stars use this color
         }
       });
     });

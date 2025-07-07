@@ -14,7 +14,7 @@ const proficiencyLevels: ISkillProficiencyLevels = {
   expert: {
     label: "Experto",
     description: "Dominio completo, capaz de liderar proyectos y mentoría",
-    color: "text-success",
+    color: "text-text-main",
     bgColor: "bg-success",
     stars: 5,
   },
@@ -28,14 +28,14 @@ const proficiencyLevels: ISkillProficiencyLevels = {
   intermediate: {
     label: "Intermedio",
     description: "Experiencia práctica, desarrollo con supervisión ocasional",
-    color: "text-primary-brand",
+    color: "text-text-main",
     bgColor: "bg-primary-brand",
     stars: 3,
   },
   beginner: {
     label: "Principiante",
     description: "Conocimientos básicos, en proceso de aprendizaje",
-    color: "text-accent",
+    color: "text-text-main",
     bgColor: "bg-accent",
     stars: 2,
   },
