@@ -1,4 +1,5 @@
 import { Icon } from "@/shared/components/Icons/Icons";
+import { StarRating } from "@/shared/components/StarRating/StarRating";
 import React from "react";
 
 /**
@@ -37,15 +38,16 @@ export const SkillsLanguage = () => {
             aria-label="Español"
           >
             <div className="flex justify-center mb-2" aria-hidden="true">
-              {[...Array(5)].map((_, index) => (
-                <Icon
-                  key={index}
-                  name="Star"
-                  size={14}
-                  className="text-success mr-1"
-                  aria-hidden="true"
-                />
-              ))}
+              <StarRating
+                level={{
+                  stars: 5,
+                  color: "text-text-main",
+                  bgColor: "bg-text-main",
+                  label: "Nativo",
+                  description: "Comunicación fluida",
+                }}
+                skillName="Español"
+              />
             </div>
             <h3 className="font-body font-bold text-text-main mb-1">Español</h3>
             <p className="font-body text-primary-brand text-sm">Nativo</p>
@@ -59,17 +61,17 @@ export const SkillsLanguage = () => {
             aria-label="Inglés"
           >
             <div className="flex justify-center mb-2" aria-hidden="true">
-              {[...Array(5)].map((_, index) => (
-                <Icon
-                  key={index}
-                  name="Star"
-                  size={14}
-                  className={`mr-1 ${
-                    index < 3 ? "text-primary-brand" : "text-secondary"
-                  }`}
-                  aria-hidden="true"
-                />
-              ))}
+              <StarRating
+                level={{
+                  stars: 3,
+                  color: "text-text-main",
+                  bgColor: "bg-text-main",
+                  label: "Intermedio",
+                  description:
+                    "Comunicación técnica escrita, reuniones de trabajo",
+                }}
+                skillName="Inglés"
+              />
             </div>
             <h3 className="font-body font-bold text-text-main mb-1">Inglés</h3>
             <p className="font-body text-primary-brand text-sm">

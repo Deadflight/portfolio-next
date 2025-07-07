@@ -2,6 +2,7 @@ import { Icon } from "../Icons/Icons";
 import { ISkillProficiency } from "../../types/skills.types";
 
 const STAR_COUNT = 5;
+export const UNFILLED_STAR_COLOR = "text-gray-300"; // Default color for unfilled stars
 
 export const StarRating = ({
   level,
@@ -22,7 +23,7 @@ export const StarRating = ({
           name="Star"
           size={14}
           className={`mr-1 ${
-            index < level.stars ? level.color : "text-gray-300"
+            index < level.stars ? level.color : UNFILLED_STAR_COLOR
           }`}
           aria-hidden="true"
         />
