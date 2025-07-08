@@ -6,7 +6,7 @@ const socialProfiles = [
     platform: "github",
     url: "https://github.com/Deadflight",
     ariaLabel: "Perfil de GitHub de Carlos Correa",
-    iconName: "Github" as const,
+    iconName: "GitHub" as const,
   },
   {
     platform: "linkedin",

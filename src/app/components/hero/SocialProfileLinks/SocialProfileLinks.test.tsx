@@ -34,7 +34,7 @@ describe("SocialProfileLinks", () => {
     expect(githubLink).toHaveAttribute("target", "_blank");
     expect(githubLink).toHaveAttribute("rel", "noopener noreferrer");
     expect(
-      githubLink.querySelector('[data-testid="icon"][data-name="Github"]')
+      githubLink.querySelector('[data-testid="icon"][data-name="GitHub"]')
     ).toBeInTheDocument();
   });
 

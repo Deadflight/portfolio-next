@@ -111,13 +111,13 @@ describe("ProjectCard", () => {
     ).toHaveAttribute("src", "/placeholder.svg");
   });
 
-  it("renders icons for Calendar, Users, ChartLine, Eye, and Github", () => {
+  it("renders icons for Calendar, Users, ChartLine, Eye, and GitHub", () => {
     render(<ProjectCard project={baseProject} />);
     expect(screen.getByTestId("icon-Calendar")).toBeInTheDocument();
     expect(screen.getByTestId("icon-Users")).toBeInTheDocument();
     expect(screen.getByTestId("icon-ChartLine")).toBeInTheDocument();
     expect(screen.getByTestId("icon-Eye")).toBeInTheDocument();
-    expect(screen.getByTestId("icon-Github")).toBeInTheDocument();
+    expect(screen.getByTestId("icon-GitHub")).toBeInTheDocument();
   });
 
   it("renders only github link if liveUrl is missing", () => {

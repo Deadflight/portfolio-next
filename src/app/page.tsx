@@ -4,6 +4,7 @@ import { WorkExperienceShowcase } from "./components/experience/WorkExperience";
 import { ProjectsShowCase } from "./components/projects/ProjectsShowCase";
 import { AboutMeShowcase } from "./components/about/AboutMeShowCase/AboutMeShowCase";
 import { SkillsExperienceShowCase } from "./components/skills/SkillsExperienceShowCase";
+import { Contact } from "./components/contact/Contact";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
       <ProjectsShowCase />
       <AboutMeShowcase />
       <SkillsExperienceShowCase />
-      <p>Prueba Contacto 2</p>
+      <Contact />
     </main>
   );
 }
