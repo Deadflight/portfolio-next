@@ -10,6 +10,7 @@ export default function Home() {
       <ProfessionalIdentityHero />
       <WorkExperienceShowcase />
       <ProjectsShowCase />
+      <p>Prueba</p>
     </main>
   );
 }
