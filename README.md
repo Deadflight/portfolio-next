@@ -7,8 +7,9 @@
 ![ESLint Flat + jsx-a11y](https://img.shields.io/badge/ESLint-flat%20config%20+%20jsx--a11y-purple?logo=eslint)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
-Portfolio personal construido con Next.js, Tailwind CSS, TypeScript y un sistema de diseño propio enfocado en accesibilidad, buenas prácticas y escalabilidad.
-PWPCC-110
+## 📖 Descripción
+
+Este proyecto es un **portfolio personal** que muestra mis habilidades y proyectos utilizando las últimas tecnologías web. Está diseñado para ser accesible, modular y fácil de mantener, siguiendo las mejores prácticas de desarrollo.
 ---
 
 ## ✨ Características
