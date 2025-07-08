@@ -67,7 +67,7 @@ export const ContactInformation: React.FC<ContactInformationProps> = ({
                 Portfolio
               </p>
               <a
-                href="portfolio-next-lyart-nu.vercel.app"
+                href="https://portfolio-next-lyart-nu.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link-text"
