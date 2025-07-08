@@ -14,7 +14,7 @@ export default function Home() {
       <ProjectsShowCase />
       <AboutMeShowcase />
       <SkillsExperienceShowCase />
-      <p>Prueba Contacto</p>
+      <p>Prueba Contacto 2</p>
     </main>
   );
 }
