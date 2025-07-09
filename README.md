@@ -9,17 +9,16 @@
 
 ## 📖 Descripción
 
-Este proyecto es un **portfolio personal** que muestra mis habilidades y proyectos utilizando las últimas tecnologías web. Está diseñado para ser accesible, modular y fácil de mantener, siguiendo las mejores prácticas de desarrollo.
----
+## Este proyecto es un **portfolio personal** que muestra mis habilidades y proyectos utilizando las últimas tecnologías web. Está diseñado para ser accesible, modular y fácil de mantener, siguiendo las mejores prácticas de desarrollo.
 
 ## ✨ Características
 
 - **Next.js 15+** con App Router
 - **TypeScript** para tipado estricto
 - **Tailwind CSS 4** y tokens de diseño personalizados (paleta, sombras, tooltips, modales, overlays, menús)
-- **Guía de estilos y sistema de diseño** documentado en [`DESIGN_SYSTEM.md`], actualizado y alineado con la implementación
-- **Accesibilidad**: contraste AAA, navegación por teclado, área mínima interactiva, soporte `prefers-reduced-motion`, semántica y roles correctos
-- **Testing robusto y accesible** con Jest y React Testing Library (tests de navegación y componentes cubriendo casos condicionales y de accesibilidad)
+- **Guía de estilos y sistema de diseño** documentado en [`DESIGN_SYSTEM.md`], siempre alineada con la implementación
+- **Accesibilidad avanzada**: contraste AAA, navegación por teclado, área mínima interactiva, soporte `prefers-reduced-motion`, semántica y roles correctos, componentes y tests revisados para cumplir WCAG y mejores prácticas a11y
+- **Testing robusto y accesible** con Jest y React Testing Library: tests de navegación, componentes, casos condicionales y de accesibilidad (incluyendo visualización y accesibilidad de estrellas de puntuación, badges, roles y estructura semántica)
 - **Linting avanzado** con ESLint flat config y `eslint-plugin-jsx-a11y` para accesibilidad en JSX
 - **Estructura modular y escalable** (componentes compartidos en `src/shared/components`)
 - **Internacionalización lista para ampliar**
@@ -74,15 +73,20 @@ portfolio-next/
 
 ## 🧪 Testing
 
-- Ejecuta todos los tests:
+- Ejecuta todos los tests unitarios:
   ```bash
   npm run test
+  ```
+- Ejecuta los tests en modo secuencial (útil para debugging):
+  ```bash
+  npm run test:unit
   ```
 - Cobertura:
   ```bash
   npm run test:coverage
   ```
-- Los tests cubren casos condicionales, ramas de renderizado y accesibilidad (incluyendo casos de enlaces, iconos, y componentes con mocks).
+- Los tests cubren casos condicionales, ramas de renderizado y accesibilidad (incluyendo enlaces, iconos, badges, estrellas de puntuación, mocks y estructura semántica real de los componentes).
+- Se han revisado y adaptado los tests para reflejar la estructura accesible y semántica de los componentes, especialmente en la visualización y accesibilidad de estrellas y badges.
 
 ---
 
@@ -91,6 +95,9 @@ portfolio-next/
 - Consulta `DESIGN_SYSTEM.md` para conocer la paleta de colores (actualizada, con verde de éxito accesible `#11602d`), tokens (incluyendo sombras, tooltips, modales, overlays, menús), reglas de accesibilidad, advertencias de uso, ejemplos y buenas prácticas.
 - El sistema de diseño sigue recomendaciones de WebAIM, WCAG y NN/g.
 - Todos los componentes cumplen contraste AA/AAA, área mínima interactiva y semántica adecuada.
+- Los componentes clave (`SkillsExperienceShowCase`, `SkillsLegend`, `SkillsCard`, `ProficiencyBadge`, `StarRating`, `ContactForm`) han sido revisados para cumplir con el Design System, accesibilidad (a11y), semántica y buenas prácticas de testing.
+- Las estrellas de puntuación y badges ahora son accesibles: la información relevante está en el grupo, no en cada estrella individual, y se usan roles y atributos ARIA correctos.
+- El formulario de contacto es accesible, validado y mantiene los datos escritos ante errores.
 - Los estilos globales y tokens están migrados a utilidades de Tailwind siempre que es posible.
 
 ---

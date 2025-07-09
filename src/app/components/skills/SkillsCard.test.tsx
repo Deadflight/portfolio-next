@@ -10,7 +10,7 @@ import {
 
 // Mock child components
 jest.mock(
-  "../../..//shared/components/ProficiencyBadge/ProficiencyBadge",
+  "../../../shared/components/ProficiencyBadge/ProficiencyBadge",
   () => ({
     ProficiencyBadge: ({ level }: { level: ISkillProficiency }) => (
       <div data-testid="proficiency-badge">{level.label}</div>
