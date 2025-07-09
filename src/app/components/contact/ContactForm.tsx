@@ -101,6 +101,7 @@ export const ContactForm = (): JSX.Element => {
               id="name"
               type="text"
               placeholder="Tu nombre"
+              autoComplete="name"
               {...register("name")}
             />
             {errors.name && (
@@ -120,6 +121,7 @@ export const ContactForm = (): JSX.Element => {
               id="email"
               className="input-field"
               placeholder="tu@email.com"
+              autoComplete="email"
               {...register("email")}
             />
             {errors.email && (
