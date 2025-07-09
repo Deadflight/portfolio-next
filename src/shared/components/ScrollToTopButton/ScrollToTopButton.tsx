@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { Icon } from "../Icons/Icons";
 
 export const ScrollToTopButton = () => {

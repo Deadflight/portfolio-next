@@ -94,14 +94,14 @@ export const Footer = (): JSX.Element => {
               <a
                 href={`mailto:${contactInformation.email}`}
                 className="font-body text-background-main/80 hover:underline focus-visible:outline-2 focus-visible:outline-primary-brand rounded-sm transition-colors duration-200"
-                aria-label="Enviar correo a correamillancarlos@gmail.com"
+                aria-label={`Enviar correo a ${contactInformation.email}`}
               >
                 {contactInformation.email}
               </a>
               <a
                 href={`tel:${contactInformation.phone}`}
                 className="font-body text-background-main/80 hover:underline focus-visible:outline-2 focus-visible:outline-primary-brand rounded-sm transition-colors duration-200"
-                aria-label="Llamar al +58 424 859 9166"
+                aria-label={`Llamar al ${contactInformation.phone}`}
               >
                 {contactInformation.phone}
               </a>
