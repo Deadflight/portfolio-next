@@ -174,12 +174,14 @@ export const ContactForm = () => {
           )}
           Enviar Mensaje
         </button>
-        {generalError.general && (
+        {Object.keys(generalError).length > 0 && (
           <p className="text-error text-sm mt-4 text-center">
-            {generalError.general.join(", ")}
+            {generalError.general
+              ? generalError.general.join(", ")
+              : "Error al enviar el mensaje. Por favor, inténtalo de nuevo."}
           </p>
         )}
-        {formState.isSubmitSuccessful && (
+        {formState.isSubmitSuccessful && !generalError.general && (
           <p className="text-success text-sm mt-4 text-center">
             Mensaje enviado correctamente. ¡Gracias por contactarme!
           </p>

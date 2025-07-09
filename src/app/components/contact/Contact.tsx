@@ -1,6 +1,7 @@
 import React from "react";
 import { ContactInformation } from "./ContactInformation";
 import { ContactForm } from "./ContactForm";
+import { contactInformation } from "@/constants/contactInformation";
 
 export const Contact = () => {
   return (
@@ -20,12 +21,12 @@ export const Contact = () => {
         <ContactInformation
           socialLinks={[
             {
-              linkUrl: "https://github.com/Deadflight",
+              linkUrl: contactInformation.github,
               linkIcon: "GitHub",
               linkLabel: "GitHub",
             },
             {
-              linkUrl: "https://linkedin.com/in/carloscorreamillan",
+              linkUrl: contactInformation.linkedin,
               linkIcon: "Linkedin",
               linkLabel: "LinkedIn",
             },
