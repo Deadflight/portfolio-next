@@ -58,7 +58,7 @@ describe("ContactInformation", () => {
       screen.getByText(/correamillancarlos@gmail.com/i)
     ).toBeInTheDocument();
     expect(screen.getByText(/teléfono/i)).toBeInTheDocument();
-    expect(screen.getByText(/\(\+58\) 424 859 9166/i)).toBeInTheDocument();
+    expect(screen.getByText(/\+584248599166/i)).toBeInTheDocument();
     expect(
       screen.getByText((content, element) => {
         return (

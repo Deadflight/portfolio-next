@@ -1,3 +1,4 @@
+import { contactInformation } from "@/constants/contactInformation";
 import { Icon } from "@/shared/components/Icons/Icons";
 import { SocialLink } from "@/shared/components/SocialLink/SocialLink";
 import { ContactInformationSocialLinks } from "@/shared/types/contact.types";
@@ -45,7 +46,7 @@ export const ContactInformation: React.FC<ContactInformationProps> = ({
                 href="mailto:correamillancarlos@gmail.com"
                 className="link-text"
               >
-                correamillancarlos@gmail.com
+                {contactInformation.email}
               </a>
             </div>
           </div>
@@ -54,8 +55,8 @@ export const ContactInformation: React.FC<ContactInformationProps> = ({
             <Icon name="Phone" size={20} className="text-text-main mr-4" />
             <div>
               <p className="font-body font-semibold text-text-main">Teléfono</p>
-              <a href="tel:+584248599166" className="link-text">
-                (+58) 424 859 9166
+              <a href={`tel:${contactInformation.phone}`} className="link-text">
+                {contactInformation.phone}
               </a>
             </div>
           </div>
@@ -67,12 +68,12 @@ export const ContactInformation: React.FC<ContactInformationProps> = ({
                 Portfolio
               </p>
               <a
-                href="https://portfolio-next-lyart-nu.vercel.app"
+                href={contactInformation.portfolio}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link-text"
               >
-                portfolio-next-lyart-nu.vercel.app
+                {new URL(contactInformation.portfolio).hostname}
               </a>
             </div>
           </div>
