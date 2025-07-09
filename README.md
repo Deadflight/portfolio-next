@@ -9,7 +9,7 @@
 
 ## 📖 Descripción
 
-## Este proyecto es un **portfolio personal** que muestra mis habilidades y proyectos utilizando las últimas tecnologías web. Está diseñado para ser accesible, modular y fácil de mantener, siguiendo las mejores prácticas de desarrollo.
+Este proyecto es un **portfolio personal** que muestra mis habilidades y proyectos utilizando las últimas tecnologías web. Está diseñado para ser accesible, modular y fácil de mantener, siguiendo las mejores prácticas de desarrollo. Incluye un footer accesible y semántico, con enlaces internos y de contacto interactivos, año dinámico y diseño responsivo, alineado con el Design System y los criterios de accesibilidad.
 
 ## ✨ Características
 

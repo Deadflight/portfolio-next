@@ -70,10 +70,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-background-main text-text-main font-body">
         {process.env.NODE_ENV !== "production" && <AxeReporter />}
-        <a href="#main-content" className="skip-link">
-          Saltar al contenido principal
-        </a>
-        <div id="main-content">{children}</div>
+        {children}
       </body>
     </html>
   );

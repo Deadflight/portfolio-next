@@ -1065,6 +1065,7 @@ export const Icon: React.FC<IIconProps> = ({
       style={{ width: size, height: size }}
       aria-hidden="true"
       role="img"
+      data-testid={`icon-${name.toLowerCase()}`}
     >
       <IconComponent />
     </span>
