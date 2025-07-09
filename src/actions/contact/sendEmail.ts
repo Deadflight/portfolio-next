@@ -23,7 +23,7 @@ export async function sendEmail(formData: FormData): Promise<{
   }
 
   const response = await resend.emails.send({
-    from: getEnvs.EMAIL_SENDER_EMAIL,
+    from: getEnvs.EMAIL_SENDER_FROM_EMAIL,
     to: getEnvs.EMAIL_SENDER_TO_EMAIL,
     subject: formData.get("subject") as string,
     replyTo: formData.get("email") as string,

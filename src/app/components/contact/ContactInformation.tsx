@@ -73,7 +73,7 @@ export const ContactInformation: React.FC<ContactInformationProps> = ({
                 rel="noopener noreferrer"
                 className="link-text"
               >
-                {contactInformation.portfolio.replace(/https?:\/\//, "")}
+                {new URL(contactInformation.portfolio).hostname}
               </a>
             </div>
           </div>

@@ -142,6 +142,7 @@ export const ContactForm = (): JSX.Element => {
             id="subject"
             className="input-field"
             placeholder="Asunto del mensaje"
+            autoComplete="off"
             {...register("subject")}
           />
           {errors.subject && (
