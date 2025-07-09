@@ -1,15 +1,17 @@
 import React from "react";
 import { ContactInformation } from "./ContactInformation";
+import { ContactForm } from "./ContactForm";
+import { contactInformation } from "@/constants/contactInformation";
 
 export const Contact = () => {
   return (
     <section id="contacto" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-h2 font-heading font-bold text-[#22223B] mb-4">
+          <h2 className="text-h2 font-heading font-bold text-text-main mb-4">
             Contacto
           </h2>
-          <p className="text-lg font-body text-[#4A4E69] max-w-2xl mx-auto font-medium">
+          <p className="text-lg font-body text-primary-brand max-w-2xl mx-auto font-medium">
             ¿Tienes un proyecto en mente? Me encantaría escuchar sobre él
           </p>
         </div>
@@ -19,17 +21,18 @@ export const Contact = () => {
         <ContactInformation
           socialLinks={[
             {
-              linkUrl: "https://github.com/Deadflight",
+              linkUrl: contactInformation.github,
               linkIcon: "GitHub",
               linkLabel: "GitHub",
             },
             {
-              linkUrl: "https://linkedin.com/in/carloscorreamillan",
+              linkUrl: contactInformation.linkedin,
               linkIcon: "Linkedin",
               linkLabel: "LinkedIn",
             },
           ]}
         />
+        <ContactForm />
       </div>
     </section>
   );
