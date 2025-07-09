@@ -87,6 +87,14 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: OG_DESCRIPTION,
     siteName: "Carlos Correa Portfolio",
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "Carlos Correa Portfolio",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
