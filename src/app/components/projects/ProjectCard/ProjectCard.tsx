@@ -129,7 +129,7 @@ export const ProjectCard: FC<IProjectCardProps> = ({ project }) => {
                 rel="noopener noreferrer"
                 className="link-text flex items-center"
               >
-                <Icon name="Github" size={14} className="mr-1" />
+                <Icon name="GitHub" size={14} className="mr-1" />
                 Código
               </a>
             )}
