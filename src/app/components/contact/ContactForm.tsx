@@ -1,6 +1,6 @@
 "use client";
 import { sendEmail } from "@/actions/contact/sendEmail";
-import React from "react";
+import React, { JSX } from "react";
 import { Icon } from "@/shared/components/Icons/Icons";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,7 +13,29 @@ export interface ContactFormData {
   message: string;
 }
 
-export const ContactForm = () => {
+/**
+ * ContactForm
+ *
+ * This component renders an accessible and validated contact form, allowing users to send messages through the website.
+ * It uses React Hook Form together with Zod for field validation and error management.
+ *
+ * Features:
+ * - Real-time validation of fields (name, email, subject, message) using a Zod schema.
+ * - Displays specific error messages for each field and a general message in case of submission error.
+ * - Visually indicates the sending state (loading/spinner) and shows a success confirmation.
+ * - User input is preserved if a submission error occurs.
+ * - Accessibility: associated labels, roles, and clear messages.
+ *
+ * Props: None.
+ *
+ * Usage example:
+ * ```tsx
+ * <ContactForm />
+ * ```
+ *
+ * @returns {JSX.Element} Accessible and validated contact form.
+ */
+export const ContactForm = (): JSX.Element => {
   const { handleSubmit, register, formState, reset } = useForm<ContactFormData>(
     {
       defaultValues: {
@@ -49,9 +71,11 @@ export const ContactForm = () => {
       reset();
       setGeneralError({});
     } catch (error) {
-      console.error("Error sending email:", error);
       setGeneralError({
-        general: ["Error al enviar el mensaje. Por favor, inténtalo de nuevo."],
+        general:
+          error instanceof Error
+            ? [error.message]
+            : ["Error al enviar el mensaje. Por favor, inténtalo de nuevo."],
       });
       return;
     }
