@@ -22,28 +22,76 @@ const lato = Lato({
   preload: true,
 });
 
+const SITE_TITLE =
+  "Carlos Correa | Full Stack Developer | React, Node.js, TypeScript, Next.js, Remote, Freelance, Web Apps";
+
+const KEYWORDS = [
+  "desarrollador web",
+  "full stack developer",
+  "React",
+  "Next.js",
+  "Node.js",
+  "TypeScript",
+  "JavaScript",
+  "desarrollo web",
+  "aplicaciones web",
+  "APIs",
+  "UI/UX",
+  "testing",
+  "DevOps",
+  "trabajo remoto",
+  "freelance",
+  "portafolio",
+  "proyectos",
+  "habilidades",
+  "experiencia",
+  "Carlos Correa",
+  "programador",
+  "frontend",
+  "backend",
+  "consultor",
+  "software engineer",
+  "desarrollo ágil",
+  "cloud",
+  "AWS",
+  "MongoDB",
+  "PostgreSQL",
+  "HTML",
+  "CSS",
+  "Tailwind CSS",
+  "accesibilidad web",
+  "SEO",
+  "open to work",
+  "español",
+  "inglés",
+];
+
+const SITE_DESCRIPTION =
+  "Portfolio de Carlos Correa, Full Stack Developer con experiencia en React, Next.js, Node.js, TypeScript, JavaScript, desarrollo web, APIs, UI/UX, testing, DevOps, trabajo remoto y freelance. Descubre proyectos, habilidades, experiencia y contacto profesional.";
+
+const SITE_URL = "https://www.carlos-correa.com";
+
+const OG_DESCRIPTION =
+  "Portfolio de Carlos Correa, Full Stack Developer con experiencia en React, Next.js, Node.js, TypeScript, JavaScript, desarrollo web, APIs, UI/UX, testing, DevOps, trabajo remoto y freelance.";
+
 export const metadata: Metadata = {
-  title: "Carlos Correa - Desarrollador Full Stack",
-  description:
-    "Portfolio profesional de Carlos Correa. Más de 3 años de experiencia creando aplicaciones web escalables con React, Node.js y AWS. Especializado en entornos ágiles y desarrollo de soluciones centradas en el usuario.",
-  keywords:
-    "Carlos Correa, desarrollador full stack, React, Node.js, AWS, portfolio, desarrollo web, JavaScript, TypeScript",
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  keywords: KEYWORDS,
   authors: [{ name: "Carlos Correa" }],
   creator: "Carlos Correa",
   openGraph: {
     type: "website",
     locale: "es_ES",
-    url: "https://carloscorreaportfolio.netlify.app",
-    title: "Carlos Correa - Desarrollador Full Stack",
-    description:
-      "Portfolio profesional de Carlos Correa. Especializado en desarrollo web con React, Node.js y AWS.",
+    url: SITE_URL,
+    title: SITE_TITLE,
+    description: OG_DESCRIPTION,
     siteName: "Carlos Correa Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Carlos Correa - Desarrollador Full Stack",
-    description:
-      "Portfolio profesional de Carlos Correa. Especializado en desarrollo web con React, Node.js y AWS.",
+    title: SITE_TITLE,
+    description: OG_DESCRIPTION,
   },
   robots: {
     index: true,
@@ -54,6 +102,13 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: SITE_URL,
+    languages: {
+      es: SITE_URL,
+      en: `${SITE_URL}/en`,
     },
   },
 };
