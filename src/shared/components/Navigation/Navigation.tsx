@@ -2,48 +2,7 @@
 
 import { JSX, useState } from "react";
 import { Icon } from "../Icons/Icons";
-
-// Business-focused navigation configuration
-const navigationConfig = {
-  mainNavigation: [
-    {
-      href: "#inicio",
-      label: "Inicio",
-      iconName: "Home" as const,
-      businessPurpose: "Professional introduction and brand statement",
-    },
-    {
-      href: "#experiencia",
-      label: "Experiencia",
-      iconName: "Briefcase" as const,
-      businessPurpose: "Career history and professional achievements",
-    },
-    {
-      href: "#proyectos",
-      label: "Proyectos",
-      iconName: "Code" as const,
-      businessPurpose: "Portfolio of completed work and case studies",
-    },
-    {
-      href: "#sobre-mi",
-      label: "Sobre Mí",
-      iconName: "User" as const,
-      businessPurpose: "Professional narrative and personal brand",
-    },
-    {
-      href: "#habilidades",
-      label: "Habilidades",
-      iconName: "Laptop" as const,
-      businessPurpose: "Technical competencies and proficiency levels",
-    },
-    {
-      href: "#contacto",
-      label: "Contacto",
-      iconName: "Mail" as const,
-      businessPurpose: "Client and recruiter engagement channels",
-    },
-  ],
-};
+import { navigationConfig } from "@/constants/navigationConfig";
 
 /**
  * NavigationExperience is a responsive navigation bar component for a professional portfolio.
@@ -64,30 +23,32 @@ export const NavigationExperience = (): JSX.Element => {
       className="fixed top-0 left-0 right-0 z-50 bg-background-main/95 backdrop-blur-sm border-b border-secondary"
       aria-label="Main navigation for professional portfolio"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <article className="flex justify-between items-center h-16">
           {/* Professional Brand */}
           <div className="flex-shrink-0">
-            <h1 className="text-xl font-heading font-bold text-primary-brand">
+            <p className="text-xl font-heading font-bold text-primary-brand">
               Carlos Correa Portfolio
-            </h1>
+            </p>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+          <article className="hidden lg:block">
+            <ul className="ml-10 flex items-baseline space-x-4">
               {navigationConfig.mainNavigation.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
-                  title={item.businessPurpose}
-                >
-                  {item.label}
-                </a>
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
+                    title={item.businessPurpose}
+                    data-testid={`nav-link-${item.label.replace(/\s+/g, "").toLowerCase()}`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
               ))}
-            </div>
-          </div>
+            </ul>
+          </article>
 
           {/* Mobile menu button */}
           <div className="lg:hidden">
@@ -100,28 +61,30 @@ export const NavigationExperience = (): JSX.Element => {
               <Icon name={isOpen ? "X" : "Menu"} size={24} />
             </button>
           </div>
-        </div>
+        </article>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden" data-testid="mobile-menu">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-background-main border-t border-secondary">
+          <article className="lg:hidden" data-testid="mobile-menu">
+            <ul className="px-2 pt-2 pb-3 space-y-1 bg-background-main border-t border-secondary">
               {navigationConfig.mainNavigation.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
-                  title={item.businessPurpose}
-                >
-                  <Icon name={item.iconName} size={20} className="mr-3" />
-                  {item.label}
-                </a>
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
+                    onClick={() => setIsOpen(false)}
+                    title={item.businessPurpose}
+                    data-testid={`mobile-nav-link-${item.label.replace(/\s+/g, "").toLowerCase()}`}
+                  >
+                    <Icon name={item.iconName} size={20} className="mr-3" />
+                    {item.label}
+                  </a>
+                </li>
               ))}
-            </div>
-          </div>
+            </ul>
+          </article>
         )}
-      </div>
+      </section>
     </nav>
   );
 };

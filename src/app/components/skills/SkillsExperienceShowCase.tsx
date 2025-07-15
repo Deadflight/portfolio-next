@@ -267,12 +267,12 @@ export const SkillsExperienceShowCase = () => {
     >
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-12">
-          <h1
+          <h2
             id="skills-title"
             className="text-h2 font-heading font-bold text-text-main mb-4"
           >
             Habilidades Técnicas
-          </h1>
+          </h2>
           <p className="text-lg font-body text-primary-brand max-w-2xl mx-auto font-medium">
             Mi experiencia práctica en tecnologías y herramientas para crear
             soluciones completas
