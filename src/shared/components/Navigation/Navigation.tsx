@@ -41,7 +41,7 @@ export const NavigationExperience = (): JSX.Element => {
                     href={item.href}
                     className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
                     title={item.businessPurpose}
-                    data-testid={`nav-link-${item.label.replace(/\s+/g, "").toLowerCase()}`}
+                    data-testid={`nav-link-${item.href.replace("#", "")}`}
                   >
                     {item.label}
                   </a>
@@ -74,7 +74,7 @@ export const NavigationExperience = (): JSX.Element => {
                     className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
                     onClick={() => setIsOpen(false)}
                     title={item.businessPurpose}
-                    data-testid={`mobile-nav-link-${item.label.replace(/\s+/g, "").toLowerCase()}`}
+                    data-testid={`nav-link-${item.href.replace("#", "")}`}
                   >
                     <Icon name={item.iconName} size={20} className="mr-3" />
                     {item.label}
