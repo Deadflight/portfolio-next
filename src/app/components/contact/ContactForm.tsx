@@ -63,6 +63,7 @@ export const ContactForm = (): JSX.Element => {
 
       const response = await sendEmail(formData);
 
+      console.log("Mensaje enviado correctamente:", response);
       if (response && response.error) {
         setGeneralError(response.error);
         return;
@@ -71,6 +72,7 @@ export const ContactForm = (): JSX.Element => {
       reset();
       setGeneralError({});
     } catch (error) {
+      console.error("Error al enviar el mensaje:", error);
       setGeneralError({
         general:
           error instanceof Error

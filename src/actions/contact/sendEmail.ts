@@ -1,9 +1,6 @@
 "use server";
 import { getEnvs } from "@/lib/config/envs";
 import { sendEmailSchema } from "@/schemas/sendEmailSchema";
-import { Resend } from "resend";
-
-const resend = new Resend(getEnvs.EMAIL_SENDER_API_KEY);
 
 export async function sendEmail(formData: FormData): Promise<{
   success?: boolean;
@@ -22,25 +19,28 @@ export async function sendEmail(formData: FormData): Promise<{
     };
   }
 
-  const response = await resend.emails.send({
-    from: getEnvs.EMAIL_SENDER_FROM_EMAIL,
-    to: getEnvs.EMAIL_SENDER_TO_EMAIL,
-    subject: formData.get("subject") as string,
-    replyTo: formData.get("email") as string,
-    html: `
-      <p><strong>Nombre:</strong> ${formData.get("name")}</p>
-      <p><strong>Email:</strong> ${formData.get("email")}</p>
-      <p><strong>Mensaje:</strong></p>
-      <p>${formData.get("message")}</p>
-    `,
+  const response = await fetch(`${getEnvs.NEXT_PUBLIC_BASE_URL}/api/send`, {
+    method: "POST",
+    body: formData,
   });
 
-  if (response.error) {
+  if (!response.ok) {
+    const errorData = await response.json();
     return {
       error: {
-        general: response.error.message
-          ? [response.error.message]
-          : ["Error al enviar el mensaje. Por favor, inténtalo de nuevo."],
+        general: [
+          errorData.error ||
+            "Error al enviar el mensaje. Por favor, inténtalo de nuevo.",
+        ],
+      },
+    };
+  }
+
+  const data = await response.json();
+  if (data.error) {
+    return {
+      error: {
+        general: [data.error],
       },
     };
   }
