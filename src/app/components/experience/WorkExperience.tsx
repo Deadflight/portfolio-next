@@ -1,8 +1,11 @@
 import { Icon } from "@/shared/components/Icons/Icons";
 import { WorkExperienceList } from "./WorkExperienceList/WorkExperienceList";
-import { JSX } from "react";
-import { workExperienceData } from "@/constants/workExperience";
+import { FC, JSX } from "react";
+import { IWorkExperience } from "@/shared/types/workExperience.types";
 
+interface IWorkExperienceShowcaseProps {
+  workExpirienceData: IWorkExperience[];
+}
 /**
  * Displays a showcase section for work experience, including a list of professional experiences
  * and a call-to-action to download the full CV. The section features a header, a list of work
@@ -14,7 +17,9 @@ import { workExperienceData } from "@/constants/workExperience";
  *
  * @returns {JSX.Element} The rendered work experience showcase section.
  */
-export const WorkExperienceShowcase = (): JSX.Element => {
+export const WorkExperienceShowcase: FC<IWorkExperienceShowcaseProps> = ({
+  workExpirienceData,
+}): JSX.Element => {
   return (
     <section id="experiencia" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-6xl mx-auto">
@@ -27,7 +32,7 @@ export const WorkExperienceShowcase = (): JSX.Element => {
           </p>
         </header>
 
-        <WorkExperienceList workExperiences={workExperienceData} />
+        <WorkExperienceList workExperiences={workExpirienceData} />
 
         <div className="text-center mt-12">
           <div className="card max-w-2xl mx-auto">

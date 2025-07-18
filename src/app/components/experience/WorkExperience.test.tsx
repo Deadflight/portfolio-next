@@ -4,6 +4,7 @@ import { WorkExperienceShowcase } from "./WorkExperience";
 import { IWorkExperience } from "@/shared/types/workExperience.types";
 import { IWorkExperienceListProps } from "./WorkExperienceList/WorkExperienceList";
 import { IIconProps } from "@/shared/types/icons.types";
+import { workExperienceData } from "@/constants/workExperience";
 
 // Mock child components and icons
 jest.mock("./WorkExperienceList/WorkExperienceList", () => ({
@@ -21,7 +22,7 @@ jest.mock("../../../shared/components/Icons/Icons", () => ({
 
 describe("WorkExperienceShowcase", () => {
   it("renders the section with correct heading and description", () => {
-    render(<WorkExperienceShowcase />);
+    render(<WorkExperienceShowcase workExpirienceData={workExperienceData} />);
     expect(
       screen.getByRole("heading", { name: /Experiencia Laboral/i })
     ).toBeInTheDocument();
@@ -33,7 +34,7 @@ describe("WorkExperienceShowcase", () => {
   });
 
   it("renders the WorkExperienceList with all work experiences", () => {
-    render(<WorkExperienceShowcase />);
+    render(<WorkExperienceShowcase workExpirienceData={workExperienceData} />);
     // There are 4 positions in the data
     expect(
       screen.getAllByText(/Desarrollador Full Stack/i).length
@@ -50,7 +51,7 @@ describe("WorkExperienceShowcase", () => {
   });
 
   it("renders the CV download card with correct text and link", () => {
-    render(<WorkExperienceShowcase />);
+    render(<WorkExperienceShowcase workExpirienceData={workExperienceData} />);
     expect(
       screen.getByRole("heading", { name: /¿Buscas más detalles\?/i })
     ).toBeInTheDocument();

@@ -4,13 +4,14 @@ import { ProjectsShowCase } from "./components/projects/ProjectsShowCase";
 import { AboutMeShowcase } from "./components/about/AboutMeShowCase/AboutMeShowCase";
 import { SkillsExperienceShowCase } from "./components/skills/SkillsExperienceShowCase";
 import { Contact } from "./components/contact/Contact";
+import { workExperienceData } from "@/constants/workExperience";
 
 export default function Home() {
   return (
     <>
       <main className="min-h-screen" role="main" id="main-content">
         <ProfessionalIdentityHero />
-        <WorkExperienceShowcase />
+        <WorkExperienceShowcase workExpirienceData={workExperienceData} />
         <ProjectsShowCase />
         <AboutMeShowcase />
         <SkillsExperienceShowCase />
