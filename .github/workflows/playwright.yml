@@ -24,6 +24,30 @@ jobs:
         run: npm ci
       - name: Build the project
         run: npm run build
+
+      - name: Start the project
+        run: npm run start &
+        env:
+          PORT: 3000
+          NODE_ENV: production
+          NEXT_TELEMETRY_DISABLED: 1
+        continue-on-error: false
+      - name: Wait for the server to start
+        run: |
+          echo "Waiting for the server to start..."
+          for i in {1..30}; do
+            if curl -s http://localhost:3000 > /dev/null; then
+              echo "Server is up!"
+              break
+            fi
+            echo "Waiting for server to start..."
+            sleep 5
+          done
+          if ! curl -s http://localhost:3000 > /dev/null; then
+            echo "Server did not start in time!"
+            exit 1
+          fi
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
