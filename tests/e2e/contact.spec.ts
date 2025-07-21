@@ -41,7 +41,6 @@ test.describe("Formulario de contacto", () => {
     await expect(
       page.getByText("Mensaje enviado correctamente. ¡Gracias por contactarme!")
     ).toBeVisible();
-
     // Verifica que el formulario se haya reseteado
     await expect(page.locator(contactSelectors.name)).toHaveValue("");
     await expect(page.locator(contactSelectors.email)).toHaveValue("");
