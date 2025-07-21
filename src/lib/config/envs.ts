@@ -1,11 +1,3 @@
-function validateEnvVar(name: string): string {
-  const value = process.env[name];
-  if (!value) {
-    throw new Error(`Critical environment variable ${name} is missing.`);
-  }
-  return value;
-}
-
 export const getEnvs = () => {
   return {
     EMAIL_SENDER_API_KEY: validateEnvVar("EMAIL_SENDER_API_KEY"),
@@ -16,3 +8,11 @@ export const getEnvs = () => {
     NEXT_PUBLIC_ANALYTICS_ID: validateEnvVar("NEXT_PUBLIC_ANALYTICS_ID"),
   };
 };
+
+function validateEnvVar(name: string): string {
+  const value = process.env[name];
+  if (!value) {
+    throw new Error(`Critical environment variable ${name} is missing.`);
+  }
+  return value;
+}
