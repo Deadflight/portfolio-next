@@ -1,36 +1,29 @@
-// import { getEnvs } from "@/lib/config/envs";
-// import { Resend } from "resend";
+import { getEnvs } from "@/lib/config/envs";
+import { NextRequest } from "next/server";
+import { Resend } from "resend";
 
-// const resend = new Resend(getEnvs.EMAIL_SENDER_API_KEY);
+const resend = new Resend(getEnvs.EMAIL_SENDER_API_KEY);
 
-export async function POST() {
-  // const formData = await req.formData();
-  // const name = formData.get("name") as string;
-  // const email = formData.get("email") as string;
-  // const subject = formData.get("subject") as string;
-  // const message = formData.get("message") as string;
+export async function POST(req: NextRequest) {
+  const formData = await req.formData();
+  const name = formData.get("name") as string;
+  const email = formData.get("email") as string;
+  const subject = formData.get("subject") as string;
+  const message = formData.get("message") as string;
 
   try {
-    // const response = await resend.emails.send({
-    //   from: getEnvs.EMAIL_SENDER_FROM_EMAIL,
-    //   to: getEnvs.EMAIL_SENDER_TO_EMAIL,
-    //   subject,
-    //   replyTo: email,
-    //   html: `
-    //         <p><strong>Nombre:</strong> ${name}</p>
-    //         <p><strong>Email:</strong> ${email}</p>
-    //         <p><strong>Mensaje:</strong></p>
-    //         <p>${message}</p>
-    //     `,
-    // });
-
-    console.log("ROUTE HANDLER EMAIL");
-
-    const response = {
-      error: null, // Simula una respuesta exitosa
-    } as {
-      error: Error | null;
-    };
+    const response = await resend.emails.send({
+      from: getEnvs.EMAIL_SENDER_FROM_EMAIL,
+      to: getEnvs.EMAIL_SENDER_TO_EMAIL,
+      subject,
+      replyTo: email,
+      html: `
+            <p><strong>Nombre:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Mensaje:</strong></p>
+            <p>${message}</p>
+        `,
+    });
 
     if (response.error) {
       return new Response(JSON.stringify({ error: response.error.message }), {
