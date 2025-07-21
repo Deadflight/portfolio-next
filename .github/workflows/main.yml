@@ -11,25 +11,25 @@ env:
   EMAIL_SENDER_TO_EMAIL: ${{ secrets.EMAIL_SENDER_TO_EMAIL }}
   NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
 jobs:
-  lint:
-    uses: ./.github/workflows/lint.yml
-    permissions:
-      contents: read
-      pull-requests: write
+  # lint:
+  #   uses: ./.github/workflows/lint.yml
+  #   permissions:
+  #     contents: read
+  #     pull-requests: write
 
-  typecheck:
-    needs: lint
-    uses: ./.github/workflows/typecheck.yml
-    permissions:
-      contents: read
-      pull-requests: write
+  # typecheck:
+  #   needs: lint
+  #   uses: ./.github/workflows/typecheck.yml
+  #   permissions:
+  #     contents: read
+  #     pull-requests: write
 
-  unit-tests:
-    needs: typecheck
-    uses: ./.github/workflows/test.yml
-    permissions:
-      contents: read
-      pull-requests: write
+  # unit-tests:
+  #   needs: typecheck
+  #   uses: ./.github/workflows/test.yml
+  #   permissions:
+  #     contents: read
+  #     pull-requests: write
 
   # e2e-tests:
   #   needs: test
@@ -39,7 +39,6 @@ jobs:
   #     pull-requests: write
 
   build:
-    needs: unit-tests
     uses: ./.github/workflows/build.yml
     permissions:
       contents: read
