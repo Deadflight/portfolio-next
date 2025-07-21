@@ -22,7 +22,7 @@ jest.mock("../../../shared/components/Icons/Icons", () => ({
 
 describe("WorkExperienceShowcase", () => {
   it("renders the section with correct heading and description", () => {
-    render(<WorkExperienceShowcase workExpirienceData={workExperienceData} />);
+    render(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
     expect(
       screen.getByRole("heading", { name: /Experiencia Laboral/i })
     ).toBeInTheDocument();
@@ -34,7 +34,7 @@ describe("WorkExperienceShowcase", () => {
   });
 
   it("renders the WorkExperienceList with all work experiences", () => {
-    render(<WorkExperienceShowcase workExpirienceData={workExperienceData} />);
+    render(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
     // There are 4 positions in the data
     expect(
       screen.getAllByText(/Desarrollador Full Stack/i).length
@@ -51,7 +51,7 @@ describe("WorkExperienceShowcase", () => {
   });
 
   it("renders the CV download card with correct text and link", () => {
-    render(<WorkExperienceShowcase workExpirienceData={workExperienceData} />);
+    render(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
     expect(
       screen.getByRole("heading", { name: /¿Buscas más detalles\?/i })
     ).toBeInTheDocument();
