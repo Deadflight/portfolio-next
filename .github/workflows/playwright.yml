@@ -27,10 +27,6 @@ jobs:
 
       - name: Start the project
         run: npm run start &
-        env:
-          PORT: 3000
-          NODE_ENV: production
-          NEXT_TELEMETRY_DISABLED: 1
         continue-on-error: false
       - name: Wait for the server to start
         run: |
