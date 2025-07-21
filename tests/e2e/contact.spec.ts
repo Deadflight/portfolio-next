@@ -40,7 +40,8 @@ test.describe("Formulario de contacto", () => {
     await page.click(contactSelectors.submit);
     await expect(
       page.getByText("Mensaje enviado correctamente. ¡Gracias por contactarme!")
-    ).toBeVisible({ timeout: 30000 });
+    ).toBeVisible();
+
     // Verifica que el formulario se haya reseteado
     await expect(page.locator(contactSelectors.name)).toHaveValue("");
     await expect(page.locator(contactSelectors.email)).toHaveValue("");

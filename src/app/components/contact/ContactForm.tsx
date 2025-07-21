@@ -87,7 +87,12 @@ export const ContactForm = (): JSX.Element => {
         Envíame un Mensaje
       </h3>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit(onSubmit)(e);
+        }}
+      >
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
             <label
