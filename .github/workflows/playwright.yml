@@ -22,6 +22,14 @@ jobs:
           node-version: lts/*
       - name: Install dependencies
         run: npm ci
+
+        # Echo the environment variables for debugging
+      - name: Echo environment variables
+        run: |
+          echo "EMAIL_SENDER_API_KEY: $EMAIL_SENDER_API_KEY"
+          echo "EMAIL_SENDER_FROM_EMAIL: $EMAIL_SENDER_FROM_EMAIL"
+          echo "EMAIL_SENDER_TO_EMAIL: $EMAIL_SENDER_TO_EMAIL"
+          echo "NEXT_PUBLIC_BASE_URL: $NEXT_PUBLIC_BASE_URL"
       - name: Build the project
         run: npm run build
       - name: Install Playwright Browsers
