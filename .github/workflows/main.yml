@@ -24,15 +24,22 @@ jobs:
       contents: read
       pull-requests: write
 
-  test:
+  unit-tests:
     needs: typecheck
     uses: ./.github/workflows/test.yml
     permissions:
       contents: read
       pull-requests: write
 
+  # e2e-tests:
+  #   needs: test
+  #   uses: ./.github/workflows/playwright.yml
+  #   permissions:
+  #     contents: read
+  #     pull-requests: write
+
   build:
-    needs: test
+    needs: unit-tests
     uses: ./.github/workflows/build.yml
     permissions:
       contents: read

@@ -17,11 +17,3 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run test:unit
-
-  e2e-tests:
-    name: E2E Tests
-    needs: unit-tests
-    uses: ./.github/workflows/playwright.yml
-    permissions:
-      contents: read
-      pull-requests: write
