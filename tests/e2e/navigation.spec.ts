@@ -46,8 +46,8 @@ test.describe("Navegación principal del portafolio", () => {
       await navLink.click();
       const section = page.locator(`#${link.sectionId}`);
       await expect(section).toBeVisible();
-      // Opcional: puedes verificar que el hash de la URL cambió
-      // await expect(page).toHaveURL(new RegExp(`#${link.sectionId}`));
+      // Verifica que el hash de la URL cambió
+      await expect(page).toHaveURL(new RegExp(`#${link.sectionId}`));
     }
   });
 

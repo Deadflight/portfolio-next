@@ -4,7 +4,7 @@ import { FC, JSX } from "react";
 import { IWorkExperience } from "@/shared/types/workExperience.types";
 
 interface IWorkExperienceShowcaseProps {
-  workExpirienceData: IWorkExperience[];
+  workExperienceData: IWorkExperience[];
 }
 /**
  * Displays a showcase section for work experience, including a list of professional experiences
@@ -18,7 +18,7 @@ interface IWorkExperienceShowcaseProps {
  * @returns {JSX.Element} The rendered work experience showcase section.
  */
 export const WorkExperienceShowcase: FC<IWorkExperienceShowcaseProps> = ({
-  workExpirienceData,
+  workExperienceData,
 }): JSX.Element => {
   return (
     <section id="experiencia" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
@@ -32,7 +32,7 @@ export const WorkExperienceShowcase: FC<IWorkExperienceShowcaseProps> = ({
           </p>
         </header>
 
-        <WorkExperienceList workExperiences={workExpirienceData} />
+        <WorkExperienceList workExperiences={workExperienceData} />
 
         <div className="text-center mt-12">
           <div className="card max-w-2xl mx-auto">

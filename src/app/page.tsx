@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <main className="min-h-screen" role="main" id="main-content">
         <ProfessionalIdentityHero />
-        <WorkExperienceShowcase workExpirienceData={workExperienceData} />
+        <WorkExperienceShowcase workExperienceData={workExperienceData} />
         <ProjectsShowCase />
         <AboutMeShowcase />
         <SkillsExperienceShowCase />

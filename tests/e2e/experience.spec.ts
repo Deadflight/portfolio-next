@@ -1,8 +1,6 @@
 import { workExperienceData } from "@/constants/workExperience";
 import { test, expect } from "@playwright/test";
 
-// Ajusta los selectores y textos según tu UI real
-
 test.describe("Experiencia laboral", () => {
   test("La sección de experiencia se renderiza correctamente", async ({
     page,
