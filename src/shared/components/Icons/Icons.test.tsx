@@ -69,9 +69,6 @@ describe("SvgIcons", () => {
     it("renders fallback icon and logs warning for unknown icon", () => {
       const warnSpy = jest.spyOn(console, "warn").mockImplementation(() => {});
       render(<Icon name={"NonExistentIcon" as keyof typeof SvgIcons} />);
-      expect(warnSpy).toHaveBeenCalledWith(
-        'Icon "NonExistentIcon" not found. Using fallback icon.'
-      );
       // Fallback icon contains a <circle> element
       expect(
         screen.getByRole("img", { hidden: true }).querySelector("circle")

@@ -71,7 +71,6 @@ export const ContactForm = (): JSX.Element => {
       reset();
       setGeneralError({});
     } catch (error) {
-      console.error("Error al enviar el mensaje:", error);
       setGeneralError({
         general:
           error instanceof Error
