@@ -2,9 +2,9 @@ import { getEnvs } from "@/lib/config/envs";
 import { NextRequest } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(getEnvs.EMAIL_SENDER_API_KEY);
-
 export async function POST(req: NextRequest) {
+  const resend = new Resend(getEnvs.EMAIL_SENDER_API_KEY);
+
   const formData = await req.formData();
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
