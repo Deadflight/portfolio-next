@@ -6,6 +6,7 @@ export async function sendEmail(formData: FormData): Promise<{
   success?: boolean;
   error?: { [key: string]: string[] };
 }> {
+  const envs = getEnvs();
   const validateFields = sendEmailSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
@@ -19,7 +20,7 @@ export async function sendEmail(formData: FormData): Promise<{
     };
   }
 
-  const response = await fetch(`${getEnvs.NEXT_PUBLIC_BASE_URL}/api/send`, {
+  const response = await fetch(`${envs.NEXT_PUBLIC_BASE_URL}/api/send`, {
     method: "POST",
     body: formData,
   });

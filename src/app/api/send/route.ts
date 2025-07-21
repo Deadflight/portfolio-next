@@ -3,7 +3,8 @@ import { NextRequest } from "next/server";
 import { Resend } from "resend";
 
 export async function POST(req: NextRequest) {
-  const resend = new Resend(getEnvs.EMAIL_SENDER_API_KEY);
+  const envs = getEnvs();
+  const resend = new Resend(envs.EMAIL_SENDER_API_KEY);
 
   const formData = await req.formData();
   const name = formData.get("name") as string;
@@ -13,8 +14,8 @@ export async function POST(req: NextRequest) {
 
   try {
     const response = await resend.emails.send({
-      from: getEnvs.EMAIL_SENDER_FROM_EMAIL,
-      to: getEnvs.EMAIL_SENDER_TO_EMAIL,
+      from: envs.EMAIL_SENDER_FROM_EMAIL,
+      to: envs.EMAIL_SENDER_TO_EMAIL,
       subject,
       replyTo: email,
       html: `
