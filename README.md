@@ -24,6 +24,7 @@ Este proyecto es un **portfolio personal** que muestra mis habilidades y proyect
 - **Internacionalización lista para ampliar**
 - **Optimización para SEO y rendimiento**
 - **Preparado para CI/CD**: integración recomendada de lint y tests en pipelines
+- **Testing E2E y accesibilidad**: Integración con Playwright y axe-playwright para pruebas end-to-end y de accesibilidad, ejecutables en CI/CD.
 
 ---
 
@@ -85,6 +86,14 @@ portfolio-next/
   ```bash
   npm run test:coverage
   ```
+- Ejecuta los tests E2E y de accesibilidad:
+
+  ```bash
+  npx playwright test
+  ```
+
+  (o vía CI/CD en GitHub Actions)
+
 - Los tests cubren casos condicionales, ramas de renderizado y accesibilidad (incluyendo enlaces, iconos, badges, estrellas de puntuación, mocks y estructura semántica real de los componentes).
 - Se han revisado y adaptado los tests para reflejar la estructura accesible y semántica de los componentes, especialmente en la visualización y accesibilidad de estrellas y badges.
 
@@ -102,6 +111,19 @@ portfolio-next/
 
 ---
 
+### Variables de entorno necesarias
+
+Para el envío de emails en producción y en CI/CD (Playwright), asegúrate de definir los siguientes secrets en GitHub Actions:
+
+- `EMAIL_SENDER_API_KEY`
+- `EMAIL_SENDER_FROM_EMAIL`
+- `EMAIL_SENDER_TO_EMAIL`
+- `NEXT_PUBLIC_BASE_URL`
+
+Estos valores son requeridos tanto en el entorno local como en los jobs de CI/CD para el correcto funcionamiento del formulario de contacto y los tests E2E.
+
+---
+
 ## 🛠️ Scripts útiles
 
 - `npm run dev` — Desarrollo
@@ -109,6 +131,7 @@ portfolio-next/
 - `npm run start` — Servidor de producción
 - `npm run lint` — Linting con ESLint (flat config + jsx-a11y)
 - `npm run test` — Testing unitario
+- `npx playwright test` — Testing E2E y accesibilidad
 
 ---
 
