@@ -124,6 +124,22 @@ Estos valores son requeridos tanto en el entorno local como en los jobs de CI/CD
 
 ---
 
+## 📊 Analítica y Google Analytics 4 (GA4)
+
+El proyecto integra Google Analytics 4 para el tracking de pageviews y navegación, usando la variable de entorno `NEXT_PUBLIC_GA_ID` y el componente `<Analytics />`.
+
+- El tracking se realiza solo en producción y si la variable está definida.
+- El pageview se dispara en cada cambio de ruta, incluyendo parámetros de búsqueda.
+- El script de GA4 se inyecta automáticamente en el layout principal.
+
+### Variable de entorno necesaria
+
+- `NEXT_PUBLIC_GA_ID`: ID de medición de Google Analytics 4 (ejemplo: G-XXXXXXXXXX)
+
+Asegúrate de definirla en tu entorno local y en los secrets de CI/CD si quieres habilitar la analítica en producción.
+
+---
+
 ## 🛠️ Scripts útiles
 
 - `npm run dev` — Desarrollo
