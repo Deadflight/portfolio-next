@@ -28,7 +28,10 @@ export const SkillsCard: FC<SkillsCardProps> = ({
   proficiencyLevels,
 }) => {
   return (
-    <li className="border-b border-secondary/20 pb-4 last:border-b-0 last:pb-0">
+    <li
+      className="border-b border-secondary/20 pb-4 last:border-b-0 last:pb-0"
+      data-testid={`skill-card-${skill.name}`}
+    >
       <div className="flex justify-between items-start mb-2">
         <span className="font-body font-bold text-text-main">{skill.name}</span>
         <ProficiencyBadge level={proficiencyLevels[skill.level]} />
