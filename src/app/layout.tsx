@@ -160,7 +160,10 @@ export default function RootLayout({
         <header>
           <NavigationExperience />
         </header>
-        <Analytics />
+        {envs.NEXT_PUBLIC_GA_ID && envs.NODE_ENV === "production" && (
+          <Analytics />
+        )}
+
         {process.env.NODE_ENV !== "production" && <AxeReporter />}
         {children}
         <Footer />
