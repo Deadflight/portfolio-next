@@ -4,6 +4,8 @@ export const getEnvs = () => {
     EMAIL_SENDER_FROM_EMAIL: validateEnvVar("EMAIL_SENDER_FROM_EMAIL"),
     EMAIL_SENDER_TO_EMAIL: validateEnvVar("EMAIL_SENDER_TO_EMAIL"),
     NEXT_PUBLIC_BASE_URL: validateEnvVar("NEXT_PUBLIC_BASE_URL"),
+    CI: validateEnvVar("CI"),
+    NODE_ENV: validateEnvVar("NODE_ENV"),
   };
 };
 

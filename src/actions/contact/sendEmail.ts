@@ -7,7 +7,6 @@ export async function sendEmail(formData: FormData): Promise<{
   success?: boolean;
   error?: { [key: string]: string[] };
 }> {
-  const envs = getEnvs();
   const validateFields = sendEmailSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
@@ -20,6 +19,15 @@ export async function sendEmail(formData: FormData): Promise<{
       error: validateFields.error.flatten().fieldErrors,
     };
   }
+
+  const envs = getEnvs();
+
+  if (envs.CI && envs.NODE_ENV === "development") {
+    return {
+      success: true,
+    };
+  }
+
   const resend = new Resend(envs.EMAIL_SENDER_API_KEY);
   const response = await resend.emails.send({
     from: envs.EMAIL_SENDER_FROM_EMAIL,
