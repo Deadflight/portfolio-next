@@ -5,7 +5,6 @@ import "./globals.css";
 import AxeReporter from "@/lib/ReactAxe/ReactAxe";
 import { NavigationExperience } from "@/shared/components/Navigation/Navigation";
 import { Footer } from "@/shared/components/Footer/Footer";
-import { getEnvs } from "@/lib/config/envs";
 import Script from "next/script";
 import { Analytics } from "./components/analitycs/Analytics";
 
@@ -131,38 +130,37 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const envs = getEnvs();
   return (
     <html
       lang="es"
       className={`${poppins.variable} ${lato.variable} antialiased`}
     >
       <head>
-        {envs.NEXT_PUBLIC_GA_ID && envs.NODE_ENV === "production" && (
-          <>
-            <Script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${envs.NEXT_PUBLIC_GA_ID}`}
-              strategy="afterInteractive"
-            ></Script>
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
+        {process.env.NEXT_PUBLIC_GA_ID &&
+          process.env.NODE_ENV === "production" && (
+            <>
+              <Script
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+                strategy="afterInteractive"
+              ></Script>
+              <Script id="google-analytics" strategy="afterInteractive">
+                {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${envs.NEXT_PUBLIC_GA_ID}');
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
           `}
-            </Script>
-          </>
-        )}
+              </Script>
+            </>
+          )}
       </head>
       <body className="min-h-screen bg-background-main text-text-main font-body">
         <header>
           <NavigationExperience />
         </header>
-        {envs.NEXT_PUBLIC_GA_ID && envs.NODE_ENV === "production" && (
-          <Analytics />
-        )}
+        {process.env.NEXT_PUBLIC_GA_ID &&
+          process.env.NODE_ENV === "production" && <Analytics />}
 
         {process.env.NODE_ENV !== "production" && <AxeReporter />}
         {children}
