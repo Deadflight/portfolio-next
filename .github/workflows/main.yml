@@ -10,6 +10,7 @@ env:
   EMAIL_SENDER_FROM_EMAIL: ${{ secrets.EMAIL_SENDER_FROM_EMAIL }}
   EMAIL_SENDER_TO_EMAIL: ${{ secrets.EMAIL_SENDER_TO_EMAIL }}
   NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+  NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
   CI: ${{ secrets.CI }}
   NODE_ENV: ${{ secrets.NODE_ENV }}
 jobs:
