@@ -9,7 +9,7 @@ interface IProjectCardProps {
 
 export const ProjectCard: FC<IProjectCardProps> = ({ project }) => {
   return (
-    <div
+    <article
       className={`card ${
         project.featured ? "border-2 border-text-main/20" : ""
       }`}
@@ -141,6 +141,6 @@ export const ProjectCard: FC<IProjectCardProps> = ({ project }) => {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
