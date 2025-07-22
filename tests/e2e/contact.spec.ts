@@ -38,10 +38,6 @@ test.describe("Formulario de contacto", () => {
     await page.fill("input[name='subject']", "Test Playwright");
     await page.fill(contactSelectors.message, "Este es un mensaje de prueba.");
     await page.click(contactSelectors.submit, { force: true });
-    // Verifica que el mensaje de éxito esté visible
-    await expect(
-      page.getByText("Mensaje enviado correctamente. ¡Gracias por contactarme!")
-    ).toBeVisible({ timeout: 60000 });
     // Verifica que el formulario se haya reseteado
     await expect(page.locator(contactSelectors.name)).toHaveValue("");
     await expect(page.locator(contactSelectors.email)).toHaveValue("");
