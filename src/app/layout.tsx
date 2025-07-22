@@ -130,39 +130,37 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const isProduction = process.env.NODE_ENV === "production";
+  const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
   return (
     <html
       lang="es"
       className={`${poppins.variable} ${lato.variable} antialiased`}
     >
-      <head>
-        {process.env.NEXT_PUBLIC_GA_ID &&
-          process.env.NODE_ENV === "production" && (
-            <>
-              <Script
-                async
-                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-                strategy="afterInteractive"
-              ></Script>
-              <Script id="google-analytics" strategy="afterInteractive">
-                {`
+      {GA_ID && isProduction && (
+        <>
+          <Script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+            strategy="afterInteractive"
+          ></Script>
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
           `}
-              </Script>
-            </>
-          )}
-      </head>
+          </Script>
+        </>
+      )}
       <body className="min-h-screen bg-background-main text-text-main font-body">
         <header>
           <NavigationExperience />
         </header>
-        {process.env.NEXT_PUBLIC_GA_ID &&
-          process.env.NODE_ENV === "production" && <Analytics />}
+        {process.env.NEXT_PUBLIC_GA_ID && isProduction && <Analytics />}
 
-        {process.env.NODE_ENV !== "production" && <AxeReporter />}
+        {!isProduction && <AxeReporter />}
         {children}
         <Footer />
       </body>
