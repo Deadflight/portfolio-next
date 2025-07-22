@@ -16,6 +16,7 @@ export const StarRating = ({
       className="flex items-center"
       role="img"
       aria-label={`${skillName}: ${level.label}`}
+      data-testid={`star-rating-${skillName}`}
     >
       {[...Array(STAR_COUNT)].map((_, index) => (
         <Icon

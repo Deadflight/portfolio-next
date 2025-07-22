@@ -3,8 +3,6 @@ import { getEnvs } from "@/lib/config/envs";
 import { sendEmailSchema } from "@/schemas/sendEmailSchema";
 import { Resend } from "resend";
 
-const resend = new Resend(getEnvs.EMAIL_SENDER_API_KEY);
-
 export async function sendEmail(formData: FormData): Promise<{
   success?: boolean;
   error?: { [key: string]: string[] };
@@ -22,25 +20,36 @@ export async function sendEmail(formData: FormData): Promise<{
     };
   }
 
+  const envs = getEnvs();
+
+  if (envs.CI && envs.NODE_ENV === "development") {
+    return {
+      success: true,
+    };
+  }
+
+  const resend = new Resend(envs.EMAIL_SENDER_API_KEY);
   const response = await resend.emails.send({
-    from: getEnvs.EMAIL_SENDER_FROM_EMAIL,
-    to: getEnvs.EMAIL_SENDER_TO_EMAIL,
-    subject: formData.get("subject") as string,
-    replyTo: formData.get("email") as string,
+    from: envs.EMAIL_SENDER_FROM_EMAIL,
+    to: envs.EMAIL_SENDER_TO_EMAIL,
+    subject: validateFields.data.subject,
+    replyTo: validateFields.data.email,
     html: `
-      <p><strong>Nombre:</strong> ${formData.get("name")}</p>
-      <p><strong>Email:</strong> ${formData.get("email")}</p>
-      <p><strong>Mensaje:</strong></p>
-      <p>${formData.get("message")}</p>
-    `,
+            <p><strong>Nombre:</strong> ${validateFields.data.name}</p>
+            <p><strong>Email:</strong> ${validateFields.data.email}</p>
+            <p><strong>Mensaje:</strong></p>
+            <p>${validateFields.data.message}</p>
+        `,
   });
 
   if (response.error) {
+    const errorData = response.error.message;
     return {
       error: {
-        general: response.error.message
-          ? [response.error.message]
-          : ["Error al enviar el mensaje. Por favor, inténtalo de nuevo."],
+        general: [
+          errorData ||
+            "Error al enviar el mensaje. Por favor, inténtalo de nuevo.",
+        ],
       },
     };
   }

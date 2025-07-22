@@ -47,6 +47,7 @@ export const ContactForm = (): JSX.Element => {
       resolver: zodResolver(sendEmailSchema),
     }
   );
+  const [success, setSuccess] = React.useState<boolean>(false);
   const [generalError, setGeneralError] = React.useState<{
     [key: string]: string[] | undefined;
   }>({});
@@ -55,6 +56,8 @@ export const ContactForm = (): JSX.Element => {
 
   const onSubmit: SubmitHandler<ContactFormData> = async (data) => {
     try {
+      setSuccess(false);
+      setGeneralError({});
       const formData = new FormData();
       formData.append("name", data.name);
       formData.append("email", data.email);
@@ -68,8 +71,9 @@ export const ContactForm = (): JSX.Element => {
         return;
       }
 
-      reset();
       setGeneralError({});
+      setSuccess(true);
+      reset();
     } catch (error) {
       setGeneralError({
         general:
@@ -208,7 +212,7 @@ export const ContactForm = (): JSX.Element => {
               : "Error al enviar el mensaje. Por favor, inténtalo de nuevo."}
           </p>
         )}
-        {formState.isSubmitSuccessful && !generalError.general && (
+        {success && (
           <p className="text-success text-sm mt-4 text-center">
             Mensaje enviado correctamente. ¡Gracias por contactarme!
           </p>
