@@ -17,6 +17,7 @@ jobs:
       NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
       CI: ${{ secrets.CI }}
       NODE_ENV: ${{ secrets.NODE_ENV }}
+      NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
