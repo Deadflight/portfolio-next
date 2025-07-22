@@ -5,6 +5,8 @@ import "./globals.css";
 import AxeReporter from "@/lib/ReactAxe/ReactAxe";
 import { NavigationExperience } from "@/shared/components/Navigation/Navigation";
 import { Footer } from "@/shared/components/Footer/Footer";
+import Script from "next/script";
+import { Analytics } from "./components/analitycs/Analytics";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -128,16 +130,37 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const isProduction = process.env.NODE_ENV === "production";
+  const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
   return (
     <html
       lang="es"
       className={`${poppins.variable} ${lato.variable} antialiased`}
     >
+      {GA_ID && isProduction && (
+        <>
+          <Script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+            strategy="afterInteractive"
+          ></Script>
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+          `}
+          </Script>
+        </>
+      )}
       <body className="min-h-screen bg-background-main text-text-main font-body">
         <header>
           <NavigationExperience />
         </header>
-        {process.env.NODE_ENV !== "production" && <AxeReporter />}
+        {process.env.NEXT_PUBLIC_GA_ID && isProduction && <Analytics />}
+
+        {!isProduction && <AxeReporter />}
         {children}
         <Footer />
       </body>
