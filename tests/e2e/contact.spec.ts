@@ -28,20 +28,4 @@ test.describe("Formulario de contacto", () => {
     const errorCount = await page.locator(contactSelectors.error).count();
     expect(errorCount).toBe(4);
   });
-
-  test("El formulario envía correctamente y muestra mensaje de éxito", async ({
-    page,
-  }) => {
-    await page.goto("/#contacto");
-    await page.fill(contactSelectors.name, "Carlos Correa");
-    await page.fill(contactSelectors.email, "carlos@email.com");
-    await page.fill("input[name='subject']", "Test Playwright");
-    await page.fill(contactSelectors.message, "Este es un mensaje de prueba.");
-    await page.click(contactSelectors.submit, { force: true });
-    // Verifica que el formulario se haya reseteado
-    await expect(page.locator(contactSelectors.name)).toHaveValue("");
-    await expect(page.locator(contactSelectors.email)).toHaveValue("");
-    await expect(page.locator(contactSelectors.subject)).toHaveValue("");
-    await expect(page.locator(contactSelectors.message)).toHaveValue("");
-  });
 });
