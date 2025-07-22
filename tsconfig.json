@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["@testing-library/jest-dom"],
+    "types": ["@testing-library/jest-dom", "axe-playwright"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,

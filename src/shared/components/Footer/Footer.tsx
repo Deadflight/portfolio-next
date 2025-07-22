@@ -2,6 +2,7 @@ import React, { JSX } from "react";
 import { Icon } from "../Icons/Icons";
 import { contactInformation } from "@/constants/contactInformation";
 import { ScrollToTopButton } from "../ScrollToTopButton/ScrollToTopButton";
+import { navigationConfig } from "@/constants/navigationConfig";
 
 /**
  * Footer component for the portfolio website.
@@ -40,36 +41,18 @@ export const Footer = (): JSX.Element => {
           <div>
             <h4 className="font-heading font-semibold mb-4">Enlaces Rápidos</h4>
             <ul className="space-y-2">
-              <li>
-                <a href="#inicio" className={footerLinkClass}>
-                  Inicio
-                </a>
-              </li>
-              <li>
-                <a href="#experiencia" className={footerLinkClass}>
-                  Experiencia
-                </a>
-              </li>
-              <li>
-                <a href="#proyectos" className={footerLinkClass}>
-                  Proyectos
-                </a>
-              </li>
-              <li>
-                <a href="#sobre-mi" className={footerLinkClass}>
-                  Sobre Mí
-                </a>
-              </li>
-              <li>
-                <a href="#habilidades" className={footerLinkClass}>
-                  Habilidades
-                </a>
-              </li>
-              <li>
-                <a href="#contacto" className={footerLinkClass}>
-                  Contacto
-                </a>
-              </li>
+              {navigationConfig.mainNavigation.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className={footerLinkClass}
+                    title={item.businessPurpose}
+                    data-testid={`footer-link-${item.label.replace(/\s+/g, "").toLowerCase()}`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
