@@ -1045,7 +1045,6 @@ export const Icon: React.FC<IIconProps> = ({
   const IconComponent = SvgIcons[name];
 
   if (!IconComponent) {
-    console.warn(`Icon "${name}" not found. Using fallback icon.`);
     const FallbackIcon = SvgIcons.AlertCircle;
     return (
       <span

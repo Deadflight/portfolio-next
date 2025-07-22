@@ -16,6 +16,7 @@ export const ProficiencyBadge = ({ level }: { level: ISkillProficiency }) => {
     <span
       className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${textColor} ${level.bgColor}`}
       title={level.description}
+      data-testid={`proficiency-badge-${level.label}`}
     >
       {level.label}
     </span>

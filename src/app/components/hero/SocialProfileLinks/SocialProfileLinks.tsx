@@ -1,26 +1,6 @@
+import { socialLinks } from "@/constants/socialLinks";
 import { Icon } from "@/shared/components/Icons/Icons";
 import { JSX } from "react";
-
-const socialProfiles = [
-  {
-    platform: "github",
-    url: "https://github.com/Deadflight",
-    ariaLabel: "Perfil de GitHub de Carlos Correa",
-    iconName: "GitHub" as const,
-  },
-  {
-    platform: "linkedin",
-    url: "https://linkedin.com/in/carloscorreamillan",
-    ariaLabel: "Perfil de LinkedIn de Carlos Correa",
-    iconName: "Linkedin" as const,
-  },
-  {
-    platform: "email",
-    url: "mailto:correamillancarlos@gmail.com",
-    ariaLabel: "Enviar email a Carlos Correa",
-    iconName: "Mail" as const,
-  },
-];
 
 /**
  * Renders a navigation bar containing links to professional social profiles.
@@ -37,7 +17,7 @@ export const SocialProfileLinks = (): JSX.Element => {
       className="flex justify-center space-x-6 mb-12"
       aria-label="Professional social profiles"
     >
-      {socialProfiles.map((profile) => (
+      {socialLinks.map((profile) => (
         <a
           key={profile.platform}
           href={profile.url}

@@ -5,7 +5,13 @@ on:
     branches: [main, develop]
   pull_request:
     branches: [main, develop]
-
+env:
+  EMAIL_SENDER_API_KEY: ${{ secrets.EMAIL_SENDER_API_KEY }}
+  EMAIL_SENDER_FROM_EMAIL: ${{ secrets.EMAIL_SENDER_FROM_EMAIL }}
+  EMAIL_SENDER_TO_EMAIL: ${{ secrets.EMAIL_SENDER_TO_EMAIL }}
+  NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+  CI: ${{ secrets.CI }}
+  NODE_ENV: ${{ secrets.NODE_ENV }}
 jobs:
   lint:
     uses: ./.github/workflows/lint.yml
@@ -20,15 +26,22 @@ jobs:
       contents: read
       pull-requests: write
 
-  test:
+  unit-tests:
     needs: typecheck
     uses: ./.github/workflows/test.yml
     permissions:
       contents: read
       pull-requests: write
 
+  e2e-tests:
+    needs: unit-tests
+    uses: ./.github/workflows/playwright.yml
+    permissions:
+      contents: read
+      pull-requests: write
+
   build:
-    needs: test
+    needs: e2e-tests
     uses: ./.github/workflows/build.yml
     permissions:
       contents: read
