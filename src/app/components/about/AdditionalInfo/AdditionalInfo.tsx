@@ -12,7 +12,10 @@ import React, { JSX } from "react";
  */
 export const AdditionalInfo = (): JSX.Element => {
   return (
-    <article className="card bg-white border-2 border-text-main/10">
+    <article
+      className="card bg-white border-2 border-text-main/10"
+      data-testid="additional-info"
+    >
       <dl className="grid sm:grid-cols-2 gap-4 text-center">
         <div className="flex flex-col items-center justify-center">
           <dt className="flex items-center font-body font-bold text-text-main text-sm">

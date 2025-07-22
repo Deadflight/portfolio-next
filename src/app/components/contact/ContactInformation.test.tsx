@@ -66,9 +66,7 @@ describe("ContactInformation", () => {
         );
       })
     ).toBeInTheDocument();
-    expect(
-      screen.getByText(/portfolio-next-lyart-nu.vercel.app/i)
-    ).toBeInTheDocument();
+    expect(screen.getByText(/carlos-correa.com/i)).toBeInTheDocument();
     expect(screen.getByText(/disponibilidad/i)).toBeInTheDocument();
     expect(screen.getByText(/trabajo remoto/i)).toBeInTheDocument();
   });

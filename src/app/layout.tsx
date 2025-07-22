@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Poppins, Lato } from "next/font/google";
 import "./globals.css";
 import AxeReporter from "@/lib/ReactAxe/ReactAxe";
+import { NavigationExperience } from "@/shared/components/Navigation/Navigation";
+import { Footer } from "@/shared/components/Footer/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -132,8 +134,12 @@ export default function RootLayout({
       className={`${poppins.variable} ${lato.variable} antialiased`}
     >
       <body className="min-h-screen bg-background-main text-text-main font-body">
+        <header>
+          <NavigationExperience />
+        </header>
         {process.env.NODE_ENV !== "production" && <AxeReporter />}
         {children}
+        <Footer />
       </body>
     </html>
   );
