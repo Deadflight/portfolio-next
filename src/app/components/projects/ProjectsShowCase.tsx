@@ -19,7 +19,7 @@ import { JSX } from "react";
 export const ProjectsShowCase = (): JSX.Element => {
   return (
     <section id="proyectos" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-6xl mx-auto">
+      <article className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-h2 font-heading font-bold text-text-main mb-4">
             Proyectos Destacados
@@ -47,7 +47,7 @@ export const ProjectsShowCase = (): JSX.Element => {
             </a>
           </div>
         </div>
-      </div>
+      </article>
     </section>
   );
 };

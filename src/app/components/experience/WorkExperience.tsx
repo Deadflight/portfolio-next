@@ -22,7 +22,7 @@ export const WorkExperienceShowcase: FC<IWorkExperienceShowcaseProps> = ({
 }): JSX.Element => {
   return (
     <section id="experiencia" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-6xl mx-auto">
+      <article className="max-w-6xl mx-auto">
         <header className="text-center mb-12">
           <h2 className="text-h2 font-heading font-bold text-text-main mb-4">
             Experiencia Laboral
@@ -53,7 +53,7 @@ export const WorkExperienceShowcase: FC<IWorkExperienceShowcaseProps> = ({
             </a>
           </div>
         </div>
-      </div>
+      </article>
     </section>
   );
 };

@@ -25,7 +25,7 @@ export const SkillsLegend: FC<SkillsLegendProps> = ({
 }: SkillsLegendProps): JSX.Element => {
   return (
     <section aria-labelledby="proficiency-legend-title" className="mb-12">
-      <div className="card max-w-4xl mx-auto bg-background-main border-2 border-primary-brand/10 shadow-subtle">
+      <article className="card max-w-4xl mx-auto border-2 border-primary-brand/10 shadow-subtle">
         <h2
           id="proficiency-legend-title"
           className="text-lg font-heading font-semibold text-text-main mb-4 flex items-center"
@@ -55,7 +55,7 @@ export const SkillsLegend: FC<SkillsLegendProps> = ({
             );
           })}
         </div>
-      </div>
+      </article>
     </section>
   );
 };
