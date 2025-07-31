@@ -73,5 +73,23 @@ describe("SvgIcons", () => {
         screen.getByRole("img", { hidden: true }).querySelector("circle")
       ).toBeInTheDocument();
     });
+
+    it("renders fallback icon with correct props for unknown icon", () => {
+      render(
+        <Icon
+          name={"NonExistentIcon" as keyof typeof SvgIcons}
+          size={32}
+          className="fallback-class"
+        />
+      );
+      const span = screen.getByRole("img", { hidden: true });
+      expect(span).toHaveClass(
+        "inline-flex items-center justify-center fallback-class"
+      );
+      expect(span).toHaveStyle({ width: "32px", height: "32px" });
+      expect(span).toHaveAttribute("aria-hidden", "true");
+      // Fallback icon contains a <circle> element
+      expect(span.querySelector("circle")).toBeInTheDocument();
+    });
   });
 });
