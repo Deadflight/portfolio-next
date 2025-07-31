@@ -17,12 +17,12 @@ jest.mock("../WorkExperienceCard/WorkExperienceCard", () => ({
 const mockExperiences = workExperienceMockData;
 
 describe("WorkExperienceList", () => {
-  it("renders a div with className 'space-y-8'", () => {
+  it("renders a ul with className 'space-y-8'", () => {
     const { container } = render(
       <WorkExperienceList workExperiences={mockExperiences} />
     );
-    const div = container.querySelector("div.space-y-8");
-    expect(div).toBeInTheDocument();
+    const ul = container.querySelector("ul.space-y-8");
+    expect(ul).toBeInTheDocument();
   });
 
   it("renders the correct number of WorkExperienceCard components", () => {

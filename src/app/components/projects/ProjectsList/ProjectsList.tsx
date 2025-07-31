@@ -17,10 +17,10 @@ export const ProjectsList: FC<IProjectsListProps> = ({
   projects,
 }): JSX.Element => {
   return (
-    <div className="space-y-8">
+    <ul className="space-y-8">
       {projects.map((project) => (
         <ProjectCard key={project.id} project={project} />
       ))}
-    </div>
+    </ul>
   );
 };

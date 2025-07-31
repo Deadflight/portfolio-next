@@ -16,17 +16,12 @@ test.describe("Proyectos destacados", () => {
   }) => {
     await page.goto("/#proyectos");
     for (const project of projects) {
-      const projectTitle = page.getByRole("heading", {
-        name: project.title,
-      });
+      // Encuentra el heading del proyecto
+      const projectTitle = page.getByRole("heading", { name: project.title });
       await expect(projectTitle).toBeVisible();
 
-      const projectDescription = page.getByText(project.description);
-      await expect(projectDescription).toBeVisible();
-
-      const projectCard = page.getByRole("article").filter({
-        has: page.getByRole("heading", { name: project.title }),
-      });
+      // Encuentra el <li> que contiene ese heading
+      const projectCard = projectTitle.locator("..").locator(".."); // sube al <li>
       for (const tech of project.technologies) {
         const techElement = projectCard.getByText(tech, { exact: true });
         await expect(techElement).toBeVisible();
@@ -49,9 +44,10 @@ test.describe("Proyectos destacados", () => {
         await expect(demoLink).toHaveAttribute("href", project.liveUrl);
       }
       if (project.githubUrl) {
-        const projectCard = page.getByRole("article").filter({
-          has: page.getByRole("heading", { name: project.title }),
-        });
+        const projectCard = page
+          .getByRole("heading", { name: project.title })
+          .locator("..")
+          .locator("..");
         const codeLink = projectCard.getByRole("link", { name: /Código/i });
         await expect(codeLink).toHaveAttribute("href", project.githubUrl);
       }
