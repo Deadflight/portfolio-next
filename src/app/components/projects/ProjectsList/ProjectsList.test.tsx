@@ -13,10 +13,10 @@ jest.mock("../ProjectCard/ProjectCard", () => ({
 }));
 
 describe("ProjectsList", () => {
-  it("renders a div with className 'space-y-8'", () => {
+  it("renders a ul with className 'space-y-8'", () => {
     const { container } = render(<ProjectsList projects={mockProjects} />);
-    const div = container.querySelector("div.space-y-8");
-    expect(div).toBeInTheDocument();
+    const ul = container.querySelector("ul.space-y-8");
+    expect(ul).toBeInTheDocument();
   });
 
   it("renders a ProjectCard for each project", () => {

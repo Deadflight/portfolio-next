@@ -34,7 +34,10 @@ export const ProfessionalIdentityHero = (): JSX.Element => {
       className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16"
       aria-label="Professional introduction and brand statement"
     >
-      <div className="max-w-4xl mx-auto text-center">
+      <article
+        className="max-w-4xl mx-auto text-center"
+        aria-label="Professional identity hero section"
+      >
         <header className="mb-8">
           <h1 className="text-h1 font-heading font-bold text-text-main mb-4">
             {personalInfo.fullName}
@@ -53,7 +56,7 @@ export const ProfessionalIdentityHero = (): JSX.Element => {
         <div className="animate-bounce" aria-hidden="true">
           <Icon name="ChevronDown" size={28} className="text-accent mx-auto" />
         </div>
-      </div>
+      </article>
     </section>
   );
 };

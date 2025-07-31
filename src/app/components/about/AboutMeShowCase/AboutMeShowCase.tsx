@@ -20,7 +20,7 @@ import { JSX } from "react";
 export const AboutMeShowcase = (): JSX.Element => {
   return (
     <section id="sobre-mi" className="py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+      <article className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-h2 font-heading font-bold text-text-main mb-4">
             Sobre Mí
@@ -71,7 +71,7 @@ export const AboutMeShowcase = (): JSX.Element => {
             </div>
           </article>
         </div>
-      </div>
+      </article>
     </section>
   );
 };

@@ -16,10 +16,16 @@ export const WorkExperienceList: FC<IWorkExperienceListProps> = ({
   workExperiences,
 }) => {
   return (
-    <div className="space-y-8">
-      {workExperiences.map((experience) => (
-        <WorkExperienceCard key={experience.id} workExperience={experience} />
-      ))}
-    </div>
+    <ul className="space-y-8">
+      {workExperiences.length === 0 ? (
+        <li className="text-gray-500" aria-live="polite">
+          Work experience items will be populated dynamically.
+        </li>
+      ) : (
+        workExperiences.map((experience) => (
+          <WorkExperienceCard key={experience.id} workExperience={experience} />
+        ))
+      )}
+    </ul>
   );
 };
