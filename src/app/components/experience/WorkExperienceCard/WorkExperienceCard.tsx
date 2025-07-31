@@ -25,7 +25,7 @@ export const WorkExperienceCard: FC<IWorkExperienceCardProps> = ({
   isLast = false,
 }) => {
   return (
-    <article
+    <li
       className="relative"
       data-testid={`work-experience-card-${workExperience.id}`}
     >
@@ -149,6 +149,6 @@ export const WorkExperienceCard: FC<IWorkExperienceCardProps> = ({
           </div>
         </div>
       </div>
-    </article>
+    </li>
   );
 };
