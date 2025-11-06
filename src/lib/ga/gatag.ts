@@ -1,3 +1,5 @@
+import { getClientEnvs, getServerEnvs } from "../config/envs";
+
 declare global {
   interface Window {
     gtag: (...args: unknown[]) => void;
@@ -5,12 +7,14 @@ declare global {
 }
 
 export const pageview = (url: string) => {
+  const { NODE_ENV } = getServerEnvs();
+  const { NEXT_PUBLIC_GA_ID } = getClientEnvs();
   if (
     typeof window !== "undefined" &&
-    process.env.NEXT_PUBLIC_GA_ID &&
-    process.env.NODE_ENV === "production"
+    NEXT_PUBLIC_GA_ID &&
+    NODE_ENV === "production"
   ) {
-    window.gtag("config", process.env.NEXT_PUBLIC_GA_ID, {
+    window.gtag("config", NEXT_PUBLIC_GA_ID, {
       page_path: url,
     });
   }
