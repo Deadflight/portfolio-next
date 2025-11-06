@@ -7,6 +7,7 @@ import { NavigationExperience } from "@/shared/components/Navigation/Navigation"
 import { Footer } from "@/shared/components/Footer/Footer";
 import Script from "next/script";
 import { Analytics } from "./components/analitycs/Analytics";
+import { getClientEnvs } from "@/lib/config/envs";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -130,18 +131,33 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const isProduction = process.env.NODE_ENV === "production";
-  const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+  const { NODE_ENV } = process.env;
+  const { NEXT_PUBLIC_GA_ID, NEXT_PUBLIC_GTM_ID } = getClientEnvs();
+
+  const isProduction = NODE_ENV === "production";
+  const GA_ID = NEXT_PUBLIC_GA_ID;
+  const GTM_ID = NEXT_PUBLIC_GTM_ID;
   return (
     <html
       lang="es"
       className={`${poppins.variable} ${lato.variable} antialiased`}
     >
+      {GTM_ID && isProduction && (
+        <Script
+          id="gtm-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${NEXT_PUBLIC_GTM_ID}');`,
+          }}
+        />
+      )}
       {GA_ID && isProduction && (
         <>
           <Script
             async
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${
+              NEXT_PUBLIC_GA_ID
+            }`}
             strategy="afterInteractive"
           ></Script>
           <Script id="google-analytics" strategy="afterInteractive">
@@ -149,16 +165,26 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+            gtag('config', '${NEXT_PUBLIC_GA_ID}');
           `}
           </Script>
         </>
       )}
       <body className="min-h-screen bg-background-main text-text-main font-body">
+        {GTM_ID && isProduction && (
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `
+          <iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}"
+          height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        `,
+            }}
+          ></noscript>
+        )}
         <header>
           <NavigationExperience />
         </header>
-        {process.env.NEXT_PUBLIC_GA_ID && isProduction && <Analytics />}
+        {NEXT_PUBLIC_GA_ID && isProduction && <Analytics />}
 
         {!isProduction && <AxeReporter />}
         {children}
