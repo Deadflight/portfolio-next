@@ -7,7 +7,7 @@ import { NavigationExperience } from "@/shared/components/Navigation/Navigation"
 import { Footer } from "@/shared/components/Footer/Footer";
 import Script from "next/script";
 import { Analytics } from "./components/analitycs/Analytics";
-import { getClientEnvs, getServerEnvs } from "@/lib/config/envs";
+import { getClientEnvs } from "@/lib/config/envs";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -131,7 +131,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { NODE_ENV } = getServerEnvs();
+  const { NODE_ENV } = process.env;
   const { NEXT_PUBLIC_GA_ID, NEXT_PUBLIC_GTM_ID } = getClientEnvs();
 
   const isProduction = NODE_ENV === "production";
@@ -142,6 +142,15 @@ export default function RootLayout({
       lang="es"
       className={`${poppins.variable} ${lato.variable} antialiased`}
     >
+      {GTM_ID && isProduction && (
+        <Script
+          id="gtm-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${NEXT_PUBLIC_GTM_ID}');`,
+          }}
+        />
+      )}
       {GA_ID && isProduction && (
         <>
           <Script
@@ -160,15 +169,6 @@ export default function RootLayout({
           `}
           </Script>
         </>
-      )}
-      {GTM_ID && isProduction && (
-        <Script
-          id="gtm-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${NEXT_PUBLIC_GTM_ID}');`,
-          }}
-        />
       )}
       <body className="min-h-screen bg-background-main text-text-main font-body">
         {GTM_ID && isProduction && (

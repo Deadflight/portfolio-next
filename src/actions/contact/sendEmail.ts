@@ -1,5 +1,4 @@
 "use server";
-import { getServerEnvs } from "@/lib/config/envs";
 import { sendEmailSchema } from "@/schemas/sendEmailSchema";
 import { Resend } from "resend";
 
@@ -20,7 +19,7 @@ export async function sendEmail(formData: FormData): Promise<{
     };
   }
 
-  const envs = getServerEnvs();
+  const envs = process.env;
 
   if (envs.CI && envs.NODE_ENV === "development") {
     return {
@@ -28,10 +27,10 @@ export async function sendEmail(formData: FormData): Promise<{
     };
   }
 
-  const resend = new Resend(getServerEnvs().EMAIL_SENDER_API_KEY);
+  const resend = new Resend(process.env.EMAIL_SENDER_API_KEY);
   const response = await resend.emails.send({
-    from: envs.EMAIL_SENDER_FROM_EMAIL,
-    to: envs.EMAIL_SENDER_TO_EMAIL,
+    from: envs.EMAIL_SENDER_FROM_EMAIL || "",
+    to: envs.EMAIL_SENDER_TO_EMAIL || "",
     subject: validateFields.data.subject,
     replyTo: validateFields.data.email,
     html: `

@@ -1,4 +1,4 @@
-import { getClientEnvs, getServerEnvs } from "../config/envs";
+import { getClientEnvs } from "../config/envs";
 
 declare global {
   interface Window {
@@ -7,7 +7,7 @@ declare global {
 }
 
 export const pageview = (url: string) => {
-  const { NODE_ENV } = getServerEnvs();
+  const { NODE_ENV } = process.env;
   const { NEXT_PUBLIC_GA_ID } = getClientEnvs();
   if (
     typeof window !== "undefined" &&

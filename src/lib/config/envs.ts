@@ -43,7 +43,6 @@ export const getClientEnvs = (): ClientEnvs => {
 };
 
 export const getServerEnvs = (): ServerEnvs => {
-  // Validate server-only vars and include client ones as well
   return {
     EMAIL_SENDER_API_KEY: validateServerEnvVar("EMAIL_SENDER_API_KEY"),
     EMAIL_SENDER_FROM_EMAIL: validateServerEnvVar("EMAIL_SENDER_FROM_EMAIL"),
