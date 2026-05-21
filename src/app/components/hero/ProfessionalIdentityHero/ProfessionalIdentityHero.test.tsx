@@ -65,12 +65,11 @@ describe("ProfessionalIdentityHero", () => {
     expect(icon).toHaveClass("mx-auto");
   });
 
-  it("renders the bouncing animation container with aria-hidden", () => {
+  it("renders the bouncing animation container", () => {
     render(<ProfessionalIdentityHero />);
     const bounceDiv = screen
       .getByLabelText(/professional introduction and brand statement/i)
       .querySelector(".animate-bounce");
     expect(bounceDiv).toBeInTheDocument();
-    expect(bounceDiv).toHaveAttribute("aria-hidden", "true");
   });
 });

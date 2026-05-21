@@ -55,7 +55,12 @@ export const ProfessionalIdentityHero = (): JSX.Element => {
 
         <div className="animate-bounce">
           <a href="#experiencia" aria-label="Ir a la sección de experiencia">
-            <Icon name="ChevronDown" size={28} className="text-accent mx-auto" aria-hidden="true" />
+            <Icon
+              name="ChevronDown"
+              size={28}
+              className="text-accent mx-auto"
+              aria-hidden="true"
+            />
           </a>
         </div>
       </article>
