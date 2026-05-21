@@ -34,9 +34,9 @@ describe("ProjectsShowCase", () => {
     render(<ProjectsShowCase />);
     // Titles from the hardcoded projects array
     expect(screen.getByText(/Kumbio/i)).toBeInTheDocument();
+    expect(screen.getByText(/Farmaloop/i)).toBeInTheDocument();
     expect(screen.getByText(/Teslo Shop/i)).toBeInTheDocument();
     expect(screen.getByText(/Cryptoverse/i)).toBeInTheDocument();
-    expect(screen.getByText(/Country App Angular/i)).toBeInTheDocument();
   });
 
   it("renders the collaboration card with correct content", () => {
