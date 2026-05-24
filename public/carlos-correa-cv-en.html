@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - Carlos Correa - Full Stack Developer</title>
+  <style>
+    @page {
+      margin: 2cm;
+      size: A4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Calibri', 'Arial', sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+      background: #fff;
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 2cm;
+    }
+
+    .header {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 25px;
+      border-bottom: 3px solid #2563EB;
+      padding-bottom: 20px;
+    }
+
+    .photo-placeholder {
+      width: 120px;
+      height: 150px;
+      border: 2px solid #2563EB;
+      background: #f0f4ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 25px;
+      flex-shrink: 0;
+    }
+
+    .photo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-text {
+      color: #666;
+      font-size: 10pt;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .header-content h1 {
+      font-size: 24pt;
+      font-weight: bold;
+      color: #1a1a1a;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .header-content h2 {
+      font-size: 14pt;
+      color: #2563EB;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 10pt;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #444;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 14pt;
+      font-weight: bold;
+      color: #2563EB;
+      border-bottom: 2px solid #2563EB;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .experience-item,
+    .project-item,
+    .education-item,
+    .course-item {
+      margin-bottom: 15px;
+    }
+
+    .experience-header,
+    .project-header,
+    .education-header,
+    .course-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 5px;
+    }
+
+    .position,
+    .project-title,
+    .degree,
+    .course-name {
+      font-weight: bold;
+      font-size: 11pt;
+      color: #1a1a1a;
+    }
+
+    .company,
+    .project-tech,
+    .school,
+    .course-platform {
+      font-style: italic;
+      color: #444;
+      font-size: 10pt;
+    }
+
+    .period {
+      color: #666;
+      font-size: 10pt;
+      font-weight: 600;
+    }
+
+    .achievements {
+      margin-left: 15px;
+      margin-top: 8px;
+    }
+
+    .achievements li {
+      margin-bottom: 5px;
+      color: #333;
+      font-size: 10pt;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .skill-category h4 {
+      font-size: 11pt;
+      font-weight: bold;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      background: #f0f4ff;
+      color: #2563EB;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 9pt;
+      font-weight: 600;
+      border: 1px solid #2563EB;
+    }
+
+    .languages-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .languages-table td {
+      padding: 5px 0;
+      font-size: 10pt;
+    }
+
+    .availability {
+      background: #f0f4ff;
+      padding: 10px 15px;
+      border-left: 4px solid #2563EB;
+      margin-top: 15px;
+    }
+
+    .availability p {
+      font-size: 10pt;
+      color: #2563EB;
+      font-weight: 600;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        margin: 0;
+        max-width: none;
+      }
+
+      .photo-placeholder {
+        background: #fff;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="photo-placeholder">
+      <img src="profile_photo.jpg" alt="Carlos Correa" />
+    </div>
+    <div class="header-content">
+      <h1>Carlos Correa</h1>
+      <h2>Full Stack Developer</h2>
+      <div class="contact-info">
+        <div class="contact-item">
+          <span>📧</span>
+          <span>correamillancarlos@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <span>📱</span>
+          <span>+58 424 859 9166</span>
+        </div>
+        <div class="contact-item">
+          <span>🌐</span>
+          <span>linkedin.com/in/carloscorreamillan</span>
+        </div>
+        <div class="contact-item">
+          <span>💻</span>
+          <span>github.com/Deadflight</span>
+        </div>
+        <div class="contact-item">
+          <span>📍</span>
+          <span>Remote Work</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Professional Summary -->
+  <section class="section">
+    <h3 class="section-title">Professional Summary</h3>
+    <p style="font-size: 10pt; color: #333; text-align: justify;">
+      Full Stack Developer with over 3 years of experience building scalable and high-performance web applications.
+      Specialized in React, Next.js, Node.js, and AWS, with strong expertise in developing B2B and e-commerce solutions.
+      Committed to code quality, best development practices, and delivering real business value.
+      Proven ability to work in agile environments and internationally distributed teams.
+    </p>
+  </section>
+
+  <!-- Work Experience -->
+  <section class="section">
+    <h3 class="section-title">Work Experience</h3>
+
+    <div class="experience-item">
+      <div class="experience-header">
+        <div>
+          <div class="position">Full Stack Developer</div>
+          <div class="company">Farmaloop - Startup, E-commerce, Pharmacy</div>
+        </div>
+        <div class="period">Aug 2023 - Mar 2025</div>
+      </div>
+      <ul class="achievements">
+        <li>Developed and maintained key modules of the internal admin platform used by 10+ employees to manage customer
+          data and operations.</li>
+        <li>Implemented a point-of-sale (POS) system for direct sales, reducing average sale time to under 5 minutes.
+        </li>
+        <li>Optimized the real-time order processing module, handling up to 100 orders/hour and increasing operational
+          efficiency by 30%.</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="experience-header">
+        <div>
+          <div class="position">Frontend Developer</div>
+          <div class="company">Contactemos Contact Center - SaaS, B2B</div>
+        </div>
+        <div class="period">Feb 2023 - Aug 2023</div>
+      </div>
+      <ul class="achievements">
+        <li>Resolved critical bugs in the appointment scheduling application, significantly reducing user abandonment
+          rate.</li>
+        <li>Developed complete modules for customer, location, and appointment management, improving end-user
+          experience.</li>
+        <li>Proposed and implemented features that increased SaaS system usability, receiving positive feedback from the
+          product team.</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="experience-header">
+        <div>
+          <div class="position">Frontend Developer</div>
+          <div class="company">CheshTech Digital Agency - Digital Agency, B2B</div>
+        </div>
+        <div class="period">Apr 2022 - Feb 2023</div>
+      </div>
+      <ul class="achievements">
+        <li>Designed key interfaces and pages using Next.js and Gatsby.js for high-performance B2B websites.</li>
+        <li>Refactored code in existing applications, improving readability and reducing codebase size by 15%.</li>
+        <li>Improved load times by up to 20% through advanced performance optimization techniques.</li>
+        <li>Developed modules and integrations for e-commerce using Shopify API and Apollo Server.</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="experience-header">
+        <div>
+          <div class="position">Freelance Frontend Developer</div>
+          <div class="company">Upwork - Freelance</div>
+        </div>
+        <div class="period">Dec 2021 - May 2022</div>
+      </div>
+      <ul class="achievements">
+        <li>Built interactive React components to display audio data via REST APIs, creating intuitive and responsive
+          interfaces.</li>
+        <li>Diagnosed and resolved critical backend API connection errors, improving application stability.</li>
+        <li>Gained valuable experience working with agile methodologies and management tools like Jira in international
+          teams.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="section">
+    <h3 class="section-title">Featured Projects</h3>
+
+    <div class="project-item">
+      <div class="project-header">
+        <div>
+          <div class="project-title">Kumbio - Appointment Management Application</div>
+          <div class="project-tech">React, Next.js, TypeScript, Material UI</div>
+        </div>
+        <div class="period">2023</div>
+      </div>
+      <ul class="achievements">
+        <li>UX refactoring and development of new management modules that significantly reduced user abandonment rate.
+        </li>
+      </ul>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <div>
+          <div class="project-title">Farmaloop - Online Pharmacy Platform</div>
+          <div class="project-tech">React, Next.js, TypeScript, Node.js, MongoDB, AWS</div>
+        </div>
+        <div class="period">2023 - 2025</div>
+      </div>
+      <ul class="achievements">
+        <li>Development of admin modules, point-of-sale (POS), and real-time order optimization. Internal modules used
+          by 10+ employees, sales under 5 minutes, and 30%+ operational efficiency.</li>
+      </ul>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <div>
+          <div class="project-title">Teslo Shop - E-commerce Platform</div>
+          <div class="project-tech">Next.js, React, TypeScript, Material UI, Paypal API</div>
+        </div>
+        <div class="period">2023</div>
+      </div>
+      <ul class="achievements">
+        <li>Fast-loading website with optimized SEO and PayPal payment integration.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Technical Skills -->
+  <section class="section">
+    <h3 class="section-title">Technical Skills</h3>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4>Frontend</h4>
+        <div class="skill-list">
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Next.js</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">Tailwind CSS</span>
+          <span class="skill-tag">Redux</span>
+          <span class="skill-tag">Angular</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h4>Backend</h4>
+        <div class="skill-list">
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Express.js</span>
+          <span class="skill-tag">NestJS</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">GraphQL</span>
+          <span class="skill-tag">Apollo Server</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h4>Databases</h4>
+        <div class="skill-list">
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">DynamoDB</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h4>Cloud & DevOps</h4>
+        <div class="skill-list">
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">CI/CD</span>
+          <span class="skill-tag">Git</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h4>Management</h4>
+        <div class="skill-list">
+          <span class="skill-tag">Agile/Scrum</span>
+          <span class="skill-tag">Kanban</span>
+          <span class="skill-tag">Jira</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section">
+    <h3 class="section-title">Education</h3>
+    <div class="education-item">
+      <div class="education-header">
+        <div>
+          <div class="degree">Bachelor's Degree in Computer Science (In Progress)</div>
+          <div class="school">Universidad de Oriente</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Training -->
+  <section class="section">
+    <h3 class="section-title">Additional Training</h3>
+
+    <div class="course-item">
+      <div class="course-header">
+        <div>
+          <div class="course-name">Backend with Node.js: REST API with Express.js</div>
+          <div class="course-platform">DevTalles</div>
+        </div>
+        <div class="period">2023</div>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-header">
+        <div>
+          <div class="course-name">SQL from Scratch: Practical Guide with PostgreSQL</div>
+          <div class="course-platform">DevTalles</div>
+        </div>
+        <div class="period">2026</div>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-header">
+        <div>
+          <div class="course-name">React - Definitive Guide: hooks, router, redux, next + Projects</div>
+          <div class="course-platform">Udemy</div>
+        </div>
+        <div class="period">2022</div>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-header">
+        <div>
+          <div class="course-name">Next.js: The React Framework for Production</div>
+          <div class="course-platform">Udemy</div>
+        </div>
+        <div class="period">2022</div>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="course-header">
+        <div>
+          <div class="course-name">Professional React.js and Redux</div>
+          <div class="course-platform">Platzi</div>
+        </div>
+        <div class="period">2022</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Languages -->
+  <section class="section">
+    <h3 class="section-title">Languages</h3>
+    <table class="languages-table">
+      <tr>
+        <td><strong>Spanish:</strong></td>
+        <td>Native</td>
+      </tr>
+      <tr>
+        <td><strong>English:</strong></td>
+        <td>Intermediate (B1)</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- Availability -->
+  <div class="availability">
+    <p>✅ Immediate Availability - Full Time</p>
+  </div>
+</body>
+
+</html>
