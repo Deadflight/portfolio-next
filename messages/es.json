@@ -1,0 +1,177 @@
+﻿{
+  "common": {
+    "skipToMain": "Saltar al contenido principal",
+    "toggleLanguage": "Cambiar idioma",
+    "loading": "Cargando..."
+  },
+  "navigation": {
+    "brandName": "Carlos Correa",
+    "mainNavigation": "Navegación principal",
+    "toggleMenu": "Alternar menú",
+    "links": {
+      "about": "Sobre mí",
+      "skills": "Habilidades",
+      "experience": "Experiencia",
+      "projects": "Proyectos",
+      "contact": "Contacto"
+    }
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "name": "Carlos Correa",
+    "subtitle": "Desarrollador Full Stack",
+    "location": "Trabajo Remoto",
+    "valueProposition": "Más de 3 años de experiencia creando aplicaciones web escalables con React, Node.js y AWS. Especializado en entornos ágiles y desarrollo de soluciones centradas en el usuario.",
+    "scrollDown": "Ir a la sección de experiencia",
+    "ariaLabel": "Sección de presentación de Carlos Correa"
+  },
+  "footer": {
+    "copyright": "© {year} Carlos Correa. Todos los derechos reservados.",
+    "ariaLabel": "Pie de página con información de contacto y redes sociales",
+    "description": "Desarrollador Full Stack apasionado por crear experiencias digitales excepcionales y soluciones tecnológicas innovadoras.",
+    "quickLinks": "Enlaces Rápidos",
+    "contact": {
+      "title": "Contacto",
+      "email": "Correo electrónico",
+      "phone": "Teléfono"
+    },
+    "location": "Trabajo Remoto",
+    "social": {
+      "github": "Perfil de GitHub",
+      "linkedin": "Perfil de LinkedIn",
+      "twitter": "Perfil de Twitter"
+    }
+  },
+  "skills": {
+    "title": "Habilidades",
+    "subtitle": "Competencias técnicas",
+    "description": "Mi stack técnico y nivel de experiencia",
+    "categoriesTitle": "Categorías",
+    "proficiencyLegend": "Niveles de Competencia",
+    "proficiency": {
+      "expert": "Experto",
+      "advanced": "Avanzado",
+      "intermediate": "Intermedio",
+      "beginner": "Principiante"
+    },
+    "proficiencyDescription": {
+      "expert": "Dominio completo, capaz de liderar proyectos y mentoría",
+      "advanced": "Uso profesional diario, solución independiente de problemas",
+      "intermediate": "Experiencia práctica, desarrollo con supervisión ocasional",
+      "beginner": "Conocimientos básicos, en proceso de aprendizaje"
+    },
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Herramientas y Prácticas"
+    }
+  },
+  "experience": {
+    "title": "Experiencia",
+    "subtitle": "Trayectoria profesional",
+    "detailsTitle": "Detalles",
+    "detailsDescription": "Información detallada sobre mi experiencia laboral",
+    "downloadCv": "Descargar CV",
+    "downloadCvFull": "Descargar Curriculum Vitae",
+    "ariaLabel": "Línea de tiempo de experiencia laboral",
+    "current": "Actual",
+    "reference": "Referencia profesional",
+    "achievements": "Logros",
+    "technologies": "Tecnologías"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Trabajos destacados",
+    "description": "Una selección de mis proyectos más recientes",
+    "collaborationTitle": "¿Trabajamos juntos?",
+    "collaborationDescription": "¿Interesado en colaborar o tenés un proyecto en mente?",
+    "contactButton": "Contáctame",
+    "collaborationOffer": "Ofrezco servicios de desarrollo Full Stack"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "subtitle": "Mi historia personal",
+    "description": "Conocé más sobre mi trayectoria y enfoque",
+    "collaborationTitle2": "¿Te gustaría trabajar conmigo?",
+    "collaborationDescription2": "Estoy siempre abierto a nuevos desafíos y oportunidades de colaboración. Si tienes un proyecto interesante o simplemente quieres charlar sobre tecnología, no dudes en contactarme.",
+    "contactButton": "Hablemos",
+    "collaborationOffer": "Ver Mi Trabajo",
+    "myJourney": {
+      "title": "Mi Viaje",
+      "paragraph1": "Mi pasión por la tecnología comenzó cuando creé mi primer sitio web a los 15 años. Desde entonces, he estado obsesionado con escribir código limpio y eficiente.",
+      "paragraph2": "A lo largo de los años, he trabajado en diversos proyectos, desde startups hasta empresas establecidas, siempre enfocándome en crear soluciones que marquen la diferencia."
+    },
+    "currentFocus": {
+      "title": "Enfoque Actual",
+      "description": "Actualmente estoy profundizando mis conocimientos en:",
+      "topics": {
+        "nextjs": "Next.js 15 y React Server Components",
+        "performance": "Optimización de rendimiento web",
+        "accessibility": "Accesibilidad web (WCAG AAA)"
+      }
+    },
+    "beyondCode": {
+      "title": "Más Allá del Código",
+      "description": "Cuando no estoy programando, me encontrarás:",
+      "items": [
+        "Explorando nuevas tecnologías y frameworks",
+        "Contribuyendo a proyectos open source",
+        "Compartiendo conocimiento con la comunidad"
+      ]
+    },
+    "roles": {
+      "title": "Roles y Evolución",
+      "paragraph1": "He tenido el privilegio de trabajar en diversos roles, desde Desarrollador Frontend hasta Arquitecto de Software.",
+      "paragraph2": "Cada rol me ha enseñado algo valioso y me ha ayudado a crecer como profesional y como persona."
+    },
+    "additionalInfo": {
+      "location": "Ubicación",
+      "experience": "Experiencia",
+      "languages": "Idiomas",
+      "philosophy": "Filosofía",
+      "philosophyDetail": "El código limpio y la accesibilidad no son opcionales, son esenciales."
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "formTitle": "Envíame un mensaje",
+    "subtitle": "¿Tenés un proyecto en mente? Hablemos.",
+    "name": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "email": "Email",
+    "emailPlaceholder": "tu@email.com",
+    "subject": "Asunto",
+    "subjectPlaceholder": "¿En qué puedo ayudarte?",
+    "message": "Mensaje",
+    "messagePlaceholder": "Contame sobre tu proyecto...",
+    "submitButton": "Enviar mensaje",
+    "contactInfoTitle": "Información de contacto",
+    "followMeTitle": "Seguime en redes",
+    "phone": "Teléfono",
+    "portfolio": "Portfolio",
+    "availability": "Disponible para proyectos freelance"
+  },
+  "metadata": {
+    "title": "Carlos Correa - Desarrollador Full Stack",
+    "description": "Portafolio de Carlos Correa, un Desarrollador Full Stack especializado en aplicaciones web accesibles y de alto rendimiento.",
+    "keywords": "Desarrollador Full Stack, React, Next.js, TypeScript, Portfolio, Web Developer, España",
+    "author": "Carlos Correa",
+    "openGraph": {
+      "title": "Carlos Correa - Desarrollador Full Stack",
+      "description": "Portafolio de Carlos Correa, un Desarrollador Full Stack especializado en aplicaciones web accesibles y de alto rendimiento.",
+      "locale": "es_ES"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "title": "Carlos Correa - Desarrollador Full Stack",
+      "description": "Portafolio de Carlos Correa, un Desarrollador Full Stack especializado en aplicaciones web accesibles y de alto rendimiento.",
+      "creator": "@carlos_correa_dev"
+    }
+  },
+  "proficiency": {
+    "expert": "Experto",
+    "advanced": "Avanzado",
+    "intermediate": "Intermedio",
+    "beginner": "Principiante"
+  }
+}

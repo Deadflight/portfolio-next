@@ -1,7 +1,10 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+﻿import React from "react";
+import { screen } from "@testing-library/react";
 import { AboutMeShowcase } from "./AboutMeShowCase";
 import "@testing-library/jest-dom";
+import { renderWithProviders } from "@/test/utils";
+
+// Mock next-intl
 
 // Mock child components to isolate AboutMeShowcase
 jest.mock("../MyJourney/MyJourney", () => ({
@@ -22,39 +25,39 @@ jest.mock("../BeyondTheCode/BeyondTheCode", () => ({
 
 describe("AboutMeShowcase", () => {
   it("renders the main container with correct class", () => {
-    render(<AboutMeShowcase />);
+    renderWithProviders(<AboutMeShowcase />);
     const container = screen.getByText("Sobre Mí").closest("div");
     expect(container).toHaveClass("text-center", "mb-12");
   });
 
   it("renders the section with id 'sobre-mi'", () => {
-    render(<AboutMeShowcase />);
+    renderWithProviders(<AboutMeShowcase />);
     expect(document.getElementById("sobre-mi")).toBeInTheDocument();
   });
 
   it("renders the main heading", () => {
-    render(<AboutMeShowcase />);
+    renderWithProviders(<AboutMeShowcase />);
     expect(
       screen.getByRole("heading", { name: "Sobre Mí" })
     ).toBeInTheDocument();
   });
 
   it("renders the call-to-action card", () => {
-    render(<AboutMeShowcase />);
+    renderWithProviders(<AboutMeShowcase />);
     expect(
-      screen.getByText("¿Te gustaría trabajar conmigo?")
+      screen.getByText("¿Interesado en colaborar?")
     ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Hablemos" })).toHaveAttribute(
       "href",
       "#contacto"
     );
     expect(
-      screen.getByRole("link", { name: "Ver Mi Trabajo" })
+      screen.getByRole("link", { name: "Ver mi Trabajo" })
     ).toHaveAttribute("href", "#proyectos");
   });
 
   it("renders all child components", () => {
-    render(<AboutMeShowcase />);
+    renderWithProviders(<AboutMeShowcase />);
     expect(screen.getByTestId("MyJourney")).toBeInTheDocument();
     expect(screen.getByTestId("RolesAndEvolution")).toBeInTheDocument();
     expect(screen.getByTestId("AdditionalInfo")).toBeInTheDocument();

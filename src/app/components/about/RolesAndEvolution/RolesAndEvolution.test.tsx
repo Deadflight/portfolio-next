@@ -1,8 +1,11 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+﻿import React from "react";
+import { screen } from "@testing-library/react";
 import { RolesAndEvolution } from "./RolesAndEvolution";
 import "@testing-library/jest-dom";
+import { renderWithProviders } from "@/test/utils";
 import { IIconProps } from "@/shared/types/icons.types";
+
+// Mock next-intl
 
 // Mock the Icon component
 jest.mock("../../../../shared/components/Icons/Icons", () => ({
@@ -18,14 +21,14 @@ jest.mock("../../../../shared/components/Icons/Icons", () => ({
 
 describe("RolesAndEvolution", () => {
   it("renders the article card with the correct title", () => {
-    render(<RolesAndEvolution />);
+    renderWithProviders(<RolesAndEvolution />);
     expect(
       screen.getByRole("heading", { name: /Roles y Evolución/i })
     ).toBeInTheDocument();
   });
 
   it("renders the Icon with correct props", () => {
-    render(<RolesAndEvolution />);
+    renderWithProviders(<RolesAndEvolution />);
     const icon = screen.getByTestId("icon");
     expect(icon).toHaveAttribute("data-name", "Lightbulb");
     expect(icon).toHaveAttribute("data-size", "20");
@@ -33,21 +36,21 @@ describe("RolesAndEvolution", () => {
   });
 
   it("renders both paragraphs with expected content", () => {
-    render(<RolesAndEvolution />);
+    renderWithProviders(<RolesAndEvolution />);
     expect(
       screen.getByText(
-        /Mi evolución profesional me ha llevado desde el desarrollo frontend/i
+        /He tenido el privilegio de trabajar en diversos roles/i
       )
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /En Farmaloop, lideré el desarrollo de sistemas complejos/i
+        /Cada rol me ha enseñado algo valioso/i
       )
     ).toBeInTheDocument();
   });
 
   it("renders the article with the card class", () => {
-    render(<RolesAndEvolution />);
+    renderWithProviders(<RolesAndEvolution />);
     expect(screen.getByRole("article")).toHaveClass("card");
   });
 });

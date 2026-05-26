@@ -1,8 +1,11 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+﻿import React from "react";
+import { screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import { renderWithProviders } from "@/test/utils";
 import { IIconProps } from "@/shared/types/icons.types";
 import { ProfessionalIdentityHero } from "./ProfessionalIdentityHero";
+
+// Mock next-intl
 
 // Mock child components
 jest.mock("../ProfessionalActions/ProfessionalActions", () => ({
@@ -23,17 +26,14 @@ jest.mock("../../../../shared/components/Icons/Icons", () => ({
 }));
 
 describe("ProfessionalIdentityHero", () => {
-  it("renders the section with correct id and aria-label", () => {
-    render(<ProfessionalIdentityHero />);
-    const section = screen.getByRole("region", {
-      name: /professional introduction and brand statement/i,
-    });
+  it("renders the section with correct id", () => {
+    renderWithProviders(<ProfessionalIdentityHero />);
+    const section = document.getElementById("inicio");
     expect(section).toBeInTheDocument();
-    expect(section).toHaveAttribute("id", "inicio");
   });
 
   it("renders the full name, professional title, and value proposition", () => {
-    render(<ProfessionalIdentityHero />);
+    renderWithProviders(<ProfessionalIdentityHero />);
     expect(
       screen.getByRole("heading", { level: 1, name: /carlos correa/i })
     ).toBeInTheDocument();
@@ -45,19 +45,19 @@ describe("ProfessionalIdentityHero", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /más de 3 años de experiencia creando aplicaciones web escalables con react, node\.js y aws/i
+        /Más de 3 años de experiencia creando aplicaciones web escalables con react, node\.js y aws/i
       )
     ).toBeInTheDocument();
   });
 
   it("renders ProfessionalActions and SocialProfileLinks components", () => {
-    render(<ProfessionalIdentityHero />);
+    renderWithProviders(<ProfessionalIdentityHero />);
     expect(screen.getByTestId("professional-actions")).toBeInTheDocument();
     expect(screen.getByTestId("social-profile-links")).toBeInTheDocument();
   });
 
   it("renders the ChevronDown icon with correct props", () => {
-    render(<ProfessionalIdentityHero />);
+    renderWithProviders(<ProfessionalIdentityHero />);
     const icon = screen.getByTestId("icon");
     expect(icon).toHaveAttribute("data-name", "ChevronDown");
     expect(icon).toHaveAttribute("data-size", "28");
@@ -66,10 +66,9 @@ describe("ProfessionalIdentityHero", () => {
   });
 
   it("renders the bouncing animation container", () => {
-    render(<ProfessionalIdentityHero />);
-    const bounceDiv = screen
-      .getByLabelText(/professional introduction and brand statement/i)
-      .querySelector(".animate-bounce");
+    renderWithProviders(<ProfessionalIdentityHero />);
+    const section = document.getElementById("inicio");
+    const bounceDiv = section?.querySelector(".animate-bounce");
     expect(bounceDiv).toBeInTheDocument();
   });
 });

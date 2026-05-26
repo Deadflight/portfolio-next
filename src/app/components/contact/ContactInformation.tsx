@@ -1,8 +1,10 @@
+"use client";
 import { contactInformation } from "@/constants/contactInformation";
 import { Icon } from "@/shared/components/Icons/Icons";
 import { SocialLink } from "@/shared/components/SocialLink/SocialLink";
 import { ContactInformationSocialLinks } from "@/shared/types/contact.types";
 import React from "react";
+import { useTranslations } from "next-intl";
 
 export type ContactInformationProps = {
   socialLinks: ContactInformationSocialLinks[];
@@ -30,18 +32,22 @@ export type ContactInformationProps = {
 export const ContactInformation: React.FC<ContactInformationProps> = ({
   socialLinks,
 }) => {
+  const t = useTranslations("contact");
+
   return (
     <article className="space-y-8">
       <div className="card">
         <h3 className="text-xl font-heading font-semibold text-text-main mb-6">
-          Información de Contacto
+          {t("contactInfoTitle")}
         </h3>
 
         <div className="space-y-4">
           <div className="flex items-center">
             <Icon name="Mail" size={20} className="text-text-main mr-4" />
             <div>
-              <p className="font-body font-semibold text-text-main">Email</p>
+              <p className="font-body font-semibold text-text-main">
+                {t("email")}
+              </p>
               <a
                 href="mailto:correamillancarlos@gmail.com"
                 className="link-text"
@@ -54,7 +60,9 @@ export const ContactInformation: React.FC<ContactInformationProps> = ({
           <div className="flex items-center">
             <Icon name="Phone" size={20} className="text-text-main mr-4" />
             <div>
-              <p className="font-body font-semibold text-text-main">Teléfono</p>
+              <p className="font-body font-semibold text-text-main">
+                {t("phone")}
+              </p>
               <a href={`tel:${contactInformation.phone}`} className="link-text">
                 {contactInformation.phone}
               </a>
@@ -65,7 +73,7 @@ export const ContactInformation: React.FC<ContactInformationProps> = ({
             <Icon name="Globe" size={20} className="text-text-main mr-4" />
             <div>
               <p className="font-body font-semibold text-text-main">
-                Portfolio
+                {t("portfolio")}
               </p>
               <a
                 href={contactInformation.portfolio}
@@ -82,9 +90,9 @@ export const ContactInformation: React.FC<ContactInformationProps> = ({
             <Icon name="MapPin" size={20} className="text-text-main mr-4" />
             <div>
               <p className="font-body font-semibold text-text-main">
-                Disponibilidad
+                {t("availability")}
               </p>
-              <p className="font-body text-primary-brand">Trabajo Remoto</p>
+              <p className="font-body text-primary-brand">{t("availability")}</p>
             </div>
           </div>
         </div>
@@ -92,7 +100,7 @@ export const ContactInformation: React.FC<ContactInformationProps> = ({
 
       <div className="card">
         <h3 className="text-xl font-heading font-semibold text-text-main mb-6">
-          Sígueme
+          {t("followMeTitle")}
         </h3>
 
         <div className="flex space-x-4">

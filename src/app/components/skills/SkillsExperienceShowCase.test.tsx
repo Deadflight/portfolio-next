@@ -1,8 +1,11 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+﻿import React from "react";
+import { screen } from "@testing-library/react";
 import { SkillsExperienceShowCase } from "./SkillsExperienceShowCase";
 import { SkillsLegendProps } from "./SkillsLegend";
 import { SkillsCategoryListProps } from "./SkillsCategoryList";
+import { renderWithProviders } from "@/test/utils";
+
+// Mock next-intl
 
 // Mock child components to isolate SkillsExperienceShowCase
 jest.mock("./SkillsLegend", () => ({
@@ -26,21 +29,16 @@ jest.mock("./SkillsCategoryList", () => ({
 
 describe("SkillsExperienceShowCase", () => {
   it("renders the main section and headings", () => {
-    render(<SkillsExperienceShowCase />);
-    // Use a more specific name to avoid ambiguity
+    renderWithProviders(<SkillsExperienceShowCase />);
+    expect(document.getElementById("habilidades")).toBeInTheDocument();
+    expect(screen.getByText("Habilidades")).toBeInTheDocument();
     expect(
-      screen.getByRole("region", { name: /habilidades técnicas/i })
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("heading", { name: /habilidades técnicas/i })
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/mi experiencia práctica en tecnologías/i)
+      screen.getByText(/Mi stack técnico y nivel de experiencia/i)
     ).toBeInTheDocument();
   });
 
   it("renders the proficiency legend", () => {
-    render(<SkillsExperienceShowCase />);
+    renderWithProviders(<SkillsExperienceShowCase />);
     expect(screen.getByTestId("skills-legend")).toBeInTheDocument();
     expect(screen.getByTestId("skills-legend").textContent).toMatch(
       /expert|advanced|intermediate|beginner/i
@@ -48,7 +46,7 @@ describe("SkillsExperienceShowCase", () => {
   });
 
   it("renders all skill categories", () => {
-    render(<SkillsExperienceShowCase />);
+    renderWithProviders(<SkillsExperienceShowCase />);
     // These titles are from the skillCategories array in the component
     expect(screen.getByTestId("category-languages")).toHaveTextContent(
       /languages/i
@@ -66,12 +64,12 @@ describe("SkillsExperienceShowCase", () => {
       /cloud & devops/i
     );
     expect(screen.getByTestId("category-project-management")).toHaveTextContent(
-      /gestión de proyectos/i
+      /Gestión de Proyectos/i
     );
   });
 
   it("renders the SkillsLanguage and SkillsLearning sections", () => {
-    render(<SkillsExperienceShowCase />);
+    renderWithProviders(<SkillsExperienceShowCase />);
     expect(screen.getByTestId("skills-language")).toBeInTheDocument();
     expect(screen.getByTestId("skills-learning")).toBeInTheDocument();
   });

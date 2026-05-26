@@ -1,8 +1,10 @@
+"use client";
 import { SkillsLegend } from "./SkillsLegend";
 import { SkillsLanguage } from "./SkillsLanguage";
 import { SkillsLearning } from "./SkillsLearning";
 import { SkillsCategoryList } from "./SkillsCategoryList";
 import { proficiencyLevels, skillCategories } from "@/constants/skills";
+import { useTranslations } from "next-intl";
 
 /**
  * SkillsExperienceShowCase displays categorized technical skills, proficiency levels,
@@ -12,6 +14,8 @@ import { proficiencyLevels, skillCategories } from "@/constants/skills";
  * competencies and experience.
  */
 export const SkillsExperienceShowCase = () => {
+  const t = useTranslations("skills");
+
   return (
     <section
       id="habilidades"
@@ -24,11 +28,10 @@ export const SkillsExperienceShowCase = () => {
             id="skills-title"
             className="text-h2 font-heading font-bold text-text-main mb-4"
           >
-            Habilidades Técnicas
+            {t("title")}
           </h2>
           <p className="text-lg font-body text-primary-brand max-w-2xl mx-auto font-medium">
-            Mi experiencia práctica en tecnologías y herramientas para crear
-            soluciones completas
+            {t("description")}
           </p>
         </header>
 

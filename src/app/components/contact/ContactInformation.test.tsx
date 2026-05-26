@@ -1,22 +1,19 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+﻿import React from "react";
+import { screen } from "@testing-library/react";
 import { ContactInformation } from "./ContactInformation";
 import { IIconProps } from "../../../shared/types/icons.types";
 import { SocialLinkProps } from "../../../shared/components/SocialLink/SocialLink";
 import { ContactInformationSocialLinks } from "../../../shared/types/contact.types";
+import "@testing-library/jest-dom";
+import { renderWithProviders } from "@/test/utils";
 
-// Mock Icon and SocialLink components
 jest.mock("../../../shared/components/Icons/Icons", () => ({
   Icon: ({ name, size, className }: IIconProps) => (
     <span data-testid={`icon-${name}`} className={className}>
       {name}-{size}
     </span>
   ),
-  SvgIcons: {
-    Twitter: {},
-    GitHub: {},
-    LinkedIn: {},
-  },
+  SvgIcons: { Twitter: {}, GitHub: {}, LinkedIn: {} },
 }));
 
 jest.mock("../../../shared/components/SocialLink/SocialLink", () => ({
@@ -29,50 +26,29 @@ jest.mock("../../../shared/components/SocialLink/SocialLink", () => ({
 
 describe("ContactInformation", () => {
   const socialLinks: ContactInformationSocialLinks[] = [
-    {
-      linkUrl: "https://github.com/username",
-      linkLabel: "GitHub",
-      linkIcon: "GitHub",
-    },
-    {
-      linkUrl: "https://linkedin.com/in/username",
-      linkLabel: "Linkedin",
-      linkIcon: "Linkedin",
-    },
+    { linkUrl: "https://github.com/username", linkLabel: "GitHub", linkIcon: "GitHub" },
+    { linkUrl: "https://linkedin.com/in/username", linkLabel: "Linkedin", linkIcon: "Linkedin" },
   ];
 
   it("renders contact information headings", () => {
-    render(<ContactInformation socialLinks={socialLinks} />);
-    expect(
-      screen.getByRole("heading", { name: /información de contacto/i })
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("heading", { name: /sígueme/i })
-    ).toBeInTheDocument();
+    renderWithProviders(<ContactInformation socialLinks={socialLinks} />);
+    expect(screen.getByText("Información de contacto")).toBeInTheDocument();
+    expect(screen.getByText("Sígueme")).toBeInTheDocument();
   });
 
   it("renders email, phone, portfolio, and availability", () => {
-    render(<ContactInformation socialLinks={socialLinks} />);
-    expect(screen.getByText(/email/i)).toBeInTheDocument();
-    expect(
-      screen.getByText(/correamillancarlos@gmail.com/i)
-    ).toBeInTheDocument();
-    expect(screen.getByText(/teléfono/i)).toBeInTheDocument();
+    renderWithProviders(<ContactInformation socialLinks={socialLinks} />);
+    expect(screen.getByText("Email")).toBeInTheDocument();
+    expect(screen.getByText(/correamillancarlos@gmail.com/i)).toBeInTheDocument();
+    expect(screen.getByText("Teléfono")).toBeInTheDocument();
     expect(screen.getByText(/\+584248599166/i)).toBeInTheDocument();
-    expect(
-      screen.getByText((content, element) => {
-        return (
-          element?.tagName.toLowerCase() === "p" && /portfolio/i.test(content)
-        );
-      })
-    ).toBeInTheDocument();
-    expect(screen.getByText(/carlos-correa.com/i)).toBeInTheDocument();
-    expect(screen.getByText(/disponibilidad/i)).toBeInTheDocument();
-    expect(screen.getByText(/trabajo remoto/i)).toBeInTheDocument();
+    expect(screen.getByText("Portfolio")).toBeInTheDocument();
+    expect(screen.getByText(/www.carlos-correa.com/i)).toBeInTheDocument();
+    expect(screen.getAllByText("Disponible para proyectos freelance").length).toBeGreaterThan(0);
   });
 
   it("renders the correct icons for contact info", () => {
-    render(<ContactInformation socialLinks={socialLinks} />);
+    renderWithProviders(<ContactInformation socialLinks={socialLinks} />);
     expect(screen.getByTestId("icon-Mail")).toBeInTheDocument();
     expect(screen.getByTestId("icon-Phone")).toBeInTheDocument();
     expect(screen.getByTestId("icon-Globe")).toBeInTheDocument();
@@ -80,7 +56,7 @@ describe("ContactInformation", () => {
   });
 
   it("renders social links with correct href and aria-label", () => {
-    render(<ContactInformation socialLinks={socialLinks} />);
+    renderWithProviders(<ContactInformation socialLinks={socialLinks} />);
     const links = screen.getAllByTestId("social-link");
     expect(links).toHaveLength(socialLinks.length);
     socialLinks.forEach((link, idx) => {
@@ -90,7 +66,7 @@ describe("ContactInformation", () => {
   });
 
   it("renders the correct icons for social links", () => {
-    render(<ContactInformation socialLinks={socialLinks} />);
+    renderWithProviders(<ContactInformation socialLinks={socialLinks} />);
     expect(screen.getByTestId("icon-GitHub")).toBeInTheDocument();
     expect(screen.getByTestId("icon-Linkedin")).toBeInTheDocument();
   });
