@@ -1,4 +1,4 @@
-"use client";
+
 import { Icon } from "@/shared/components/Icons/Icons";
 import { WorkExperienceList } from "./WorkExperienceList/WorkExperienceList";
 import { FC, JSX } from "react";

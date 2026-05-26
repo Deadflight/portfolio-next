@@ -1,8 +1,7 @@
 import React from "react";
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Contact } from "./Contact";
 import { ContactInformationProps } from "./ContactInformation";
-import { renderWithProviders } from "@/test/utils";
 
 
 jest.mock("./ContactInformation", () => ({
@@ -28,33 +27,33 @@ jest.mock("../../../constants/contactInformation", () => ({
 
 describe("Contact", () => {
   it("renders section with correct id and classes", () => {
-    const { container } = renderWithProviders(<Contact />);
+    const { container } = render(<Contact />);
     const section = container.querySelector("#contacto");
     expect(section).not.toBeNull();
     expect(section).toHaveClass("py-16");
   });
 
   it("renders heading and description", () => {
-    renderWithProviders(<Contact />);
+    render(<Contact />);
     expect(
       screen.getByRole("heading", { name: /Contacto/i })
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /¿Tenés un proyecto en mente\? Hablemos/i
+        /Â¿TenÃ©s un proyecto en mente\? Hablemos/i
       )
     ).toBeInTheDocument();
   });
 
   it("renders ContactInformation with social links", () => {
-    renderWithProviders(<Contact />);
+    render(<Contact />);
     expect(screen.getByTestId("contact-information")).toBeInTheDocument();
     expect(screen.getByText("GitHub")).toBeInTheDocument();
     expect(screen.getByText("LinkedIn")).toBeInTheDocument();
   });
 
   it("renders ContactForm", () => {
-    renderWithProviders(<Contact />);
+    render(<Contact />);
     expect(screen.getByTestId("contact-form")).toBeInTheDocument();
   });
 });

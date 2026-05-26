@@ -1,4 +1,4 @@
-"use client";
+
 import { SkillsLegend } from "./SkillsLegend";
 import { SkillsLanguage } from "./SkillsLanguage";
 import { SkillsLearning } from "./SkillsLearning";

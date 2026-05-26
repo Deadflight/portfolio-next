@@ -1,8 +1,7 @@
 ﻿import React from "react";
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Footer } from "./Footer";
 import { IIconProps } from "../../../shared/types/icons.types";
-import { renderWithProviders } from "@/test/utils";
 
 jest.mock("../Icons/Icons", () => ({
   Icon: ({ name, size, className }: IIconProps) => (
@@ -28,7 +27,7 @@ jest.mock("../../../constants/contactInformation", () => ({
 
 describe("Footer", () => {
   beforeEach(() => {
-    renderWithProviders(<Footer />);
+    render(<Footer />);
   });
 
   it("renders the Portfolio heading", () => {

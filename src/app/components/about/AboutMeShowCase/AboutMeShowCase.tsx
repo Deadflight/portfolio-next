@@ -1,4 +1,4 @@
-"use client";
+
 import { MyJourney } from "../MyJourney/MyJourney";
 import { RolesAndEvolution } from "../RolesAndEvolution/RolesAndEvolution";
 import { AdditionalInfo } from "../AdditionalInfo/AdditionalInfo";

@@ -1,7 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Poppins, Lato } from "next/font/google";
-import "./globals.css";
+import './globals.css';
 import AxeReporter from "@/lib/ReactAxe/ReactAxe";
 import { NavigationExperience } from "@/shared/components/Navigation/Navigation";
 import { Footer } from "@/shared/components/Footer/Footer";
@@ -162,9 +162,8 @@ export default async function RootLayout({
           <>
             <Script
               async
-              src={`https://www.googletagmanager.com/gtag/js?id=${
-                NEXT_PUBLIC_GA_ID
-              }`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${NEXT_PUBLIC_GA_ID
+                }`}
               strategy="afterInteractive"
             ></Script>
             <Script id="google-analytics" strategy="afterInteractive">

@@ -1,9 +1,8 @@
 ﻿import React from "react";
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { SkillsExperienceShowCase } from "./SkillsExperienceShowCase";
 import { SkillsLegendProps } from "./SkillsLegend";
 import { SkillsCategoryListProps } from "./SkillsCategoryList";
-import { renderWithProviders } from "@/test/utils";
 
 // Mock next-intl
 
@@ -29,7 +28,7 @@ jest.mock("./SkillsCategoryList", () => ({
 
 describe("SkillsExperienceShowCase", () => {
   it("renders the main section and headings", () => {
-    renderWithProviders(<SkillsExperienceShowCase />);
+    render(<SkillsExperienceShowCase />);
     expect(document.getElementById("habilidades")).toBeInTheDocument();
     expect(screen.getByText("Habilidades")).toBeInTheDocument();
     expect(
@@ -38,7 +37,7 @@ describe("SkillsExperienceShowCase", () => {
   });
 
   it("renders the proficiency legend", () => {
-    renderWithProviders(<SkillsExperienceShowCase />);
+    render(<SkillsExperienceShowCase />);
     expect(screen.getByTestId("skills-legend")).toBeInTheDocument();
     expect(screen.getByTestId("skills-legend").textContent).toMatch(
       /expert|advanced|intermediate|beginner/i
@@ -46,7 +45,7 @@ describe("SkillsExperienceShowCase", () => {
   });
 
   it("renders all skill categories", () => {
-    renderWithProviders(<SkillsExperienceShowCase />);
+    render(<SkillsExperienceShowCase />);
     // These titles are from the skillCategories array in the component
     expect(screen.getByTestId("category-languages")).toHaveTextContent(
       /languages/i
@@ -69,7 +68,7 @@ describe("SkillsExperienceShowCase", () => {
   });
 
   it("renders the SkillsLanguage and SkillsLearning sections", () => {
-    renderWithProviders(<SkillsExperienceShowCase />);
+    render(<SkillsExperienceShowCase />);
     expect(screen.getByTestId("skills-language")).toBeInTheDocument();
     expect(screen.getByTestId("skills-learning")).toBeInTheDocument();
   });
