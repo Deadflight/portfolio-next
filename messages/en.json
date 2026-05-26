@@ -1,0 +1,177 @@
+{
+  "common": {
+    "skipToMain": "Skip to main content",
+    "toggleLanguage": "Toggle language",
+    "loading": "Loading..."
+  },
+  "navigation": {
+    "brandName": "Carlos Correa",
+    "mainNavigation": "Main navigation",
+    "toggleMenu": "Toggle menu",
+    "links": {
+      "about": "About",
+      "skills": "Skills",
+      "experience": "Experience",
+      "projects": "Projects",
+      "contact": "Contact"
+    }
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "Carlos Correa",
+    "subtitle": "Full Stack Developer",
+    "location": "Remote Work",
+    "valueProposition": "3+ years of experience building scalable web applications with React, Node.js and AWS. Specialized in agile environments and user-centered solutions development.",
+    "scrollDown": "Go to experience section",
+    "ariaLabel": "Hero section introducing Carlos Correa"
+  },
+  "footer": {
+    "copyright": "© {year} Carlos Correa. All rights reserved.",
+    "ariaLabel": "Footer with contact information and social links",
+    "description": "Full Stack Developer passionate about creating exceptional digital experiences and innovative technological solutions.",
+    "quickLinks": "Quick Links",
+    "contact": {
+      "title": "Contact",
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "location": "Remote Work",
+    "social": {
+      "github": "GitHub Profile",
+      "linkedin": "LinkedIn Profile",
+      "twitter": "Twitter Profile"
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Technical competencies",
+    "description": "My technical stack and proficiency level",
+    "categoriesTitle": "Categories",
+    "proficiencyLegend": "Proficiency Levels",
+    "proficiency": {
+      "expert": "Expert",
+      "advanced": "Advanced",
+      "intermediate": "Intermediate",
+      "beginner": "Beginner"
+    },
+    "proficiencyDescription": {
+      "expert": "Deep expertise, capable of leading projects and mentoring",
+      "advanced": "Daily professional use, independent problem solving",
+      "intermediate": "Practical experience, development with occasional supervision",
+      "beginner": "Basic knowledge, in learning process"
+    },
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Tools & Practices"
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "Professional journey",
+    "detailsTitle": "Details",
+    "detailsDescription": "Detailed information about my work experience",
+    "downloadCv": "Download CV",
+    "downloadCvFull": "Download Curriculum Vitae",
+    "ariaLabel": "Work experience timeline",
+    "current": "Current",
+    "reference": "Professional reference",
+    "achievements": "Key achievements",
+    "technologies": "Technologies used"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Featured work",
+    "description": "A selection of my most recent projects",
+    "collaborationTitle": "Let's work together?",
+    "collaborationDescription": "Interested in collaborating or have a project in mind?",
+    "contactButton": "Get in touch",
+    "collaborationOffer": "I offer Full Stack development services"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "My personal story",
+    "description": "Learn more about my journey and approach",
+    "collaborationTitle2": "Would you like to work with me?",
+    "collaborationDescription2": "I'm always open to new challenges and collaboration opportunities. If you have an interesting project or just want to chat about technology, don't hesitate to contact me.",
+    "contactButton": "Let's Talk",
+    "collaborationOffer": "View My Work",
+    "myJourney": {
+      "title": "My Journey",
+      "paragraph1": "My passion for technology began when I created my first website at 15 years old. Since then, I've been obsessed with writing clean and efficient code.",
+      "paragraph2": "Over the years, I've worked on diverse projects, from startups to established companies, always focusing on creating solutions that make a difference."
+    },
+    "currentFocus": {
+      "title": "Current Focus",
+      "description": "I'm currently deepening my knowledge in:",
+      "topics": {
+        "nextjs": "Next.js 15 and React Server Components",
+        "performance": "Web performance optimization",
+        "accessibility": "Web accessibility (WCAG AAA)"
+      }
+    },
+    "beyondCode": {
+      "title": "Beyond the Code",
+      "description": "When I'm not coding, you'll find me:",
+      "items": [
+        "Exploring new technologies and frameworks",
+        "Contributing to open source projects",
+        "Sharing knowledge with the community"
+      ]
+    },
+    "roles": {
+      "title": "Roles and Evolution",
+      "paragraph1": "I've had the privilege of working in various roles, from Frontend Developer to Software Architect.",
+      "paragraph2": "Each role has taught me something valuable and helped me grow as a professional and as a person."
+    },
+    "additionalInfo": {
+      "location": "Location",
+      "experience": "Experience",
+      "languages": "Languages",
+      "philosophy": "Philosophy",
+      "philosophyDetail": "Clean code and accessibility aren't optional, they're essential."
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "formTitle": "Send me a message",
+    "subtitle": "Have a project in mind? Let's talk.",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "How can I help you?",
+    "message": "Message",
+    "messagePlaceholder": "Tell me about your project...",
+    "submitButton": "Send message",
+    "contactInfoTitle": "Contact information",
+    "followMeTitle": "Follow me on social",
+    "phone": "Phone",
+    "portfolio": "Portfolio",
+    "availability": "Available for freelance projects"
+  },
+  "metadata": {
+    "title": "Carlos Correa - Full Stack Developer",
+    "description": "Portfolio of Carlos Correa, a Full Stack Developer specialized in accessible and high-performance web applications.",
+    "keywords": "Full Stack Developer, React, Next.js, TypeScript, Portfolio, Web Developer, Spain",
+    "author": "Carlos Correa",
+    "openGraph": {
+      "title": "Carlos Correa - Full Stack Developer",
+      "description": "Portfolio of Carlos Correa, a Full Stack Developer specialized in accessible and high-performance web applications.",
+      "locale": "en_US"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "title": "Carlos Correa - Full Stack Developer",
+      "description": "Portfolio of Carlos Correa, a Full Stack Developer specialized in accessible and high-performance web applications.",
+      "creator": "@carlos_correa_dev"
+    }
+  },
+  "proficiency": {
+    "expert": "Expert",
+    "advanced": "Advanced",
+    "intermediate": "Intermediate",
+    "beginner": "Beginner"
+  }
+}

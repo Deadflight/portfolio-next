@@ -1,8 +1,11 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+﻿import React from "react";
+import { screen } from "@testing-library/react";
 import { ProjectsShowCase } from "./ProjectsShowCase";
 import "@testing-library/jest-dom";
+import { renderWithProviders } from "@/test/utils";
 import { IProject } from "@/shared/types/project.types";
+
+// Mock next-intl
 
 // Mock ProjectsList to isolate ProjectsShowCase tests
 jest.mock("./ProjectsList/ProjectsList", () => ({
@@ -19,20 +22,17 @@ jest.mock("./ProjectsList/ProjectsList", () => ({
 
 describe("ProjectsShowCase", () => {
   it("renders the section with correct heading and description", () => {
-    render(<ProjectsShowCase />);
+    renderWithProviders(<ProjectsShowCase />);
     expect(
-      screen.getByRole("heading", { name: /proyectos destacados/i })
+      screen.getByRole("heading", { name: /Proyectos/i })
     ).toBeInTheDocument();
     expect(
-      screen.getByText(
-        /una selección de mis trabajos más recientes y significativos/i
-      )
+      screen.getByText(/Una selección de mis proyectos más recientes/i)
     ).toBeInTheDocument();
   });
 
   it("renders the ProjectsList with all project titles", () => {
-    render(<ProjectsShowCase />);
-    // Titles from the hardcoded projects array
+    renderWithProviders(<ProjectsShowCase />);
     expect(screen.getByText(/Kumbio/i)).toBeInTheDocument();
     expect(screen.getByText(/Farmaloop/i)).toBeInTheDocument();
     expect(screen.getByText(/Teslo Shop/i)).toBeInTheDocument();
@@ -40,23 +40,21 @@ describe("ProjectsShowCase", () => {
   });
 
   it("renders the collaboration card with correct content", () => {
-    render(<ProjectsShowCase />);
+    renderWithProviders(<ProjectsShowCase />);
     expect(
-      screen.getByRole("heading", { name: /¿interesado en colaborar\?/i })
+      screen.getByRole("heading", { name: /¿Trabajamos juntos/i })
     ).toBeInTheDocument();
     expect(
-      screen.getByText(
-        /estos proyectos representan mi experiencia en desarrollo full/i
-      )
+      screen.getByText(/¿Interesado en colaborar o tenés un proyecto en mente/i)
     ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /contactar/i })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /Contactame/i })).toHaveAttribute(
       "href",
       "#contacto"
     );
   });
 
   it("renders the section with correct id and classes", () => {
-    render(<ProjectsShowCase />);
+    renderWithProviders(<ProjectsShowCase />);
     const section = document.querySelector("section#proyectos");
     expect(section).toHaveAttribute("id", "proyectos");
     expect(section).toHaveClass("py-16");

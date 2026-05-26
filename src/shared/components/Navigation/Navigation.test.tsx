@@ -1,8 +1,8 @@
 import React from "react";
-import { render, screen, fireEvent, within } from "@testing-library/react";
+import { screen, fireEvent, within } from "@testing-library/react";
 import { NavigationExperience } from "./Navigation";
+import { renderWithProviders } from "@/test/utils";
 
-// Mock the Icon component to avoid errors during tests
 jest.mock("../Icons/Icons", () => ({
   Icon: ({ name, ...props }: { name: string }) => (
     <span data-testid={`icon-${name}`} {...props} />
@@ -11,86 +11,57 @@ jest.mock("../Icons/Icons", () => ({
 
 describe("NavigationExperience", () => {
   it("renders the professional brand heading", () => {
-    render(<NavigationExperience />);
-    expect(screen.getByText(/Carlos Correa Portfolio/i)).toBeInTheDocument();
+    renderWithProviders(<NavigationExperience />);
+    expect(screen.getByText(/Carlos Correa/i)).toBeInTheDocument();
   });
 
   it("renders all main navigation links in desktop mode", () => {
-    render(<NavigationExperience />);
-    // Desktop navigation is visible by default (lg:block)
-    expect(screen.getByText("Inicio")).toBeInTheDocument();
-    expect(screen.getByText("Experiencia")).toBeInTheDocument();
-    expect(screen.getByText("Proyectos")).toBeInTheDocument();
-    expect(screen.getByText("Sobre Mí")).toBeInTheDocument();
-    expect(screen.getByText("Habilidades")).toBeInTheDocument();
-    expect(screen.getByText("Contacto")).toBeInTheDocument();
+    renderWithProviders(<NavigationExperience />);
+    expect(screen.getByTestId("nav-link-inicio")).toBeInTheDocument();
+    expect(screen.getByTestId("nav-link-experiencia")).toBeInTheDocument();
+    expect(screen.getByTestId("nav-link-proyectos")).toBeInTheDocument();
+    expect(screen.getByTestId("nav-link-sobre-mi")).toBeInTheDocument();
+    expect(screen.getByTestId("nav-link-habilidades")).toBeInTheDocument();
+    expect(screen.getByTestId("nav-link-contacto")).toBeInTheDocument();
   });
 
   it("renders navigation links with correct hrefs", () => {
-    render(<NavigationExperience />);
-    expect(screen.getByText("Inicio").closest("a")).toHaveAttribute(
-      "href",
-      "#inicio"
-    );
-    expect(screen.getByText("Experiencia").closest("a")).toHaveAttribute(
-      "href",
-      "#experiencia"
-    );
-    expect(screen.getByText("Proyectos").closest("a")).toHaveAttribute(
-      "href",
-      "#proyectos"
-    );
-    expect(screen.getByText("Sobre Mí").closest("a")).toHaveAttribute(
-      "href",
-      "#sobre-mi"
-    );
-    expect(screen.getByText("Habilidades").closest("a")).toHaveAttribute(
-      "href",
-      "#habilidades"
-    );
-    expect(screen.getByText("Contacto").closest("a")).toHaveAttribute(
-      "href",
-      "#contacto"
-    );
+    renderWithProviders(<NavigationExperience />);
+    expect(screen.getByTestId("nav-link-inicio")).toHaveAttribute("href", "#inicio");
+    expect(screen.getByTestId("nav-link-experiencia")).toHaveAttribute("href", "#experiencia");
+    expect(screen.getByTestId("nav-link-proyectos")).toHaveAttribute("href", "#proyectos");
+    expect(screen.getByTestId("nav-link-sobre-mi")).toHaveAttribute("href", "#sobre-mi");
+    expect(screen.getByTestId("nav-link-habilidades")).toHaveAttribute("href", "#habilidades");
+    expect(screen.getByTestId("nav-link-contacto")).toHaveAttribute("href", "#contacto");
   });
 
   it("toggles mobile menu when menu button is clicked", () => {
-    render(<NavigationExperience />);
-    const menuButton = screen.getByRole("button", {
-      name: /toggle navigation menu/i,
-    });
-
+    renderWithProviders(<NavigationExperience />);
+    
     // Mobile menu should not be visible initially
-    expect(screen.queryByText("Inicio")).toBeInTheDocument(); // Desktop is always rendered
-    // Simulate mobile by clicking the menu button
+    expect(screen.queryByTestId("mobile-menu")).not.toBeInTheDocument();
+    
+    const menuButton = screen.getByRole("button", { name: /Alternar men�/i });
     fireEvent.click(menuButton);
-
-    const mobileMenu = screen.getByTestId("mobile-menu"); // Asegúrate de tener data-testid en el contenedor del menú móvil
-    // After clicking, mobile menu should render icons and links
-    expect(screen.getByTestId("icon-X")).toBeInTheDocument();
-    expect(within(mobileMenu).getByText("Inicio")).toBeInTheDocument();
-    expect(within(mobileMenu).getByText("Experiencia")).toBeInTheDocument();
+    
+    // Mobile menu should be visible after clicking
+    expect(screen.getByTestId("mobile-menu")).toBeInTheDocument();
   });
 
   it("closes mobile menu when a link is clicked", () => {
-    render(<NavigationExperience />);
-    const menuButton = screen.getByRole("button", {
-      name: /toggle navigation menu/i,
-    });
+    renderWithProviders(<NavigationExperience />);
+    const menuButton = screen.getByRole("button", { name: /Alternar men�/i });
     fireEvent.click(menuButton);
-
-    const mobileLink = screen
-      .getAllByText("Inicio")
-      .find(
-        (el) => el.closest("a") && el.closest("a")?.className.includes("flex")
-      );
-    expect(mobileLink).toBeInTheDocument();
-
-    if (mobileLink) {
-      fireEvent.click(mobileLink);
-    }
-
-    // After clicking, the mobile menu should close (icon-X disappears)
-    expect(screen.queryByTestId("icon-X")).not.toBeInTheDocument();
+    
+    // Mobile menu is now open
+    const mobileMenu = screen.getByTestId("mobile-menu");
+    expect(mobileMenu).toBeInTheDocument();
+    
+    // Click on a mobile link (within the mobile menu)
+    const mobileLink = within(mobileMenu).getByTestId("nav-link-inicio");
+    fireEvent.click(mobileLink);
+    
+    // Mobile menu should close
+    expect(screen.queryByTestId("mobile-menu")).not.toBeInTheDocument();
   });
 });

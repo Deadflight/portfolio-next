@@ -1,9 +1,9 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+﻿import React from "react";
+import { screen } from "@testing-library/react";
 import { Footer } from "./Footer";
 import { IIconProps } from "../../../shared/types/icons.types";
+import { renderWithProviders } from "@/test/utils";
 
-// Mock dependencies
 jest.mock("../Icons/Icons", () => ({
   Icon: ({ name, size, className }: IIconProps) => (
     <span
@@ -21,14 +21,14 @@ jest.mock("../ScrollToTopButton/ScrollToTopButton", () => ({
 }));
 jest.mock("../../../constants/contactInformation", () => ({
   contactInformation: {
-    email: "test@example.com",
-    phone: "+1234567890",
+    email: "carlos@correa.dev",
+    phone: "+34612345678",
   },
 }));
 
 describe("Footer", () => {
   beforeEach(() => {
-    render(<Footer />);
+    renderWithProviders(<Footer />);
   });
 
   it("renders the Portfolio heading", () => {
@@ -40,28 +40,22 @@ describe("Footer", () => {
   });
 
   it("renders all quick navigation links", () => {
-    const links = [
-      { href: "#inicio", text: "Inicio" },
-      { href: "#experiencia", text: "Experiencia" },
-      { href: "#proyectos", text: "Proyectos" },
-      { href: "#sobre-mi", text: "Sobre Mí" },
-      { href: "#habilidades", text: "Habilidades" },
-      { href: "#contacto", text: "Contacto" },
-    ];
-    links.forEach(({ href, text }) => {
-      const link = screen.getByRole("link", { name: text });
-      expect(link).toHaveAttribute("href", href);
-    });
+    expect(screen.getByTestId("footer-link-inicio")).toHaveAttribute("href", "#inicio");
+    expect(screen.getByTestId("footer-link-experiencia")).toHaveAttribute("href", "#experiencia");
+    expect(screen.getByTestId("footer-link-proyectos")).toHaveAttribute("href", "#proyectos");
+    expect(screen.getByTestId("footer-link-sobre-mi")).toHaveAttribute("href", "#sobre-mi");
+    expect(screen.getByTestId("footer-link-habilidades")).toHaveAttribute("href", "#habilidades");
+    expect(screen.getByTestId("footer-link-contacto")).toHaveAttribute("href", "#contacto");
   });
 
   it("renders contact email and phone", () => {
-    const emailLink = screen.getByRole("link", { name: /Enviar correo/i });
-    expect(emailLink).toHaveAttribute("href", "mailto:test@example.com");
-    expect(emailLink).toHaveTextContent("test@example.com");
+    const emailLink = screen.getByRole("link", { name: /contact.email: carlos@correa.dev/i });
+    expect(emailLink).toHaveAttribute("href", "mailto:carlos@correa.dev");
+    expect(emailLink).toHaveTextContent("carlos@correa.dev");
 
-    const phoneLink = screen.getByRole("link", { name: /Llamar al/i });
-    expect(phoneLink).toHaveAttribute("href", "tel:+1234567890");
-    expect(phoneLink).toHaveTextContent("+1234567890");
+    const phoneLink = screen.getByRole("link", { name: /contact.phone: \+34 612 345 678/i });
+    expect(phoneLink).toHaveAttribute("href", "tel:+34612345678");
+    expect(phoneLink).toHaveTextContent("+34 612 345 678");
   });
 
   it("renders 'Trabajo Remoto' text", () => {
@@ -71,7 +65,7 @@ describe("Footer", () => {
   it("renders copyright with current year", () => {
     const year = new Date().getFullYear();
     expect(
-      screen.getByText(new RegExp(`© ${year} Portfolio`))
+      screen.getByText(new RegExp(`© ${year} Carlos Correa. Todos los derechos reservados.`))
     ).toBeInTheDocument();
   });
 

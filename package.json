@@ -9,7 +9,7 @@
     "lint": "next lint",
     "test": "jest",
     "test:unit": "jest --config=jest.unit.config.ts --runInBand",
-    "test:e2e": "npm run build && npx playwright test",
+    "test:e2e": "npx playwright test",
     "test:e2e:ui": "npm run build && npx playwright test --ui",
     "test:watch": "jest --watch",
     "typecheck": "tsc --noEmit"

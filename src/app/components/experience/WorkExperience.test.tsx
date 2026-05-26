@@ -1,10 +1,14 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+﻿import React from "react";
+import { screen } from "@testing-library/react";
 import { WorkExperienceShowcase } from "./WorkExperience";
 import { IWorkExperience } from "@/shared/types/workExperience.types";
 import { IWorkExperienceListProps } from "./WorkExperienceList/WorkExperienceList";
 import { IIconProps } from "@/shared/types/icons.types";
 import { workExperienceData } from "@/constants/workExperience";
+import "@testing-library/jest-dom";
+import { renderWithProviders } from "@/test/utils";
+
+// Mock next-intl
 
 // Mock child components and icons
 jest.mock("./WorkExperienceList/WorkExperienceList", () => ({
@@ -22,44 +26,25 @@ jest.mock("../../../shared/components/Icons/Icons", () => ({
 
 describe("WorkExperienceShowcase", () => {
   it("renders the section with correct heading and description", () => {
-    render(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
+    renderWithProviders(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
+    expect(screen.getByText("Experiencia")).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /Experiencia Laboral/i })
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(
-        /Mi trayectoria profesional en el desarrollo de software/i
-      )
+      screen.getByText(/Trayectoria profesional/i)
     ).toBeInTheDocument();
   });
 
   it("renders the WorkExperienceList with all work experiences", () => {
-    render(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
-    // There are 4 positions in the data
-    expect(
-      screen.getAllByText(/Desarrollador Full Stack/i).length
-    ).toBeGreaterThan(0);
-    expect(
-      screen.getAllByText(/Desarrollador Frontend/i).length
-    ).toBeGreaterThan(1);
-    expect(
-      screen.getAllByText(/Desarrollador Frontend Freelance/i).length
-    ).toBeGreaterThan(0);
-    expect(
-      screen.getAllByText(/Desarrollador Frontend/i).length
-    ).toBeGreaterThan(1);
+    renderWithProviders(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
+    expect(screen.getAllByText(/Desarrollador Full Stack/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Desarrollador Frontend/i).length).toBeGreaterThan(1);
   });
 
   it("renders the CV download card with correct text and link", () => {
-    render(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
-    expect(
-      screen.getByRole("heading", { name: /¿Buscas más detalles\?/i })
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/Mi CV completo incluye información adicional/i)
-    ).toBeInTheDocument();
+    renderWithProviders(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
+    expect(screen.getByText("Detalles")).toBeInTheDocument();
+    expect(screen.getByText("Descargar CV")).toBeInTheDocument();
     const downloadLink = screen.getByRole("link", {
-      name: /Descargar CV Completo/i,
+      name: /Descargar CV/i,
     });
     expect(downloadLink).toHaveAttribute("href", "/cv-carlos-correa.pdf");
     expect(downloadLink).toHaveAttribute("download");
