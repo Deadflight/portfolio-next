@@ -1,4 +1,4 @@
-"use client";
+
 import { sendEmail } from "@/actions/contact/sendEmail";
 import React, { JSX } from "react";
 import { Icon } from "@/shared/components/Icons/Icons";
@@ -176,9 +176,8 @@ export const ContactForm = (): JSX.Element => {
         </div>
         <button
           type="submit"
-          className={`btn-primary w-full flex items-center justify-center transition-opacity ${
-            isSubmitting ? "opacity-60 cursor-not-allowed" : ""
-          }`}
+          className={`btn-primary w-full flex items-center justify-center transition-opacity ${isSubmitting ? "opacity-60 cursor-not-allowed" : ""
+            }`}
           disabled={isSubmitting}
         >
           {isSubmitting ? (

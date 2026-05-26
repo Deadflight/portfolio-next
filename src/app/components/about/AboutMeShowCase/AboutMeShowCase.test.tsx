@@ -1,8 +1,7 @@
 ﻿import React from "react";
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { AboutMeShowcase } from "./AboutMeShowCase";
 import "@testing-library/jest-dom";
-import { renderWithProviders } from "@/test/utils";
 
 // Mock next-intl
 
@@ -25,25 +24,25 @@ jest.mock("../BeyondTheCode/BeyondTheCode", () => ({
 
 describe("AboutMeShowcase", () => {
   it("renders the main container with correct class", () => {
-    renderWithProviders(<AboutMeShowcase />);
+    render(<AboutMeShowcase />);
     const container = screen.getByText("Sobre Mí").closest("div");
     expect(container).toHaveClass("text-center", "mb-12");
   });
 
   it("renders the section with id 'sobre-mi'", () => {
-    renderWithProviders(<AboutMeShowcase />);
+    render(<AboutMeShowcase />);
     expect(document.getElementById("sobre-mi")).toBeInTheDocument();
   });
 
   it("renders the main heading", () => {
-    renderWithProviders(<AboutMeShowcase />);
+    render(<AboutMeShowcase />);
     expect(
       screen.getByRole("heading", { name: "Sobre Mí" })
     ).toBeInTheDocument();
   });
 
   it("renders the call-to-action card", () => {
-    renderWithProviders(<AboutMeShowcase />);
+    render(<AboutMeShowcase />);
     expect(
       screen.getByText("¿Interesado en colaborar?")
     ).toBeInTheDocument();
@@ -57,7 +56,7 @@ describe("AboutMeShowcase", () => {
   });
 
   it("renders all child components", () => {
-    renderWithProviders(<AboutMeShowcase />);
+    render(<AboutMeShowcase />);
     expect(screen.getByTestId("MyJourney")).toBeInTheDocument();
     expect(screen.getByTestId("RolesAndEvolution")).toBeInTheDocument();
     expect(screen.getByTestId("AdditionalInfo")).toBeInTheDocument();

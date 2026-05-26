@@ -1,8 +1,7 @@
 import React from "react";
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { BeyondTheCode } from "./BeyondTheCode";
 import "@testing-library/jest-dom";
-import { renderWithProviders } from "@/test/utils";
 import { IIconProps } from "@/shared/types/icons.types";
 
 // Mock next-intl
@@ -14,32 +13,32 @@ jest.mock("../../../../shared/components/Icons/Icons", () => ({
 
 describe("BeyondTheCode", () => {
   it("renders the card article", () => {
-    renderWithProviders(<BeyondTheCode />);
+    render(<BeyondTheCode />);
     expect(screen.getByRole("article")).toBeInTheDocument();
   });
 
   it("renders the heading with correct text", () => {
-    renderWithProviders(<BeyondTheCode />);
+    render(<BeyondTheCode />);
     expect(
-      screen.getByRole("heading", { name: /Más Allá del Código/i })
+      screen.getByRole("heading", { name: /Mï¿½s Allï¿½ del Cï¿½digo/i })
     ).toBeInTheDocument();
   });
 
   it("renders the Icon component", () => {
-    renderWithProviders(<BeyondTheCode />);
+    render(<BeyondTheCode />);
     expect(screen.getByTestId("icon")).toBeInTheDocument();
     expect(screen.getByTestId("icon")).toHaveAttribute("name", "Coffee");
   });
 
   it("renders the main paragraph", () => {
-    renderWithProviders(<BeyondTheCode />);
+    render(<BeyondTheCode />);
     expect(
-      screen.getByText(/Cuando no estoy programando, me encontrarás/i)
+      screen.getByText(/Cuando no estoy programando, me encontrarï¿½s/i)
     ).toBeInTheDocument();
   });
 
   it("renders all list items with correct text", () => {
-    renderWithProviders(<BeyondTheCode />);
+    render(<BeyondTheCode />);
     // Note: List items may not render if component has empty list
     // This test verifies the expected content from es.json
     const list = screen.getByRole("list");
@@ -47,7 +46,7 @@ describe("BeyondTheCode", () => {
   });
 
   it("renders the list container", () => {
-    renderWithProviders(<BeyondTheCode />);
+    render(<BeyondTheCode />);
     const list = screen.getByRole("list");
     expect(list).toBeInTheDocument();
     expect(list).toHaveClass("space-y-2");

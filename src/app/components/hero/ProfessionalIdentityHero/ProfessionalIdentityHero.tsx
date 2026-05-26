@@ -1,4 +1,4 @@
-"use client";
+
 
 import { Icon } from "@/shared/components/Icons/Icons";
 import { ProfessionalActions } from "../ProfessionalActions/ProfessionalActions";

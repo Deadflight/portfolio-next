@@ -1,5 +1,4 @@
-"use client";
-
+'use client';
 import { JSX, useState } from "react";
 import { Icon } from "../Icons/Icons";
 import { useTranslations } from "next-intl";

@@ -1,4 +1,4 @@
-"use client";
+
 import { projects } from "@/constants/projects";
 import { ProjectsList } from "./ProjectsList/ProjectsList";
 import { JSX } from "react";

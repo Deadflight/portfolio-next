@@ -1,8 +1,7 @@
 ﻿import React from "react";
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { MyJourney } from "./MyJourney";
 import "@testing-library/jest-dom";
-import { renderWithProviders } from "@/test/utils";
 import { IIconProps } from "@/shared/types/icons.types";
 
 // Mock next-intl
@@ -21,14 +20,14 @@ jest.mock("../../../../shared/components/Icons/Icons", () => ({
 
 describe("MyJourney", () => {
   it("renders the card article", () => {
-    renderWithProviders(<MyJourney />);
+    render(<MyJourney />);
     const article = screen.getByRole("article");
     expect(article).toBeInTheDocument();
     expect(article).toHaveClass("card");
   });
 
   it("renders the heading with correct text", () => {
-    renderWithProviders(<MyJourney />);
+    render(<MyJourney />);
     const heading = screen.getByRole("heading", {
       name: /Mi Viaje/i,
     });
@@ -42,7 +41,7 @@ describe("MyJourney", () => {
   });
 
   it("renders the Icon component with correct props", () => {
-    renderWithProviders(<MyJourney />);
+    render(<MyJourney />);
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
     expect(icon).toHaveAttribute("data-name", "Code");
@@ -51,7 +50,7 @@ describe("MyJourney", () => {
   });
 
   it("renders both journey paragraphs", () => {
-    renderWithProviders(<MyJourney />);
+    render(<MyJourney />);
     expect(
       screen.getByText(/Mi pasión por la tecnología comenzó cuando creé mi primer sitio web a los 15 años/i)
     ).toBeInTheDocument();

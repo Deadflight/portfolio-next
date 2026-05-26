@@ -1,8 +1,7 @@
 ﻿import React from "react";
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { ContactForm } from "./ContactForm";
 import "@testing-library/jest-dom";
-import { renderWithProviders } from "@/test/utils";
 
 jest.mock("react-hook-form", () => {
   const actual = jest.requireActual("react-hook-form");
@@ -19,7 +18,7 @@ jest.mock("react-hook-form", () => {
 
 describe("ContactForm", () => {
   it("renders form title and all fields", () => {
-    renderWithProviders(<ContactForm />);
+    render(<ContactForm />);
     expect(screen.getByText("Envíame un mensaje")).toBeInTheDocument();
     expect(screen.getByText("Nombre *")).toBeInTheDocument();
     expect(screen.getByText("Email *")).toBeInTheDocument();
@@ -29,7 +28,7 @@ describe("ContactForm", () => {
   });
 
   it("renders input placeholders", () => {
-    renderWithProviders(<ContactForm />);
+    render(<ContactForm />);
     expect(screen.getByPlaceholderText("Tu nombre")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("tu@email.com")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("¿En qué puedo ayudarte?")).toBeInTheDocument();

@@ -1,4 +1,4 @@
-"use client";
+
 
 import React, { JSX } from "react";
 import { Icon } from "../Icons/Icons";

@@ -1,8 +1,7 @@
 ﻿import React from "react";
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { RolesAndEvolution } from "./RolesAndEvolution";
 import "@testing-library/jest-dom";
-import { renderWithProviders } from "@/test/utils";
 import { IIconProps } from "@/shared/types/icons.types";
 
 // Mock next-intl
@@ -21,14 +20,14 @@ jest.mock("../../../../shared/components/Icons/Icons", () => ({
 
 describe("RolesAndEvolution", () => {
   it("renders the article card with the correct title", () => {
-    renderWithProviders(<RolesAndEvolution />);
+    render(<RolesAndEvolution />);
     expect(
       screen.getByRole("heading", { name: /Roles y Evolución/i })
     ).toBeInTheDocument();
   });
 
   it("renders the Icon with correct props", () => {
-    renderWithProviders(<RolesAndEvolution />);
+    render(<RolesAndEvolution />);
     const icon = screen.getByTestId("icon");
     expect(icon).toHaveAttribute("data-name", "Lightbulb");
     expect(icon).toHaveAttribute("data-size", "20");
@@ -36,7 +35,7 @@ describe("RolesAndEvolution", () => {
   });
 
   it("renders both paragraphs with expected content", () => {
-    renderWithProviders(<RolesAndEvolution />);
+    render(<RolesAndEvolution />);
     expect(
       screen.getByText(
         /He tenido el privilegio de trabajar en diversos roles/i
@@ -50,7 +49,7 @@ describe("RolesAndEvolution", () => {
   });
 
   it("renders the article with the card class", () => {
-    renderWithProviders(<RolesAndEvolution />);
+    render(<RolesAndEvolution />);
     expect(screen.getByRole("article")).toHaveClass("card");
   });
 });

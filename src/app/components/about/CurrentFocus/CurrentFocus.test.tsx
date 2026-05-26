@@ -1,8 +1,7 @@
 ﻿import React from "react";
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { CurrentFocus } from "./CurrentFocus";
 import "@testing-library/jest-dom";
-import { renderWithProviders } from "@/test/utils";
 import { IIconProps } from "@/shared/types/icons.types";
 
 // Mock next-intl
@@ -21,17 +20,17 @@ jest.mock("../../../../shared/components/Icons/Icons", () => ({
 
 describe("CurrentFocus", () => {
   it("renders the card container", () => {
-    renderWithProviders(<CurrentFocus />);
+    render(<CurrentFocus />);
     expect(screen.getByRole("article")).toHaveClass("card");
   });
 
   it("renders the main heading", () => {
-    renderWithProviders(<CurrentFocus />);
+    render(<CurrentFocus />);
     expect(screen.getByText("Mi Enfoque Actual")).toBeInTheDocument();
   });
 
   it("renders the icon with correct props", () => {
-    renderWithProviders(<CurrentFocus />);
+    render(<CurrentFocus />);
     const icon = screen.getByTestId("icon");
     expect(icon).toHaveAttribute("data-name", "Heart");
     expect(icon).toHaveAttribute("data-size", "20");
@@ -39,14 +38,14 @@ describe("CurrentFocus", () => {
   });
 
   it("renders the main description paragraph", () => {
-    renderWithProviders(<CurrentFocus />);
+    render(<CurrentFocus />);
     expect(
       screen.getByText(/Mi enfoque actual se basa en el desarrollo centrado en el usuario/i)
     ).toBeInTheDocument();
   });
 
   it("renders all section headings", () => {
-    renderWithProviders(<CurrentFocus />);
+    render(<CurrentFocus />);
     expect(screen.getByText("Mi Enfoque Actual")).toBeInTheDocument();
     const soluciones = screen.getAllByText("Soluciones Escalables");
     expect(soluciones.length).toBeGreaterThanOrEqual(1);
@@ -54,14 +53,14 @@ describe("CurrentFocus", () => {
   });
 
   it("renders all section descriptions", () => {
-    renderWithProviders(<CurrentFocus />);
+    render(<CurrentFocus />);
     expect(
       screen.getByText(/Diseño arquitecturas que crecen con el negocio/i)
     ).toBeInTheDocument();
   });
 
   it("renders the space-y-4 container", () => {
-    renderWithProviders(<CurrentFocus />);
+    render(<CurrentFocus />);
     const container = document.querySelector(".space-y-4");
     expect(container).toBeInTheDocument();
   });

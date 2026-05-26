@@ -1,8 +1,7 @@
 ﻿import React from "react";
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { ProjectsShowCase } from "./ProjectsShowCase";
 import "@testing-library/jest-dom";
-import { renderWithProviders } from "@/test/utils";
 import { IProject } from "@/shared/types/project.types";
 
 // Mock next-intl
@@ -22,7 +21,7 @@ jest.mock("./ProjectsList/ProjectsList", () => ({
 
 describe("ProjectsShowCase", () => {
   it("renders the section with correct heading and description", () => {
-    renderWithProviders(<ProjectsShowCase />);
+    render(<ProjectsShowCase />);
     expect(
       screen.getByRole("heading", { name: /Proyectos/i })
     ).toBeInTheDocument();
@@ -32,7 +31,7 @@ describe("ProjectsShowCase", () => {
   });
 
   it("renders the ProjectsList with all project titles", () => {
-    renderWithProviders(<ProjectsShowCase />);
+    render(<ProjectsShowCase />);
     expect(screen.getByText(/Kumbio/i)).toBeInTheDocument();
     expect(screen.getByText(/Farmaloop/i)).toBeInTheDocument();
     expect(screen.getByText(/Teslo Shop/i)).toBeInTheDocument();
@@ -40,7 +39,7 @@ describe("ProjectsShowCase", () => {
   });
 
   it("renders the collaboration card with correct content", () => {
-    renderWithProviders(<ProjectsShowCase />);
+    render(<ProjectsShowCase />);
     expect(
       screen.getByRole("heading", { name: /¿Trabajamos juntos/i })
     ).toBeInTheDocument();
@@ -54,7 +53,7 @@ describe("ProjectsShowCase", () => {
   });
 
   it("renders the section with correct id and classes", () => {
-    renderWithProviders(<ProjectsShowCase />);
+    render(<ProjectsShowCase />);
     const section = document.querySelector("section#proyectos");
     expect(section).toHaveAttribute("id", "proyectos");
     expect(section).toHaveClass("py-16");

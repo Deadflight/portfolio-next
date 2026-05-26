@@ -1,4 +1,4 @@
-"use client";
+
 import React from "react";
 import { ContactInformation } from "./ContactInformation";
 import { ContactForm } from "./ContactForm";

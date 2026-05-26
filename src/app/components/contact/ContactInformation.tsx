@@ -1,4 +1,4 @@
-"use client";
+
 import { contactInformation } from "@/constants/contactInformation";
 import { Icon } from "@/shared/components/Icons/Icons";
 import { SocialLink } from "@/shared/components/SocialLink/SocialLink";

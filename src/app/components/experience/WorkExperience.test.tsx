@@ -1,12 +1,11 @@
 ﻿import React from "react";
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { WorkExperienceShowcase } from "./WorkExperience";
 import { IWorkExperience } from "@/shared/types/workExperience.types";
 import { IWorkExperienceListProps } from "./WorkExperienceList/WorkExperienceList";
 import { IIconProps } from "@/shared/types/icons.types";
 import { workExperienceData } from "@/constants/workExperience";
 import "@testing-library/jest-dom";
-import { renderWithProviders } from "@/test/utils";
 
 // Mock next-intl
 
@@ -26,7 +25,7 @@ jest.mock("../../../shared/components/Icons/Icons", () => ({
 
 describe("WorkExperienceShowcase", () => {
   it("renders the section with correct heading and description", () => {
-    renderWithProviders(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
+    render(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
     expect(screen.getByText("Experiencia")).toBeInTheDocument();
     expect(
       screen.getByText(/Trayectoria profesional/i)
@@ -34,13 +33,13 @@ describe("WorkExperienceShowcase", () => {
   });
 
   it("renders the WorkExperienceList with all work experiences", () => {
-    renderWithProviders(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
+    render(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
     expect(screen.getAllByText(/Desarrollador Full Stack/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Desarrollador Frontend/i).length).toBeGreaterThan(1);
   });
 
   it("renders the CV download card with correct text and link", () => {
-    renderWithProviders(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
+    render(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
     expect(screen.getByText("Detalles")).toBeInTheDocument();
     expect(screen.getByText("Descargar CV")).toBeInTheDocument();
     const downloadLink = screen.getByRole("link", {

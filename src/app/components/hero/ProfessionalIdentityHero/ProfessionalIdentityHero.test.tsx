@@ -1,7 +1,6 @@
 ﻿import React from "react";
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { renderWithProviders } from "@/test/utils";
 import { IIconProps } from "@/shared/types/icons.types";
 import { ProfessionalIdentityHero } from "./ProfessionalIdentityHero";
 
@@ -27,13 +26,13 @@ jest.mock("../../../../shared/components/Icons/Icons", () => ({
 
 describe("ProfessionalIdentityHero", () => {
   it("renders the section with correct id", () => {
-    renderWithProviders(<ProfessionalIdentityHero />);
+    render(<ProfessionalIdentityHero />);
     const section = document.getElementById("inicio");
     expect(section).toBeInTheDocument();
   });
 
   it("renders the full name, professional title, and value proposition", () => {
-    renderWithProviders(<ProfessionalIdentityHero />);
+    render(<ProfessionalIdentityHero />);
     expect(
       screen.getByRole("heading", { level: 1, name: /carlos correa/i })
     ).toBeInTheDocument();
@@ -51,13 +50,13 @@ describe("ProfessionalIdentityHero", () => {
   });
 
   it("renders ProfessionalActions and SocialProfileLinks components", () => {
-    renderWithProviders(<ProfessionalIdentityHero />);
+    render(<ProfessionalIdentityHero />);
     expect(screen.getByTestId("professional-actions")).toBeInTheDocument();
     expect(screen.getByTestId("social-profile-links")).toBeInTheDocument();
   });
 
   it("renders the ChevronDown icon with correct props", () => {
-    renderWithProviders(<ProfessionalIdentityHero />);
+    render(<ProfessionalIdentityHero />);
     const icon = screen.getByTestId("icon");
     expect(icon).toHaveAttribute("data-name", "ChevronDown");
     expect(icon).toHaveAttribute("data-size", "28");
@@ -66,7 +65,7 @@ describe("ProfessionalIdentityHero", () => {
   });
 
   it("renders the bouncing animation container", () => {
-    renderWithProviders(<ProfessionalIdentityHero />);
+    render(<ProfessionalIdentityHero />);
     const section = document.getElementById("inicio");
     const bounceDiv = section?.querySelector(".animate-bounce");
     expect(bounceDiv).toBeInTheDocument();

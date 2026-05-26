@@ -1,4 +1,4 @@
-"use client";
+
 import { Chip } from "@/shared/components/Chip/Chip";
 import { Icon } from "@/shared/components/Icons/Icons";
 import { IWorkExperience } from "@/shared/types/workExperience.types";
