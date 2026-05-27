@@ -1,8 +1,11 @@
-﻿{
+{
   "common": {
     "skipToMain": "Saltar al contenido principal",
     "toggleLanguage": "Cambiar idioma",
-    "loading": "Cargando..."
+    "loading": "Cargando...",
+    "notFound": "La página que buscas no existe.",
+    "notFoundTitle": "Página No Encontrada",
+    "backToHome": "Volver al Inicio"
   },
   "navigation": {
     "brandName": "Carlos Correa",
@@ -23,13 +26,23 @@
     "location": "Trabajo Remoto",
     "valueProposition": "Más de 3 años de experiencia creando aplicaciones web escalables con React, Node.js y AWS. Especializado en entornos ágiles y desarrollo de soluciones centradas en el usuario.",
     "scrollDown": "Ir a la sección de experiencia",
-    "ariaLabel": "Sección de presentación de Carlos Correa"
+    "ariaLabel": "Sección de presentación de Carlos Correa",
+    "viewProjects": "Ver Proyectos",
+    "downloadCv": "Descargar CV"
   },
   "footer": {
     "copyright": "© {year} Carlos Correa. Todos los derechos reservados.",
     "ariaLabel": "Pie de página con información de contacto y redes sociales",
     "description": "Desarrollador Full Stack apasionado por crear experiencias digitales excepcionales y soluciones tecnológicas innovadoras.",
     "quickLinks": "Enlaces Rápidos",
+    "quickLinksList": {
+      "home": "Inicio",
+      "experience": "Experiencia",
+      "projects": "Proyectos",
+      "about": "Sobre Mí",
+      "skills": "Habilidades",
+      "contact": "Contacto"
+    },
     "contact": {
       "title": "Contacto",
       "email": "Correo electrónico",
@@ -40,7 +53,8 @@
       "github": "Perfil de GitHub",
       "linkedin": "Perfil de LinkedIn",
       "twitter": "Perfil de Twitter"
-    }
+    },
+    "builtWith": "y"
   },
   "skills": {
     "title": "Habilidades",
@@ -64,6 +78,20 @@
       "frontend": "Frontend",
       "backend": "Backend",
       "tools": "Herramientas y Prácticas"
+    },
+    "languages": {
+      "title": "Idiomas",
+      "spanish": "Español",
+      "english": "Inglés",
+      "native": "Nativo",
+      "spanishDescription": "Comunicación profesional y técnica fluida",
+      "englishLevel": "B1 - Intermedio",
+      "englishDescription": "Comunicación técnica escrita, reuniones de trabajo"
+    },
+    "learning": {
+      "title": "Aprendizaje Continuo",
+      "description": "La tecnología evoluciona constantemente, y yo también. Actualmente estoy profundizando en microservicios, perfeccionando mis conocimientos en testing avanzado, explorando Angular y preparándome para la certificación MCP.",
+      "topics": ["Microservicios", "Testing Avanzado", "Angular", "MCP"]
     }
   },
   "experience": {
@@ -83,6 +111,15 @@
     "title": "Proyectos",
     "subtitle": "Trabajos destacados",
     "description": "Una selección de mis proyectos más recientes",
+    "featured": "Proyecto Destacado",
+    "challenge": "Desafío:",
+    "solution": "Solución:",
+    "results": "Resultados:",
+    "technologies": "Tecnologías utilizadas:",
+    "viewProject": "Ver Proyecto",
+    "code": "Código",
+    "privateProject": "Proyecto privado de cliente",
+    "screenshotAlt": "Captura de pantalla de {title}",
     "collaborationTitle": "¿Trabajamos juntos?",
     "collaborationDescription": "¿Interesado en colaborar o tenés un proyecto en mente?",
     "contactButton": "Contáctame",
@@ -129,7 +166,10 @@
       "experience": "Experiencia",
       "languages": "Idiomas",
       "philosophy": "Filosofía",
-      "philosophyDetail": "El código limpio y la accesibilidad no son opcionales, son esenciales."
+      "philosophyDetail": "El código limpio y la accesibilidad no son opcionales, son esenciales.",
+      "locationValue": "Trabajo Remoto",
+      "experienceValue": "3+ Años",
+      "languagesValue": "Español (Nativo), Inglés (B1)"
     }
   },
   "contact": {

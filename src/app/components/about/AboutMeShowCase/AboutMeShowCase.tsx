@@ -23,7 +23,7 @@ export const AboutMeShowcase = (): JSX.Element => {
   const t = useTranslations("about");
 
   return (
-    <section id="sobre-mi" className="py-16 px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-16 px-4 sm:px-6 lg:px-8">
       <article className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-h2 font-heading font-bold text-text-main mb-4">
@@ -62,10 +62,10 @@ export const AboutMeShowcase = (): JSX.Element => {
               {t("collaborationDescription2")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#contacto" className="btn-primary">
+              <a href="#contact" className="btn-primary">
                 {t("contactButton")}
               </a>
-              <a href="#proyectos" className="btn-secondary">
+              <a href="#projects" className="btn-secondary">
                 {t("collaborationOffer")}
               </a>
             </div>

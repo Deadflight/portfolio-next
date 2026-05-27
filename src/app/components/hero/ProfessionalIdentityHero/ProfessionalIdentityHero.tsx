@@ -21,7 +21,7 @@ export const ProfessionalIdentityHero = (): JSX.Element => {
 
   return (
     <section
-      id="inicio"
+      id="home"
       className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16"
       aria-label={t("ariaLabel")}
     >
@@ -45,7 +45,7 @@ export const ProfessionalIdentityHero = (): JSX.Element => {
         <SocialProfileLinks />
 
         <div className="animate-bounce">
-          <a href="#experiencia" aria-label={t("scrollDown")}>
+          <a href="#experience" aria-label={t("scrollDown")}>
             <Icon
               name="ChevronDown"
               size={28}

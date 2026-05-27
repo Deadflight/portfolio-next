@@ -1,5 +1,6 @@
 import { Icon } from "@/shared/components/Icons/Icons";
 import { StarRating } from "@/shared/components/StarRating/StarRating";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 /**
@@ -14,6 +15,8 @@ import React from "react";
  * <SkillsLanguage />
  */
 export const SkillsLanguage = () => {
+  const t = useTranslations("skills");
+
   return (
     <section className="mt-12" aria-labelledby="languages-title">
       <div className="card max-w-2xl mx-auto bg-background-main border-2 border-primary-brand/10 shadow-subtle">
@@ -28,14 +31,14 @@ export const SkillsLanguage = () => {
             id="languages-title"
             className="text-xl font-heading font-semibold text-text-main"
           >
-            Idiomas
+            {t("languages.title")}
           </h2>
         </header>
         <div className="grid sm:grid-cols-2 gap-6">
           <div
             className="text-center p-4 bg-background-main rounded-medium"
             role="region"
-            aria-label="Español"
+            aria-label={t("languages.spanish")}
           >
             <div className="flex justify-center mb-2" aria-hidden="true">
               <StarRating
@@ -43,22 +46,26 @@ export const SkillsLanguage = () => {
                   stars: 5,
                   color: "text-text-main",
                   bgColor: "bg-text-main",
-                  label: "Nativo",
-                  description: "Comunicación fluida",
+                  label: t("languages.native"),
+                  description: t("languages.spanishDescription"),
                 }}
-                skillName="Español"
+                skillName={t("languages.spanish")}
               />
             </div>
-            <h3 className="font-body font-bold text-text-main mb-1">Español</h3>
-            <p className="font-body text-primary-brand text-sm">Nativo</p>
+            <h3 className="font-body font-bold text-text-main mb-1">
+              {t("languages.spanish")}
+            </h3>
+            <p className="font-body text-primary-brand text-sm">
+              {t("languages.native")}
+            </p>
             <p className="font-body text-primary-brand text-xs mt-1">
-              Comunicación profesional y técnica fluida
+              {t("languages.spanishDescription")}
             </p>
           </div>
           <div
             className="text-center p-4 bg-background-main rounded-medium"
             role="region"
-            aria-label="Inglés"
+            aria-label={t("languages.english")}
           >
             <div className="flex justify-center mb-2" aria-hidden="true">
               <StarRating
@@ -66,19 +73,20 @@ export const SkillsLanguage = () => {
                   stars: 3,
                   color: "text-text-main",
                   bgColor: "bg-text-main",
-                  label: "Intermedio",
-                  description:
-                    "Comunicación técnica escrita, reuniones de trabajo",
+                  label: t("languages.englishLevel"),
+                  description: t("languages.englishDescription"),
                 }}
-                skillName="Inglés"
+                skillName={t("languages.english")}
               />
             </div>
-            <h3 className="font-body font-bold text-text-main mb-1">Inglés</h3>
+            <h3 className="font-body font-bold text-text-main mb-1">
+              {t("languages.english")}
+            </h3>
             <p className="font-body text-primary-brand text-sm">
-              B1 - Intermedio
+              {t("languages.englishLevel")}
             </p>
             <p className="font-body text-primary-brand text-xs mt-1">
-              Comunicación técnica escrita, reuniones de trabajo
+              {t("languages.englishDescription")}
             </p>
           </div>
         </div>

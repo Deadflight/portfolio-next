@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { BeyondTheCode } from "./BeyondTheCode";
 import "@testing-library/jest-dom";
 import { IIconProps } from "@/shared/types/icons.types";
@@ -20,7 +20,7 @@ describe("BeyondTheCode", () => {
   it("renders the heading with correct text", () => {
     render(<BeyondTheCode />);
     expect(
-      screen.getByRole("heading", { name: /M�s All� del C�digo/i })
+      screen.getByRole("heading", { name: /Más Allá del Código/i })
     ).toBeInTheDocument();
   });
 
@@ -33,7 +33,7 @@ describe("BeyondTheCode", () => {
   it("renders the main paragraph", () => {
     render(<BeyondTheCode />);
     expect(
-      screen.getByText(/Cuando no estoy programando, me encontrar�s/i)
+      screen.getByText(/Cuando no estoy programando, me encontrarás/i)
     ).toBeInTheDocument();
   });
 

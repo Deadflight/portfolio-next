@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { SkillsLearning } from "./SkillsLearning";
 
 // Mock the Icon component to avoid dependency on its implementation
@@ -46,6 +46,6 @@ describe("SkillsLearning", () => {
     const section = screen.getByRole("region", { hidden: true });
     expect(section).toHaveAttribute("aria-labelledby", "learning-title");
     const ul = screen.getByRole("list");
-    expect(ul).toHaveAttribute("aria-label", "Temas de aprendizaje actual");
+    expect(ul).toHaveAttribute("aria-label", "Aprendizaje Continuo");
   });
 });

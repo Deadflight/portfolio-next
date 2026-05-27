@@ -1,5 +1,6 @@
 import { Icon } from "@/shared/components/Icons/Icons";
 import { IProject } from "@/shared/types/project.types";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React, { FC } from "react";
 
@@ -8,6 +9,8 @@ interface IProjectCardProps {
 }
 
 export const ProjectCard: FC<IProjectCardProps> = ({ project }) => {
+  const t = useTranslations("projects");
+
   return (
     <li
       className={`card ${
@@ -19,7 +22,7 @@ export const ProjectCard: FC<IProjectCardProps> = ({ project }) => {
         <div className="relative overflow-hidden rounded-lg">
           <Image
             src={project.image || "/placeholder.svg"}
-            alt={`Captura de pantalla del proyecto ${project.title}`}
+            alt={t("screenshotAlt", { title: project.title })}
             className="w-full object-cover"
             width={400}
             height={250}
@@ -27,7 +30,7 @@ export const ProjectCard: FC<IProjectCardProps> = ({ project }) => {
           {project.featured && (
             <div className="absolute top-4 left-4">
               <span className="px-3 py-1 bg-text-main text-white text-xs font-body font-bold rounded-full">
-                Proyecto Destacado
+                {t("featured")}
               </span>
             </div>
           )}
@@ -61,7 +64,7 @@ export const ProjectCard: FC<IProjectCardProps> = ({ project }) => {
           <div className="space-y-3">
             <div>
               <h4 className="font-body font-bold text-text-main text-sm mb-1">
-                Desafío:
+                {t("challenge")}
               </h4>
               <p className="font-body text-primary-brand text-sm">
                 {project.challenge}
@@ -69,7 +72,7 @@ export const ProjectCard: FC<IProjectCardProps> = ({ project }) => {
             </div>
             <div>
               <h4 className="font-body font-bold text-text-main text-sm mb-1">
-                Solución:
+                {t("solution")}
               </h4>
               <p className="font-body text-primary-brand text-sm">
                 {project.solution}
@@ -83,7 +86,7 @@ export const ProjectCard: FC<IProjectCardProps> = ({ project }) => {
               />
               <div>
                 <h4 className="font-body font-bold text-text-main text-sm mb-1">
-                  Resultados:
+                  {t("results")}
                 </h4>
                 <p className="font-body text-success text-sm font-medium">
                   {project.results}
@@ -95,7 +98,7 @@ export const ProjectCard: FC<IProjectCardProps> = ({ project }) => {
           {/* Tecnologías */}
           <div>
             <h4 className="font-body font-bold text-text-main text-sm mb-2">
-              Tecnologías utilizadas:
+              {t("technologies")}
             </h4>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech) => (
@@ -119,7 +122,7 @@ export const ProjectCard: FC<IProjectCardProps> = ({ project }) => {
                 className="link-text flex items-center"
               >
                 <Icon name="Eye" size={14} className="mr-1" />
-                Ver Proyecto
+                {t("viewProject")}
               </a>
             )}
             {project.githubUrl && (
@@ -130,12 +133,12 @@ export const ProjectCard: FC<IProjectCardProps> = ({ project }) => {
                 className="link-text flex items-center"
               >
                 <Icon name="GitHub" size={14} className="mr-1" />
-                Código
+                {t("code")}
               </a>
             )}
             {!project.liveUrl && !project.githubUrl && (
               <span className="text-success text-sm font-body italic">
-                Proyecto privado de cliente
+                {t("privateProject")}
               </span>
             )}
           </div>

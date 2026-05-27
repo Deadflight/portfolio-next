@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { render, screen } from "@testing-library/react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { Footer } from "./Footer";
 import { IIconProps } from "../../../shared/types/icons.types";
 
@@ -39,20 +39,20 @@ describe("Footer", () => {
   });
 
   it("renders all quick navigation links", () => {
-    expect(screen.getByTestId("footer-link-inicio")).toHaveAttribute("href", "#inicio");
-    expect(screen.getByTestId("footer-link-experiencia")).toHaveAttribute("href", "#experiencia");
-    expect(screen.getByTestId("footer-link-proyectos")).toHaveAttribute("href", "#proyectos");
-    expect(screen.getByTestId("footer-link-sobre-mi")).toHaveAttribute("href", "#sobre-mi");
-    expect(screen.getByTestId("footer-link-habilidades")).toHaveAttribute("href", "#habilidades");
-    expect(screen.getByTestId("footer-link-contacto")).toHaveAttribute("href", "#contacto");
+    expect(screen.getByTestId("footer-link-home")).toHaveAttribute("href", "#home");
+    expect(screen.getByTestId("footer-link-experience")).toHaveAttribute("href", "#experience");
+    expect(screen.getByTestId("footer-link-projects")).toHaveAttribute("href", "#projects");
+    expect(screen.getByTestId("footer-link-about")).toHaveAttribute("href", "#about");
+    expect(screen.getByTestId("footer-link-skills")).toHaveAttribute("href", "#skills");
+    expect(screen.getByTestId("footer-link-contact")).toHaveAttribute("href", "#contact");
   });
 
   it("renders contact email and phone", () => {
-    const emailLink = screen.getByRole("link", { name: /contact.email: carlos@correa.dev/i });
+    const emailLink = screen.getByRole("link", { name: /Correo electrónico: carlos@correa.dev/i });
     expect(emailLink).toHaveAttribute("href", "mailto:carlos@correa.dev");
     expect(emailLink).toHaveTextContent("carlos@correa.dev");
 
-    const phoneLink = screen.getByRole("link", { name: /contact.phone: \+34 612 345 678/i });
+    const phoneLink = screen.getByRole("link", { name: /Teléfono: \+34 612 345 678/i });
     expect(phoneLink).toHaveAttribute("href", "tel:+34612345678");
     expect(phoneLink).toHaveTextContent("+34 612 345 678");
   });

@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { render, screen } from "@testing-library/react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { RolesAndEvolution } from "./RolesAndEvolution";
 import "@testing-library/jest-dom";
 import { IIconProps } from "@/shared/types/icons.types";

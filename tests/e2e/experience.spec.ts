@@ -5,16 +5,16 @@ test.describe("Experiencia laboral", () => {
   test("La sección de experiencia se renderiza correctamente", async ({
     page,
   }) => {
-    await page.goto("/#experiencia");
+    await page.goto("/es#experiencia");
     await expect(
-      page.getByRole("heading", { name: /experiencia laboral/i })
+      page.getByRole("heading", { name: /^Experiencia$/ })
     ).toBeVisible();
   });
 
   test("Cada experiencia muestra título, empresa, periodo y logros", async ({
     page,
   }) => {
-    await page.goto("/#experiencia");
+    await page.goto("/es#experiencia");
     for (const experience of workExperienceData) {
       const experienceCard = page.getByTestId(
         `work-experience-card-${experience.id}`
@@ -47,7 +47,7 @@ test.describe("Experiencia laboral", () => {
   });
 
   test("Las tecnologías utilizadas se muestran", async ({ page }) => {
-    await page.goto("/#experiencia");
+    await page.goto("/es#experiencia");
     const experienciaSection = page.locator("#experiencia");
     for (const experience of workExperienceData) {
       // Busca el card por el data-testid
@@ -62,7 +62,7 @@ test.describe("Experiencia laboral", () => {
   });
 
   test("Las referencias y periodos son visibles", async ({ page }) => {
-    await page.goto("/#experiencia");
+    await page.goto("/es#experiencia");
     for (const experience of workExperienceData) {
       if (experience.professionalReference) {
         await expect(page.getByText("Referencia")).toBeVisible();
@@ -82,7 +82,7 @@ test.describe("Experiencia laboral", () => {
   test("El enlace de descarga de CV está presente y es correcto", async ({
     page,
   }) => {
-    await page.goto("/#experiencia");
+    await page.goto("/es#experiencia");
     const link = page.getByRole("link", { name: /descargar cv/i });
     await expect(link).toBeVisible();
     await expect(link).toHaveAttribute("href", "/cv-carlos-correa.pdf");
@@ -94,15 +94,15 @@ test.describe("Experiencia laboral", () => {
   }) => {
     // Mobile
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto("/#experiencia");
+    await page.goto("/es#experiencia");
     await expect(
-      page.getByRole("heading", { name: /experiencia laboral/i })
+      page.getByRole("heading", { name: /^Experiencia$/ })
     ).toBeVisible();
     // Desktop
     await page.setViewportSize({ width: 1280, height: 800 });
-    await page.goto("/#experiencia");
+    await page.goto("/es#experiencia");
     await expect(
-      page.getByRole("heading", { name: /experiencia laboral/i })
+      page.getByRole("heading", { name: /^Experiencia$/ })
     ).toBeVisible();
   });
 });

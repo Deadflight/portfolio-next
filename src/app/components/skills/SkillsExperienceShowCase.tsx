@@ -3,8 +3,16 @@ import { SkillsLegend } from "./SkillsLegend";
 import { SkillsLanguage } from "./SkillsLanguage";
 import { SkillsLearning } from "./SkillsLearning";
 import { SkillsCategoryList } from "./SkillsCategoryList";
-import { proficiencyLevels, skillCategories } from "@/constants/skills";
 import { useTranslations } from "next-intl";
+import type {
+  ISkillExperience,
+  ISkillProficiencyLevels,
+} from "@/shared/types/skills.types";
+
+interface ISkillsExperienceShowCaseProps {
+  proficiencyLevels: ISkillProficiencyLevels;
+  skillCategories: ISkillExperience[];
+}
 
 /**
  * SkillsExperienceShowCase displays categorized technical skills, proficiency levels,
@@ -13,12 +21,15 @@ import { useTranslations } from "next-intl";
  * Usage: Place this component within a page to present a detailed overview of technical
  * competencies and experience.
  */
-export const SkillsExperienceShowCase = () => {
+export const SkillsExperienceShowCase = ({
+  proficiencyLevels,
+  skillCategories,
+}: ISkillsExperienceShowCaseProps) => {
   const t = useTranslations("skills");
 
   return (
     <section
-      id="habilidades"
+      id="skills"
       className="py-16 px-4 sm:px-6 lg:px-8 bg-background-main"
       aria-labelledby="skills-title"
     >
@@ -40,7 +51,7 @@ export const SkillsExperienceShowCase = () => {
 
         <section aria-labelledby="skills-categories-title">
           <h2 id="skills-categories-title" className="sr-only">
-            Categorías de habilidades
+            {t("categoriesTitle")}
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {skillCategories.map((category) => (

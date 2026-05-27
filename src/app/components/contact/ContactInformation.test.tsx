@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { render, screen } from "@testing-library/react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { ContactInformation } from "./ContactInformation";
 import { IIconProps } from "../../../shared/types/icons.types";
 import { SocialLinkProps } from "../../../shared/components/SocialLink/SocialLink";
@@ -32,7 +32,7 @@ describe("ContactInformation", () => {
   it("renders contact information headings", () => {
     render(<ContactInformation socialLinks={socialLinks} />);
     expect(screen.getByText("Información de contacto")).toBeInTheDocument();
-    expect(screen.getByText("Sígueme")).toBeInTheDocument();
+    expect(screen.getByText("Seguime en redes")).toBeInTheDocument();
   });
 
   it("renders email, phone, portfolio, and availability", () => {

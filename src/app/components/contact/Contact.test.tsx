@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { Contact } from "./Contact";
 import { ContactInformationProps } from "./ContactInformation";
 
@@ -28,7 +28,7 @@ jest.mock("../../../constants/contactInformation", () => ({
 describe("Contact", () => {
   it("renders section with correct id and classes", () => {
     const { container } = render(<Contact />);
-    const section = container.querySelector("#contacto");
+    const section = container.querySelector("#contact");
     expect(section).not.toBeNull();
     expect(section).toHaveClass("py-16");
   });

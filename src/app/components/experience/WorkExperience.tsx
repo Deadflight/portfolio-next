@@ -25,7 +25,7 @@ export const WorkExperienceShowcase: FC<IWorkExperienceShowcaseProps> = ({
   const t = useTranslations("experience");
 
   return (
-    <section id="experiencia" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="experience" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <article className="max-w-6xl mx-auto">
         <header className="text-center mb-12">
           <h2 className="text-h2 font-heading font-bold text-text-main mb-4">

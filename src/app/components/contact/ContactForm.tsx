@@ -1,3 +1,4 @@
+"use client";
 
 import { sendEmail } from "@/actions/contact/sendEmail";
 import React, { JSX } from "react";
