@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { WorkExperienceCard } from "./WorkExperienceCard";
 import { IWorkExperience } from "@/shared/types/workExperience.types";
 import "@testing-library/jest-dom";
@@ -59,7 +59,7 @@ describe("WorkExperienceCard", () => {
 
   it("renders professional reference section", () => {
     render(<WorkExperienceCard workExperience={mockWorkExperience} />);
-    expect(screen.getByText("Referencia")).toBeInTheDocument();
+    expect(screen.getByText("Referencia profesional")).toBeInTheDocument();
     expect(screen.getByText("Cristian Olivares")).toBeInTheDocument();
     expect(
       screen.getByText("cristian.olivares@farmaloop.cl")
@@ -81,7 +81,7 @@ describe("WorkExperienceCard", () => {
       professionalReference: undefined,
     };
     render(<WorkExperienceCard workExperience={noReference} />);
-    expect(screen.queryByText("Referencia")).not.toBeInTheDocument();
+    expect(screen.queryByText("Referencia profesional")).not.toBeInTheDocument();
   });
 
   it("renders timeline line if isLast is true", () => {

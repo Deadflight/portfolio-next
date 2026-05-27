@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { ProjectCard } from "./ProjectCard";
 import "@testing-library/jest-dom";
 import { mockProjects } from "@/shared/mocks/projects";
@@ -37,7 +37,7 @@ describe("ProjectCard", () => {
     render(<ProjectCard project={baseProject} />);
     expect(
       screen.getByAltText(
-        `Captura de pantalla del proyecto ${baseProject.title}`
+        `Captura de pantalla de ${baseProject.title}`
       )
     ).toBeInTheDocument();
   });
@@ -106,7 +106,7 @@ describe("ProjectCard", () => {
     render(<ProjectCard project={project} />);
     expect(
       screen.getByAltText(
-        `Captura de pantalla del proyecto ${baseProject.title}`
+        `Captura de pantalla de ${baseProject.title}`
       )
     ).toHaveAttribute("src", "/placeholder.svg");
   });

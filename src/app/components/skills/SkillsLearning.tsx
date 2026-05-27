@@ -1,4 +1,5 @@
 import { Icon } from "@/shared/components/Icons/Icons";
+import { useTranslations } from "next-intl";
 import React, { JSX } from "react";
 /**
  * Renders a section highlighting the user's ongoing learning topics and commitment to continuous improvement.
@@ -12,6 +13,8 @@ import React, { JSX } from "react";
  * <SkillsLearning />
  */
 export const SkillsLearning = (): JSX.Element => {
+  const t = useTranslations("skills");
+
   return (
     <section className="mt-12 text-center" aria-labelledby="learning-title">
       <div className="card max-w-3xl mx-auto bg-background-main border-2 border-primary-brand/10 shadow-subtle">
@@ -26,21 +29,18 @@ export const SkillsLearning = (): JSX.Element => {
             id="learning-title"
             className="text-xl font-heading font-semibold text-text-main"
           >
-            Aprendizaje Continuo
+            {t("learning.title")}
           </h2>
         </header>
         <p className="font-body text-primary-brand leading-relaxed mb-6 font-medium">
-          La tecnología evoluciona constantemente, y yo también. Actualmente
-          estoy profundizando en microservicios, perfeccionando mis
-          conocimientos en testing avanzado, explorando Angular y preparándome
-          para la certificación MCP.
+          {t("learning.description")}
         </p>
         <ul
           className="flex flex-wrap justify-center gap-2"
-          aria-label="Temas de aprendizaje actual"
+          aria-label={t("learning.title")}
         >
-          {["Microservicios", "Testing Avanzado", "Angular", "MCP"].map(
-            (tech) => (
+          {(t.raw("learning.topics") as string[]).map(
+            (tech: string) => (
               <li
                 key={tech}
                 className="px-3 py-1 bg-background-main border border-accent/30 text-text-main text-sm font-body rounded-full flex items-center"

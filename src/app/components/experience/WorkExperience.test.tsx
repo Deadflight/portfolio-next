@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { render, screen } from "@testing-library/react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { WorkExperienceShowcase } from "./WorkExperience";
 import { IWorkExperience } from "@/shared/types/workExperience.types";
 import { IWorkExperienceListProps } from "./WorkExperienceList/WorkExperienceList";

@@ -1,8 +1,12 @@
 
-import { projects } from "@/constants/projects";
+import { IProject } from "@/shared/types/project.types";
 import { ProjectsList } from "./ProjectsList/ProjectsList";
-import { JSX } from "react";
+import { FC, JSX } from "react";
 import { useTranslations } from "next-intl";
+
+interface IProjectsShowCaseProps {
+  projects: IProject[];
+}
 
 /**
  * Renders a showcase section highlighting featured projects.
@@ -13,16 +17,18 @@ import { useTranslations } from "next-intl";
  * @component
  * @example
  * ```tsx
- * <ProjectsShowCase />
+ * <ProjectsShowCase projects={projects} />
  * ```
  *
  * @returns {JSX.Element} The rendered projects showcase section.
  */
-export const ProjectsShowCase = (): JSX.Element => {
+export const ProjectsShowCase: FC<IProjectsShowCaseProps> = ({
+  projects,
+}): JSX.Element => {
   const t = useTranslations("projects");
 
   return (
-    <section id="proyectos" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <article className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-h2 font-heading font-bold text-text-main mb-4">
@@ -43,7 +49,7 @@ export const ProjectsShowCase = (): JSX.Element => {
             <p className="font-body text-primary-brand leading-relaxed mb-4 font-medium">
               {t("collaborationDescription")}
             </p>
-            <a href="#contacto" className="btn-primary">
+            <a href="#contact" className="btn-primary">
               {t("contactButton")}
             </a>
           </div>

@@ -27,7 +27,7 @@ export const AdditionalInfo = (): JSX.Element => {
             {t("additionalInfo.location")}
           </dt>
           <dd className="font-body text-primary-brand text-xs">
-            Trabajo Remoto
+            {t("additionalInfo.locationValue")}
           </dd>
         </div>
         <div className="flex flex-col items-center justify-center">
@@ -35,7 +35,7 @@ export const AdditionalInfo = (): JSX.Element => {
             <Icon name="Calendar" size={20} className="text-text-main mr-2" />
             {t("additionalInfo.experience")}
           </dt>
-          <dd className="font-body text-primary-brand text-xs">3+ Años</dd>
+          <dd className="font-body text-primary-brand text-xs">{t("additionalInfo.experienceValue")}</dd>
         </div>
         <div className="flex flex-col items-center justify-center">
           <dt className="flex items-center font-body font-bold text-text-main text-sm">
@@ -43,7 +43,7 @@ export const AdditionalInfo = (): JSX.Element => {
             {t("additionalInfo.languages")}
           </dt>
           <dd className="font-body text-primary-brand text-xs">
-            Español (Nativo), Inglés (B1)
+            {t("additionalInfo.languagesValue")}
           </dd>
         </div>
         <div className="flex flex-col items-center justify-center">

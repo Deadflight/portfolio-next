@@ -5,7 +5,7 @@ test.describe("Carga principal del portafolio", () => {
   test("La página principal carga correctamente y muestra información clave", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/es");
 
     // Verifica que el título principal (nombre) esté visible
     await expect(
@@ -28,7 +28,7 @@ test.describe("Carga principal del portafolio", () => {
   test("Los enlaces de redes sociales están visibles y funcionan correctamente", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/es");
     // Verifica que los enlaces de redes sociales estén visibles
     for (const profile of socialLinks) {
       const socialLink = page.getByRole("link", {

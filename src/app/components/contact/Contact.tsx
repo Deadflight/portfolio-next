@@ -9,7 +9,7 @@ export const Contact = () => {
   const t = useTranslations("contact");
 
   return (
-    <section id="contacto" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <article className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-h2 font-heading font-bold text-text-main mb-4">

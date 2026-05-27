@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { render, screen } from "@testing-library/react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { AboutMeShowcase } from "./AboutMeShowCase";
 import "@testing-library/jest-dom";
 
@@ -31,7 +31,7 @@ describe("AboutMeShowcase", () => {
 
   it("renders the section with id 'sobre-mi'", () => {
     render(<AboutMeShowcase />);
-    expect(document.getElementById("sobre-mi")).toBeInTheDocument();
+    expect(document.getElementById("about")).toBeInTheDocument();
   });
 
   it("renders the main heading", () => {
@@ -44,15 +44,15 @@ describe("AboutMeShowcase", () => {
   it("renders the call-to-action card", () => {
     render(<AboutMeShowcase />);
     expect(
-      screen.getByText("¿Interesado en colaborar?")
+      screen.getByText("¿Te gustaría trabajar conmigo?")
     ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Hablemos" })).toHaveAttribute(
       "href",
-      "#contacto"
+      "#contact"
     );
     expect(
-      screen.getByRole("link", { name: "Ver mi Trabajo" })
-    ).toHaveAttribute("href", "#proyectos");
+      screen.getByRole("link", { name: "Ver Mi Trabajo" })
+    ).toHaveAttribute("href", "#projects");
   });
 
   it("renders all child components", () => {

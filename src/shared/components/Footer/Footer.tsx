@@ -48,56 +48,56 @@ export const Footer = (): JSX.Element => {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#inicio"
+                  href="#home"
                   className={footerLinkClass}
-                  data-testid="footer-link-inicio"
+                  data-testid="footer-link-home"
                 >
-                  Inicio
+                  {t("quickLinksList.home")}
                 </a>
               </li>
               <li>
                 <a
-                  href="#experiencia"
+                  href="#experience"
                   className={footerLinkClass}
-                  data-testid="footer-link-experiencia"
+                  data-testid="footer-link-experience"
                 >
-                  Experiencia
+                  {t("quickLinksList.experience")}
                 </a>
               </li>
               <li>
                 <a
-                  href="#proyectos"
+                  href="#projects"
                   className={footerLinkClass}
-                  data-testid="footer-link-proyectos"
+                  data-testid="footer-link-projects"
                 >
-                  Proyectos
+                  {t("quickLinksList.projects")}
                 </a>
               </li>
               <li>
                 <a
-                  href="#sobre-mi"
+                  href="#about"
                   className={footerLinkClass}
-                  data-testid="footer-link-sobre-mi"
+                  data-testid="footer-link-about"
                 >
-                  Sobre Mí
+                  {t("quickLinksList.about")}
                 </a>
               </li>
               <li>
                 <a
-                  href="#habilidades"
+                  href="#skills"
                   className={footerLinkClass}
-                  data-testid="footer-link-habilidades"
+                  data-testid="footer-link-skills"
                 >
-                  Habilidades
+                  {t("quickLinksList.skills")}
                 </a>
               </li>
               <li>
                 <a
-                  href="#contacto"
+                  href="#contact"
                   className={footerLinkClass}
-                  data-testid="footer-link-contacto"
+                  data-testid="footer-link-contact"
                 >
-                  Contacto
+                  {t("quickLinksList.contact")}
                 </a>
               </li>
             </ul>
@@ -131,7 +131,7 @@ export const Footer = (): JSX.Element => {
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <p className="font-body text-text-main/80 text-sm mb-4 sm:mb-0 flex items-center">
               {t("copyright", { year: currentYear })}
-              <Icon name="Heart" size={16} className="text-red-400 mx-1" /> y
+              <Icon name="Heart" size={16} className="text-red-400 mx-1" /> {t("builtWith")}
               Next.js
             </p>
 

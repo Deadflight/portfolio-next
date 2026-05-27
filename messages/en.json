@@ -2,7 +2,10 @@
   "common": {
     "skipToMain": "Skip to main content",
     "toggleLanguage": "Toggle language",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "notFound": "The page you are looking for does not exist.",
+    "notFoundTitle": "Page Not Found",
+    "backToHome": "Back to Home"
   },
   "navigation": {
     "brandName": "Carlos Correa",
@@ -23,13 +26,23 @@
     "location": "Remote Work",
     "valueProposition": "3+ years of experience building scalable web applications with React, Node.js and AWS. Specialized in agile environments and user-centered solutions development.",
     "scrollDown": "Go to experience section",
-    "ariaLabel": "Hero section introducing Carlos Correa"
+    "ariaLabel": "Hero section introducing Carlos Correa",
+    "viewProjects": "View Projects",
+    "downloadCv": "Download CV"
   },
   "footer": {
     "copyright": "© {year} Carlos Correa. All rights reserved.",
     "ariaLabel": "Footer with contact information and social links",
     "description": "Full Stack Developer passionate about creating exceptional digital experiences and innovative technological solutions.",
     "quickLinks": "Quick Links",
+    "quickLinksList": {
+      "home": "Home",
+      "experience": "Experience",
+      "projects": "Projects",
+      "about": "About Me",
+      "skills": "Skills",
+      "contact": "Contact"
+    },
     "contact": {
       "title": "Contact",
       "email": "Email",
@@ -40,7 +53,8 @@
       "github": "GitHub Profile",
       "linkedin": "LinkedIn Profile",
       "twitter": "Twitter Profile"
-    }
+    },
+    "builtWith": "and"
   },
   "skills": {
     "title": "Skills",
@@ -64,6 +78,20 @@
       "frontend": "Frontend",
       "backend": "Backend",
       "tools": "Tools & Practices"
+    },
+    "languages": {
+      "title": "Languages",
+      "spanish": "Spanish",
+      "english": "English",
+      "native": "Native",
+      "spanishDescription": "Fluent professional and technical communication",
+      "englishLevel": "B1 - Intermediate",
+      "englishDescription": "Technical written communication, work meetings"
+    },
+    "learning": {
+      "title": "Continuous Learning",
+      "description": "Technology evolves constantly, and so do I. I am currently deepening my knowledge in microservices, refining my advanced testing skills, exploring Angular, and preparing for the MCP certification.",
+      "topics": ["Microservices", "Advanced Testing", "Angular", "MCP"]
     }
   },
   "experience": {
@@ -83,6 +111,15 @@
     "title": "Projects",
     "subtitle": "Featured work",
     "description": "A selection of my most recent projects",
+    "featured": "Featured Project",
+    "challenge": "Challenge:",
+    "solution": "Solution:",
+    "results": "Results:",
+    "technologies": "Technologies used:",
+    "viewProject": "View Project",
+    "code": "Code",
+    "privateProject": "Private client project",
+    "screenshotAlt": "Screenshot of {title}",
     "collaborationTitle": "Let's work together?",
     "collaborationDescription": "Interested in collaborating or have a project in mind?",
     "contactButton": "Get in touch",
@@ -129,7 +166,10 @@
       "experience": "Experience",
       "languages": "Languages",
       "philosophy": "Philosophy",
-      "philosophyDetail": "Clean code and accessibility aren't optional, they're essential."
+      "philosophyDetail": "Clean code and accessibility aren't optional, they're essential.",
+      "locationValue": "Remote Work",
+      "experienceValue": "3+ Years",
+      "languagesValue": "Spanish (Native), English (B1)"
     }
   },
   "contact": {

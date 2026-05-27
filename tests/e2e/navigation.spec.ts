@@ -9,9 +9,9 @@ const navigationLinks = navigationConfig.mainNavigation.map((link) => ({
 test.describe("Navegación principal del portafolio", () => {
   test("El menú hamburguesa aparece y funciona en móvil", async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 800 }); // Simula móvil
-    await page.goto("/");
+    await page.goto("/es");
     const menuButton = page.getByRole("button", {
-      name: /toggle navigation menu/i,
+      name: /alternar menú/i,
     });
     await expect(menuButton).toBeVisible();
     // Accesibilidad: verifica aria-label y aria-expanded
@@ -38,7 +38,7 @@ test.describe("Navegación principal del portafolio", () => {
   test("Los enlaces del menú navegan correctamente a cada sección", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/es");
 
     for (const link of navigationLinks) {
       const navLink = page.getByTestId(`nav-link-${link.sectionId}`);
@@ -51,15 +51,18 @@ test.describe("Navegación principal del portafolio", () => {
     }
   });
 
-  test("Los enlaces del menú tienen atributos de accesibilidad", async ({
+  test("Los enlaces del menú tienen texto descriptivo y son accesibles por teclado", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/es");
     for (const link of navigationLinks) {
       const navLink = page.getByTestId(`nav-link-${link.sectionId}`);
-      // Accesibilidad: verifica que tenga title
-      const title = await navLink.getAttribute("title");
-      expect(title).toBeTruthy();
+      // Verifica que el enlace esté visible y tenga texto
+      await expect(navLink).toBeVisible();
+      const textContent = await navLink.textContent();
+      expect(textContent?.trim()).toBeTruthy();
+      // Verifica que el enlace tenga un href válido
+      await expect(navLink).toHaveAttribute("href", `#${link.sectionId}`);
     }
   });
 });

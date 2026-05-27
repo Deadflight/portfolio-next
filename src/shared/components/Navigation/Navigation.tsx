@@ -1,7 +1,8 @@
 'use client';
-import { JSX, useState } from "react";
+import { JSX, useState, useTransition } from "react";
 import { Icon } from "../Icons/Icons";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import { usePathname, useRouter } from "@/i18n/navigation";
 
 /**
  * NavigationExperience is a responsive navigation bar component for a professional portfolio.
@@ -16,7 +17,20 @@ import { useTranslations } from "next-intl";
  */
 export const NavigationExperience = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const t = useTranslations("navigation");
+  const common = useTranslations("common");
+  const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
+  const nextLocale = locale === "en" ? "es" : "en";
+  const hash = typeof window !== "undefined" ? window.location.hash : "";
+
+  const handleLocaleSwitch = () => {
+    startTransition(() => {
+      router.replace(`${pathname}${hash}`, { locale: nextLocale });
+    });
+  };
 
   return (
     <nav
@@ -37,57 +51,68 @@ export const NavigationExperience = (): JSX.Element => {
             <ul className="ml-10 flex items-baseline space-x-4">
               <li>
                 <a
-                  href="#inicio"
+                  href="#home"
                   className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
-                  data-testid="nav-link-inicio"
+                  data-testid="nav-link-home"
                 >
                   {t("links.about")}
                 </a>
               </li>
               <li>
                 <a
-                  href="#experiencia"
+                  href="#experience"
                   className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
-                  data-testid="nav-link-experiencia"
+                  data-testid="nav-link-experience"
                 >
                   {t("links.experience")}
                 </a>
               </li>
               <li>
                 <a
-                  href="#proyectos"
+                  href="#projects"
                   className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
-                  data-testid="nav-link-proyectos"
+                  data-testid="nav-link-projects"
                 >
                   {t("links.projects")}
                 </a>
               </li>
               <li>
                 <a
-                  href="#sobre-mi"
+                  href="#about"
                   className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
-                  data-testid="nav-link-sobre-mi"
+                  data-testid="nav-link-about"
                 >
                   {t("links.about")}
                 </a>
               </li>
               <li>
                 <a
-                  href="#habilidades"
+                  href="#skills"
                   className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
-                  data-testid="nav-link-habilidades"
+                  data-testid="nav-link-skills"
                 >
                   {t("links.skills")}
                 </a>
               </li>
               <li>
                 <a
-                  href="#contacto"
+                  href="#contact"
                   className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
-                  data-testid="nav-link-contacto"
+                  data-testid="nav-link-contact"
                 >
                   {t("links.contact")}
                 </a>
+              </li>
+              <li>
+                <button
+                  onClick={handleLocaleSwitch}
+                  disabled={isPending}
+                  className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200 font-semibold"
+                  aria-label={common("toggleLanguage")}
+                  data-testid="locale-switcher"
+                >
+                  {locale === "en" ? "ES" : "EN"}
+                </button>
               </li>
             </ul>
           </article>
@@ -111,10 +136,10 @@ export const NavigationExperience = (): JSX.Element => {
             <ul className="px-2 pt-2 pb-3 space-y-1 bg-background-main border-t border-secondary">
               <li>
                 <a
-                  href="#inicio"
+                  href="#home"
                   className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
-                  data-testid="nav-link-inicio"
+                  data-testid="nav-link-home"
                 >
                   <Icon name="Home" size={20} className="mr-3" />
                   {t("links.about")}
@@ -122,10 +147,10 @@ export const NavigationExperience = (): JSX.Element => {
               </li>
               <li>
                 <a
-                  href="#experiencia"
+                  href="#experience"
                   className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
-                  data-testid="nav-link-experiencia"
+                  data-testid="nav-link-experience"
                 >
                   <Icon name="Briefcase" size={20} className="mr-3" />
                   {t("links.experience")}
@@ -133,10 +158,10 @@ export const NavigationExperience = (): JSX.Element => {
               </li>
               <li>
                 <a
-                  href="#proyectos"
+                  href="#projects"
                   className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
-                  data-testid="nav-link-proyectos"
+                  data-testid="nav-link-projects"
                 >
                   <Icon name="Code" size={20} className="mr-3" />
                   {t("links.projects")}
@@ -144,10 +169,10 @@ export const NavigationExperience = (): JSX.Element => {
               </li>
               <li>
                 <a
-                  href="#sobre-mi"
+                  href="#about"
                   className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
-                  data-testid="nav-link-sobre-mi"
+                  data-testid="nav-link-about"
                 >
                   <Icon name="User" size={20} className="mr-3" />
                   {t("links.about")}
@@ -155,10 +180,10 @@ export const NavigationExperience = (): JSX.Element => {
               </li>
               <li>
                 <a
-                  href="#habilidades"
+                  href="#skills"
                   className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
-                  data-testid="nav-link-habilidades"
+                  data-testid="nav-link-skills"
                 >
                   <Icon name="Laptop" size={20} className="mr-3" />
                   {t("links.skills")}
@@ -166,14 +191,26 @@ export const NavigationExperience = (): JSX.Element => {
               </li>
               <li>
                 <a
-                  href="#contacto"
+                  href="#contact"
                   className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
-                  data-testid="nav-link-contacto"
+                  data-testid="nav-link-contact"
                 >
                   <Icon name="Mail" size={20} className="mr-3" />
                   {t("links.contact")}
                 </a>
+              </li>
+              <li>
+                <button
+                  onClick={() => { handleLocaleSwitch(); setIsOpen(false); }}
+                  disabled={isPending}
+                  className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200 w-full text-left"
+                  aria-label={common("toggleLanguage")}
+                  data-testid="locale-switcher-mobile"
+                >
+                  <Icon name="Globe" size={20} className="mr-3" />
+                  {locale === "en" ? "ES" : "EN"}
+                </button>
               </li>
             </ul>
           </article>

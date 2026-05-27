@@ -148,4 +148,27 @@ const config: Config = {
   testPathIgnorePatterns: ["\\\\node_modules\\\\", "/tests/e2e/"],
 };
 
-export default createJestConfig(config);
+// Wrap createJestConfig to preserve our custom transformIgnorePatterns
+// Next.js defaults use "/node_modules/(?!.pnpm)(?!(geist)/)" which ignores everything
+// except geist — we need next-intl, use-intl, and intl-messageformat also excluded
+export default async () => {
+  const nextJestConfig = createJestConfig(config);
+  const resolvedConfig = await nextJestConfig();
+  const ESM_PACKAGES = "geist|next-intl|use-intl|intl-messageformat|@formatjs";
+  resolvedConfig.transformIgnorePatterns = [
+    // Replace default "ignore all except geist" with "ignore all except geist+our ESM"
+    `/node_modules/(?!.pnpm)(?!(${ESM_PACKAGES})/)`,
+    `/node_modules/.pnpm/(?!(${ESM_PACKAGES})@)`,
+    // Keep our explicit pattern (belt-and-suspenders)
+    `/node_modules/(?!(${ESM_PACKAGES})/)`,
+    // Keep other non-default patterns
+    ...(resolvedConfig.transformIgnorePatterns ?? []).filter(
+      (p: string) =>
+        p !== "/node_modules/" &&
+        !p.includes("(?!.pnpm)(?!") &&
+        !p.includes(".pnpm/(?!") &&
+        p !== "/node_modules/(?!(next-intl|use-intl|intl-messageformat)/)"
+    ),
+  ];
+  return resolvedConfig;
+};

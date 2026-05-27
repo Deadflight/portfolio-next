@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { render, screen } from "@testing-library/react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import "@testing-library/jest-dom";
 import { IIconProps } from "@/shared/types/icons.types";
 import { ProfessionalIdentityHero } from "./ProfessionalIdentityHero";
@@ -27,7 +27,7 @@ jest.mock("../../../../shared/components/Icons/Icons", () => ({
 describe("ProfessionalIdentityHero", () => {
   it("renders the section with correct id", () => {
     render(<ProfessionalIdentityHero />);
-    const section = document.getElementById("inicio");
+    const section = document.getElementById("home");
     expect(section).toBeInTheDocument();
   });
 
@@ -66,7 +66,7 @@ describe("ProfessionalIdentityHero", () => {
 
   it("renders the bouncing animation container", () => {
     render(<ProfessionalIdentityHero />);
-    const section = document.getElementById("inicio");
+    const section = document.getElementById("home");
     const bounceDiv = section?.querySelector(".animate-bounce");
     expect(bounceDiv).toBeInTheDocument();
   });

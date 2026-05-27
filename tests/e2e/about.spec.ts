@@ -2,31 +2,31 @@ import { test, expect } from "@playwright/test";
 
 test.describe("About (Sobre Mí)", () => {
   test("La sección principal se renderiza correctamente", async ({ page }) => {
-    await page.goto("/#sobre-mi");
+    await page.goto("/es#sobre-mi");
     await expect(page.getByRole("heading", { name: "Sobre Mí" })).toBeVisible();
     await expect(
-      page.getByText(
-        "Desarrollador de software enfocado en soluciones alineadas a las reglas de negocio, con pasión por crear experiencias digitales que realmente aporten valor."
-      )
+      page.getByText("Mi historia personal")
     ).toBeVisible();
   });
 
   test("Se muestra la historia personal y evolución profesional", async ({
     page,
   }) => {
-    await page.goto("/#sobre-mi");
+    await page.goto("/es#sobre-mi");
     await expect(
-      page.getByRole("heading", { name: "Mi Viaje en el Desarrollo" })
+      page.getByRole("heading", { name: "Mi Viaje" })
     ).toBeVisible();
     await expect(
       page.getByRole("heading", { name: "Roles y Evolución" })
     ).toBeVisible();
     await expect(
-      page.getByText(/Inicié como desarrollador freelance en Upwork/i)
+      page.getByText(
+        /Mi pasión por la tecnología comenzó cuando creé mi primer sitio web/i
+      )
     ).toBeVisible();
     await expect(
       page.getByText(
-        /Mi evolución profesional me ha llevado desde el desarrollo frontend/i
+        /A lo largo de los años, he trabajado en diversos proyectos/i
       )
     ).toBeVisible();
   });
@@ -34,7 +34,7 @@ test.describe("About (Sobre Mí)", () => {
   test("Se muestra la información adicional (ubicación, experiencia, idiomas, filosofía)", async ({
     page,
   }) => {
-    await page.goto("/#sobre-mi");
+    await page.goto("/es#sobre-mi");
     const aboutSection = page.locator("#sobre-mi");
     const aditionalInfoCard = aboutSection.getByTestId("additional-info");
     await expect(aditionalInfoCard.getByText("Ubicación")).toBeVisible();
@@ -48,20 +48,22 @@ test.describe("About (Sobre Mí)", () => {
     ).toBeVisible();
     await expect(aditionalInfoCard.getByText("Filosofía")).toBeVisible();
     await expect(
-      aditionalInfoCard.getByText(/Hacer las cosas bien y con buena actitud/i)
+      aditionalInfoCard.getByText(
+        /El código limpio y la accesibilidad no son opcionales/i
+      )
     ).toBeVisible();
   });
 
   test("Se muestra el enfoque actual y filosofía personal", async ({
     page,
   }) => {
-    await page.goto("/#sobre-mi");
+    await page.goto("/es#sobre-mi");
     await expect(
-      page.getByRole("heading", { name: "Mi Enfoque Actual" })
+      page.getByRole("heading", { name: "Enfoque Actual" })
     ).toBeVisible();
     await expect(
       page.getByText(
-        /Mi enfoque actual se basa en el desarrollo centrado en el usuario/i
+        /Actualmente estoy profundizando mis conocimientos en/i
       )
     ).toBeVisible();
     await expect(
@@ -69,13 +71,13 @@ test.describe("About (Sobre Mí)", () => {
     ).toBeVisible();
     await expect(
       page.getByText(
-        /Más allá del desarrollo, busco crecer tanto en lo profesional como en lo personal/i
+        /Cuando no estoy programando, me encontrarás/i
       )
     ).toBeVisible();
   });
 
   test("Se muestra el llamado a la acción y enlaces", async ({ page }) => {
-    await page.goto("/#sobre-mi");
+    await page.goto("/es#sobre-mi");
     await expect(
       page.getByRole("heading", { name: "¿Te gustaría trabajar conmigo?" })
     ).toBeVisible();
@@ -98,11 +100,11 @@ test.describe("About (Sobre Mí)", () => {
   }) => {
     // Mobile
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto("/#sobre-mi");
+    await page.goto("/es#sobre-mi");
     await expect(page.getByRole("heading", { name: "Sobre Mí" })).toBeVisible();
     // Desktop
     await page.setViewportSize({ width: 1280, height: 800 });
-    await page.goto("/#sobre-mi");
+    await page.goto("/es#sobre-mi");
     await expect(page.getByRole("heading", { name: "Sobre Mí" })).toBeVisible();
   });
 });
