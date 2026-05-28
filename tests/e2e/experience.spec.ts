@@ -85,7 +85,7 @@ test.describe("Experiencia laboral", () => {
     await page.goto("/es#experience");
     const link = page.locator("#experience").getByRole("link", { name: /descargar cv/i });
     await expect(link).toBeVisible();
-    await expect(link).toHaveAttribute("href", "/cv-carlos-correa.pdf");
+    await expect(link).toHaveAttribute("href", "/CV-Carlos-Correa-ES.pdf");
     await expect(link).toHaveAttribute("download", "");
   });
 

@@ -80,6 +80,6 @@ export default defineConfig({
     timeout: 180 * 1000,
     // Always start a fresh server when running tests locally to avoid
     // reusing a stale/non-responsive process on the same port.
-    reuseExistingServer: false,
+    reuseExistingServer: !process.env.CI,
   },
 });

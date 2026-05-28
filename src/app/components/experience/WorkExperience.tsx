@@ -1,9 +1,8 @@
-
-import { Icon } from "@/shared/components/Icons/Icons";
 import { WorkExperienceList } from "./WorkExperienceList/WorkExperienceList";
 import { FC, JSX } from "react";
 import { IWorkExperience } from "@/shared/types/workExperience.types";
 import { useTranslations } from "next-intl";
+import { DownloadLink } from "../shared/DownloadLink/DownloadLink";
 
 interface IWorkExperienceShowcaseProps {
   workExperienceData: IWorkExperience[];
@@ -46,15 +45,7 @@ export const WorkExperienceShowcase: FC<IWorkExperienceShowcaseProps> = ({
             <p className="font-body text-primary-brand leading-relaxed mb-4 font-medium">
               {t("detailsDescription")}
             </p>
-            <a
-              href="/cv-carlos-correa.pdf"
-              download
-              className="btn-secondary inline-flex items-center"
-              aria-label={t("downloadCv")}
-            >
-              <Icon name="Download" size={16} className="mr-2" />
-              {t("downloadCv")}
-            </a>
+            <DownloadLink />
           </div>
         </div>
       </article>
