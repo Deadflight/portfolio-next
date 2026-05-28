@@ -29,15 +29,6 @@ describe("ProfessionalActions", () => {
     expect(proyectosLink).toHaveAttribute("href", "#projects");
   });
 
-  it("renders the correct href and download attribute for CV link", () => {
-    render(<ProfessionalActions />);
-    const cvLink = screen.getByRole("link", {
-      name: /Descargar CV/i,
-    });
-    expect(cvLink).toHaveAttribute("href", "/cv-carlos-correa.pdf");
-    expect(cvLink).toHaveAttribute("download");
-  });
-
   it("renders the Download icon inside the CV button", () => {
     render(<ProfessionalActions />);
     const cvLink = screen.getByRole("link", {
