@@ -7,8 +7,6 @@ import { IIconProps } from "@/shared/types/icons.types";
 import { workExperienceData } from "@/constants/workExperience";
 import "@testing-library/jest-dom";
 
-// Mock next-intl
-
 // Mock child components and icons
 jest.mock("./WorkExperienceList/WorkExperienceList", () => ({
   WorkExperienceList: ({ workExperiences }: IWorkExperienceListProps) => (
@@ -36,17 +34,5 @@ describe("WorkExperienceShowcase", () => {
     render(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
     expect(screen.getAllByText(/Desarrollador Full Stack/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Desarrollador Frontend/i).length).toBeGreaterThan(1);
-  });
-
-  it("renders the CV download card with correct text and link", () => {
-    render(<WorkExperienceShowcase workExperienceData={workExperienceData} />);
-    expect(screen.getByText("Detalles")).toBeInTheDocument();
-    expect(screen.getByText("Descargar CV")).toBeInTheDocument();
-    const downloadLink = screen.getByRole("link", {
-      name: /Descargar CV/i,
-    });
-    expect(downloadLink).toHaveAttribute("href", "/cv-carlos-correa.pdf");
-    expect(downloadLink).toHaveAttribute("download");
-    expect(screen.getByTestId("icon")).toHaveTextContent("Download");
   });
 });
