@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("About (Sobre Mí)", () => {
   test("La sección principal se renderiza correctamente", async ({ page }) => {
-    await page.goto("/es#sobre-mi");
+    await page.goto("/es#about");
     await expect(page.getByRole("heading", { name: "Sobre Mí" })).toBeVisible();
     await expect(
       page.getByText("Mi historia personal")
@@ -12,7 +12,7 @@ test.describe("About (Sobre Mí)", () => {
   test("Se muestra la historia personal y evolución profesional", async ({
     page,
   }) => {
-    await page.goto("/es#sobre-mi");
+    await page.goto("/es#about");
     await expect(
       page.getByRole("heading", { name: "Mi Viaje" })
     ).toBeVisible();
@@ -34,8 +34,8 @@ test.describe("About (Sobre Mí)", () => {
   test("Se muestra la información adicional (ubicación, experiencia, idiomas, filosofía)", async ({
     page,
   }) => {
-    await page.goto("/es#sobre-mi");
-    const aboutSection = page.locator("#sobre-mi");
+    await page.goto("/es#about");
+    const aboutSection = page.locator("#about");
     const aditionalInfoCard = aboutSection.getByTestId("additional-info");
     await expect(aditionalInfoCard.getByText("Ubicación")).toBeVisible();
     await expect(aditionalInfoCard.getByText("Trabajo Remoto")).toBeVisible();
@@ -57,7 +57,7 @@ test.describe("About (Sobre Mí)", () => {
   test("Se muestra el enfoque actual y filosofía personal", async ({
     page,
   }) => {
-    await page.goto("/es#sobre-mi");
+    await page.goto("/es#about");
     await expect(
       page.getByRole("heading", { name: "Enfoque Actual" })
     ).toBeVisible();
@@ -77,7 +77,7 @@ test.describe("About (Sobre Mí)", () => {
   });
 
   test("Se muestra el llamado a la acción y enlaces", async ({ page }) => {
-    await page.goto("/es#sobre-mi");
+    await page.goto("/es#about");
     await expect(
       page.getByRole("heading", { name: "¿Te gustaría trabajar conmigo?" })
     ).toBeVisible();
@@ -88,11 +88,11 @@ test.describe("About (Sobre Mí)", () => {
     ).toBeVisible();
     await expect(page.getByRole("link", { name: "Hablemos" })).toHaveAttribute(
       "href",
-      "#contacto"
+      "#contact"
     );
     await expect(
       page.getByRole("link", { name: "Ver Mi Trabajo" })
-    ).toHaveAttribute("href", "#proyectos");
+    ).toHaveAttribute("href", "#projects");
   });
 
   test("La sección 'Sobre Mí' es responsive (mobile y desktop)", async ({
@@ -100,11 +100,11 @@ test.describe("About (Sobre Mí)", () => {
   }) => {
     // Mobile
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto("/es#sobre-mi");
+    await page.goto("/es#about");
     await expect(page.getByRole("heading", { name: "Sobre Mí" })).toBeVisible();
     // Desktop
     await page.setViewportSize({ width: 1280, height: 800 });
-    await page.goto("/es#sobre-mi");
+    await page.goto("/es#about");
     await expect(page.getByRole("heading", { name: "Sobre Mí" })).toBeVisible();
   });
 });

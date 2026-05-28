@@ -15,7 +15,7 @@ test.describe("Formulario de contacto", () => {
   test("El formulario valida los campos y muestra errores", async ({
     page,
   }) => {
-    await page.goto("/es#contacto");
+    await page.goto("/es#contact");
     await page.click(contactSelectors.submit);
     // Verifica que cada mensaje de error esperado esté visible
     await expect(page.getByText("El nombre es obligatorio")).toBeVisible();
