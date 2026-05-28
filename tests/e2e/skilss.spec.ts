@@ -1,4 +1,4 @@
-import { proficiencyLevels, skillCategories } from "@/constants/skills";
+import { proficiencyLevels, skillCategories } from "@/constants/data/es/skills.data";
 import { test, expect } from "@playwright/test";
 
 test.describe("Skills (Habilidades)", () => {

@@ -5,7 +5,7 @@ test.describe("Proyectos destacados", () => {
   test("La sección de proyectos se renderiza correctamente", async ({
     page,
   }) => {
-    await page.goto("/es#proyectos");
+    await page.goto("/es#projects");
     await expect(
       page.getByRole("heading", { name: /^Proyectos$/ })
     ).toBeVisible();
@@ -14,7 +14,7 @@ test.describe("Proyectos destacados", () => {
   test("Cada proyecto muestra título, descripción y tecnologías", async ({
     page,
   }) => {
-    await page.goto("/es#proyectos");
+    await page.goto("/es#projects");
     for (const project of projects) {
       // Encuentra el heading del proyecto
       const projectTitle = page.getByRole("heading", { name: project.title });
@@ -30,7 +30,7 @@ test.describe("Proyectos destacados", () => {
   });
 
   test("Los enlaces a demo y código funcionan", async ({ page }) => {
-    await page.goto("/es#proyectos");
+    await page.goto("/es#projects");
     // Verifica que los enlaces existen y tienen href correcto
     for (const project of projects) {
       if (project.liveUrl) {
@@ -55,7 +55,7 @@ test.describe("Proyectos destacados", () => {
   });
 
   test("Las imágenes de los proyectos se muestran", async ({ page }) => {
-    await page.goto("/es#proyectos");
+    await page.goto("/es#projects");
     // Busca imágenes por alt o por rol
     for (const project of projects) {
       const projectImage = page.getByAltText(project.title);
