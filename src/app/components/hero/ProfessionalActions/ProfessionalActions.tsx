@@ -1,5 +1,5 @@
-import { Icon } from "@/shared/components/Icons/Icons";
 import { useTranslations } from "next-intl";
+import { DownloadLink } from "../../shared/DownloadLink/DownloadLink";
 
 /**
  * Renders a set of professional action buttons for the hero section.
@@ -27,15 +27,7 @@ export const ProfessionalActions = () => {
       >
         {t("viewProjects")}
       </a>
-      <a
-        href="/cv-carlos-correa.pdf"
-        download
-        className="btn-secondary flex items-center"
-        aria-label={t("downloadCv")}
-      >
-        <Icon name="Download" size={16} className="mr-2" />
-        {t("downloadCv")}
-      </a>
+      <DownloadLink />
     </div>
   );
 };
