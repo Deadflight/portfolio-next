@@ -1,7 +1,9 @@
+
 import { Icon } from "@/shared/components/Icons/Icons";
 import { WorkExperienceList } from "./WorkExperienceList/WorkExperienceList";
 import { FC, JSX } from "react";
 import { IWorkExperience } from "@/shared/types/workExperience.types";
+import { useTranslations } from "next-intl";
 
 interface IWorkExperienceShowcaseProps {
   workExperienceData: IWorkExperience[];
@@ -20,15 +22,17 @@ interface IWorkExperienceShowcaseProps {
 export const WorkExperienceShowcase: FC<IWorkExperienceShowcaseProps> = ({
   workExperienceData,
 }): JSX.Element => {
+  const t = useTranslations("experience");
+
   return (
-    <section id="experiencia" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="experience" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <article className="max-w-6xl mx-auto">
         <header className="text-center mb-12">
           <h2 className="text-h2 font-heading font-bold text-text-main mb-4">
-            Experiencia Laboral
+            {t("title")}
           </h2>
           <p className="text-lg font-body text-primary-brand max-w-2xl mx-auto font-medium">
-            Mi trayectoria profesional en el desarrollo de software
+            {t("subtitle")}
           </p>
         </header>
 
@@ -37,19 +41,19 @@ export const WorkExperienceShowcase: FC<IWorkExperienceShowcaseProps> = ({
         <div className="text-center mt-12">
           <div className="card max-w-2xl mx-auto">
             <h3 className="text-xl font-heading font-semibold text-text-main mb-4">
-              ¿Buscas más detalles?
+              {t("detailsTitle")}
             </h3>
             <p className="font-body text-primary-brand leading-relaxed mb-4 font-medium">
-              Mi CV completo incluye información adicional sobre
-              certificaciones, formación académica y proyectos personales.
+              {t("detailsDescription")}
             </p>
             <a
               href="/cv-carlos-correa.pdf"
               download
               className="btn-secondary inline-flex items-center"
+              aria-label={t("downloadCv")}
             >
               <Icon name="Download" size={16} className="mr-2" />
-              Descargar CV Completo
+              {t("downloadCv")}
             </a>
           </div>
         </div>

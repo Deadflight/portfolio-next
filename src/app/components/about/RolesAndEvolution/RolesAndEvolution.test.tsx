@@ -1,8 +1,10 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+﻿import React from "react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { RolesAndEvolution } from "./RolesAndEvolution";
 import "@testing-library/jest-dom";
 import { IIconProps } from "@/shared/types/icons.types";
+
+// Mock next-intl
 
 // Mock the Icon component
 jest.mock("../../../../shared/components/Icons/Icons", () => ({
@@ -36,12 +38,12 @@ describe("RolesAndEvolution", () => {
     render(<RolesAndEvolution />);
     expect(
       screen.getByText(
-        /Mi evolución profesional me ha llevado desde el desarrollo frontend/i
+        /He tenido el privilegio de trabajar en diversos roles/i
       )
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /En Farmaloop, lideré el desarrollo de sistemas complejos/i
+        /Cada rol me ha enseñado algo valioso/i
       )
     ).toBeInTheDocument();
   });

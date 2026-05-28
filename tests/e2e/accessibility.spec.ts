@@ -5,7 +5,7 @@ test.describe("Accesibilidad general del portafolio", () => {
   test("Todos los headings principales tienen roles y niveles correctos", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/es");
     const headings = await page.locator("h1, h2, h3").all();
     for (const heading of headings) {
       await expect(heading).toBeVisible();
@@ -14,7 +14,7 @@ test.describe("Accesibilidad general del portafolio", () => {
   });
 
   test("Las imágenes tienen texto alternativo (alt)", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/es");
     const images = await page.locator("img").all();
     for (const img of images) {
       const alt = await img.getAttribute("alt");
@@ -26,7 +26,7 @@ test.describe("Accesibilidad general del portafolio", () => {
   test("Todos los enlaces tienen texto descriptivo y son accesibles por teclado", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/es");
     const links = await page.locator("a").all();
     for (const link of links) {
       const isVisible = await link.isVisible();
@@ -44,7 +44,7 @@ test.describe("Accesibilidad general del portafolio", () => {
   test("La navegación por teclado funciona en el menú principal", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/es");
     await page.keyboard.press("Tab");
     // Valida que el foco esté en el primer elemento del menú
     const focused = await page.evaluate(
@@ -56,7 +56,7 @@ test.describe("Accesibilidad general del portafolio", () => {
   test("No hay violaciones de accesibilidad recomendadas por axe", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/es");
     await injectAxe(page);
     const violations = await getViolations(page);
     expect(violations).toEqual([]);

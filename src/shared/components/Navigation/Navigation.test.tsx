@@ -1,96 +1,130 @@
 import React from "react";
-import { render, screen, fireEvent, within } from "@testing-library/react";
+import {
+  renderWithI18n,
+  render,
+  screen,
+  fireEvent,
+  within,
+  AllTheProviders,
+} from "@/test/utils";
 import { NavigationExperience } from "./Navigation";
+import * as navigation from "@/i18n/navigation";
 
-// Mock the Icon component to avoid errors during tests
 jest.mock("../Icons/Icons", () => ({
   Icon: ({ name, ...props }: { name: string }) => (
     <span data-testid={`icon-${name}`} {...props} />
   ),
 }));
 
+const mockReplace = jest.fn();
+jest.mock("@/i18n/navigation", () => ({
+  usePathname: jest.fn(() => "/"),
+  useRouter: jest.fn(() => ({ replace: mockReplace })),
+}));
+
 describe("NavigationExperience", () => {
   it("renders the professional brand heading", () => {
-    render(<NavigationExperience />);
-    expect(screen.getByText(/Carlos Correa Portfolio/i)).toBeInTheDocument();
+    renderWithI18n(<NavigationExperience />);
+    expect(screen.getByText(/Carlos Correa/i)).toBeInTheDocument();
   });
 
   it("renders all main navigation links in desktop mode", () => {
-    render(<NavigationExperience />);
-    // Desktop navigation is visible by default (lg:block)
-    expect(screen.getByText("Inicio")).toBeInTheDocument();
-    expect(screen.getByText("Experiencia")).toBeInTheDocument();
-    expect(screen.getByText("Proyectos")).toBeInTheDocument();
-    expect(screen.getByText("Sobre Mí")).toBeInTheDocument();
-    expect(screen.getByText("Habilidades")).toBeInTheDocument();
-    expect(screen.getByText("Contacto")).toBeInTheDocument();
+    renderWithI18n(<NavigationExperience />);
+    expect(screen.getByTestId("nav-link-home")).toBeInTheDocument();
+    expect(screen.getByTestId("nav-link-experience")).toBeInTheDocument();
+    expect(screen.getByTestId("nav-link-projects")).toBeInTheDocument();
+    expect(screen.getByTestId("nav-link-about")).toBeInTheDocument();
+    expect(screen.getByTestId("nav-link-skills")).toBeInTheDocument();
+    expect(screen.getByTestId("nav-link-contact")).toBeInTheDocument();
   });
 
   it("renders navigation links with correct hrefs", () => {
-    render(<NavigationExperience />);
-    expect(screen.getByText("Inicio").closest("a")).toHaveAttribute(
-      "href",
-      "#inicio"
-    );
-    expect(screen.getByText("Experiencia").closest("a")).toHaveAttribute(
-      "href",
-      "#experiencia"
-    );
-    expect(screen.getByText("Proyectos").closest("a")).toHaveAttribute(
-      "href",
-      "#proyectos"
-    );
-    expect(screen.getByText("Sobre Mí").closest("a")).toHaveAttribute(
-      "href",
-      "#sobre-mi"
-    );
-    expect(screen.getByText("Habilidades").closest("a")).toHaveAttribute(
-      "href",
-      "#habilidades"
-    );
-    expect(screen.getByText("Contacto").closest("a")).toHaveAttribute(
-      "href",
-      "#contacto"
-    );
+    renderWithI18n(<NavigationExperience />);
+    expect(screen.getByTestId("nav-link-home")).toHaveAttribute("href", "#home");
+    expect(screen.getByTestId("nav-link-experience")).toHaveAttribute("href", "#experience");
+    expect(screen.getByTestId("nav-link-projects")).toHaveAttribute("href", "#projects");
+    expect(screen.getByTestId("nav-link-about")).toHaveAttribute("href", "#about");
+    expect(screen.getByTestId("nav-link-skills")).toHaveAttribute("href", "#skills");
+    expect(screen.getByTestId("nav-link-contact")).toHaveAttribute("href", "#contact");
   });
 
   it("toggles mobile menu when menu button is clicked", () => {
-    render(<NavigationExperience />);
-    const menuButton = screen.getByRole("button", {
-      name: /toggle navigation menu/i,
-    });
+    renderWithI18n(<NavigationExperience />);
 
     // Mobile menu should not be visible initially
-    expect(screen.queryByText("Inicio")).toBeInTheDocument(); // Desktop is always rendered
-    // Simulate mobile by clicking the menu button
+    expect(screen.queryByTestId("mobile-menu")).not.toBeInTheDocument();
+
+    const menuButton = screen.getByRole("button", { name: /Alternar menú/i });
     fireEvent.click(menuButton);
 
-    const mobileMenu = screen.getByTestId("mobile-menu"); // Asegúrate de tener data-testid en el contenedor del menú móvil
-    // After clicking, mobile menu should render icons and links
-    expect(screen.getByTestId("icon-X")).toBeInTheDocument();
-    expect(within(mobileMenu).getByText("Inicio")).toBeInTheDocument();
-    expect(within(mobileMenu).getByText("Experiencia")).toBeInTheDocument();
+    // Mobile menu should be visible after clicking
+    expect(screen.getByTestId("mobile-menu")).toBeInTheDocument();
   });
 
   it("closes mobile menu when a link is clicked", () => {
-    render(<NavigationExperience />);
-    const menuButton = screen.getByRole("button", {
-      name: /toggle navigation menu/i,
-    });
+    renderWithI18n(<NavigationExperience />);
+    const menuButton = screen.getByRole("button", { name: /Alternar menú/i });
     fireEvent.click(menuButton);
 
-    const mobileLink = screen
-      .getAllByText("Inicio")
-      .find(
-        (el) => el.closest("a") && el.closest("a")?.className.includes("flex")
-      );
-    expect(mobileLink).toBeInTheDocument();
+    // Mobile menu is now open
+    const mobileMenu = screen.getByTestId("mobile-menu");
+    expect(mobileMenu).toBeInTheDocument();
 
-    if (mobileLink) {
-      fireEvent.click(mobileLink);
-    }
+    // Click on a mobile link (within the mobile menu)
+    const mobileLink = within(mobileMenu).getByTestId("nav-link-home");
+    fireEvent.click(mobileLink);
 
-    // After clicking, the mobile menu should close (icon-X disappears)
-    expect(screen.queryByTestId("icon-X")).not.toBeInTheDocument();
+    // Mobile menu should close
+    expect(screen.queryByTestId("mobile-menu")).not.toBeInTheDocument();
+  });
+});
+
+describe("Language Switcher", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it("shows 'EN' toggle when current locale is Spanish", () => {
+    renderWithI18n(<NavigationExperience />);
+    expect(screen.getByTestId("locale-switcher")).toHaveTextContent("EN");
+  });
+
+  it("shows 'ES' toggle when current locale is English", () => {
+    render(<NavigationExperience />, { wrapper: AllTheProviders });
+    expect(screen.getByTestId("locale-switcher")).toHaveTextContent("ES");
+  });
+
+  it("has correct aria-label for language toggle (Spanish)", () => {
+    renderWithI18n(<NavigationExperience />);
+    expect(screen.getByTestId("locale-switcher")).toHaveAttribute(
+      "aria-label",
+      "Cambiar idioma"
+    );
+  });
+
+  it("has correct aria-label for language toggle (English)", () => {
+    render(<NavigationExperience />, { wrapper: AllTheProviders });
+    expect(screen.getByTestId("locale-switcher")).toHaveAttribute(
+      "aria-label",
+      "Toggle language"
+    );
+  });
+
+  it("calls router.replace with next locale on click (ES→EN)", () => {
+    const mockReplace = jest.fn();
+    (navigation.useRouter as jest.Mock).mockReturnValue({ replace: mockReplace });
+
+    renderWithI18n(<NavigationExperience />);
+    fireEvent.click(screen.getByTestId("locale-switcher"));
+
+    expect(mockReplace).toHaveBeenCalledWith("/", { locale: "en" });
+  });
+
+  it("renders locale switcher in mobile menu", () => {
+    renderWithI18n(<NavigationExperience />);
+    const menuButton = screen.getByRole("button", { name: /Alternar menú/i });
+    fireEvent.click(menuButton);
+    expect(screen.getByTestId("locale-switcher-mobile")).toBeInTheDocument();
+    expect(screen.getByTestId("locale-switcher-mobile")).toHaveTextContent("EN");
   });
 });

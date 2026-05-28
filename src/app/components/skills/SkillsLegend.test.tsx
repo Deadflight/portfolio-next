@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { SkillsLegend, SkillsLegendProps } from "./SkillsLegend";
 // Import the unfilled star color token from the StarRating module or theme
 import { UNFILLED_STAR_COLOR } from "../../../shared/components/StarRating/StarRating";

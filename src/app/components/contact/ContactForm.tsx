@@ -1,10 +1,12 @@
 "use client";
+
 import { sendEmail } from "@/actions/contact/sendEmail";
 import React, { JSX } from "react";
 import { Icon } from "@/shared/components/Icons/Icons";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { sendEmailSchema } from "@/schemas/sendEmailSchema";
+import { useTranslations } from "next-intl";
 
 export interface ContactFormData {
   name: string;
@@ -36,6 +38,7 @@ export interface ContactFormData {
  * @returns {JSX.Element} Accessible and validated contact form.
  */
 export const ContactForm = (): JSX.Element => {
+  const t = useTranslations("contact");
   const { handleSubmit, register, formState, reset } = useForm<ContactFormData>(
     {
       defaultValues: {
@@ -79,7 +82,7 @@ export const ContactForm = (): JSX.Element => {
         general:
           error instanceof Error
             ? [error.message]
-            : ["Error al enviar el mensaje. Por favor, inténtalo de nuevo."],
+            : [t("submitButton") + ": " + t("messagePlaceholder")],
       });
       return;
     }
@@ -88,7 +91,7 @@ export const ContactForm = (): JSX.Element => {
   return (
     <article className="card">
       <h3 className="text-xl font-heading font-semibold text-text-main mb-6">
-        Envíame un Mensaje
+        {t("formTitle")}
       </h3>
 
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -98,13 +101,13 @@ export const ContactForm = (): JSX.Element => {
               htmlFor="name"
               className="block font-body font-semibold text-text-main mb-2"
             >
-              Nombre *
+              {t("name")} *
             </label>
             <input
               className="input-field"
               id="name"
               type="text"
-              placeholder="Tu nombre"
+              placeholder={t("namePlaceholder")}
               autoComplete="name"
               {...register("name")}
             />
@@ -118,13 +121,13 @@ export const ContactForm = (): JSX.Element => {
               htmlFor="email"
               className="block font-body font-semibold text-text-main mb-2"
             >
-              Email *
+              {t("email")} *
             </label>
             <input
               type="email"
               id="email"
               className="input-field"
-              placeholder="tu@email.com"
+              placeholder={t("emailPlaceholder")}
               autoComplete="email"
               {...register("email")}
             />
@@ -139,13 +142,13 @@ export const ContactForm = (): JSX.Element => {
             htmlFor="subject"
             className="block font-body font-semibold text-text-main mb-2"
           >
-            Asunto *
+            {t("subject")} *
           </label>
           <input
             type="text"
             id="subject"
             className="input-field"
-            placeholder="Asunto del mensaje"
+            placeholder={t("subjectPlaceholder")}
             autoComplete="off"
             {...register("subject")}
           />
@@ -159,13 +162,13 @@ export const ContactForm = (): JSX.Element => {
             htmlFor="message"
             className="block font-body font-semibold text-text-main mb-2"
           >
-            Mensaje *
+            {t("message")} *
           </label>
           <textarea
             id="message"
             className="input-field resize-none"
             rows={5}
-            placeholder="Cuéntame sobre tu proyecto..."
+            placeholder={t("messagePlaceholder")}
             {...register("message")}
           />
           {errors.message && (
@@ -174,9 +177,8 @@ export const ContactForm = (): JSX.Element => {
         </div>
         <button
           type="submit"
-          className={`btn-primary w-full flex items-center justify-center transition-opacity ${
-            isSubmitting ? "opacity-60 cursor-not-allowed" : ""
-          }`}
+          className={`btn-primary w-full flex items-center justify-center transition-opacity ${isSubmitting ? "opacity-60 cursor-not-allowed" : ""
+            }`}
           disabled={isSubmitting}
         >
           {isSubmitting ? (
@@ -203,18 +205,18 @@ export const ContactForm = (): JSX.Element => {
           ) : (
             <Icon name="PaperPlane" size={16} className="mr-2" />
           )}
-          Enviar Mensaje
+          {t("submitButton")}
         </button>
         {Object.keys(generalError).length > 0 && (
           <p className="text-error text-sm mt-4 text-center">
             {generalError.general
               ? generalError.general.join(", ")
-              : "Error al enviar el mensaje. Por favor, inténtalo de nuevo."}
+              : t("submitButton") + ": " + t("messagePlaceholder")}
           </p>
         )}
         {success && (
           <p className="text-success text-sm mt-4 text-center">
-            Mensaje enviado correctamente. ¡Gracias por contactarme!
+            {t("submitButton")} {t("messagePlaceholder")}
           </p>
         )}
       </form>

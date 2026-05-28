@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { ProfessionalActions } from "./ProfessionalActions";
 import { IIconProps } from "@/shared/types/icons.types";
 import "@testing-library/jest-dom";
@@ -12,36 +12,36 @@ describe("ProfessionalActions", () => {
   it("renders both action buttons", () => {
     render(<ProfessionalActions />);
     expect(
-      screen.getByRole("link", { name: /View my projects/i })
+      screen.getByRole("link", { name: /Ver Proyectos/i })
     ).toBeInTheDocument();
     expect(
       screen.getByRole("link", {
-        name: /Download my complete professional resume/i,
+        name: /Descargar CV/i,
       })
     ).toBeInTheDocument();
   });
 
-  it("renders the correct href for 'Ver Proyectos'", () => {
+  it("renders the correct href for projects link", () => {
     render(<ProfessionalActions />);
     const proyectosLink = screen.getByRole("link", {
-      name: /View my projects/i,
+      name: /Ver Proyectos/i,
     });
-    expect(proyectosLink).toHaveAttribute("href", "#proyectos");
+    expect(proyectosLink).toHaveAttribute("href", "#projects");
   });
 
-  it("renders the correct href and download attribute for 'Descargar CV'", () => {
+  it("renders the correct href and download attribute for CV link", () => {
     render(<ProfessionalActions />);
     const cvLink = screen.getByRole("link", {
-      name: /Download my complete professional resume/i,
+      name: /Descargar CV/i,
     });
     expect(cvLink).toHaveAttribute("href", "/cv-carlos-correa.pdf");
     expect(cvLink).toHaveAttribute("download");
   });
 
-  it("renders the Download icon inside the 'Descargar CV' button", () => {
+  it("renders the Download icon inside the CV button", () => {
     render(<ProfessionalActions />);
     const cvLink = screen.getByRole("link", {
-      name: /Download my complete professional resume/i,
+      name: /Descargar CV/i,
     });
     expect(cvLink.querySelector('[data-testid="icon"]')).toBeInTheDocument();
   });
