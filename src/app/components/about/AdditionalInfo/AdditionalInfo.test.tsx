@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { AdditionalInfo } from "./AdditionalInfo";
 import "@testing-library/jest-dom";
 
@@ -34,7 +34,7 @@ describe("AdditionalInfo", () => {
     expect(screen.getByText("Filosofía")).toBeInTheDocument();
     expect(
       screen.getByText(
-        /Hacer las cosas bien y con buena actitud, buscando siempre dar ese paso extra./
+        /El código limpio y la accesibilidad no son opcionales, son esenciales./
       )
     ).toBeInTheDocument();
   });

@@ -1,6 +1,12 @@
-import { projects } from "@/constants/projects";
+
+import { IProject } from "@/shared/types/project.types";
 import { ProjectsList } from "./ProjectsList/ProjectsList";
-import { JSX } from "react";
+import { FC, JSX } from "react";
+import { useTranslations } from "next-intl";
+
+interface IProjectsShowCaseProps {
+  projects: IProject[];
+}
 
 /**
  * Renders a showcase section highlighting featured projects.
@@ -11,22 +17,25 @@ import { JSX } from "react";
  * @component
  * @example
  * ```tsx
- * <ProjectsShowCase />
+ * <ProjectsShowCase projects={projects} />
  * ```
  *
  * @returns {JSX.Element} The rendered projects showcase section.
  */
-export const ProjectsShowCase = (): JSX.Element => {
+export const ProjectsShowCase: FC<IProjectsShowCaseProps> = ({
+  projects,
+}): JSX.Element => {
+  const t = useTranslations("projects");
+
   return (
-    <section id="proyectos" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <article className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-h2 font-heading font-bold text-text-main mb-4">
-            Proyectos Destacados
+            {t("title")}
           </h2>
           <p className="text-lg font-body text-primary-brand max-w-2xl mx-auto font-medium">
-            Una selección de mis trabajos más recientes y significativos, con
-            impacto medible en las organizaciones
+            {t("description")}
           </p>
         </div>
 
@@ -35,15 +44,13 @@ export const ProjectsShowCase = (): JSX.Element => {
         <div className="text-center mt-12">
           <div className="card max-w-2xl mx-auto bg-white border-2 border-text-main/10">
             <h3 className="text-xl font-heading font-semibold text-text-main mb-4">
-              ¿Interesado en colaborar?
+              {t("collaborationTitle")}
             </h3>
             <p className="font-body text-primary-brand leading-relaxed mb-4 font-medium">
-              Estos proyectos representan mi experiencia en desarrollo full
-              stack. Si tienes un proyecto similar o quieres discutir una
-              oportunidad, me encantaría conversar contigo.
+              {t("collaborationDescription")}
             </p>
-            <a href="#contacto" className="btn-primary">
-              Contactar
+            <a href="#contact" className="btn-primary">
+              {t("contactButton")}
             </a>
           </div>
         </div>

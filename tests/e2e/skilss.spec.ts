@@ -1,18 +1,18 @@
-import { proficiencyLevels, skillCategories } from "@/constants/skills";
+import { proficiencyLevels, skillCategories } from "@/constants/data/es/skills.data";
 import { test, expect } from "@playwright/test";
 
 test.describe("Skills (Habilidades)", () => {
   test("La sección de habilidades se renderiza correctamente", async ({
     page,
   }) => {
-    await page.goto("/#skills");
+    await page.goto("/es#skills");
     await expect(
-      page.getByRole("heading", { name: "Habilidades Técnicas" })
+      page.getByRole("heading", { name: "Habilidades", exact: true })
     ).toBeVisible();
   });
 
   test("Cada skill muestra su nombre y nivel", async ({ page }) => {
-    await page.goto("/#skills");
+    await page.goto("/es#skills");
     for (const category of skillCategories) {
       for (const skill of category.skills) {
         const skillElement = page.getByTestId(`skill-card-${skill.name}`);
@@ -49,7 +49,7 @@ test.describe("Skills (Habilidades)", () => {
   });
 
   test("Las categorías de habilidades se muestran", async ({ page }) => {
-    await page.goto("/#skills");
+    await page.goto("/es#skills");
     for (const category of skillCategories) {
       await expect(
         page.getByText(category.title, { exact: true })
@@ -62,15 +62,15 @@ test.describe("Skills (Habilidades)", () => {
   }) => {
     // Mobile
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto("/#skills");
+    await page.goto("/es#skills");
     await expect(
-      page.getByRole("heading", { name: "Habilidades Técnicas" })
+      page.getByRole("heading", { name: "Habilidades", exact: true })
     ).toBeVisible();
     // Desktop
     await page.setViewportSize({ width: 1280, height: 800 });
-    await page.goto("/#skills");
+    await page.goto("/es#skills");
     await expect(
-      page.getByRole("heading", { name: "Habilidades Técnicas" })
+      page.getByRole("heading", { name: "Habilidades", exact: true })
     ).toBeVisible();
   });
 });

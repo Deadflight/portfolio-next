@@ -1,7 +1,8 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { Contact } from "./Contact";
 import { ContactInformationProps } from "./ContactInformation";
+
 
 jest.mock("./ContactInformation", () => ({
   ContactInformation: ({ socialLinks }: ContactInformationProps) => (
@@ -27,7 +28,7 @@ jest.mock("../../../constants/contactInformation", () => ({
 describe("Contact", () => {
   it("renders section with correct id and classes", () => {
     const { container } = render(<Contact />);
-    const section = container.querySelector("#contacto");
+    const section = container.querySelector("#contact");
     expect(section).not.toBeNull();
     expect(section).toHaveClass("py-16");
   });
@@ -35,11 +36,11 @@ describe("Contact", () => {
   it("renders heading and description", () => {
     render(<Contact />);
     expect(
-      screen.getByRole("heading", { name: /contacto/i })
+      screen.getByRole("heading", { name: /Contacto/i })
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /¿Tienes un proyecto en mente\? Me encantaría escuchar sobre él/i
+        /¿Tenés un proyecto en mente\? Hablemos/i
       )
     ).toBeInTheDocument();
   });

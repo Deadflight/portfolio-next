@@ -1,7 +1,9 @@
+
 import { Chip } from "@/shared/components/Chip/Chip";
 import { Icon } from "@/shared/components/Icons/Icons";
 import { IWorkExperience } from "@/shared/types/workExperience.types";
 import React, { FC } from "react";
+import { useTranslations } from "next-intl";
 
 interface IWorkExperienceCardProps {
   workExperience: IWorkExperience;
@@ -24,6 +26,8 @@ export const WorkExperienceCard: FC<IWorkExperienceCardProps> = ({
   workExperience,
   isLast = false,
 }) => {
+  const t = useTranslations("experience");
+
   return (
     <li
       className="relative"
@@ -46,7 +50,7 @@ export const WorkExperienceCard: FC<IWorkExperienceCardProps> = ({
               </h3>
               {workExperience.businessPeriod.current && (
                 <span className="ml-3 px-3 py-1 bg-success text-white text-xs font-body font-bold rounded-full">
-                  Actual
+                  {t("current")}
                 </span>
               )}
             </div>
@@ -102,7 +106,7 @@ export const WorkExperienceCard: FC<IWorkExperienceCardProps> = ({
                     className="text-primary-brand mr-2"
                   />
                   <span className="font-body font-bold text-text-main text-sm">
-                    Referencia
+                    {t("reference")}
                   </span>
                 </div>
                 <p className="text-xs font-body text-text-main">
@@ -119,7 +123,7 @@ export const WorkExperienceCard: FC<IWorkExperienceCardProps> = ({
             <div className="space-y-4">
               <div>
                 <h4 className="font-body font-bold text-text-main mb-3 text-base">
-                  Logros y Responsabilidades:
+                  {t("achievements")}:
                 </h4>
                 <ul className="space-y-3">
                   {workExperience.businessImpact.map(
@@ -137,7 +141,7 @@ export const WorkExperienceCard: FC<IWorkExperienceCardProps> = ({
 
               <div>
                 <h4 className="font-body font-bold text-text-main mb-3 text-base">
-                  Tecnologías utilizadas:
+                  {t("technologies")}:
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {workExperience.technologyStack.map((tech: string) => (

@@ -1,8 +1,9 @@
+
+
 import React, { JSX } from "react";
 import { Icon } from "../Icons/Icons";
-import { contactInformation } from "@/constants/contactInformation";
+import { useTranslations } from "next-intl";
 import { ScrollToTopButton } from "../ScrollToTopButton/ScrollToTopButton";
-import { navigationConfig } from "@/constants/navigationConfig";
 
 /**
  * Footer component for the portfolio website.
@@ -19,13 +20,16 @@ import { navigationConfig } from "@/constants/navigationConfig";
  *
  * @remarks
  * - Uses Tailwind CSS utility classes for styling.
- * - Expects `contactInformation` and `Icon` to be available in the scope.
+ * - Uses useTranslations from next-intl for internationalization.
  * - Includes accessibility features such as `aria-label` and focus outlines.
  */
 const footerLinkClass =
   "font-body text-text-main/80 hover:text-text-main transition-colors duration-200";
 
 export const Footer = (): JSX.Element => {
+  const t = useTranslations("footer");
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="text-text-main bg-background-main py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
@@ -33,47 +37,92 @@ export const Footer = (): JSX.Element => {
           <div>
             <h3 className="text-xl font-heading font-bold mb-4">Portfolio</h3>
             <p className="font-body text-text-main/80 leading-body">
-              Desarrollador Full Stack apasionado por crear experiencias
-              digitales excepcionales y soluciones tecnológicas innovadoras.
+              {t("description")}
             </p>
           </div>
 
           <div>
-            <h4 className="font-heading font-semibold mb-4">Enlaces Rápidos</h4>
+            <h4 className="font-heading font-semibold mb-4">
+              {t("quickLinks")}
+            </h4>
             <ul className="space-y-2">
-              {navigationConfig.mainNavigation.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className={footerLinkClass}
-                    title={item.businessPurpose}
-                    data-testid={`footer-link-${item.label.replace(/\s+/g, "").toLowerCase()}`}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="#home"
+                  className={footerLinkClass}
+                  data-testid="footer-link-home"
+                >
+                  {t("quickLinksList.home")}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#experience"
+                  className={footerLinkClass}
+                  data-testid="footer-link-experience"
+                >
+                  {t("quickLinksList.experience")}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#projects"
+                  className={footerLinkClass}
+                  data-testid="footer-link-projects"
+                >
+                  {t("quickLinksList.projects")}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  className={footerLinkClass}
+                  data-testid="footer-link-about"
+                >
+                  {t("quickLinksList.about")}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#skills"
+                  className={footerLinkClass}
+                  data-testid="footer-link-skills"
+                >
+                  {t("quickLinksList.skills")}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  className={footerLinkClass}
+                  data-testid="footer-link-contact"
+                >
+                  {t("quickLinksList.contact")}
+                </a>
+              </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-heading font-semibold mb-4">Contacto</h4>
+            <h4 className="font-heading font-semibold mb-4">
+              {t("contact.title")}
+            </h4>
             <div className="space-y-2 flex flex-col">
               <a
-                href={`mailto:${contactInformation.email}`}
+                href="mailto:carlos@correa.dev"
                 className="font-body text-text-main/80 hover:underline focus-visible:outline-2 focus-visible:outline-primary-brand rounded-sm transition-colors duration-200"
-                aria-label={`Enviar correo a ${contactInformation.email}`}
+                aria-label={`${t("contact.email")}: carlos@correa.dev`}
               >
-                {contactInformation.email}
+                carlos@correa.dev
               </a>
               <a
-                href={`tel:${contactInformation.phone}`}
+                href="tel:+34612345678"
                 className="font-body text-text-main/80 hover:underline focus-visible:outline-2 focus-visible:outline-primary-brand rounded-sm transition-colors duration-200"
-                aria-label={`Llamar al ${contactInformation.phone}`}
+                aria-label={`${t("contact.phone")}: +34 612 345 678`}
               >
-                {contactInformation.phone}
+                +34 612 345 678
               </a>
-              <p className="font-body text-text-main/80">Trabajo Remoto</p>
+              <p className="font-body text-text-main/80">{t("location")}</p>
             </div>
           </div>
         </div>
@@ -81,8 +130,8 @@ export const Footer = (): JSX.Element => {
         <div className="border-t border-background-main/20 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <p className="font-body text-text-main/80 text-sm mb-4 sm:mb-0 flex items-center">
-              © {new Date().getFullYear()} Portfolio. Hecho con{" "}
-              <Icon name="Heart" size={16} className="text-red-400 mx-1" /> y
+              {t("copyright", { year: currentYear })}
+              <Icon name="Heart" size={16} className="text-red-400 mx-1" /> {t("builtWith")}
               Next.js
             </p>
 

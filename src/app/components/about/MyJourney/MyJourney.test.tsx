@@ -1,8 +1,10 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+﻿import React from "react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { MyJourney } from "./MyJourney";
 import "@testing-library/jest-dom";
 import { IIconProps } from "@/shared/types/icons.types";
+
+// Mock next-intl
 
 // Mock the Icon component
 jest.mock("../../../../shared/components/Icons/Icons", () => ({
@@ -27,7 +29,7 @@ describe("MyJourney", () => {
   it("renders the heading with correct text", () => {
     render(<MyJourney />);
     const heading = screen.getByRole("heading", {
-      name: /mi viaje en el desarrollo/i,
+      name: /Mi Viaje/i,
     });
     expect(heading).toBeInTheDocument();
     expect(heading).toHaveClass(
@@ -50,11 +52,11 @@ describe("MyJourney", () => {
   it("renders both journey paragraphs", () => {
     render(<MyJourney />);
     expect(
-      screen.getByText(/Inicié como desarrollador freelance en Upwork/i)
+      screen.getByText(/Mi pasión por la tecnología comenzó cuando creé mi primer sitio web a los 15 años/i)
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /Posteriormente, en CheshTech Digital Agency \(Seattle\)/i
+        /A lo largo de los años, he trabajado en diversos proyectos/i
       )
     ).toBeInTheDocument();
   });

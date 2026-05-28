@@ -1,7 +1,9 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+﻿import React from "react";
+import { renderWithI18n as render, screen } from "@/test/utils";
 import { AboutMeShowcase } from "./AboutMeShowCase";
 import "@testing-library/jest-dom";
+
+// Mock next-intl
 
 // Mock child components to isolate AboutMeShowcase
 jest.mock("../MyJourney/MyJourney", () => ({
@@ -29,7 +31,7 @@ describe("AboutMeShowcase", () => {
 
   it("renders the section with id 'sobre-mi'", () => {
     render(<AboutMeShowcase />);
-    expect(document.getElementById("sobre-mi")).toBeInTheDocument();
+    expect(document.getElementById("about")).toBeInTheDocument();
   });
 
   it("renders the main heading", () => {
@@ -46,11 +48,11 @@ describe("AboutMeShowcase", () => {
     ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Hablemos" })).toHaveAttribute(
       "href",
-      "#contacto"
+      "#contact"
     );
     expect(
       screen.getByRole("link", { name: "Ver Mi Trabajo" })
-    ).toHaveAttribute("href", "#proyectos");
+    ).toHaveAttribute("href", "#projects");
   });
 
   it("renders all child components", () => {

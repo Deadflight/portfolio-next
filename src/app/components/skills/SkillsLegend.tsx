@@ -1,6 +1,7 @@
 import { Icon } from "@/shared/components/Icons/Icons";
 import { StarRating } from "@/shared/components/StarRating/StarRating";
 import { ISkillProficiencyLevels } from "@/shared/types/skills.types";
+import { useTranslations } from "next-intl";
 import React, { FC, JSX } from "react";
 
 export interface SkillsLegendProps {
@@ -23,6 +24,7 @@ export interface SkillsLegendProps {
 export const SkillsLegend: FC<SkillsLegendProps> = ({
   proficiencyLevels,
 }: SkillsLegendProps): JSX.Element => {
+  const t = useTranslations("skills");
   return (
     <section aria-labelledby="proficiency-legend-title" className="mb-12">
       <article className="card max-w-4xl mx-auto border-2 border-primary-brand/10 shadow-subtle">
@@ -36,7 +38,7 @@ export const SkillsLegend: FC<SkillsLegendProps> = ({
             className="mr-2 text-text-main"
             aria-hidden="true"
           />
-          Niveles de Competencia
+          {t("proficiencyLegend")}
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" role="list">
           {Object.entries(proficiencyLevels).map(([key, level]) => {
