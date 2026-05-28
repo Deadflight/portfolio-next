@@ -24,9 +24,9 @@ export const NavigationExperience = (): JSX.Element => {
   const pathname = usePathname();
   const router = useRouter();
   const nextLocale = locale === "en" ? "es" : "en";
-  const hash = typeof window !== "undefined" ? window.location.hash : "";
 
   const handleLocaleSwitch = () => {
+    const hash = typeof window !== "undefined" ? window.location.hash : "";
     startTransition(() => {
       router.replace(`${pathname}${hash}`, { locale: nextLocale });
     });
