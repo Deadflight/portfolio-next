@@ -5,7 +5,10 @@
     "loading": "Cargando...",
     "notFound": "La página que buscas no existe.",
     "notFoundTitle": "Página No Encontrada",
-    "backToHome": "Volver al Inicio"
+    "backToHome": "Volver al Inicio",
+    "toggleDarkMode": "Cambiar modo oscuro",
+    "lightMode": "Modo claro",
+    "darkMode": "Modo oscuro"
   },
   "navigation": {
     "brandName": "Carlos Correa",

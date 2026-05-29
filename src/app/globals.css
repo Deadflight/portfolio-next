@@ -21,52 +21,19 @@
   --radius-full: 9999px;
 }
 
+/* Dark mode overrides */
+.dark {
+  --color-background-main: #1a1a2e;
+  --color-text-main: #e4e4e7;
+  --color-primary-brand: #a8a8b3;
+  --color-secondary: #4a4e69;
+  --color-accent: #6b7280;
+  --shadow-subtle: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-interactive: 0px 4px 8px rgba(0, 0, 0, 0.4);
+  --shadow-modal: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
-
   html {
     font-size: 100%; /* 16px base */
     scroll-behavior: smooth;
@@ -74,8 +41,8 @@
 
   body {
     font-family: "Lato", Helvetica, Arial, sans-serif;
-    background-color: #f2e9e4;
-    color: #22223b;
+    background-color: var(--color-background-main);
+    color: var(--color-text-main);
     line-height: 1.6;
   }
 
@@ -129,7 +96,7 @@
 
   /* Focus styles for accessibility */
   *:focus {
-    outline: 2px solid #22223b;
+    outline: 2px solid var(--color-text-main);
     outline-offset: 2px;
   }
 
@@ -138,8 +105,8 @@
     position: absolute;
     top: -40px;
     left: 6px;
-    background: #22223b;
-    color: white;
+    background: var(--color-text-main);
+    color: var(--color-background-main);
     padding: 8px;
     text-decoration: none;
     z-index: 1000;
@@ -152,11 +119,11 @@
 
 @layer components {
   .btn-primary {
-    background-color: #22223b;
-    color: #f2e9e4;
+    background-color: var(--color-text-main);
+    color: var(--color-background-main);
     padding: 0.875rem 1.75rem;
     border-radius: 0.5rem;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-subtle);
     transition: all 0.3s ease;
     font-family: "Lato", Helvetica, Arial, sans-serif;
     font-weight: 600;
@@ -172,13 +139,13 @@
   }
 
   .btn-primary:hover {
-    background-color: #1a1a2e;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+    background-color: color-mix(in srgb, var(--color-text-main) 85%, #000);
+    box-shadow: var(--shadow-interactive);
     transform: translateY(-1px);
   }
 
   .btn-primary:focus {
-    outline: 3px solid rgba(34, 34, 59, 0.3);
+    outline: 3px solid color-mix(in srgb, var(--color-text-main) 30%, transparent);
     outline-offset: 2px;
   }
 
@@ -193,12 +160,12 @@
   }
 
   .btn-secondary {
-    background-color: white;
-    color: #22223b;
-    border: 2px solid #22223b;
+    background-color: var(--color-background-main);
+    color: var(--color-text-main);
+    border: 2px solid var(--color-text-main);
     padding: 0.875rem 1.75rem;
     border-radius: 0.5rem;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-subtle);
     transition: all 0.3s ease;
     font-family: "Lato", Helvetica, Arial, sans-serif;
     font-weight: 600;
@@ -213,13 +180,13 @@
   }
 
   .btn-secondary:hover {
-    background-color: #22223b;
-    color: white;
+    background-color: var(--color-text-main);
+    color: var(--color-background-main);
     transform: translateY(-1px);
   }
 
   .btn-secondary:focus {
-    outline: 3px solid rgba(34, 34, 59, 0.3);
+    outline: 3px solid color-mix(in srgb, var(--color-text-main) 30%, transparent);
     outline-offset: 2px;
   }
 
@@ -234,26 +201,26 @@
   }
 
   .card {
-    background-color: #f2e9e4;
+    background-color: var(--color-background-main);
     border-radius: 0.5rem;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-subtle);
     padding: 1.5rem;
     transition: box-shadow 0.3s ease;
-    border: 1px solid rgba(34, 34, 59, 0.1);
+    border: 1px solid color-mix(in srgb, var(--color-text-main) 10%, transparent);
   }
 
   .card:hover {
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-interactive);
   }
 
   .input-field {
     width: 100%;
-    background-color: white;
-    border: 2px solid #9a8c98;
+    background-color: var(--color-background-main);
+    border: 2px solid var(--color-accent);
     border-radius: 0.25rem;
     padding: 0.875rem 1rem;
     font-family: "Lato", Helvetica, Arial, sans-serif;
-    color: #22223b;
+    color: var(--color-text-main);
     transition: border-color 0.2s ease;
     font-size: 1rem;
     line-height: 1.5;
@@ -261,17 +228,17 @@
   }
 
   .input-field::placeholder {
-    color: #6b7280;
+    color: var(--color-accent);
   }
 
   .input-field:hover {
-    border-color: #22223b;
+    border-color: var(--color-text-main);
   }
 
   .input-field:focus {
     outline: none;
-    border-color: #22223b;
-    box-shadow: 0 0 0 3px rgba(34, 34, 59, 0.2);
+    border-color: var(--color-text-main);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-text-main) 20%, transparent);
   }
 
   .input-field:disabled {
@@ -281,7 +248,7 @@
   }
 
   .link-text {
-    color: #22223b;
+    color: var(--color-text-main);
     text-decoration: underline;
     transition: color 0.2s ease;
     font-weight: 600;
@@ -290,13 +257,13 @@
   }
 
   .link-text:hover {
-    color: #4a4e69;
+    color: var(--color-primary-brand);
     text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: color-mix(in srgb, var(--color-background-main) 50%, transparent);
   }
 
   .link-text:focus {
-    outline: 3px solid rgba(34, 34, 59, 0.3);
+    outline: 3px solid color-mix(in srgb, var(--color-text-main) 30%, transparent);
     outline-offset: 2px;
   }
 

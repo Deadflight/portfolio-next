@@ -5,7 +5,10 @@
     "loading": "Loading...",
     "notFound": "The page you are looking for does not exist.",
     "notFoundTitle": "Page Not Found",
-    "backToHome": "Back to Home"
+    "backToHome": "Back to Home",
+    "toggleDarkMode": "Toggle dark mode",
+    "lightMode": "Light mode",
+    "darkMode": "Dark mode"
   },
   "navigation": {
     "brandName": "Carlos Correa",
