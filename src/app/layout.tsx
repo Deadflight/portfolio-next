@@ -6,6 +6,7 @@ import Script from "next/script";
 import { Analytics } from "./components/analitycs/Analytics";
 import { getClientEnvs } from "@/lib/config/envs";
 import { getLocale } from "next-intl/server";
+import { ThemeProvider } from "@/lib/theme/ThemeProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -43,6 +44,12 @@ export default async function RootLayout({
       lang={locale}
       className={`${poppins.variable} ${lato.variable} antialiased`}
     >
+      {/* Inline script to prevent flash of wrong theme */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(function(){try{var t=localStorage.getItem('portfolio-theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}if(t==='dark')document.documentElement.classList.add('dark')}catch(e){}})();`,
+        }}
+      />
       {GTM_ID && isProduction && (
         <Script
           id="gtm-init"
@@ -82,7 +89,7 @@ export default async function RootLayout({
         )}
         {NEXT_PUBLIC_GA_ID && isProduction && <Analytics />}
         {!isProduction && <AxeReporter />}
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
