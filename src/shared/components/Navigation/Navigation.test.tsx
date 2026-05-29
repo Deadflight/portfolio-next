@@ -16,6 +16,10 @@ jest.mock("../Icons/Icons", () => ({
   ),
 }));
 
+jest.mock("@/lib/theme/ThemeToggle", () => ({
+  ThemeToggle: () => <button data-testid="theme-toggle-mock">Toggle</button>,
+}));
+
 const mockReplace = jest.fn();
 jest.mock("@/i18n/navigation", () => ({
   usePathname: jest.fn(() => "/"),

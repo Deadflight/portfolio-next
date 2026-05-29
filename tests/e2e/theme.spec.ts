@@ -30,4 +30,41 @@ test.describe("Dark mode", () => {
     await page.reload();
     await expect(page.locator("html")).not.toHaveClass(/dark/);
   });
+
+  test("toggle button exists in desktop nav with correct ARIA", async ({ page }) => {
+    await page.goto("/es");
+
+    // The desktop nav is visible at 1280x720 viewport
+    const toggle = page.getByTestId("theme-toggle");
+    await expect(toggle).toBeVisible();
+    await expect(toggle).toHaveAttribute("role", "switch");
+    await expect(toggle).toHaveAttribute("aria-label", "Cambiar modo oscuro");
+    // Starts in light mode → aria-checked is false and Moon icon is shown
+    await expect(toggle).toHaveAttribute("aria-checked", "false");
+    await expect(toggle).toHaveAttribute("title", "Modo oscuro");
+  });
+
+  test("clicking toggle switches theme and updates ARIA state", async ({ page }) => {
+    // Set clear localStorage state: light mode
+    await page.goto("/es");
+    await page.evaluate(() => localStorage.setItem("portfolio-theme", "light"));
+    await page.reload();
+
+    await expect(page.locator("html")).not.toHaveClass(/dark/);
+
+    const toggle = page.getByTestId("theme-toggle");
+    await expect(toggle).toHaveAttribute("aria-checked", "false");
+
+    // Click to toggle to dark
+    await toggle.click();
+    await expect(page.locator("html")).toHaveClass(/dark/);
+    await expect(toggle).toHaveAttribute("aria-checked", "true");
+    await expect(toggle).toHaveAttribute("title", "Modo claro");
+
+    // Click to toggle back to light
+    await toggle.click();
+    await expect(page.locator("html")).not.toHaveClass(/dark/);
+    await expect(toggle).toHaveAttribute("aria-checked", "false");
+    await expect(toggle).toHaveAttribute("title", "Modo oscuro");
+  });
 });
