@@ -1,6 +1,7 @@
 'use client';
 import { JSX, useState, useTransition } from "react";
 import { Icon } from "../Icons/Icons";
+import { ThemeToggle } from "@/lib/theme/ThemeToggle";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 
@@ -102,6 +103,9 @@ export const NavigationExperience = (): JSX.Element => {
                 >
                   {t("links.contact")}
                 </a>
+              </li>
+              <li>
+                <ThemeToggle />
               </li>
               <li>
                 <button
@@ -211,6 +215,9 @@ export const NavigationExperience = (): JSX.Element => {
                   <Icon name="Globe" size={20} className="mr-3" />
                   {locale === "en" ? "ES" : "EN"}
                 </button>
+              </li>
+              <li>
+                <ThemeToggle />
               </li>
             </ul>
           </article>
