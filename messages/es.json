@@ -6,6 +6,9 @@
     "notFound": "La página que buscas no existe.",
     "notFoundTitle": "Página No Encontrada",
     "backToHome": "Volver al Inicio",
+    "sectionError": "Algo salió mal",
+    "retry": "Intentar de nuevo",
+    "errorTitle": "Error inesperado",
     "toggleDarkMode": "Cambiar modo oscuro",
     "lightMode": "Modo claro",
     "darkMode": "Modo oscuro"
@@ -15,6 +18,7 @@
     "mainNavigation": "Navegación principal",
     "toggleMenu": "Alternar menú",
     "links": {
+      "home": "Inicio",
       "about": "Sobre mí",
       "skills": "Habilidades",
       "experience": "Experiencia",

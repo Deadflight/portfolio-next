@@ -4,6 +4,7 @@ import { Icon } from "../Icons/Icons";
 import { ThemeToggle } from "@/lib/theme/ThemeToggle";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
+import { sendEvent, GA_EVENTS } from "@/lib/ga/events";
 
 /**
  * NavigationExperience is a responsive navigation bar component for a professional portfolio.
@@ -25,6 +26,10 @@ export const NavigationExperience = (): JSX.Element => {
   const pathname = usePathname();
   const router = useRouter();
   const nextLocale = locale === "en" ? "es" : "en";
+
+  const trackNavClick = (href: string) => {
+    sendEvent(GA_EVENTS.NAV_CLICK, { href });
+  };
 
   const handleLocaleSwitch = () => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
@@ -55,8 +60,9 @@ export const NavigationExperience = (): JSX.Element => {
                   href="#home"
                   className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
                   data-testid="nav-link-home"
+                  onClick={() => trackNavClick("#home")}
                 >
-                  {t("links.about")}
+                  {t("links.home")}
                 </a>
               </li>
               <li>
@@ -64,6 +70,7 @@ export const NavigationExperience = (): JSX.Element => {
                   href="#experience"
                   className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
                   data-testid="nav-link-experience"
+                  onClick={() => trackNavClick("#experience")}
                 >
                   {t("links.experience")}
                 </a>
@@ -73,6 +80,7 @@ export const NavigationExperience = (): JSX.Element => {
                   href="#projects"
                   className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
                   data-testid="nav-link-projects"
+                  onClick={() => trackNavClick("#projects")}
                 >
                   {t("links.projects")}
                 </a>
@@ -82,6 +90,7 @@ export const NavigationExperience = (): JSX.Element => {
                   href="#about"
                   className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
                   data-testid="nav-link-about"
+                  onClick={() => trackNavClick("#about")}
                 >
                   {t("links.about")}
                 </a>
@@ -91,6 +100,7 @@ export const NavigationExperience = (): JSX.Element => {
                   href="#skills"
                   className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
                   data-testid="nav-link-skills"
+                  onClick={() => trackNavClick("#skills")}
                 >
                   {t("links.skills")}
                 </a>
@@ -100,6 +110,7 @@ export const NavigationExperience = (): JSX.Element => {
                   href="#contact"
                   className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
                   data-testid="nav-link-contact"
+                  onClick={() => trackNavClick("#contact")}
                 >
                   {t("links.contact")}
                 </a>
@@ -142,18 +153,18 @@ export const NavigationExperience = (): JSX.Element => {
                 <a
                   href="#home"
                   className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => { setIsOpen(false); trackNavClick("#home"); }}
                   data-testid="nav-link-home"
                 >
                   <Icon name="Home" size={20} className="mr-3" />
-                  {t("links.about")}
+                  {t("links.home")}
                 </a>
               </li>
               <li>
                 <a
                   href="#experience"
                   className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => { setIsOpen(false); trackNavClick("#experience"); }}
                   data-testid="nav-link-experience"
                 >
                   <Icon name="Briefcase" size={20} className="mr-3" />
@@ -164,7 +175,7 @@ export const NavigationExperience = (): JSX.Element => {
                 <a
                   href="#projects"
                   className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => { setIsOpen(false); trackNavClick("#projects"); }}
                   data-testid="nav-link-projects"
                 >
                   <Icon name="Code" size={20} className="mr-3" />
@@ -175,7 +186,7 @@ export const NavigationExperience = (): JSX.Element => {
                 <a
                   href="#about"
                   className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => { setIsOpen(false); trackNavClick("#about"); }}
                   data-testid="nav-link-about"
                 >
                   <Icon name="User" size={20} className="mr-3" />
@@ -186,7 +197,7 @@ export const NavigationExperience = (): JSX.Element => {
                 <a
                   href="#skills"
                   className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => { setIsOpen(false); trackNavClick("#skills"); }}
                   data-testid="nav-link-skills"
                 >
                   <Icon name="Laptop" size={20} className="mr-3" />
@@ -197,7 +208,7 @@ export const NavigationExperience = (): JSX.Element => {
                 <a
                   href="#contact"
                   className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => { setIsOpen(false); trackNavClick("#contact"); }}
                   data-testid="nav-link-contact"
                 >
                   <Icon name="Mail" size={20} className="mr-3" />

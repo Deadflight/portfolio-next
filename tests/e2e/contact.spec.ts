@@ -16,6 +16,8 @@ test.describe("Formulario de contacto", () => {
     page,
   }) => {
     await page.goto("/es#contact");
+    // Wait for form to be fully hydrated before interacting (prevents flakiness in parallel runs)
+    await expect(page.locator(contactSelectors.form)).toBeVisible();
     await page.click(contactSelectors.submit);
     // Verifica que cada mensaje de error esperado esté visible
     await expect(page.getByText("El nombre es obligatorio")).toBeVisible();
