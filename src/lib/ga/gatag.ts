@@ -15,6 +15,7 @@ export const pageview = (url: string) => {
     NODE_ENV === "production"
   ) {
     window.gtag("config", NEXT_PUBLIC_GA_ID, {
+      page_title: document.title,
       page_path: url,
     });
   }

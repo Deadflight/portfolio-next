@@ -4,6 +4,7 @@ import { ProjectsShowCase } from "../components/projects/ProjectsShowCase";
 import { AboutMeShowcase } from "../components/about/AboutMeShowCase/AboutMeShowCase";
 import { SkillsExperienceShowCase } from "../components/skills/SkillsExperienceShowCase";
 import { Contact } from "../components/contact/Contact";
+import { ErrorBoundary } from "@/shared/components/ErrorBoundary/ErrorBoundary";
 import { getWorkExperience, getProjects, getSkillData } from "@/constants/data";
 
 export default async function Home() {
@@ -17,15 +18,27 @@ export default async function Home() {
   return (
     <>
       <main className="min-h-screen" role="main" id="main-content">
-        <ProfessionalIdentityHero />
-        <WorkExperienceShowcase workExperienceData={workExperienceData} />
-        <ProjectsShowCase projects={projects} />
-        <AboutMeShowcase />
-        <SkillsExperienceShowCase
-          proficiencyLevels={proficiencyLevels}
-          skillCategories={skillCategories}
-        />
-        <Contact />
+        <ErrorBoundary>
+          <ProfessionalIdentityHero />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <WorkExperienceShowcase workExperienceData={workExperienceData} />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <ProjectsShowCase projects={projects} />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <AboutMeShowcase />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <SkillsExperienceShowCase
+            proficiencyLevels={proficiencyLevels}
+            skillCategories={skillCategories}
+          />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <Contact />
+        </ErrorBoundary>
       </main>
     </>
   );
