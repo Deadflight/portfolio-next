@@ -3,7 +3,7 @@ import { Poppins, Lato } from "next/font/google";
 import "./globals.css";
 import AxeReporter from "@/lib/ReactAxe/ReactAxe";
 import Script from "next/script";
-import { Analytics } from "./components/analitycs/Analytics";
+import { Analytics } from "./components/analytics/Analytics";
 import { getClientEnvs } from "@/lib/config/envs";
 import { getLocale } from "next-intl/server";
 import { ThemeProvider } from "@/lib/theme/ThemeProvider";

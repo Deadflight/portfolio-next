@@ -6,6 +6,9 @@
     "notFound": "The page you are looking for does not exist.",
     "notFoundTitle": "Page Not Found",
     "backToHome": "Back to Home",
+    "sectionError": "Something went wrong",
+    "retry": "Try again",
+    "errorTitle": "Unexpected Error",
     "toggleDarkMode": "Toggle dark mode",
     "lightMode": "Light mode",
     "darkMode": "Dark mode"
@@ -15,6 +18,7 @@
     "mainNavigation": "Main navigation",
     "toggleMenu": "Toggle menu",
     "links": {
+      "home": "Home",
       "about": "About",
       "skills": "Skills",
       "experience": "Experience",

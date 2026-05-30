@@ -7,6 +7,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { sendEmailSchema } from "@/schemas/sendEmailSchema";
 import { useTranslations } from "next-intl";
+import { sendEvent, GA_EVENTS } from "@/lib/ga/events";
 
 export interface ContactFormData {
   name: string;
@@ -76,6 +77,7 @@ export const ContactForm = (): JSX.Element => {
 
       setGeneralError({});
       setSuccess(true);
+      sendEvent(GA_EVENTS.CONTACT_SUBMIT);
       reset();
     } catch (error) {
       setGeneralError({
