@@ -44,12 +44,12 @@ export default async function RootLayout({
       lang={locale}
       className={`${poppins.variable} ${lato.variable} antialiased`}
     >
-      {/* Inline script to prevent flash of wrong theme */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `(function(){try{var t=localStorage.getItem('portfolio-theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}if(t==='dark')document.documentElement.classList.add('dark')}catch(e){}})();`,
-        }}
-      />
+      <body className="min-h-screen bg-background-main text-text-main font-body">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('portfolio-theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}if(t==='dark')document.documentElement.classList.add('dark')}catch(e){}})();`,
+          }}
+        />
       {GTM_ID && isProduction && (
         <Script
           id="gtm-init"
@@ -76,7 +76,6 @@ export default async function RootLayout({
           </Script>
         </>
       )}
-      <body className="min-h-screen bg-background-main text-text-main font-body">
         {GTM_ID && isProduction && (
           <noscript
             dangerouslySetInnerHTML={{
