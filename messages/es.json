@@ -215,6 +215,15 @@
       "creator": "@carlos_correa_dev"
     }
   },
+  "blog": {
+    "title": "Blog",
+    "readMore": "Leer más",
+    "publishedAt": "Publicado",
+    "backToBlog": "Volver al blog",
+    "notFound": "Artículo no encontrado",
+    "notFoundDescription": "El artículo que buscas no existe.",
+    "emptyState": "Todavía no hay artículos. ¡Vuelve pronto!"
+  },
   "proficiency": {
     "expert": "Experto",
     "advanced": "Avanzado",
