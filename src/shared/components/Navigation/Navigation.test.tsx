@@ -23,7 +23,7 @@ jest.mock("@/lib/theme/ThemeToggle", () => ({
 const mockReplace = jest.fn();
 jest.mock("@/i18n/navigation", () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const MockLink = (props: any) => <a {...props} />;
+  const MockLink = ({ children, ...props }: any) => <a {...props}>{children}</a>;
   return {
     Link: MockLink,
     usePathname: jest.fn(() => "/"),
