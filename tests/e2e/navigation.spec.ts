@@ -74,8 +74,12 @@ test.describe("Navegación principal del portafolio", () => {
       const textContent = await navLink.textContent();
       expect(textContent?.trim()).toBeTruthy();
       // Verifica que el enlace tenga un href válido
-      const expectedHref = link.isAnchor ? `#${link.sectionId}` : link.href;
-      await expect(navLink).toHaveAttribute("href", expectedHref);
+      if (link.isAnchor) {
+        await expect(navLink).toHaveAttribute("href", `#${link.sectionId}`);
+      } else {
+        // Route links (e.g. /blog) get localized by i18n middleware (e.g. /es/blog)
+        await expect(navLink).toHaveAttribute("href", /\/blog$/);
+      }
     }
   });
 });
