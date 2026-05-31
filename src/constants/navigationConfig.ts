@@ -36,5 +36,11 @@ export const navigationConfig = {
       iconName: "Mail" as const,
       businessPurpose: "Client and recruiter engagement channels",
     },
+    {
+      href: "/blog",
+      label: "Blog",
+      iconName: "BookOpen" as const,
+      businessPurpose: "Technical articles and professional insights",
+    },
   ],
 };

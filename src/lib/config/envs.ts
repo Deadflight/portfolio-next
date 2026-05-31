@@ -16,12 +16,17 @@ type ClientEnvs = {
   NEXT_PUBLIC_BASE_URL: string;
   NEXT_PUBLIC_GA_ID: string;
   NEXT_PUBLIC_GTM_ID: string;
+  NEXT_PUBLIC_SANITY_PROJECT_ID: string;
+  NEXT_PUBLIC_SANITY_DATASET: string;
+  NEXT_PUBLIC_SANITY_STUDIO_URL: string;
 };
 
 type ServerEnvs = {
   EMAIL_SENDER_API_KEY: string;
   EMAIL_SENDER_FROM_EMAIL: string;
   EMAIL_SENDER_TO_EMAIL: string;
+  SANITY_API_READ_TOKEN: string;
+  SANITY_WEBHOOK_SECRET: string;
   CI: string;
   NODE_ENV: string;
 };
@@ -39,6 +44,12 @@ export const getClientEnvs = (): ClientEnvs => {
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL ?? "",
     NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID ?? "",
     NEXT_PUBLIC_GTM_ID: process.env.NEXT_PUBLIC_GTM_ID ?? "",
+    NEXT_PUBLIC_SANITY_PROJECT_ID:
+      process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? "",
+    NEXT_PUBLIC_SANITY_DATASET:
+      process.env.NEXT_PUBLIC_SANITY_DATASET ?? "",
+    NEXT_PUBLIC_SANITY_STUDIO_URL:
+      process.env.NEXT_PUBLIC_SANITY_STUDIO_URL ?? "",
   };
 };
 
@@ -47,6 +58,8 @@ export const getServerEnvs = (): ServerEnvs => {
     EMAIL_SENDER_API_KEY: validateServerEnvVar("EMAIL_SENDER_API_KEY"),
     EMAIL_SENDER_FROM_EMAIL: validateServerEnvVar("EMAIL_SENDER_FROM_EMAIL"),
     EMAIL_SENDER_TO_EMAIL: validateServerEnvVar("EMAIL_SENDER_TO_EMAIL"),
+    SANITY_API_READ_TOKEN: validateServerEnvVar("SANITY_API_READ_TOKEN"),
+    SANITY_WEBHOOK_SECRET: process.env.SANITY_WEBHOOK_SECRET ?? "",
     CI: process.env.CI ?? "",
     NODE_ENV: process.env.NODE_ENV ?? "",
   };

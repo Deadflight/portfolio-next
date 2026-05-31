@@ -3,7 +3,7 @@ import { JSX, useState, useTransition } from "react";
 import { Icon } from "../Icons/Icons";
 import { ThemeToggle } from "@/lib/theme/ThemeToggle";
 import { useTranslations, useLocale } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { sendEvent, GA_EVENTS } from "@/lib/ga/events";
 
 /**
@@ -22,6 +22,7 @@ export const NavigationExperience = (): JSX.Element => {
   const [isPending, startTransition] = useTransition();
   const t = useTranslations("navigation");
   const common = useTranslations("common");
+  const blog = useTranslations("blog");
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
@@ -114,6 +115,16 @@ export const NavigationExperience = (): JSX.Element => {
                 >
                   {t("links.contact")}
                 </a>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-sm font-body transition-colors duration-200"
+                  data-testid="nav-link-blog"
+                  onClick={() => trackNavClick("/blog")}
+                >
+                  {blog("title")}
+                </Link>
               </li>
               <li>
                 <ThemeToggle />
@@ -214,6 +225,17 @@ export const NavigationExperience = (): JSX.Element => {
                   <Icon name="Mail" size={20} className="mr-3" />
                   {t("links.contact")}
                 </a>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="flex items-center text-text-main hover:text-primary-brand px-3 py-2 rounded-small text-base font-body transition-colors duration-200"
+                  onClick={() => { setIsOpen(false); trackNavClick("/blog"); }}
+                  data-testid="nav-link-blog"
+                >
+                  <Icon name="BookOpen" size={20} className="mr-3" />
+                  {blog("title")}
+                </Link>
               </li>
               <li>
                 <button
