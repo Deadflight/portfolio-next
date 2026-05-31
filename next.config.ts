@@ -12,6 +12,16 @@ const nextConfig: NextConfig = {
     "@formatjs/icu-messageformat-parser",
     "@formatjs/icu-skeleton-parser",
   ],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        port: "",
+        pathname: "/images/**",
+      },
+    ],
+  },
 };
 
 export default withNextIntl(nextConfig);
