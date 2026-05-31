@@ -21,10 +21,15 @@ jest.mock("@/lib/theme/ThemeToggle", () => ({
 }));
 
 const mockReplace = jest.fn();
-jest.mock("@/i18n/navigation", () => ({
-  usePathname: jest.fn(() => "/"),
-  useRouter: jest.fn(() => ({ replace: mockReplace })),
-}));
+jest.mock("@/i18n/navigation", () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const MockLink = ({ children, ...props }: any) => <a {...props}>{children}</a>;
+  return {
+    Link: MockLink,
+    usePathname: jest.fn(() => "/"),
+    useRouter: jest.fn(() => ({ replace: mockReplace })),
+  };
+});
 
 describe("NavigationExperience", () => {
   it("renders the professional brand heading", () => {
@@ -40,6 +45,7 @@ describe("NavigationExperience", () => {
     expect(screen.getByTestId("nav-link-about")).toBeInTheDocument();
     expect(screen.getByTestId("nav-link-skills")).toBeInTheDocument();
     expect(screen.getByTestId("nav-link-contact")).toBeInTheDocument();
+    expect(screen.getByTestId("nav-link-blog")).toBeInTheDocument();
   });
 
   it("renders navigation links with correct hrefs", () => {
@@ -50,6 +56,7 @@ describe("NavigationExperience", () => {
     expect(screen.getByTestId("nav-link-about")).toHaveAttribute("href", "#about");
     expect(screen.getByTestId("nav-link-skills")).toHaveAttribute("href", "#skills");
     expect(screen.getByTestId("nav-link-contact")).toHaveAttribute("href", "#contact");
+    expect(screen.getByTestId("nav-link-blog")).toHaveAttribute("href", "/blog");
   });
 
   it("toggles mobile menu when menu button is clicked", () => {

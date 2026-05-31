@@ -1,9 +1,17 @@
 import { navigationConfig } from "@/constants/navigationConfig";
 import { test, expect } from "@playwright/test";
 
+/**
+ * Normalize href to a clean testid segment.
+ * "#home" → "home", "/blog" → "blog"
+ */
+const toTestId = (href: string) => href.replace(/^[/#]/, "");
+
 const navigationLinks = navigationConfig.mainNavigation.map((link) => ({
   label: link.label,
-  sectionId: link.href.replace("#", ""),
+  href: link.href,
+  sectionId: toTestId(link.href),
+  isAnchor: link.href.startsWith("#"),
 }));
 
 test.describe("Navegación principal del portafolio", () => {
@@ -43,11 +51,15 @@ test.describe("Navegación principal del portafolio", () => {
     for (const link of navigationLinks) {
       const navLink = page.getByTestId(`nav-link-${link.sectionId}`);
       await expect(navLink).toBeVisible();
-      await navLink.click();
-      const section = page.locator(`#${link.sectionId}`);
-      await expect(section).toBeVisible();
-      // Verifica que el hash de la URL cambió
-      await expect(page).toHaveURL(new RegExp(`#${link.sectionId}`));
+
+      if (link.isAnchor) {
+        await navLink.click();
+        const section = page.locator(`#${link.sectionId}`);
+        await expect(section).toBeVisible();
+        // Verifica que el hash de la URL cambió
+        await expect(page).toHaveURL(new RegExp(`#${link.sectionId}`));
+      }
+      // Route links (e.g. /blog) navigate to a different page — skip section assertions
     }
   });
 
@@ -62,7 +74,12 @@ test.describe("Navegación principal del portafolio", () => {
       const textContent = await navLink.textContent();
       expect(textContent?.trim()).toBeTruthy();
       // Verifica que el enlace tenga un href válido
-      await expect(navLink).toHaveAttribute("href", `#${link.sectionId}`);
+      if (link.isAnchor) {
+        await expect(navLink).toHaveAttribute("href", `#${link.sectionId}`);
+      } else {
+        // Route links (e.g. /blog) get localized by i18n middleware (e.g. /es/blog)
+        await expect(navLink).toHaveAttribute("href", /\/blog$/);
+      }
     }
   });
 });
