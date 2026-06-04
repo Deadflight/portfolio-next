@@ -218,7 +218,7 @@
   "blog": {
     "title": "Blog",
     "readMore": "Leer más",
-    "publishedAt": "Publicado",
+    "publishedAt": "Publicado {date}",
     "backToBlog": "Volver al blog",
     "notFound": "Artículo no encontrado",
     "notFoundDescription": "El artículo que buscas no existe.",
