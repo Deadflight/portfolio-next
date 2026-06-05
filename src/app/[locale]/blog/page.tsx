@@ -14,7 +14,13 @@ export async function generateMetadata() {
 export default async function BlogListingPage() {
   const locale = await getLocale();
   const t = await getTranslations("blog");
-  const posts = await (await getClient()).fetch(postsByLocaleQuery, { locale });
+
+  let posts: { _id: string; title: string; slug: string; description?: string | null; publishedAt?: string | null; tags?: string[] | null; coverImage?: unknown }[] = [];
+  try {
+    posts = await (await getClient()).fetch(postsByLocaleQuery, { locale });
+  } catch {
+    // Sanity unavailable (CI build, missing credentials, etc.) — show empty state
+  }
 
   if (posts.length === 0) {
     return (
