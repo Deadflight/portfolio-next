@@ -17,22 +17,26 @@
 - [x] `npm test` passes (210 baseline + 10 new = 220)
 - [x] `npm run build` passes
 
-## Future Batches
+## Batch 2 — Blog Components (PR-2 of 4)
 
 ### T-02: Create blog components (PostCard + PostBody) with tests
 
-- [ ] Implement PostCard server component with conditional renders
-- [ ] Implement PostBody with Portable Text component map
-- [ ] Write unit tests for PostCard (render, missing fields, date formatting)
-- [ ] Write unit tests for PostBody (headings, code, images, links, blockquotes)
+- [x] Implement PostCard server component with conditional renders
+- [x] Implement PostBody with Portable Text component map
+- [x] Write unit tests for PostCard (render, missing fields, date formatting)
+- [x] Write unit tests for PostBody (headings, code, images, links, blockquotes)
+
+## Batch 3 — Blog Pages (PR-3 of 4)
 
 ### T-03: Create blog listing + detail pages
 
-- [ ] Implement `[locale]/blog/page.tsx` listing with ISR
-- [ ] Implement `[locale]/blog/[slug]/page.tsx` detail with generateStaticParams
-- [ ] Implement `[locale]/blog/[slug]/not-found.tsx` blog-specific 404
-- [ ] Add `generateMetadata` with SEO fields
+- [x] Implement `[locale]/blog/page.tsx` listing with ISR
+- [x] Implement `[locale]/blog/[slug]/page.tsx` detail with generateStaticParams
+- [x] Implement `[locale]/blog/[slug]/not-found.tsx` blog-specific 404
+- [x] Add `generateMetadata` with SEO fields
 - [ ] Write E2E tests for navigation flow
+
+## Batch 4 — Revalidation (PR-4 of 4)
 
 ### T-04: Create webhook revalidation endpoint
 
