@@ -13,7 +13,7 @@ export const postsByLocaleQuery = defineQuery(`
     description,
     publishedAt,
     tags,
-    "coverImage": coverImage.asset->url
+    "coverImage": coverImage{asset, alt}
   }
 `)
 
@@ -31,7 +31,7 @@ export const postBySlugQuery = defineQuery(`
     publishedAt,
     locale,
     tags,
-    "coverImage": coverImage.asset->url,
+    "coverImage": coverImage{asset, alt},
     body
   }
 `)
