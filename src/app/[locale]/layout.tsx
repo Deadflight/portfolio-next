@@ -1,21 +1,29 @@
 import type { Metadata } from "next";
-import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { setRequestLocale, getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
 import { NavigationExperience } from "@/shared/components/Navigation/Navigation";
 import { Footer } from "@/shared/components/Footer/Footer";
+import { routing } from "@/i18n/routing";
 
 const SITE_URL = "https://www.carlos-correa.com";
 
+type Props = {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+};
+
 export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "es" }];
+  return routing.locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale();
-  const messages = await getMessages();
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const messages: Record<string, Record<string, string>> = await import(
+    `../../../messages/${locale}.json`
+  ).then((m) => m.default);
   const t = (namespace: string, key: string) =>
-    (messages as Record<string, Record<string, string>>)?.[namespace]?.[key] ??
-    key;
+    messages?.[namespace]?.[key] ?? key;
 
   const title = t("metadata", "title");
   const description = t("metadata", "description");
@@ -63,9 +71,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function LocaleLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+  params,
+}: Props) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  setRequestLocale(locale);
   const messages = await getMessages();
 
   return (

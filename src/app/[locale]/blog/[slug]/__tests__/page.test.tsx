@@ -1,58 +1,3 @@
-jest.mock("@/sanity/lib/client", () => ({
-  getClient: jest.fn(),
-}));
-
-jest.mock("@/sanity/lib/queries", () => ({
-  postsByLocaleQuery: "mock-posts-by-locale-query",
-  postBySlugQuery: "mock-post-by-slug-query",
-}));
-
-jest.mock("next/navigation", () => ({
-  notFound: jest.fn(() => {
-    throw new Error("NEXT_NOT_FOUND");
-  }),
-}));
-
-jest.mock("next-intl/server", () => ({
-  getLocale: jest.fn(),
-}));
-
-jest.mock("@/i18n/navigation", () => ({
-  Link: ({ children, href }: { children: React.ReactNode; href: string }) => (
-    <a href={href}>{children}</a>
-  ),
-}));
-
-jest.mock("next/image", () => {
-  const MockImage = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    <img {...props} alt={props.alt} />
-  );
-  MockImage.displayName = "MockImage";
-  return MockImage;
-});
-
-jest.mock("@/app/components/blog/PostBody", () => ({
-  PostBody: ({ body }: { body: unknown[] }) => (
-    <div data-testid="post-body">Mock PostBody: {JSON.stringify(body)}</div>
-  ),
-}));
-
-jest.mock("@/sanity/lib/image", () => ({
-  urlFor: jest.fn(() => ({
-    width: jest.fn(() => ({
-      height: jest.fn(() => ({
-        auto: jest.fn(() => ({
-          quality: jest.fn(() => ({
-            url: jest.fn(
-              () =>
-                "https://cdn.sanity.io/images/project/dataset/mock-image.jpg"
-            ),
-          })),
-        })),
-      })),
-    })),
-  })),
-}));
 
 import React from "react";
 import { render, screen } from "@testing-library/react";
@@ -81,6 +26,65 @@ const mockPost = {
     },
   ],
 };
+
+jest.mock("@/sanity/lib/client", () => ({
+  getClient: jest.fn(),
+}));
+
+jest.mock("@/sanity/lib/queries", () => ({
+  postsByLocaleQuery: "mock-posts-by-locale-query",
+  postBySlugQuery: "mock-post-by-slug-query",
+}));
+
+jest.mock("next/navigation", () => ({
+  notFound: jest.fn(() => {
+    throw new Error("NEXT_NOT_FOUND");
+  }),
+}));
+
+jest.mock("next-intl/server", () => ({
+  getLocale: jest.fn(),
+}));
+
+jest.mock("@/i18n/navigation", () => ({
+  Link: ({ children, href }: { children: React.ReactNode; href: string }) => (
+    <a href={href}>{children}</a>
+  ),
+}));
+
+jest.mock("@/app/components/blog/PostBody", () => ({
+  PostBody: ({ body }: { body: unknown[] }) => (
+    <div data-testid="post-body">Mock PostBody: {JSON.stringify(body)}</div>
+  ),
+}));
+
+jest.mock("@/sanity/lib/image", () => ({
+  urlFor: jest.fn(() => ({
+    width: jest.fn(() => ({
+      height: jest.fn(() => ({
+        auto: jest.fn(() => ({
+          quality: jest.fn(() => ({
+            url: jest.fn(
+              () =>
+                "https://cdn.sanity.io/images/project/dataset/mock-image.jpg"
+            ),
+          })),
+        })),
+      })),
+    })),
+  })),
+}));
+
+// Mock next/image
+jest.mock("next/image", () => {
+  const MockNextImage = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img {...props} alt={props.alt} />
+  );
+  MockNextImage.displayName = "MockNextImage";
+  return MockNextImage;
+});
+
 
 describe("BlogDetailPage", () => {
   beforeEach(() => {

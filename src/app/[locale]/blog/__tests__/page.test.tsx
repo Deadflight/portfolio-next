@@ -1,47 +1,3 @@
-jest.mock("@/sanity/lib/client", () => ({
-  getClient: jest.fn(),
-}));
-
-jest.mock("next-intl/server", () => ({
-  getLocale: jest.fn(),
-  getTranslations: jest.fn(),
-}));
-
-jest.mock("@/i18n/navigation", () => ({
-  Link: ({ children, href }: { children: React.ReactNode; href: string }) => (
-    <a href={href}>{children}</a>
-  ),
-}));
-
-jest.mock("next/image", () => {
-  const MockImage = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    <img {...props} alt={props.alt} />
-  );
-  MockImage.displayName = "MockImage";
-  return MockImage;
-});
-
-jest.mock("@/sanity/lib/queries", () => ({
-  postsByLocaleQuery: "mock-posts-by-locale-query",
-}));
-
-jest.mock("@/sanity/lib/image", () => ({
-  urlFor: jest.fn(() => ({
-    width: jest.fn(() => ({
-      height: jest.fn(() => ({
-        auto: jest.fn(() => ({
-          quality: jest.fn(() => ({
-            url: jest.fn(
-              () =>
-                "https://cdn.sanity.io/images/project/dataset/mock-image.jpg"
-            ),
-          })),
-        })),
-      })),
-    })),
-  })),
-}));
-
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { getClient } from "@/sanity/lib/client";
@@ -78,6 +34,52 @@ const mockTranslations = jest.fn((key: string) => {
   };
   return messages[key] ?? key;
 });
+
+jest.mock("@/sanity/lib/client", () => ({
+  getClient: jest.fn(),
+}));
+
+jest.mock("next-intl/server", () => ({
+  getLocale: jest.fn(),
+  getTranslations: jest.fn(),
+}));
+
+jest.mock("@/i18n/navigation", () => ({
+  Link: ({ children, href }: { children: React.ReactNode; href: string }) => (
+    <a href={href}>{children}</a>
+  ),
+}));
+
+jest.mock("next/image", () => {
+  const MockImage = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img {...props} alt={props.alt} />
+  );
+  MockImage.displayName = "MockImage";
+  return MockImage;
+});
+
+
+jest.mock("@/sanity/lib/queries", () => ({
+  postsByLocaleQuery: "mock-posts-by-locale-query",
+}));
+
+jest.mock("@/sanity/lib/image", () => ({
+  urlFor: jest.fn(() => ({
+    width: jest.fn(() => ({
+      height: jest.fn(() => ({
+        auto: jest.fn(() => ({
+          quality: jest.fn(() => ({
+            url: jest.fn(
+              () =>
+                "https://cdn.sanity.io/images/project/dataset/mock-image.jpg"
+            ),
+          })),
+        })),
+      })),
+    })),
+  })),
+}));
 
 describe("BlogListingPage", () => {
   beforeEach(() => {
