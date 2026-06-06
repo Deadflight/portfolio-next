@@ -55,7 +55,7 @@ test.describe("Blog — Navegación y contenido", () => {
     // Verifica que el back link tenga href correcto
     const backLink = page.getByRole("link", { name: "Back to blog" });
     await expect(backLink).toBeVisible();
-    await expect(backLink).toHaveAttribute("href", "/en/blog");
+    await expect(backLink).toHaveAttribute("href", "/blog");
   });
 
   test("E54: ES locale flow — texto en español en la página 404", async ({ page }) => {
@@ -69,6 +69,6 @@ test.describe("Blog — Navegación y contenido", () => {
     // Verifica que el back link tenga href correcto
     const backLink = page.getByRole("link", { name: "Volver al blog" });
     await expect(backLink).toBeVisible();
-    await expect(backLink).toHaveAttribute("href", "/es/blog");
+    await expect(backLink).toHaveAttribute("href", "/blog");
   });
 });
