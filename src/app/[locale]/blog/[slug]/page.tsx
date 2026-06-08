@@ -37,14 +37,19 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { slug, locale } = await params;
-  const post = await (
-    await getClient()
-  ).fetch<{
-    title: string;
-    description?: string | null;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    coverImage?: any;
-  } | null>(postBySlugQuery, { slug, locale });
+  let post: { title: string; description?: string | null; coverImage?: { asset?: { _ref?: string } } } | null = null;
+  try {
+    post = await (
+      await getClient()
+    ).fetch<{
+      title: string;
+      description?: string | null;
+      coverImage?: { asset?: { _ref?: string } };
+    } | null>(postBySlugQuery, { slug, locale });
+  } catch {
+    // Sanity unavailable — return minimal metadata
+    return {};
+  }
 
   if (!post) return {};
 
@@ -73,19 +78,30 @@ export default async function BlogDetailPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { slug, locale } = await params;
-  const post = await (
-    await getClient()
-  ).fetch<{
+  let post: {
     title: string;
     description?: string | null;
     publishedAt?: string | null;
     locale: string;
     tags?: string[] | null;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    coverImage?: any;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    body: any[];
-  } | null>(postBySlugQuery, { slug, locale });
+    coverImage?: unknown;
+    body: unknown[];
+  } | null = null;
+  try {
+    post = await (
+      await getClient()
+    ).fetch<{
+      title: string;
+      description?: string | null;
+      publishedAt?: string | null;
+      locale: string;
+      tags?: string[] | null;
+      coverImage?: unknown;
+      body: unknown[];
+    } | null>(postBySlugQuery, { slug, locale });
+  } catch {
+    // Sanity unavailable — show 404
+  }
 
   if (!post) {
     notFound();
