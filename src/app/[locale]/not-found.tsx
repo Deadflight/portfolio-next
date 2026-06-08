@@ -7,7 +7,7 @@ export default function NotFound() {
   const t = useTranslations("common");
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
+    <div className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
       <h1 className="text-6xl font-bold text-primary-brand">404</h1>
       <h2 className="mt-4 text-2xl font-semibold">{t("notFoundTitle")}</h2>
       <p className="mt-2 max-w-md text-text-secondary">{t("notFound")}</p>
@@ -17,6 +17,6 @@ export default function NotFound() {
       >
         {t("backToHome")}
       </Link>
-    </main>
+    </div>
   );
 }
