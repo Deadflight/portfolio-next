@@ -34,12 +34,16 @@
 - [x] Implement `[locale]/blog/[slug]/page.tsx` detail with generateStaticParams
 - [x] Implement `[locale]/blog/[slug]/not-found.tsx` blog-specific 404
 - [x] Add `generateMetadata` with SEO fields
-- [ ] Write E2E tests for navigation flow
 
-## Batch 4 — Revalidation (PR-4 of 4)
+## Batch 4 — Revalidation + E2E (PR-4 of 4)
 
 ### T-04: Create webhook revalidation endpoint
 
-- [ ] Implement `POST /api/revalidate` with secret validation
-- [ ] Add `revalidatePath` + `revalidateTag` calls
-- [ ] Handle invalid secret (401) and wrong method (405)
+- [x] Implement `POST /api/revalidate` with secret validation
+- [x] Add `revalidatePath` + `revalidateTag` calls
+- [x] Handle invalid secret (401) and wrong method (405)
+- [x] Unit tests for all three spec scenarios (E41-E43)
+
+### E2E Tests (FR-10)
+
+- [x] Write E2E tests for blog navigation flow (E50-E54)
