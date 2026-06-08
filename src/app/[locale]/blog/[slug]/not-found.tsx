@@ -1,11 +1,12 @@
-import { useTranslations } from "next-intl";
+'use client';
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 export default function BlogNotFound() {
   const t = useTranslations("blog");
 
   return (
-    <main
+    <div
       data-testid="blog-not-found"
       id="blog-not-found"
       className="container mx-auto px-4 py-16 text-center"
@@ -19,6 +20,6 @@ export default function BlogNotFound() {
       >
         {t("backToBlog")}
       </Link>
-    </main>
+    </div>
   );
 }

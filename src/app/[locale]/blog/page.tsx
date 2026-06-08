@@ -24,15 +24,15 @@ export default async function BlogListingPage() {
 
   if (posts.length === 0) {
     return (
-      <main className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
         <h1 className="text-3xl font-heading font-bold mb-8">{t("title")}</h1>
         <p data-testid="blog-empty-state">{t("emptyState")}</p>
-      </main>
+      </div>
     );
   }
 
   return (
-    <main className="min-h-screen px-4 sm:px-6 lg:px-8 pt-16 ">
+    <div className="min-h-screen px-4 sm:px-6 lg:px-8 pt-16 ">
       <h1 className="text-3xl font-heading font-bold mb-8">{t("title")}</h1>
       <div
         data-testid="blog-listing"
@@ -62,6 +62,6 @@ export default async function BlogListingPage() {
           )
         )}
       </div>
-    </main>
+    </div>
   );
 }
