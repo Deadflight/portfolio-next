@@ -42,7 +42,7 @@ describe("ContactInformation", () => {
     expect(screen.getByText("Teléfono")).toBeInTheDocument();
     expect(screen.getByText(/\+584248599166/i)).toBeInTheDocument();
     expect(screen.getByText("Portfolio")).toBeInTheDocument();
-    expect(screen.getByText(/www.carlos-correa.com/i)).toBeInTheDocument();
+    expect(screen.getByText(/www\.carlos-correa\.com/i)).toBeInTheDocument();
     expect(screen.getAllByText("Disponible para proyectos freelance").length).toBeGreaterThan(0);
   });
 
